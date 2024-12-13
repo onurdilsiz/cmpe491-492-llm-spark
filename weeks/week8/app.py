@@ -28,7 +28,7 @@ def process_code_with_prompt(code, case_type):
 
 def main():
     # File paths for local input and output
-    input_file_path = "MatchingCode.py"
+    input_file_path = "week8/MatchingCode.py"
     output_file_path = "output-analysis.txt"
 
     # Case type to analyze
