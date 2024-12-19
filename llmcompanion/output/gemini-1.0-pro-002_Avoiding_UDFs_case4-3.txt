@@ -1,0 +1,50 @@
+```json
+{
+  "detected": true,
+  "occurrences": 7,
+  "response": [
+    {
+      "operation": "Line 10: `five_udf()`",
+      "improvementExplanation": "The UDF `five_udf` simply returns a constant value (5). This can be replaced with the built-in function `lit(5)`.",
+      "alternativeEquivalent": "```python\ndf.select(lit(5)).display()\n```",
+      "benefits": "Replacing the UDF with `lit(5)` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "Line 15: `five()`",
+      "improvementExplanation": "Similar to the previous case, the UDF `five` returns a constant value (5). It can be replaced with `lit(5)`.",
+      "alternativeEquivalent": "```python\ndf.select(lit(5)).show()\n```",
+      "benefits": "Replacing the UDF with `lit(5)` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "Line 20: `five()`",
+      "improvementExplanation": "The UDF `five` returns a constant value (5). It can be replaced with `lit(5)`.",
+      "alternativeEquivalent": "```python\ndf.select(lit(5)).show()\n```",
+      "benefits": "Replacing the UDF with `lit(5)` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "Line 27: `my_custom_scala_fn(id)`",
+      "improvementExplanation": "The UDF `my_custom_scala_fn` is a custom Scala function. It's difficult to analyze without knowing its implementation. However, if possible, consider replacing it with a Spark SQL function or native DataFrame/Dataset operation for better performance and optimization.",
+      "alternativeEquivalent": "```python\n# Replace with a Spark SQL function or native DataFrame/Dataset operation based on the logic of `my_custom_scala_fn`.\n```",
+      "benefits": "Replacing the UDF with a Spark SQL function or native DataFrame/Dataset operation enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "Line 34: `identity('id')`",
+      "improvementExplanation": "The UDF `identity` simply returns the input value. This can be achieved using the native DataFrame/Dataset operation `col('id')`.",
+      "alternativeEquivalent": "```python\ndf.select(col('id')).display()\n```",
+      "benefits": "Replacing the UDF with `col('id')` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "Line 43: `split(name, delimiter)`",
+      "improvementExplanation": "The UDF `split` is used to split a string based on a delimiter. This can be achieved using the built-in function `split(col('name'), col('delimiter'))`.",
+      "alternativeEquivalent": "```python\nstrings.select(split(col('name'), col('delimiter'))).show()\n```",
+      "benefits": "Replacing the UDF with `split(col('name'), col('delimiter'))` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "Line 50: `split(name, delimiter)`",
+      "improvementExplanation": "Similar to the previous case, the UDF `split` can be replaced with the built-in function `split(col('name'), col('delimiter'))`.",
+      "alternativeEquivalent": "```python\nstrings.selectExpr(\"split(name, delimiter)\").show()\n```",
+      "benefits": "Replacing the UDF with `split(col('name'), col('delimiter'))` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}
+```

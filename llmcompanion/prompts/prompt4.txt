@@ -1,0 +1,22 @@
+Analyze the provided Spark code and detect instances where User-Defined Functions (UDFs) are used. Determine if they can be replaced with Spark's built-in functions or native DataFrame/Dataset operations. For each detected case:
+
+Identify where the UDF is being used and provide its location in the code (e.g., line number or code snippet).
+Explain the purpose of using the UDF in the given context.
+Evaluate whether the UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation.
+If applicable, suggest replacing the UDF with an alternative implementation and provide an equivalent code example for the replacement.
+Highlight the benefits of avoiding UDFs, such as enabling Catalyst optimizations, improving performance, and reducing serialization overhead.
+
+**Input Code:**
+```python
+{code}
+```
+
+Output Requirements: The response must strictly follow JSON formatting without any additional text, annotations, or explanations. The response should not include anything else besides the JSON. The JSON object should include the following fields:
+
+"detected": A boolean indicating whether UDF usage was detected in the provided code.
+"occurrences": The number of times UDFs are used in the code.
+"response": An array of objects, where each object provides:
+"operation": The specific UDF operation with its location in the code (e.g., line number or code snippet).
+"improvementExplanation": A detailed explanation of why and how the UDF can be replaced with a built-in function or native DataFrame/Dataset operation.
+"alternativeEquivalent": A code snippet showing how to replace the UDF operation with a built-in function or transformation.
+"benefits": A summary of the benefits of replacing UDFs, such as enabling Catalyst optimizations, improving performance, and reducing serialization overhead.

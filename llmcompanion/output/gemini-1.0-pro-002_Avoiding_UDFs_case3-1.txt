@@ -1,0 +1,56 @@
+```json
+{
+  "detected": true,
+  "occurrences": 8,
+  "response": [
+    {
+      "operation": "generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=1)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `window` function and `count` aggregate function. This approach leverages Spark's Catalyst optimizer for better performance and avoids serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('source_ip_count_last_min', F.window(F.col('source_ip'), '1 minute').count())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=30)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `window` function and `count` aggregate function. This approach leverages Spark's Catalyst optimizer for better performance and avoids serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('source_ip_count_last_30_mins', F.window(F.col('source_ip'), '30 minutes').count())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=1)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `window` function and `count` aggregate function. This approach leverages Spark's Catalyst optimizer for better performance and avoids serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('source_port_count_last_min', F.window(F.col('source_port'), '1 minute').count())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=30)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `window` function and `count` aggregate function. This approach leverages Spark's Catalyst optimizer for better performance and avoids serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('source_port_count_last_30_mins', F.window(F.col('source_port'), '30 minutes').count())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `window` function, `partitionBy`, and `avg` aggregate function. This approach leverages Spark's Catalyst optimizer for better performance and avoids serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('source_ip_avg_pkts_last_min', F.window(F.col('orig_pkts'), '1 minute').partitionBy('source_ip').avg())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `window` function, `partitionBy`, and `avg` aggregate function. This approach leverages Spark's Catalyst optimizer for better performance and avoids serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('source_ip_avg_pkts_last_30_mins', F.window(F.col('orig_pkts'), '30 minutes').partitionBy('source_ip').avg())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `window` function, `partitionBy`, and `avg` aggregate function. This approach leverages Spark's Catalyst optimizer for better performance and avoids serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('source_ip_avg_bytes_last_min', F.window(F.col('orig_ip_bytes'), '1 minute').partitionBy('source_ip').avg())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `window` function, `partitionBy`, and `avg` aggregate function. This approach leverages Spark's Catalyst optimizer for better performance and avoids serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('source_ip_avg_bytes_last_30_mins', F.window(F.col('orig_ip_bytes'), '30 minutes').partitionBy('source_ip').avg())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}
+```

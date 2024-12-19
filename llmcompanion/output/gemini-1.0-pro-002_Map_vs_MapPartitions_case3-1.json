@@ -1,0 +1,54 @@
+{
+    "detected": true,
+    "occurrences": 8,
+    "response": [
+        {
+            "operation": "map(lambda x: x.withColumn('source_ip_count_last_min', generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=1)))",
+            "improvementExplanation": "This map operation iterates over each row to calculate the 'source_ip_count_last_min' feature. Since this involves a rolling aggregate function, it can be more efficiently performed at the partition level using mapPartitions(). This reduces the number of function calls and improves I/O efficiency.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_count_last_min', generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=1))))",
+            "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
+        },
+        {
+            "operation": "map(lambda x: x.withColumn('source_ip_count_last_30_mins', generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=30)))",
+            "improvementExplanation": "Similar to the previous case, this map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_count_last_30_mins' feature.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_count_last_30_mins', generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=30))))",
+            "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
+        },
+        {
+            "operation": "map(lambda x: x.withColumn('source_port_count_last_min', generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=1)))",
+            "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_port_count_last_min' feature.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_port_count_last_min', generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=1))))",
+            "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
+        },
+        {
+            "operation": "map(lambda x: x.withColumn('source_port_count_last_30_mins', generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=30)))",
+            "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_port_count_last_30_mins' feature.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_port_count_last_30_mins', generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=30))))",
+            "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
+        },
+        {
+            "operation": "map(lambda x: x.withColumn('source_ip_avg_pkts_last_min', generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1)))",
+            "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_avg_pkts_last_min' feature.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_avg_pkts_last_min', generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1))))",
+            "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
+        },
+        {
+            "operation": "map(lambda x: x.withColumn('source_ip_avg_pkts_last_30_mins', generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30)))",
+            "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_avg_pkts_last_30_mins' feature.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_avg_pkts_last_30_mins', generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30))))",
+            "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
+        },
+        {
+            "operation": "map(lambda x: x.withColumn('source_ip_avg_bytes_last_min', generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1)))",
+            "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_avg_bytes_last_min' feature.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_avg_bytes_last_min', generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1))))",
+            "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
+        },
+        {
+            "operation": "map(lambda x: x.withColumn('source_ip_avg_bytes_last_30_mins', generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30)))",
+            "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_avg_bytes_last_30_mins' feature.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_avg_bytes_last_30_mins', generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30))))",
+            "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
+        }
+    ]
+}

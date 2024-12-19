@@ -1,0 +1,18 @@
+{
+    "detected": true,
+    "occurrences": 2,
+    "response": [
+        {
+            "operation": "map() operation on line 44: customerDF.filter(\"salary > 30000\").select('age','country').show()",
+            "improvementExplanation": "This map() operation filters the DataFrame based on the salary condition and then selects the 'age' and 'country' columns. This can be efficiently performed at the partition level using mapPartitions() to avoid unnecessary function calls and data shuffling.",
+            "mapPartitionsEquivalent": "customerDF.filter(\"salary > 30000\").mapPartitions(lambda partition: (row['age'], row['country']) for row in partition).show()",
+            "benefits": "Replacing map() with mapPartitions() in this case will reduce function call overhead, optimize I/O by processing data within partitions, and improve performance for large datasets."
+        },
+        {
+            "operation": "map() operation on line 50: customerDF.filter((customerDF['salary'] > 30000) & (customerDF['age'] < 25)).show()",
+            "improvementExplanation": "This map() operation filters the DataFrame based on two conditions and then displays the results. Similar to the previous case, using mapPartitions() can improve efficiency by processing data within partitions.",
+            "mapPartitionsEquivalent": "customerDF.filter((customerDF['salary'] > 30000) & (customerDF['age'] < 25)).mapPartitions(lambda partition: row for row in partition if row['salary'] > 30000 and row['age'] < 25).show()",
+            "benefits": "Replacing map() with mapPartitions() in this case will reduce function call overhead, optimize I/O by processing data within partitions, and improve performance for large datasets."
+        }
+    ]
+}

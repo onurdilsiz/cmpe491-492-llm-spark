@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "The UDF `custom_repartitioner` is used on line 14 to repartition the DataFrame based on a salted key.",
+      "improvementExplanation": "The UDF `custom_repartitioner` can be replaced with a combination of built-in Spark SQL functions and native DataFrame/Dataset operations. This would enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+      "alternativeEquivalent": "```python\n# Calculate the number of files per partition\nfiles_per_partition = df.select(*dist_cols)\n    .withColumn('_partColAgg', F.concat(*dist_cols))\n    .drop(*dist_cols)\n    .groupBy('_partColAgg')\n    .agg(F.count(F.lit(1)).alias('records_count'))\n    .withColumn('_num', F.ceil(F.col('records_count').cast('double') / F.lit(max_records_in_each_file)))\n    .select('_num', '_partColAgg')\n\n# Calculate the total number of files\nnumber_of_files = files_per_partition.select(F.max('_num')).collect()[0][0]\n\n# Generate a salted key for each partition\ndf = df.withColumn('_partColMain', F.concat(*dist_cols))\n    .join(F.broadcast(files_per_partition), F.col('_partColMain') == F.col('_partColAgg'), 'inner')\n    .drop('_partColAgg')\n    .withColumn('_unique_id', F.monotonically_increasing_id())\n    .withColumn('_salted_key', F.col('_unique_id') % F.col('_num'))\n    .drop('_partColMain', '_num', '_unique_id')\n\n# Repartition the DataFrame based on the salted key\ndf = df.repartition(number_of_files, '_salted_key')\n    .drop('_salted_key')\n```",
+      "benefits": "Replacing the UDF with built-in functions and native DataFrame/Dataset operations would provide the following benefits:\n\n* **Catalyst Optimizations:** Catalyst is Spark's query optimizer, which can optimize queries written using built-in functions and native operations more effectively than UDFs.\n* **Improved Performance:** Built-in functions and native operations are generally more performant than UDFs, as they are optimized for Spark's execution engine.\n* **Reduced Serialization Overhead:** UDFs require serialization and deserialization, which can add overhead to Spark jobs. Using built-in functions and native operations avoids this overhead."
+    }
+  ]
+}
+```

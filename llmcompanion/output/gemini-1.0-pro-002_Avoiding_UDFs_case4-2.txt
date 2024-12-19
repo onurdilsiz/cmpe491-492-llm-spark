@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "UDF `new_salary` defined on line 17-20 and used on line 24-25.",
+      "improvementExplanation": "The UDF `new_salary` simply adds two columns, `salary` and `bonus`. This can be achieved using the built-in function `+` or the native DataFrame/Dataset operation `col('salary') + col('bonus')`. Replacing the UDF with a built-in function or native operation would enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+      "alternativeEquivalent": "```python\ndf.withColumn('new_salary', df.salary + df.bonus)\n```",
+      "benefits": "Replacing the UDF with a built-in function or native operation would enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    },
+    {
+      "operation": "UDF `new_salary` defined on line 30-32 and used on line 35-36.",
+      "improvementExplanation": "Similar to the previous case, the UDF `new_salary` simply adds two columns, `salary` and `bonus`. This can be achieved using the built-in function `+` or the native DataFrame/Dataset operation `col('salary') + col('bonus')`. Replacing the UDF with a built-in function or native operation would enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+      "alternativeEquivalent": "```python\ndf.select('*', df.salary + df.bonus).alias('total_salary')\n```",
+      "benefits": "Replacing the UDF with a built-in function or native operation would enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    }
+  ]
+}
+```

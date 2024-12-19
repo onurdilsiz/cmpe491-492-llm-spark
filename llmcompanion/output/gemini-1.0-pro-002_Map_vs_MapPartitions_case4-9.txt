@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "The map() operation is used on line 32 to apply the `delta_mol` function to each element of the `array_col` column.",
+      "improvementExplanation": "The `delta_mol` function calculates the percentage change between consecutive elements in an array. This operation is well-suited for parallel processing at the partition level because it can be applied independently to each partition without requiring data shuffling. By using `mapPartitions()`, we can avoid the overhead of calling the function for each individual element and potentially improve I/O efficiency by processing data in larger chunks.",
+      "mapPartitionsEquivalent": "```python\n@udf(ArrayType(DoubleType()))\ndef delta_mol_partition(iterator):\n    for array in iterator:\n        differenze = [(array[i+1] / array[i] -1)*100 if array[i] != 0.0 else 0.0 for i in range(len(array)-1) ]\n        yield differenze\n\ndff = df.withColumn('delta_arry', F.expr('transform(array_col, delta_mol_partition)'))\n```",
+      "benefits": "Switching to `mapPartitions()` offers several benefits:\n\n* **Reduced function call overhead:** By applying the function to a partition of elements at once, we avoid the overhead of calling the function for each individual element.\n* **Optimized I/O:** Processing data in larger chunks can improve I/O efficiency, especially when dealing with large datasets or data stored on distributed file systems.\n* **Improved resource utilization:** By parallelizing the operation at the partition level, we can utilize multiple cores or nodes in a cluster more effectively."
+    }
+  ]
+}
+```

@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "subtract_params(weights_before_training, weights_after_training)",
+      "improvementExplanation": "This UDF can be replaced with the built-in Spark function `subtract` from the `pyspark.mllib.linalg` module. This function is optimized for Spark and can significantly improve performance compared to a custom UDF.",
+      "alternativeEquivalent": "```python\nfrom pyspark.mllib.linalg import subtract\n\ndelta = subtract(weights_before_training, weights_after_training)\n```",
+      "benefits": "Replacing the UDF with `subtract` will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    },
+    {
+      "operation": "slice_X(X_train, batch_ids)",
+      "improvementExplanation": "This UDF can be replaced with the native DataFrame/Dataset operation `select` with a filter condition. This approach is more efficient and avoids the overhead of creating a UDF.",
+      "alternativeEquivalent": "```python\nX = X_train.select(X_train.columns).where(X_train.index.isin(batch_ids))\n```",
+      "benefits": "Replacing the UDF with `select` will improve performance and reduce the need for serialization."
+    }
+  ]
+}
+```

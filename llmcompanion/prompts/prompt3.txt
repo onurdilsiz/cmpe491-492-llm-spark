@@ -1,0 +1,22 @@
+Analyze the provided Spark code and detect instances where input/output operations are used. Determine if they can be optimized by switching to serialized data formats like Parquet or ORC. For each detected case:
+
+1. Identify where input/output operations are being used and provide their location in the code (e.g., line number or code snippet).
+2. Explain the purpose of the current data format being used (e.g., CSV, JSON, Parquet).
+3. Evaluate whether switching to an optimized serialized format (e.g., Parquet or ORC) would improve performance.
+4. If applicable, suggest replacing the current data format with an optimized format and provide an equivalent code example for the replacement.
+5. Highlight the benefits of switching to the optimized format, such as faster reads/writes, compression, and query optimization through predicate pushdown.
+
+**Input Code:**
+```python
+{code}
+```
+
+Output Requirements: The response must strictly follow JSON formatting without any additional text, annotations, or explanations. The response should not include anything else besides the JSON. The JSON object should include the following fields:
+
+"detected": A boolean indicating whether input/output operations were detected in the provided code.
+"occurrences": The number of times input/output operations are used in the code.
+"response": An array of objects, where each object provides:
+"operation": The specific input/output operation (e.g., read/write in CSV format) with its location in the code (e.g., line number or code snippet).
+"improvementExplanation": A detailed explanation of why and how the current data format can be replaced with an optimized format.
+"optimizedEquivalent": A code snippet showing how to replace the current operation with one using an optimized serialized format like Parquet or ORC.
+"benefits": A summary of the benefits of switching to the optimized format, such as faster reads/writes, compression, and query optimization.

@@ -1,7 +1,19 @@
 Model,Case,File,Input Tokens,Output Tokens,Total Tokens
-gemini-1.5-flash-002,RDD vs DataFrame,case0-1.py,1408,1136,2544
-gemini-1.5-flash-002,RDD vs DataFrame,case1-1.py,1237,31,1268
-gemini-1.5-flash-002,RDD vs DataFrame,case1-2.py,1234,31,1265
-gemini-1.5-flash-002,Coalesce vs Repartition,case0-1.py,1386,31,1417
-gemini-1.5-flash-002,Coalesce vs Repartition,case1-1.py,1215,420,1635
-gemini-1.5-flash-002,Coalesce vs Repartition,case1-2.py,1212,406,1618
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-1.py,1412,1789,3201
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-1.py,1241,31,1272
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-2.py,1238,31,1269
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-1.py,1390,31,1421
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-1.py,1219,568,1787
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-2.py,1216,374,1590
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-1.py,1379,829,2208
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-1.py,1208,31,1239
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-2.py,1205,31,1236
+gemini-2.0-flash-exp,Serialized Data Formats,case0-1.py,1423,1023,2446
+gemini-2.0-flash-exp,Serialized Data Formats,case1-1.py,1252,715,1967
+gemini-2.0-flash-exp,Serialized Data Formats,case1-2.py,1249,548,1797
+gemini-2.0-flash-exp,Avoiding UDFs,case0-1.py,1389,741,2130
+gemini-2.0-flash-exp,Avoiding UDFs,case1-1.py,1218,31,1249
+gemini-2.0-flash-exp,Avoiding UDFs,case1-2.py,1215,31,1246
+gemini-2.0-flash-exp,All,case0-1.py,2232,3066,5298
+gemini-2.0-flash-exp,All,case1-1.py,2061,878,2939
+gemini-2.0-flash-exp,All,case1-2.py,2058,653,2711

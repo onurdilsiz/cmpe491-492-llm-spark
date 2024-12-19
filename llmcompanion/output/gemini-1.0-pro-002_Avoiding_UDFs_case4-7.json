@@ -1,0 +1,55 @@
+{
+    "detected": true,
+    "occurrences": 7,
+    "response": [
+        {
+            "operation": "MAP_AN(source) - Line 104",
+            "improvementExplanation": "The UDF `MAP_AN` can be replaced with a `when` clause in Spark SQL or a `case when` expression in DataFrame/Dataset operations. This approach avoids the overhead of serialization and allows Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"activity_name\", when(col(\"unmapped.`category`\") == \"Write\", \"Create\").when(col(\"unmapped.`category`\") == \"Delete\", \"Delete\").otherwise(\"Unknown\"))\n```",
+            "benefits": "Replacing the UDF with a native expression enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "MAP_AI(source) - Line 109",
+            "improvementExplanation": "The UDF `MAP_AI` can be replaced with a `when` clause in Spark SQL or a `case when` expression in DataFrame/Dataset operations. This approach avoids the overhead of serialization and allows Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"activity_id\", when(col(\"unmapped.`category`\") == \"Write\", 1).when(col(\"unmapped.`category`\") == \"Delete\", 4).otherwise(0))\n```",
+            "benefits": "Replacing the UDF with a native expression enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "MAP_TN(source) - Line 114",
+            "improvementExplanation": "The UDF `MAP_TN` can be replaced with a `when` clause in Spark SQL or a `case when` expression in DataFrame/Dataset operations. This approach avoids the overhead of serialization and allows Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"type_name\", when(col(\"unmapped.`category`\") == \"Write\", \"API Acitvity: API Activity: Create\").when(col(\"unmapped.`category`\") == \"Delete\", \"API Acitvity: API Activity: Delete\").otherwise(\"API Acitvity: API Activity: Unknown\"))\n```",
+            "benefits": "Replacing the UDF with a native expression enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "MAP_TI(source) - Line 119",
+            "improvementExplanation": "The UDF `MAP_TI` can be replaced with a `when` clause in Spark SQL or a `case when` expression in DataFrame/Dataset operations. This approach avoids the overhead of serialization and allows Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"type_uid\", when(col(\"unmapped.`category`\") == \"Write\", 300501).when(col(\"unmapped.`category`\") == \"Delete\", 300504).otherwise(300500))\n```",
+            "benefits": "Replacing the UDF with a native expression enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "MAP_SEVID(source) - Line 124",
+            "improvementExplanation": "The UDF `MAP_SEVID` can be replaced with a `when` clause in Spark SQL or a `case when` expression in DataFrame/Dataset operations. This approach avoids the overhead of serialization and allows Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"severity_id\", when(col(\"severity\") == \"Information\", 1).when(col(\"severity\") == \"Informational\", 1).when(col(\"severity\") == \"Low\", 2).when(col(\"severity\") == \"Medium\", 3).when(col(\"severity\") == \"High\", 4).when(col(\"severity\") == \"Critical\", 5).when(col(\"severity\") == \"Fatial\", 6).when(col(\"severity\") == \"Unknown\", 0).otherwise(99))\n```",
+            "benefits": "Replacing the UDF with a native expression enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "MAP_STATNAME(source) - Line 134",
+            "improvementExplanation": "The UDF `MAP_STATNAME` can be replaced with a `when` clause in Spark SQL or a `case when` expression in DataFrame/Dataset operations. This approach avoids the overhead of serialization and allows Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"`status`\", when(col(\"unmapped.`resultType`\") == \"Unknown\", \"Unknown\").when(col(\"unmapped.`resultType`\") == \"Success\", \"Success\").when(col(\"unmapped.`resultType`\") == \"Failure\", \"Failure\").otherwise(\"Other\"))\n```",
+            "benefits": "Replacing the UDF with a native expression enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "MAP_STATID(source) - Line 139",
+            "improvementExplanation": "The UDF `MAP_STATID` can be replaced with a `when` clause in Spark SQL or a `case when` expression in DataFrame/Dataset operations. This approach avoids the overhead of serialization and allows Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"`status_id`\", when(col(\"unmapped.`resultType`\") == \"Unknown\", 0).when(col(\"unmapped.`resultType`\") == \"Success\", 1).when(col(\"unmapped.`resultType`\") == \"Failure\", 2).otherwise(99))\n```",
+            "benefits": "Replacing the UDF with a native expression enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "MAP_TIME(string) - Line 144",
+            "improvementExplanation": "The UDF `MAP_TIME` can be replaced with the built-in `to_timestamp` function in Spark SQL or the `toTimestamp` function in DataFrame/Dataset operations. This approach avoids the overhead of serialization and allows Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"time\", to_timestamp(col('time')[:-2], 'yyyy-MM-ddTHH:mm:ss.SSS'))\n```",
+            "benefits": "Replacing the UDF with a built-in function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        }
+    ],
+    "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations offers several benefits:\n\n* **Catalyst Optimizations:** Spark's Catalyst optimizer can effectively optimize native expressions, leading to improved query performance.\n* **Performance Improvement:** Avoiding UDFs reduces serialization overhead, resulting in faster execution times.\n* **Reduced Serialization Overhead:** UDFs require serialization and deserialization, which can be computationally expensive. Native expressions eliminate this overhead.\n* **Improved Code Readability:** Native expressions are often more concise and easier to understand than UDFs, enhancing code readability and maintainability."
+}

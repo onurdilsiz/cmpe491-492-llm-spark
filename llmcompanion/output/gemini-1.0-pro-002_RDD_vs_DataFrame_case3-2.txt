@@ -1,0 +1,140 @@
+```json
+{
+  "detected": true,
+  "occurrences": 14,
+  "response": [
+    {
+      "rddOperation": "filter(~col('_c5').isNull())",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method, which is optimized for filtering operations.",
+      "dataframeEquivalent": "df.filter(df['_c5'].isNotNull())",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~col('_c6').isNull())",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method, which is optimized for filtering operations.",
+      "dataframeEquivalent": "df.filter(df['_c6'].isNotNull())",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~col('_c7').isNull())",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method, which is optimized for filtering operations.",
+      "dataframeEquivalent": "df.filter(df['_c7'].isNotNull())",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~col('_c8').isNull())",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method, which is optimized for filtering operations.",
+      "dataframeEquivalent": "df.filter(df['_c8'].isNotNull())",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with regular expressions.",
+      "dataframeEquivalent": "df.filter(~df['_c5'].rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~col('_c6').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with regular expressions.",
+      "dataframeEquivalent": "df.filter(~df['_c6'].rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(col('_c15').isNull() | ~col('_c15').rlike('.*\\d.*'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with logical operators and regular expressions.",
+      "dataframeEquivalent": "df.filter((df['_c15'].isNull()) | (~df['_c15'].rlike('.*\\d.*')))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c5')).contains('ERROR'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('ERROR'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c5')).contains('BOOM'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('BOOM'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c5')).contains('THIS'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('THIS'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c5')).contains('CORRUPTED'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('CORRUPTED'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c5')).contains('!'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('!'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c6')).contains('ERROR'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('ERROR'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c6')).contains('BOOM'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('BOOM'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c6')).contains('THIS'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('THIS'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c6')).contains('CORRUPTED'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('CORRUPTED'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~upper(col('_c6')).contains('!'))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
+      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('!'))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(~col('_c7').rlike('^[^0-9]*$') & (col('_c7') != ''))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with regular expressions and logical operators.",
+      "dataframeEquivalent": "df.filter(~df['_c7'].rlike('^[^0-9]*$') & (df['_c7'] != ''))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(col('_c7').cast('int') != 0)",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with type casting and comparisons.",
+      "dataframeEquivalent": "df.filter(df['_c7'].cast('int') != 0)",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(col('_c8').rlike('^[0-9]*\\.?[0-9]+$') & (col('_c8') != ''))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with regular expressions and logical operators.",
+      "dataframeEquivalent": "df.filter(df['_c8'].rlike('^[0-9]*\\.?[0-9]+$') & (df['_c8'] != ''))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter(col('_c8').cast('int') != 0)",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with type casting and comparisons.",
+      "dataframeEquivalent": "df.filter(df['_c8'].cast('int') != 0)",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    },
+    {
+      "rddOperation": "filter((upper(col('_c15')).contains('NETWORK') | upper(col('_c15')).contains('UNABLE') | upper(col('_c15')).contains('INSUFFICIENT') | col('_c15').isNull()))",
+      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with logical operators and string functions.",
+      "dataframeEquivalent": "df.filter((df['_c15'].upper().contains('NETWORK') | df['_c15'].upper().contains('UNABLE') | df['_c15'].upper().contains('INSUFFICIENT') | df['_c15'].isNull()))",
+      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+    }
+  ]
+}
+```

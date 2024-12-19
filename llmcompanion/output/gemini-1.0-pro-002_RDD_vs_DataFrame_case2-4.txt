@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "rddOperation": "mapPartitions",
+      "improvementExplanation": "mapPartitions is a low-level transformation that processes each partition of the RDD independently. It can be less efficient than using DataFrame/Dataset operations, which can leverage Spark SQL's query optimizer for better performance.",
+      "dataframeEquivalent": "```python\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.getOrCreate()\ndf = spark.read.text(sys.argv[1])\ndf = df.filter(df['CMPLNT_NUM'] != 'NULL')\n```",
+      "benefits": "Using DataFrame/Dataset operations instead of mapPartitions can improve performance by leveraging Spark SQL's query optimizer, reducing the amount of data shuffled between partitions, and improving resource utilization."
+    },
+    {
+      "rddOperation": "filter",
+      "improvementExplanation": "The filter operation can be performed more efficiently using DataFrame/Dataset's filter method, which leverages Spark SQL's query optimizer.",
+      "dataframeEquivalent": "```python\ndf = df.filter(df['CMPLNT_NUM'] != 'NULL')\n```",
+      "benefits": "Using DataFrame/Dataset's filter method instead of RDD's filter can improve performance by leveraging Spark SQL's query optimizer and reducing the amount of data processed."
+    },
+    {
+      "rddOperation": "map",
+      "improvementExplanation": "The map operation can be performed more efficiently using DataFrame/Dataset's map method, which leverages Spark SQL's query optimizer and vectorized operations.",
+      "dataframeEquivalent": "```python\ndf = df.withColumn('check_prem_typ_desc', F.when(F.col('CMPLNT_NUM') == 'NULL', 'NULL\tNULL\tNULL').otherwise('TEXT\tPREMISES\tVALID'))\n```",
+      "benefits": "Using DataFrame/Dataset's map method instead of RDD's map can improve performance by leveraging Spark SQL's query optimizer, vectorized operations, and reducing the amount of data processed."
+    }
+  ]
+}
+```

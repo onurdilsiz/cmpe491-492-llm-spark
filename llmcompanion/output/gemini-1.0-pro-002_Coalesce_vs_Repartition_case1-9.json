@@ -1,0 +1,12 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+            "improvementExplanation": "The `repartition(1)` operation is used to ensure that the data is written to a single partition. However, since the data is already being written to a partitioned table (`partitionBy='extract_dt'`), using `coalesce(1)` instead of `repartition(1)` would achieve the same result without performing a full shuffle. This is because `coalesce()` only moves data between partitions without shuffling it within partitions.",
+            "coalesceEquivalent": "filteredPaths.coalesce(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+            "benefits": "Replacing `repartition(1)` with `coalesce(1)` in this case would avoid a full shuffle, reducing the amount of data that needs to be moved and potentially improving the job runtime. This would also lead to better resource utilization as the shuffle process is resource-intensive."
+        }
+    ]
+}

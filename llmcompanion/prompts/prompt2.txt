@@ -1,0 +1,22 @@
+Analyze the provided Spark code and detect instances where map() transformations are used. Determine if they can be replaced with mapPartitions() for better efficiency. For each detected case:
+
+Identify where map() is being used and provide its location in the code (e.g., line number or code snippet).
+Explain the purpose of using map() in the given context.
+Evaluate whether the transformation can be performed at the partition level (e.g., batching or I/O-heavy operations).
+If applicable, suggest replacing map() with mapPartitions() and provide an equivalent code example for the replacement.
+Highlight the benefits of switching to mapPartitions(), such as reduced function call overhead, optimized I/O, and improved performance for partition-level operations.
+
+**Input Code:**
+```python
+{code}
+```
+
+Output Requirements: The response must strictly follow JSON formatting without any additional text, annotations, or explanations. The response should not include anything else besides the JSON. The JSON object should include the following fields:
+
+"detected": A boolean indicating whether map() usage was detected in the provided code.
+"occurrences": The number of times map() is used in the code.
+"response": An array of objects, where each object provides:
+"operation": The specific map() operation with its location in the code (e.g., line number or code snippet).
+"improvementExplanation": A detailed explanation of why and how map() can be replaced with mapPartitions() in this case.
+"mapPartitionsEquivalent": A code snippet showing how to replace the map() operation with mapPartitions().
+"benefits": A summary of the benefits of switching to mapPartitions(), such as reduced function call overhead, optimized I/O, and improved resource utilization.

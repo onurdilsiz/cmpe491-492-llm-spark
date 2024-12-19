@@ -1,0 +1,22 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "rddOperation": "map",
+      "location": "line 17: A = data.map(lambda line: [float(n) for n in line.split()]).cache()",
+      "improvementExplanation": "The `map` operation is used to convert each line of the text file into a list of floats. This can be done more efficiently using the DataFrame API's `selectExpr` method, which allows for vectorized operations on columns.",
+      "dataframeEquivalent": "```python\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.getOrCreate()\ndf = spark.read.text(dataset)\ndf = df.selectExpr('CAST(split(value, \" \")[0] AS FLOAT)', 'CAST(split(value, \" \")[1] AS FLOAT)', '...', 'CAST(split(value, \" \")[-1] AS FLOAT)')\n```",
+      "benefits": "Using `selectExpr` instead of `map` can significantly improve performance by reducing the number of object allocations and avoiding the overhead of creating a new RDD for each partition."
+    },
+    {
+      "rddOperation": "map",
+      "location": "line 23: A_AT_A = A.map(lambda row: np.dot(row, AT_A))",
+      "improvementExplanation": "The `map` operation is used to calculate the dot product of each row of the matrix A with the matrix AT_A. This can be done more efficiently using the DataFrame API's `withColumn` method and the `dot` function.",
+      "dataframeEquivalent": "```python\ndf = df.withColumn('A_AT_A', df['value'].dot(AT_A))\n```",
+      "benefits": "Using `withColumn` and `dot` instead of `map` can improve performance by reducing the number of object allocations and avoiding the overhead of creating a new RDD for each partition."
+    }
+  ]
+}
+```

@@ -5,39 +5,39 @@
   "response": [
     {
       "rddOperation": "ratings = data.map(lambda l: l.split()).map(lambda l: (int(l[0]), (int(l[1]), float(l[2])))) (lines 36-37)",
-      "improvementExplanation": "The RDD `map` operations are used to transform the raw data into key-value pairs. DataFrames provide optimized data processing capabilities, including schema enforcement and optimized execution plans, leading to better performance.",
-      "dataframeEquivalent": "from pyspark.sql import SparkSession\nspark = SparkSession.builder.appName(\"MovieSimilarities\").getOrCreate()\ndata = spark.read.csv(\"file:///SparkCourse/ml-100k/u.data\", header=False, inferSchema=True)\ndata = data.withColumnRenamed('_c0', 'user_id').withColumnRenamed('_c1', 'movie_id').withColumnRenamed('_c2', 'rating')\nratings = data.selectExpr(\"CAST(user_id AS INT) user_id\", \"CAST(movie_id AS INT) movie_id\", \"CAST(rating AS FLOAT) rating\")",
-      "benefits": "DataFrames offer significant performance improvements over RDDs for this task due to optimized execution plans, columnar storage, and built-in schema enforcement.  This leads to reduced data shuffling and improved resource utilization."
+      "improvementExplanation": "The RDD `map` operations can be replaced with DataFrame operations for improved performance and optimization. DataFrames provide optimized execution plans and utilize Catalyst optimizer for better query execution.",
+      "dataframeEquivalent": "from pyspark.sql import SparkSession\nspark = SparkSession.builder.appName(\"MovieSimilarities\").getOrCreate()\ndata = spark.read.csv(\"file:///SparkCourse/ml-100k/u.data\", header=False, inferSchema=True)\ndata = data.selectExpr(\"\_c0 as user\", \"\_c1 as movie\", \"\_c2 as rating\")\nratings = data.rdd.map(lambda row: (row.user, (row.movie, row.rating)))",
+      "benefits": "DataFrames offer significant performance improvements over RDDs due to optimized execution plans, reduced data shuffling, and better resource utilization. Catalyst optimizer enhances query optimization, leading to faster execution times and improved scalability."
     },
     {
       "rddOperation": "joinedRatings = ratings.join(ratings) (line 39)",
-      "improvementExplanation": "The `join` operation on RDDs can be very expensive, especially for large datasets. DataFrames provide optimized join algorithms that leverage Catalyst optimizer for better performance.",
-      "dataframeEquivalent": "joinedRatings = ratings.join(ratings, on='user_id')",
-      "benefits": "DataFrame joins are significantly faster than RDD joins due to optimized join algorithms and the Catalyst optimizer. This results in reduced execution time and improved resource utilization."
+      "improvementExplanation": "The RDD `join` operation is inefficient for large datasets. DataFrame joins are optimized using various join algorithms and can leverage partitioning strategies for better performance.",
+      "dataframeEquivalent": "ratings_df = spark.createDataFrame(ratings, schema=['user', 'movie_rating'])\nratings_df = ratings_df.selectExpr(\"user\", \"movie_rating.movie as movie\", \"movie_rating.rating as rating\")\njoinedRatings = ratings_df.join(ratings_df, on='user')",
+      "benefits": "DataFrame joins are significantly faster and more efficient than RDD joins, especially for large datasets. They utilize optimized join algorithms and can leverage partitioning for improved performance and reduced data shuffling."
     },
     {
       "rddOperation": "uniqueJoinedRatings = joinedRatings.filter(filterDuplicates) (line 43)",
-      "improvementExplanation": "RDD `filter` operations can be inefficient for large datasets. DataFrames offer optimized filter operations that leverage predicate pushdown and other optimizations.",
-      "dataframeEquivalent": "uniqueJoinedRatings = joinedRatings.filter(joinedRatings[\"movie_id\"].getItem(0) < joinedRatings[\"movie_id\"].getItem(1))",
-      "benefits": "DataFrame filters are generally faster and more efficient than RDD filters due to optimized execution plans and predicate pushdown. This leads to reduced data processing time and improved resource utilization."
+      "improvementExplanation": "RDD `filter` operations can be less efficient than DataFrame `filter` operations. DataFrames provide optimized filtering using predicate pushdown and other optimizations.",
+      "dataframeEquivalent": "uniqueJoinedRatings = joinedRatings.filter(\"movie_rating.movie < movie_rating2.movie\")",
+      "benefits": "DataFrame filtering is generally faster and more efficient than RDD filtering due to optimized execution plans and predicate pushdown. This leads to reduced data processing and improved performance."
     },
     {
       "rddOperation": "moviePairs = uniqueJoinedRatings.map(makePairs) (line 46)",
-      "improvementExplanation": "The RDD `map` operation is used to transform the data. DataFrames provide more efficient ways to perform this transformation using built-in functions and optimized execution plans.",
-      "dataframeEquivalent": "This requires restructuring the DataFrame to accommodate the pair creation logic.  A UDF (User Defined Function) might be necessary for complex transformations.  This example simplifies the transformation, assuming a suitable DataFrame structure is available after the previous steps.",
-      "benefits": "Using DataFrame transformations instead of RDD `map` operations can lead to better performance due to optimized execution plans and reduced data shuffling."
+      "improvementExplanation": "The RDD `map` operation can be replaced with a more efficient DataFrame transformation. DataFrames provide optimized data manipulation and transformation capabilities.",
+      "dataframeEquivalent": "moviePairs = uniqueJoinedRatings.selectExpr(\"movie\", \"movie2\", \"rating\", \"rating2\").groupBy(\"movie\", \"movie2\").agg(collect_list(struct(\"rating\", \"rating2\")).alias(\"ratings\"))",
+      "benefits": "DataFrame transformations are generally faster and more efficient than RDD map operations due to optimized execution plans and better resource utilization. This leads to improved performance and scalability."
     },
     {
-      "rddOperation": "moviePairRatings = moviePairs.groupByKey() (line 51)",
-      "improvementExplanation": "The `groupByKey` operation on RDDs is known to be inefficient and can lead to significant data skew. DataFrames provide alternative aggregation methods that are more efficient and scalable.",
-      "dataframeEquivalent": "This operation is more complex to translate directly.  It would likely involve a `groupBy` operation followed by a custom aggregation function using a UDF or a combination of built-in aggregate functions to achieve the same result as `computeCosineSimilarity`.",
-      "benefits": "Replacing `groupByKey` with DataFrame aggregations improves performance by avoiding the potential for data skew and leveraging optimized aggregation algorithms."
+      "rddOperation": "moviePairRatings = moviePairs.groupByKey() (line 50)",
+      "improvementExplanation": "The RDD `groupByKey` operation is inefficient and can lead to data skew and performance issues. DataFrame `groupBy` operations are optimized and handle data skew more effectively.",
+      "dataframeEquivalent": "moviePairRatings = moviePairs.groupBy(\"movie\", \"movie2\")",
+      "benefits": "DataFrame `groupBy` operations are significantly more efficient than RDD `groupByKey` operations. They handle data skew better and provide optimized aggregation capabilities, leading to improved performance and scalability."
     },
     {
       "rddOperation": "moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).cache() (line 54)",
-      "improvementExplanation": "The RDD `mapValues` operation, combined with the custom `computeCosineSimilarity` function, can be optimized using DataFrame's built-in aggregate functions and UDFs for better performance and scalability.",
-      "dataframeEquivalent": "This requires a similar approach as the previous `groupByKey` replacement.  A `groupBy` followed by a custom aggregation using a UDF that mirrors `computeCosineSimilarity` would be necessary.  The `.cache()` call can be replaced with appropriate DataFrame caching strategies.",
-      "benefits": "Using DataFrame aggregations and UDFs instead of RDD `mapValues` improves performance by leveraging optimized execution plans and reducing data shuffling.  The DataFrame caching strategy can be more efficient than RDD caching."
+      "improvementExplanation": "The RDD `mapValues` operation can be replaced with a UDF (User Defined Function) within the DataFrame API for better performance and integration with DataFrame optimizations.",
+      "dataframeEquivalent": "from pyspark.sql.functions import udf\nfrom pyspark.sql.types import StructType, StructField, DoubleType, IntegerType\ncomputeCosineSimilarityUDF = udf(computeCosineSimilarity, StructType([StructField(\"score\", DoubleType(), True), StructField(\"numPairs\", IntegerType(), True)]))\nmoviePairSimilarities = moviePairRatings.withColumn(\"similarities\", computeCosineSimilarityUDF(col(\"ratings\"))).cache()",
+      "benefits": "Using UDFs within the DataFrame API allows leveraging DataFrame optimizations, leading to better performance and scalability compared to RDD `mapValues`."
     }
   ]
 }

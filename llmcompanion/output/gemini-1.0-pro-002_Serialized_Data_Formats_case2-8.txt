@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "Reading data from a CSV file (line 10)",
+      "improvementExplanation": "Reading data from a CSV file can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve performance by reducing the amount of data that needs to be read and processed.",
+      "optimizedEquivalent": "```python\nfrom pyspark.sql import SparkSession\n\nspark = SparkSession.builder.getOrCreate()\n\n# Read data from a Parquet file\ndata = spark.read.parquet(\"path/to/data.parquet\")\n```",
+      "benefits": "Switching to Parquet or ORC can provide the following benefits:\n* Faster reads/writes\n* Compression\n* Query optimization through predicate pushdown"
+    },
+    {
+      "operation": "Writing data to a CSV file (line 15)",
+      "improvementExplanation": "Writing data to a CSV file can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve performance by reducing the amount of data that needs to be written and processed.",
+      "optimizedEquivalent": "```python\n# Write data to a Parquet file\ndata.write.parquet(\"path/to/data.parquet\")\n```",
+      "benefits": "Switching to Parquet or ORC can provide the following benefits:\n* Faster reads/writes\n* Compression\n* Query optimization through predicate pushdown"
+    }
+  ]
+}
+```

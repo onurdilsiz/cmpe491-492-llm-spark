@@ -1,0 +1,114 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "map() in SparkWorker.train() on line 34",
+      "improvementExplanation": "The map() operation in SparkWorker.train() is used to convert the input data into a NumPy array. This operation can be performed more efficiently using mapPartitions() because it allows us to process the data in larger chunks, reducing the number of function calls and improving I/O performance.",
+      "mapPartitionsEquivalent": "```python\n\
+def train(self, data_iterator):\n\
+    feature_iterator, label_iterator = tee(data_iterator, 2)\n\
+    X_train = np.fromiter(feature_iterator, dtype=np.float32)\n\
+    y_train = np.fromiter(label_iterator, dtype=np.float32)\n\
+\n\
+    if len(X_train) == 0:\n\
+        return\n\
+\n\
+    model = model_from_yaml(self.yaml)\n\
+\n\
+    nb_epoch = self.train_config['nb_epoch']\n\
+    batch_size = self.train_config.get('batch_size')\n\
+    nb_train_sample = len(X_train[0])\n\
+    nb_batch = int(np.ceil(nb_train_sample/float(batch_size)))\n\
+    index_array = np.arange(nb_train_sample)\n\
+    batches = [(i*batch_size, min(nb_train_sample, (i+1)*batch_size)) for i in range(0, nb_batch)]\n\
+\n\
+    if self.frequency == 'epoch':\n\
+        for epoch in range(nb_epoch):\n\
+            weights_before_training = get_server_weights(self.master_url)\n\
+            model.set_weights(weights_before_training)\n\
+            self.train_config['nb_epoch'] = 1\n\
+            if X_train.shape[0] > batch_size:\n\
+                model.fit(X_train, y_train,\n\
+                          show_accuracy=True, **self.train_config)\n\
+            weights_after_training = model.get_weights()\n\
+            deltas = subtract_params(weights_before_training,\n\
+                                     weights_after_training)\n\
+            put_deltas_to_server(deltas, self.master_url)\n\
+    elif self.frequency == 'batch':\n\
+        for epoch in range(nb_epoch):\n\
+            if X_train.shape[0] > batch_size:\n\
+                for (batch_start, batch_end) in batches:\n\
+                    weights_before_training = get_server_weights(self.master_url)\n\
+                    model.set_weights(weights_before_training)\n\
+                    batch_ids = index_array[batch_start:batch_end]\n\
+                    X = slice_X(X_train, batch_ids)\n\
+                    y = slice_X(y_train, batch_ids)\n\
+                    model.train_on_batch(X, y)\n\
+                    weights_after_training = model.get_weights()\n\
+                    deltas = subtract_params(weights_before_training,\n\
+                                             weights_after_training)\n\
+                    put_deltas_to_server(deltas, self.master_url)\n\
+    else:\n\
+        print('Choose frequency to be either batch or epoch')\n\
+    yield []\n\
+```",
+      "benefits": "Switching to mapPartitions() in this case would reduce the number of function calls, improve I/O performance, and potentially lead to faster training times."
+    },
+    {
+      "operation": "map() in AsynchronousSparkWorker.train() on line 54",
+      "improvementExplanation": "The map() operation in AsynchronousSparkWorker.train() is used to convert the input data into a NumPy array. This operation can be performed more efficiently using mapPartitions() because it allows us to process the data in larger chunks, reducing the number of function calls and improving I/O performance.",
+      "mapPartitionsEquivalent": "```python\n\
+def train(self, data_iterator):\n\
+    feature_iterator, label_iterator = tee(data_iterator, 2)\n\
+    X_train = np.fromiter(feature_iterator, dtype=np.float32)\n\
+    y_train = np.fromiter(label_iterator, dtype=np.float32)\n\
+\n\
+    if len(X_train) == 0:\n\
+        return\n\
+\n\
+    model = model_from_yaml(self.yaml)\n\
+\n\
+    nb_epoch = self.train_config['nb_epoch']\n\
+    batch_size = self.train_config.get('batch_size')\n\
+    nb_train_sample = len(X_train[0])\n\
+    nb_batch = int(np.ceil(nb_train_sample/float(batch_size)))\n\
+    index_array = np.arange(nb_train_sample)\n\
+    batches = [(i*batch_size, min(nb_train_sample, (i+1)*batch_size)) for i in range(0, nb_batch)]\n\
+\n\
+    if self.frequency == 'epoch':\n\
+        for epoch in range(nb_epoch):\n\
+            weights_before_training = get_server_weights(self.master_url)\n\
+            model.set_weights(weights_before_training)\n\
+            self.train_config['nb_epoch'] = 1\n\
+            if X_train.shape[0] > batch_size:\n\
+                model.fit(X_train, y_train,\n\
+                          show_accuracy=True, **self.train_config)\n\
+            weights_after_training = model.get_weights()\n\
+            deltas = subtract_params(weights_before_training,\n\
+                                     weights_after_training)\n\
+            put_deltas_to_server(deltas, self.master_url)\n\
+    elif self.frequency == 'batch':\n\
+        for epoch in range(nb_epoch):\n\
+            if X_train.shape[0] > batch_size:\n\
+                for (batch_start, batch_end) in batches:\n\
+                    weights_before_training = get_server_weights(self.master_url)\n\
+                    model.set_weights(weights_before_training)\n\
+                    batch_ids = index_array[batch_start:batch_end]\n\
+                    X = slice_X(X_train, batch_ids)\n\
+                    y = slice_X(y_train, batch_ids)\n\
+                    model.train_on_batch(X, y)\n\
+                    weights_after_training = model.get_weights()\n\
+                    deltas = subtract_params(weights_before_training,\n\
+                                             weights_after_training)\n\
+                    put_deltas_to_server(deltas, self.master_url)\n\
+    else:\n\
+        print('Choose frequency to be either batch or epoch')\n\
+    yield []\n\
+```",
+      "benefits": "Switching to mapPartitions() in this case would reduce the number of function calls, improve I/O performance, and potentially lead to faster training times."
+    }
+  ]
+}
+```

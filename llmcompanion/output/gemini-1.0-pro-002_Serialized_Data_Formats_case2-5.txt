@@ -1,0 +1,89 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "Reading data from a CSV file in the `preprocessing` function on line 10.",
+      "improvementExplanation": "The current CSV format is not optimized for Spark processing. Switching to a serialized format like Parquet or ORC can significantly improve performance due to faster reads/writes, compression, and query optimization through predicate pushdown.",
+      "optimizedEquivalent": "```python\n" +
+"import os\n" +
+"\n" +
+"os.environ[\"SPARK_HOME\"] = \"/Users/Karim/src/spark-2.0.0-bin-hadoop2.6\"\n" +
+"os.environ[\"PYSPARK_PYTHON\"] = \"/usr/bin/python\"\n" +
+"\n" +
+"from ParseWikipedia import *\n" +
+"from svd import *\n" +
+"from operator import itemgetter\n" +
+"from stanford_corenlp_pywrapper import CoreNLP\n" +
+"from pyspark import SparkContext\n" +
+"from pyspark.sql import SQLContext\n" +
+"from pyspark.mllib.linalg.distributed import RowMatrix\n" +
+"\n" +
+"\n" +
+"def preprocessing(sampleSize, numTerms, sc):\n" +
+"    pages = readFile('/Users/Karim/Downloads/wiki-nlp/enwiki-latest-pages-articles1.xml', sc).sample(False, sampleSize, 11L)\n" +
+"    plainText = wikiXmlToPlainText(pages)\n" +
+"\n" +
+"    stopWords = sc.broadcast(loadStopWords(\"/Users/Karim/PycharmProjects/AAspark/ch6/stopwords.txt\")).value\n" +
+"\n" +
+"    def lemmaMapper(itr):\n" +
+"        pipeline = CoreNLP(configdict={'annotators': \"tokenize,ssplit,pos,lemma\"},\n" +
+"                           corenlp_jars=["./stanford-corenlp-full-2015-04-20/*\"])\n" +
+"        return map(lambda tc: (tc[0], plainTextToLemmas(tc[1], stopWords, pipeline)), itr)\n" +
+"\n" +
+"    lemmatized = plainText.mapPartitions(lemmaMapper)\n" +
+"\n" +
+"    filtered = lemmatized.filter(lambda l: len(l[1]) > 1)\n" +
+"\n" +
+"    # Read data from Parquet file instead of CSV\n" +
+"    termDocMatrix = sqlContext.read.parquet(\"/path/to/termDocMatrix.parquet\")\n" +
+"\n" +
+"    return termDocMatrix, termIds, docIds, idfs\n" +
+"\n" +
+"def topTermsInTopConcepts(svd, numConcepts, numTerms, termIds):\n" +
+"    v = svd.V\n" +
+"    topTerms = []\n" +
+"    arr = v.toArray()\n" +
+"    for i in range(0, numConcepts):\n" +
+"        offs = i * v.numRows\n" +
+"        termWeights = list(enumerate(arr[offs:offs + v.numRows]))\n" +
+"        termSorted =sorted(termWeights,key=itemgetter(0),reverse=True)\n" +
+"        topTerms.append(map(lambda x: (termIds[x[0]], x[1]) ,termSorted[0:numTerms]))\n" +
+"    return topTerms\n" +
+"\n" +
+"def topDocsInTopConcepts(svd, numConcepts, numDocs, docIds):\n" +
+"    u = svd.U\n" +
+"    topDocs = []\n" +
+"    for i in range(0, numConcepts):\n" +
+"        docWeights = u.rows.map(lambda r: r[i]).zipWithUniqueId()\n" +
+"        topDocs.append(map(lambda doc: (docIds[doc[1]], doc[0]), docWeights.top(numDocs)))\n" +
+"    return topDocs\n" +
+"\n" +
+"if __name__ == \"__main__\":\n" +
+"    sc = SparkContext(appName=\"LSA\")\n" +
+"    sqlContext = SQLContext(sc)\n" +
+"\n" +
+"    k = 100\n" +
+"    numTerms = 50000\n" +
+"    sampleSize = 0.1\n" +
+"\n" +
+"    (termDocMatrix, termIds, docIds, idfs) = preprocessing(sampleSize, numTerms, sqlContext)\n" +
+"    termDocMatrix.cache()\n" +
+"\n" +
+"    mat = RowMatrix(termDocMatrix)\n" +
+"    svd = computeSVD(mat, k, computeU=True)\n" +
+"\n" +
+"    print(\"Singular values: \" + str(svd.s))\n" +
+"    topConceptTerms = topTermsInTopConcepts(svd, 10, 10, termIds)\n" +
+"    topConceptDocs = topDocsInTopConcepts(svd, 10, 10, docIds)\n" +
+"    for termDoc in zip(topConceptTerms, topConceptDocs):\n" +
+"        print(\"Concept terms: \"+ \", \".join(map(lambda x: x[0], termDoc[0])))\n" +
+"        print(\"Concept docs: \" + \", \".join(map(lambda x: x[0], termDoc[1])))\n" +
+"        print('')\n" +
+"```",
+      "benefits": "Switching to Parquet will provide faster reads/writes, compression, and query optimization through predicate pushdown."
+    }
+  ]
+}
+```

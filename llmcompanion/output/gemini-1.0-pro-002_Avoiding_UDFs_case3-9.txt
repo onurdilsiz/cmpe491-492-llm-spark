@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "The UDF `np.select` is used on line 101 to create the `status` column based on conditions.",
+      "improvementExplanation": "The UDF `np.select` can be replaced with the built-in Spark SQL function `when` or the native DataFrame/Dataset operation `withColumn`. Using `when` or `withColumn` would enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+      "alternativeEquivalent": "```python\n# Using `when`\ndf = df.withColumn('status', when(df['car_age'] == 'old' and df['last_oil_change'] == 'old', 'fail')\n    .when(df['car_age'] == 'old' and df['last_oil_change'] == '80km', 'about to fail')\n    .when(df['car_age'] == 'old' and (df['last_oil_change'] == 'new' or df['last_oil_change'] == '50km'), 'normal')\n    .when(df['car_age'] == 'new' and (df['last_oil_change'] == 'new' or df['last_oil_change'] == '50km' or df['last_oil_change'] == '80km'), 'normal')\n    .otherwise('about to fail'))\n\n# Using `withColumn`\ndf = df.withColumn('status', F.when(df['car_age'] == 'old' and df['last_oil_change'] == 'old', 'fail')\n    .when(df['car_age'] == 'old' and df['last_oil_change'] == '80km', 'about to fail')\n    .when(df['car_age'] == 'old' and (df['last_oil_change'] == 'new' or df['last_oil_change'] == '50km'), 'normal')\n    .when(df['car_age'] == 'new' and (df['last_oil_change'] == 'new' or df['last_oil_change'] == '50km' or df['last_oil_change'] == '80km'), 'normal')\n    .otherwise('about to fail'))\n```",
+      "benefits": "Replacing the UDF with `when` or `withColumn` would enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    },
+    {
+      "operation": "The UDF `np.argmax` is used on line 144 and 147 to convert predicted probabilities to class labels.",
+      "improvementExplanation": "The UDF `np.argmax` can be replaced with the built-in Spark SQL function `argmax` or the native DataFrame/Dataset operation `selectExpr`. Using `argmax` or `selectExpr` would enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+      "alternativeEquivalent": "```python\n# Using `argmax`\npredicted_classes = df.selectExpr('argmax(predicted)')\n\ntrue_classes = df.selectExpr('argmax(label)')\n\n# Using `selectExpr`\npredicted_classes = df.selectExpr('predicted[0] as predicted_class')\n\ntrue_classes = df.selectExpr('label[0] as true_class')\n```",
+      "benefits": "Replacing the UDF with `argmax` or `selectExpr` would enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    }
+  ]
+}
+```

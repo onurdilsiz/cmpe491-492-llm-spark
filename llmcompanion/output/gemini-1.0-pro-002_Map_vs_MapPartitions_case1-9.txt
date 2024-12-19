@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "The map() operation is used on line 24 to calculate the average block size for each path.",
+      "improvementExplanation": "The calculation of average block size involves summing the file sizes and block counts for each path. This operation can be performed more efficiently using mapPartitions() because it allows us to process data in batches at the partition level, reducing the number of function calls and improving I/O efficiency.",
+      "mapPartitionsEquivalent": "```python\nsmallBlocksListDF = spark.sql(\"SELECT Path, sum(FileSize)/sum(BlocksCount)/1048576 as avgblocksize, sum(FileSize)/1048576 as TotalSize, sum(BlocksCount) as totalblocks, \" + \" cast(current_date as string) as extract_dt \" + \" from explodedpaths GROUP BY path\").repartition(1).rdd.mapPartitions(lambda partition: map(lambda row: (row.Path, row.FileSize/row.BlocksCount/1048576, row.FileSize/1048576, row.BlocksCount, str(datetime.date.today())), partition))```",
+      "benefits": "Switching to mapPartitions() in this case offers several benefits:\n- **Reduced function call overhead:** By processing data in batches, we reduce the number of function calls required to calculate the average block size, improving performance.\n- **Optimized I/O:** mapPartitions() allows us to read and process data in larger chunks, reducing the number of I/O operations and improving efficiency.\n- **Improved resource utilization:** By processing data in parallel at the partition level, we can utilize multiple cores and improve resource utilization."
+    }
+  ]
+}
+```

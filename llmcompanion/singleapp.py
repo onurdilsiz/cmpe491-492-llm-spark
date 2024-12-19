@@ -45,26 +45,27 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
     os.makedirs(output_dir, exist_ok=True)
 
     results = []
+    detection_results = []
 
+    for file_name in os.listdir(dataset_dir):
+        file_path = os.path.join(dataset_dir, file_name)
 
-    for model_name, llm in models.items():  # Iterate over initialized LLM objects
-        for i, case_type in enumerate(cases):
-            # Map each case to a corresponding prompt file (prompt0.txt, prompt1.txt, etc.)
-            prompt_file = os.path.join(prompts_dir, f"prompt{i}.txt")
-            print(f"Analyzing case: {case_type} with model: {model_name} using prompt: {prompt_file}")
+        # Skip non-Python files
+        if not file_name.endswith(".py"):
+            print(f"Skipping non-Python file: {file_name}")
+            continue
 
-            for file_name in os.listdir(dataset_dir):
-                file_path = os.path.join(dataset_dir, file_name)
+        print(f"Processing file: {file_name}")
+        with open(file_path, "r") as file:
+            code = file.read()
 
-                # Skip non-Python files
-                if not file_name.endswith(".py"):
-                    print(f"Skipping non-Python file: {file_name}")
-                    continue
+        for model_name, llm in models.items():  # Iterate over initialized LLM objects
+            for i, case_type in enumerate(cases):
+                # Map each case to a corresponding prompt file (prompt0.txt, prompt1.txt, etc.)
+                prompt_file = os.path.join(prompts_dir, f"prompt{i}.txt")
+                print(f"Analyzing case: {case_type} with model: {model_name} using prompt: {prompt_file}")
 
-                print(f"Processing file: {file_name}")
-                with open(file_path, "r") as file:
-                    code = file.read()
-
+           
                 # Process code with the model, case type, and prompt
                 try:
                     analysis, prompt_tokens, response_tokens = process_code_with_prompt(code, prompt_file, llm)
@@ -77,8 +78,41 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
 
 
                 # Save the result to a uniquely named file
-                output_file_name = f"{model_name}_{case_type.replace(' ', '_')}_{file_name.replace('.py', '')}.txt"
+                output_file_name = f"{model_name}_{case_type.replace(' ', '_')}_{file_name.replace('.py', '')}.json"
                 output_file_path = os.path.join(output_dir, output_file_name)
+
+
+                # Assuming `analysis.content` contains the response with ```json markers
+                raw_response = analysis.content
+
+                # Strip out the ```json markers
+                if raw_response.startswith("```json"):
+                    raw_response = raw_response[7:]  # Remove the opening ```json
+                raw_response = raw_response.rstrip()  # Ensures no trailing artifacts remain
+
+                if raw_response.endswith("```"):
+                    raw_response = raw_response[:-3]  # Remove the closing ```
+
+                # Parse the cleaned JSON content
+                parsed_json = {}
+
+                try:
+                    parsed_json = json.loads(raw_response)
+                except json.JSONDecodeError as e:
+                    print(f"Error decoding JSON: {e}")
+                    
+                
+
+                # Write the cleaned and parsed JSON to a file
+                with open(output_file_path, "w") as output_file:
+                    json.dump(parsed_json, output_file, indent=4)
+
+                detection_result = parsed_json.get("detected", False)
+                detection_results.append([model_name, case_type, file_name, detection_result])
+
+                print(f"Analysis for {file_name} saved to {output_file_path}")
+                output_file_path = output_file_path.replace(".json", ".txt")
+
 
                 with open(output_file_path, "w") as output_file:
                     output_file.write(analysis.content)
@@ -91,6 +125,14 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
         csv_writer.writerow(["Model", "Case", "File", "Input Tokens", "Output Tokens", "Total Tokens"])
         csv_writer.writerows(results)
         print(f"All results logged to CSV: {csv_file}")
+    
+    csv_file = csv_file.replace(".csv", "_detection.csv")
+    with open(csv_file, mode="w", newline="", encoding="utf-8") as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(["Model", "Case", "File", "Detection Result"])
+        csv_writer.writerows(detection_results)
+        print(f"All results logged to CSV: {csv_file}")
+
 
 
 
@@ -110,8 +152,8 @@ def init_models(models):
 def main():
     # File paths for local input and output
     config = {
-        "models": [ "gemini-1.5-flash-002"],
-        "cases": ["RDD vs DataFrame","Coalesce vs Repartition"],
+        "models": ["gemini-1.0-pro-002", "gemini-1.5-flash-002", "gemini-2.0-flash-exp"],
+        "cases": ["RDD vs DataFrame", "Coalesce vs Repartition", "Map vs MapPartitions", "Serialized Data Formats", "Avoiding UDFs","All"],
         "dataset_dir": "dataset2",  # Directory containing all the dataset files
         "prompts_dir": "prompts",  # Directory containing prompt files
         "output_dir": "output",   # Directory to save the analysis results
