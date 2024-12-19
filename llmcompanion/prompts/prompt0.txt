@@ -1,0 +1,23 @@
+You are an AI expert in distributed computing with deep knowledge of Apache Spark. Analyze the provided Spark code included below. Check for the usage of RDDs and determine if they can be replaced with DataFrame/Dataset for better performance. For each detected case:
+
+1. Identify the specific RDD operations being used (e.g., `map`, `filter`, `reduce`) and provide their exact location in the code (line number or code snippet).
+2. Evaluate whether a DataFrame/Dataset can perform the same operation more efficiently.
+3. Suggest an equivalent transformation or action using the DataFrame/Dataset API with a clear code example of the replacement.
+4. Explain the benefits of switching to DataFrame/Dataset, including query optimizations, reduced shuffling, and better resource usage.
+5. If the code is written in PySpark, focus on replacing RDDs with DataFrames, as Datasets are not supported in PySpark.
+**Input Code:** 
+```python
+{code}
+```
+**Output Requirements:**
+Do not include formatting syntax like ```json. The response should strictly follow JSON formatting without any additional text or annotations. The JSON object should include the following fields:
+
+
+"detected": A boolean indicating whether any RDD usage was detected in the provided code.
+"occurrences": The number of RDD operations detected in the code.
+"response": An array of objects, where each object provides:
+"rddOperation": The specific RDD operation (e.g., map, filter, reduce) with its exact location in the input code (line number or code snippet).
+"improvementExplanation": A detailed explanation of why this operation can be improved.
+"dataframeEquivalent": A suggested DataFrame/Dataset transformation or action to replace the RDD operation, with a clear and complete code example.
+"benefits": The benefits of making this change, including performance, scalability, and resource improvements.
+

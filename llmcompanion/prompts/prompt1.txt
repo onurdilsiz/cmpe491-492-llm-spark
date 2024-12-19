@@ -1,0 +1,23 @@
+Analyze the provided Spark code and detect instances where `repartition()` is used. Determine if `coalesce()` can be used instead for better efficiency. For each detected case:
+
+1. Identify where `repartition()` is being used and provide its location in the code (e.g., line number or code snippet).
+2. Explain the purpose of using `repartition()` in the given context.
+3. Evaluate whether the operation requires a full shuffle or if reducing partitions suffices.
+4. If applicable, suggest replacing `repartition()` with `coalesce()` and provide an equivalent code example for the replacement.
+5. Highlight the benefits of switching to `coalesce()`, such as reduced shuffling, improved resource usage, and faster job runtime.
+**Input Code:**
+```python
+{code}
+```
+
+**Output Requirements:**
+Do not include formatting syntax like ```json. The response should strictly follow JSON formatting without any additional text or annotations. The JSON object should include the following fields:
+
+"detected": A boolean indicating whether repartition() usage was detected in the provided code.
+"occurrences": The number of times repartition() is used in the code.
+"response": An array of objects, where each object provides:
+    "operation": The specific repartition() operation with its location in the code (e.g., line number or code snippet).
+    "improvementExplanation": A detailed explanation of why and how repartition() can be replaced with coalesce() in this case.
+    "coalesceEquivalent": A code snippet showing how to replace the repartition() operation with coalesce().
+    "benefits": A summary of the benefits of switching to coalesce(), such as reduced shuffling, improved resource usage, and faster runtime.
+
