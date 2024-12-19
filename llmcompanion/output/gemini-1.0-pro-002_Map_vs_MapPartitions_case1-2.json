@@ -6,7 +6,7 @@
             "operation": "The map() operation is used on line 17 to extract the 'Weather_Station' column from the 'value' column.",
             "improvementExplanation": "The map() operation on line 17 can be replaced with mapPartitions() because it involves extracting a single column from each row, which can be efficiently performed at the partition level. This reduces the number of function calls and improves I/O efficiency.",
             "mapPartitionsEquivalent": "```python\ndef extract_weather_station(partition):\n  for row in partition:\n    yield row['value'].substr(5, 6)\n\ndf2 = df1.rdd.mapPartitions(extract_weather_station).toDF(['Weather_Station'])\n```",
-            "benefits": "Replacing map() with mapPartitions() in this case offers the following benefits:\n- Reduced function call overhead: mapPartitions() processes data in batches, reducing the number of function calls compared to map().\n- Optimized I/O: mapPartitions() reads data from the input source in larger chunks, improving I/O efficiency.\n- Improved resource utilization: mapPartitions() reduces the pressure on the driver program by processing data in parallel across multiple partitions."
+            "benefits": "Replacing map() with mapPartitions() in this case offers the following benefits:\n- Reduced function call overhead: mapPartitions() processes data in batches, reducing the number of function calls compared to map().\n- Optimized I/O: mapPartitions() reads data from the input source in larger chunks, improving I/O efficiency.\n- Improved resource utilization: mapPartitions() reduces the pressure on the driver node by processing data in parallel across multiple executors."
         }
     ]
 }

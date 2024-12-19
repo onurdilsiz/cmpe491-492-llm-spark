@@ -3,18 +3,16 @@
     "occurrences": 2,
     "response": [
         {
-            "operation": "Reading CSV file from HDFS",
-            "location": "df1 = spark.read.text(\"hdfs://namenode/output/itmd-521/drp/2000/csv-file\")",
-            "improvementExplanation": "The current operation reads a CSV file from HDFS, which is a text-based format. This can be inefficient for large datasets due to the overhead of parsing and processing text data. Switching to a serialized format like Parquet or ORC can significantly improve performance by reducing the amount of data that needs to be processed and enabling columnar storage.",
-            "optimizedEquivalent": "df1 = spark.read.parquet(\"hdfs://namenode/output/itmd-521/drp/2000/parquet-file\")",
-            "benefits": "Switching to Parquet or ORC would provide the following benefits:\n- Faster reads/writes: Serialized formats like Parquet and ORC are optimized for efficient data storage and retrieval, resulting in faster read and write operations.\n- Compression: Parquet and ORC support compression, which can significantly reduce the storage space required for the data.\n- Query optimization: Parquet and ORC enable columnar storage, which allows Spark to only read the columns that are needed for a query, further improving performance."
+            "operation": "Reading CSV file from HDFS (line 10)",
+            "improvementExplanation": "The current CSV format is not optimized for efficient reads. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to columnar storage, compression, and predicate pushdown capabilities.",
+            "optimizedEquivalent": "```python\ndf1 = spark.read.parquet(\"hdfs://namenode/output/itmd-521/drp/2000/parquet-file\")\n```",
+            "benefits": "Faster reads, reduced I/O overhead, improved query performance through predicate pushdown."
         },
         {
-            "operation": "Writing CSV file to HDFS",
-            "location": "df2.repartition(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
-            "improvementExplanation": "The current operation writes a CSV file to HDFS, which is a text-based format. This can be inefficient for large datasets due to the overhead of writing text data. Switching to a serialized format like Parquet or ORC can significantly improve performance by reducing the amount of data that needs to be written and enabling columnar storage.",
-            "optimizedEquivalent": "df2.repartition(1).write.parquet(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
-            "benefits": "Switching to Parquet or ORC would provide the following benefits:\n- Faster reads/writes: Serialized formats like Parquet and ORC are optimized for efficient data storage and retrieval, resulting in faster read and write operations.\n- Compression: Parquet and ORC support compression, which can significantly reduce the storage space required for the data.\n- Query optimization: Parquet and ORC enable columnar storage, which allows Spark to only write the columns that are needed for a query, further improving performance."
+            "operation": "Writing CSV file to HDFS (line 22)",
+            "improvementExplanation": "Writing data in CSV format can be inefficient due to the lack of compression and columnar storage. Switching to Parquet or ORC can significantly improve write performance and reduce storage space requirements.",
+            "optimizedEquivalent": "```python\ndf2.repartition(1).write.parquet(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")\n```",
+            "benefits": "Faster writes, reduced storage space, improved query performance through predicate pushdown."
         }
     ]
 }

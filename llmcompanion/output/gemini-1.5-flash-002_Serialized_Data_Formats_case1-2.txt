@@ -13,7 +13,7 @@
       "operation": "Writing CSV data to `hdfs://namenode/output/itmd-521/drp/2000/repartition/1` (lines 38-40)",
       "improvementExplanation": "The code writes data to a CSV file using LZ4 compression. While LZ4 provides some compression, it's still less efficient than the columnar storage and compression offered by Parquet or ORC.  These formats offer better compression ratios and faster query performance due to their optimized storage structure.",
       "optimizedEquivalent": "df2.repartition(1).write.format(\"parquet\").mode(\"overwrite\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
-      "benefits": "Faster write operations, better compression ratios leading to reduced storage costs, improved query performance for subsequent reads."
+      "benefits": "Faster write operations, better compression leading to reduced storage costs, improved query performance for subsequent reads, and schema enforcement for data integrity."
     }
   ]
 }

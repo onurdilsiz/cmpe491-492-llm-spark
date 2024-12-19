@@ -20,8 +20,8 @@
     "response3": [
         {
             "operation": "df2.repartition(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
-            "improvementExplanation": "The code writes data in CSV format, which is not optimized for Spark.  CSV lacks features like compression and columnar storage, leading to slower read/write operations. Parquet is a columnar storage format that offers significant performance improvements.",
-            "optimizedEquivalent": "df2.coalesce(1).write.format(\"parquet\").option(\"compression\",\"lz4\").save(\"hdfs://namenode/output/itmd-521/drp/2000/parquet\")",
+            "improvementExplanation": "The code writes data in CSV format, which is not optimized for Spark.  CSV lacks features like compression and schema enforcement, leading to slower read/write operations and increased storage costs. Parquet is a columnar storage format that offers significant performance advantages.",
+            "optimizedEquivalent": "df2.coalesce(1).write.format(\"parquet\").option(\"compression\",\"lz4\").mode(\"overwrite\").save(\"hdfs://namenode/output/itmd-521/drp/2000/parquet\")",
             "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
         }
     ],
