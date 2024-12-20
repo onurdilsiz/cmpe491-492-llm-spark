@@ -1,0 +1,991 @@
+Model,Case,File,Detection,Expected Result,Success
+gemini-1.0-pro-002,RDD vs DataFrame,case0-1.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-1.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-1.py,TRUE,,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case0-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-10.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-10.py,TRUE,,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case0-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-11.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-11.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-11.py,TRUE,,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case0-11.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-11.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-2.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-3.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-4.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-4.py,TRUE,,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-5.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-6.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-7.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-8.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0-9.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case01.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case01.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case01.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case01.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case01.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case012.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case012.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case012.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case012.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case012.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case0123.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case0123.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case0123.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case0123.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case0123.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case01234.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case01234.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case01234.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case01234.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case01234.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case013.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case013.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case013.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case013.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case013.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case014.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case014.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case014.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case014.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case014.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case02.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case02.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case02.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case02.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case02.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case023.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case023.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case023.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case023.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case023.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case03.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case03.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case03.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case03.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case03.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case04.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case04.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case04.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case04.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case04.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-1.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-10.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-10.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-11.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-11.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-11.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-11.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-11.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-2.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-3.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-3.py,TRUE,,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case1-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-4.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-5.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-6.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-7.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-8.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case1-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-9.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case1-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case1-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case1-9.py,TRUE,,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case12.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case12.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case12.py,TRUE,,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case12.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case12.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case13.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case13.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case13.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case13.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case13.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-1.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-1.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case2-1.py,TRUE,,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-10.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-10.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-10.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-10.py,TRUE,,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case2-10.py,TRUE,,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-11.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-11.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-11.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-11.py,TRUE,,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case2-11.py,TRUE,,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-12.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-12.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-12.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-12.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case2-12.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-2.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-2.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-2.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-2.py,TRUE,,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case2-2.py,TRUE,,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-3.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-3.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case2-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-4.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-4.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case2-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-5.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-5.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-5.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case2-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-6.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-6.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-6.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-6.py,TRUE,,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case2-6.py,TRUE,,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-7.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-7.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-7.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case2-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case2-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-8.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-8.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case2-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case2-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case2-9.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-9.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case2-9.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case2-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case2-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-1.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-1.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-1.py,TRUE,,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case3-1.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case3-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case3-10.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case3-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-2.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-2.py,TRUE,,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case3-2.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case3-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case3-3.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case3-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case3-4.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case3-4.py,TRUE,,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-5.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-5.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-5.py,TRUE,,FALSE
+gemini-1.0-pro-002,Serialized Data Formats,case3-5.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case3-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case3-6.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case3-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case3-7.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case3-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-8.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case3-8.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case3-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case3-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case3-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case3-9.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case3-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-1.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-1.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-10.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-10.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-2.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-2.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-3.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-3.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-4.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-4.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-5.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-5.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-5.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-5.py,TRUE,,FALSE
+gemini-1.0-pro-002,Avoiding UDFs,case4-5.py,TRUE,TRUE,TRUE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-6.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-6.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-7.py,TRUE,,FALSE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-7.py,TRUE,,FALSE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-7.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-7.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-8.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-8.py,FALSE,TRUE,FALSE
+gemini-1.0-pro-002,RDD vs DataFrame,case4-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Map vs MapPartitions,case4-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Serialized Data Formats,case4-9.py,FALSE,,TRUE
+gemini-1.0-pro-002,Avoiding UDFs,case4-9.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-1.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-1.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case0-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-10.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-10.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case0-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-11.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-11.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-11.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0-11.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case0-11.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-2.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-2.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0-2.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case0-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-3.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case0-3.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case0-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-4.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-4.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case0-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-5.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-5.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0-5.py,FALSE,,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case0-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-6.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-6.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case0-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-7.py,FALSE,TRUE,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case0-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case0-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-8.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case0-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case0-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0-9.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-9.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case0-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case0-9.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case01.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case01.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case01.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case01.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case01.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case012.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case012.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case012.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case012.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case012.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case0123.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case0123.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case0123.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case0123.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case0123.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case01234.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case01234.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case01234.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case01234.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case01234.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case013.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case013.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case013.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case013.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case013.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case014.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case014.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case014.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case014.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case014.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case02.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case02.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case02.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case02.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case02.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case023.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case023.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case023.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case023.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case023.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case03.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case03.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case03.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case03.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case03.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case04.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case04.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case04.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case04.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case04.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-1.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-1.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-1.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-1.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-10.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-10.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-10.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-10.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-11.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-11.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-11.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-11.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-11.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-2.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-2.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-3.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-3.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-4.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-4.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-4.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-5.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-5.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-5.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-6.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-6.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-6.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-7.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case1-7.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-8.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case1-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case1-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-9.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case1-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case1-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case1-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case12.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case12.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case12.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case12.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case12.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case13.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case13.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case13.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case13.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case13.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-1.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-1.py,FALSE,TRUE,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case2-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-10.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-10.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-10.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-10.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-11.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-11.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-11.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-11.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-11.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-12.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-12.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-12.py,FALSE,TRUE,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case2-12.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-12.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-2.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-2.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-2.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-2.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-3.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-3.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-3.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-3.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-4.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-4.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-5.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-5.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-6.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-6.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-6.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-6.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-7.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-7.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-7.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-8.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case2-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case2-9.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case2-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case2-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-1.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case3-1.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case3-10.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-2.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case3-2.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case3-3.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-4.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case3-4.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-5.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case3-5.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case3-6.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case3-7.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case3-8.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case3-9.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-9.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case3-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case3-9.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,Avoiding UDFs,case3-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-1.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-1.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-1.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-1.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-10.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-10.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-10.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-2.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-2.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-2.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-3.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-3.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-3.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-4.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-4.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-4.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-4.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-4.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-5.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Serialized Data Formats,case4-5.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-5.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-6.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-6.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-6.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-7.py,TRUE,,FALSE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-7.py,TRUE,,FALSE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-7.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-7.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-7.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-8.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-8.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-8.py,TRUE,TRUE,TRUE
+gemini-1.5-flash-002,RDD vs DataFrame,case4-9.py,FALSE,,TRUE
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-9.py,FALSE,,TRUE
+gemini-1.5-flash-002,Map vs MapPartitions,case4-9.py,FALSE,,TRUE
+gemini-1.5-flash-002,Serialized Data Formats,case4-9.py,TRUE,,FALSE
+gemini-1.5-flash-002,Avoiding UDFs,case4-9.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-1.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-1.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-1.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-1.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-10.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-10.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-11.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-11.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-11.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-11.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-11.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-2.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-2.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-2.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-3.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-3.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-4.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-4.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-4.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-5.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-6.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-7.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-7.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-7.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-8.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-9.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-9.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case0-9.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case0-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case01.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case01.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case01.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case01.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case01.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case012.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case012.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case012.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case012.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case012.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case0123.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0123.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case0123.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case0123.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case0123.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case01234.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case01234.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case01234.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case01234.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case01234.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case013.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case013.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case013.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case013.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case013.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case014.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case014.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case014.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case014.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case014.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case02.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case02.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case02.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case02.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case02.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case023.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case023.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case023.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case023.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case023.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case03.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case03.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case03.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case03.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case03.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case04.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case04.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case04.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case04.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case04.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-1.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-1.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-10.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-10.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-10.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-11.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-11.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-11.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-11.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-11.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-2.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-2.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-3.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-3.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-4.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-4.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-5.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-6.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-6.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-7.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-7.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-8.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-9.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case1-9.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case1-9.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case12.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case12.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case12.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case12.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case12.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case13.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case13.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case13.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case13.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case13.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-1.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-1.py,FALSE,TRUE,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-1.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-1.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-10.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-10.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-10.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-11.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-11.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-11.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-11.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-11.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-12.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-12.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-12.py,FALSE,TRUE,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-12.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-12.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-2.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-2.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-2.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-3.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-3.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-3.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-3.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-4.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-4.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-4.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-4.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-5.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-6.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-6.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-6.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-6.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-7.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-7.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-7.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-8.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-8.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-8.py,FALSE,TRUE,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-8.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-9.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-9.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-9.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case2-9.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case2-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-1.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-1.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-10.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-2.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-2.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-3.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-4.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-4.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-5.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-6.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-7.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-8.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-8.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-9.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Serialized Data Formats,case3-9.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case3-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-1.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-1.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-10.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-10.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-2.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-2.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-3.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-3.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-4.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-4.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-5.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-5.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-5.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-6.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-6.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-7.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-7.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-7.py,TRUE,,FALSE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-7.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-8.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-8.py,TRUE,TRUE,TRUE
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Serialized Data Formats,case4-9.py,FALSE,,TRUE
+gemini-2.0-flash-exp,Avoiding UDFs,case4-9.py,TRUE,TRUE,TRUE
