@@ -1,16 +1,16 @@
 Model,Case,Success Rate
 gemini-1.0-pro-002,Avoiding UDFs,83.33333333333334
 gemini-1.0-pro-002,Coalesce vs Repartition,75.75757575757575
-gemini-1.0-pro-002,Map vs MapPartitions,84.84848484848484
+gemini-1.0-pro-002,Map vs MapPartitions,86.36363636363636
 gemini-1.0-pro-002,RDD vs DataFrame,68.18181818181817
 gemini-1.0-pro-002,Serialized Data Formats,77.27272727272727
-gemini-1.5-flash-002,Avoiding UDFs,66.66666666666666
-gemini-1.5-flash-002,Coalesce vs Repartition,84.84848484848484
-gemini-1.5-flash-002,Map vs MapPartitions,56.060606060606055
-gemini-1.5-flash-002,RDD vs DataFrame,57.57575757575758
-gemini-1.5-flash-002,Serialized Data Formats,21.21212121212121
-gemini-2.0-flash-exp,Avoiding UDFs,71.21212121212122
-gemini-2.0-flash-exp,Coalesce vs Repartition,84.84848484848484
-gemini-2.0-flash-exp,Map vs MapPartitions,71.21212121212122
-gemini-2.0-flash-exp,RDD vs DataFrame,69.6969696969697
-gemini-2.0-flash-exp,Serialized Data Formats,43.93939393939394
+gemini-1.5-flash-002,Avoiding UDFs,69.6969696969697
+gemini-1.5-flash-002,Coalesce vs Repartition,93.93939393939394
+gemini-1.5-flash-002,Map vs MapPartitions,62.121212121212125
+gemini-1.5-flash-002,RDD vs DataFrame,59.09090909090909
+gemini-1.5-flash-002,Serialized Data Formats,27.27272727272727
+gemini-2.0-flash-exp,Avoiding UDFs,74.24242424242425
+gemini-2.0-flash-exp,Coalesce vs Repartition,93.93939393939394
+gemini-2.0-flash-exp,Map vs MapPartitions,77.27272727272727
+gemini-2.0-flash-exp,RDD vs DataFrame,71.21212121212122
+gemini-2.0-flash-exp,Serialized Data Formats,50.0
