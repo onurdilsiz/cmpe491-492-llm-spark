@@ -4,9 +4,9 @@
     "response": [
         {
             "operation": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
-            "improvementExplanation": "The `repartition(1)` operation is used to ensure that the data is written to a single partition. However, since the data is already being written to a partitioned table (`partitionBy='extract_dt'`), using `coalesce(1)` instead of `repartition(1)` would achieve the same result without performing a full shuffle. This is because `coalesce()` only moves data between partitions without shuffling it within partitions.",
+            "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions to 1. However, since the subsequent operation is `write.mode('append').format('parquet').saveAsTable()`, which does not involve shuffling data, we can use `coalesce()` instead to reduce the number of partitions to 1 without incurring the overhead of a full shuffle. This will improve resource utilization and potentially speed up the job execution.",
             "coalesceEquivalent": "filteredPaths.coalesce(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
-            "benefits": "Replacing `repartition(1)` with `coalesce(1)` in this case would avoid a full shuffle, reducing the amount of data that needs to be moved and potentially improving the job runtime. This would also lead to better resource utilization as the shuffle process is resource-intensive."
+            "benefits": "Replacing `repartition()` with `coalesce()` in this case will:\n- Reduce shuffling overhead, as `coalesce()` only moves data within existing partitions.\n- Improve resource utilization by reducing the number of partitions.\n- Potentially speed up the job execution by avoiding unnecessary data movement."
         }
     ]
 }

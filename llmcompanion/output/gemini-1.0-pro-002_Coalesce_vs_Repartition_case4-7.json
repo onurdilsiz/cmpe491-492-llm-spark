@@ -3,10 +3,10 @@
     "occurrences": 1,
     "response": [
         {
-            "operation": "azureAuditLog_df_dynf = azureAuditLog_df_dynf.repartition(1)",
-            "improvementExplanation": "This repartition() operation is used to reduce the number of partitions to 1. However, since the subsequent write operation to S3 does not require a shuffle, using coalesce() instead of repartition() would be more efficient. Coalesce() would simply merge the existing partitions without shuffling the data, resulting in reduced processing time and resource usage.",
-            "coalesceEquivalent": "azureAuditLog_df_dynf = azureAuditLog_df_dynf.coalesce(1)",
-            "benefits": "Switching to coalesce() in this case would provide the following benefits:\n- Reduced shuffling: Coalesce() avoids unnecessary data shuffling, which can significantly improve performance.\n- Improved resource usage: Coalesce() requires less memory and CPU resources compared to repartition().\n- Faster runtime: By eliminating the shuffle step, coalesce() can lead to a faster overall job execution time."
+            "operation": "repartition(1)",
+            "improvementExplanation": "The `repartition(1)` operation is used to reduce the number of partitions in the DataFrame. However, since the DataFrame is already partitioned by the Kinesis stream, further reducing the number of partitions is unnecessary. Instead, we can use `coalesce(1)` to simply combine the existing partitions without shuffling the data.",
+            "coalesceEquivalent": "azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").coalesce(1)",
+            "benefits": "Replacing `repartition(1)` with `coalesce(1)` will avoid unnecessary shuffling, which can significantly improve the performance of the job. Additionally, coalesce() is more efficient than repartition() as it does not require a full shuffle."
         }
     ]
 }

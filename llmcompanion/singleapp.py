@@ -3,6 +3,18 @@ from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTempla
 from langchain_google_vertexai import ChatVertexAI
 import csv
 import json
+import logging
+
+
+def setup_logging(log_file):
+    """Setup logging to a file."""
+    logging.basicConfig(
+        filename=log_file,
+        filemode="w",
+        format="%(asctime)s - %(levelname)s - %(message)s",
+        level=logging.INFO,
+    )
+    logging.info("Logging initialized.")
 
 
 
@@ -40,7 +52,7 @@ def process_code_with_prompt(code, prompt_file, llm):
     return response, prompt_tokens, response_tokens
 
 
-def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_file):
+def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_file,csv_file2):
     """Analyze all files in the dataset directory with prompts from the prompts directory."""
     os.makedirs(output_dir, exist_ok=True)
 
@@ -52,10 +64,10 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
 
         # Skip non-Python files
         if not file_name.endswith(".py"):
-            print(f"Skipping non-Python file: {file_name}")
+            logging.info(f"Skipping non-Python file: {file_name}")
             continue
-
         print(f"Processing file: {file_name}")
+        logging.info(f"Processing file: {file_name}")
         with open(file_path, "r") as file:
             code = file.read()
 
@@ -63,14 +75,14 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
             for i, case_type in enumerate(cases):
                 # Map each case to a corresponding prompt file (prompt0.txt, prompt1.txt, etc.)
                 prompt_file = os.path.join(prompts_dir, f"prompt{i}.txt")
-                print(f"Analyzing case: {case_type} with model: {model_name} using prompt: {prompt_file}")
+                logging.info(f"Analyzing case: {case_type} with model: {model_name} using prompt: {prompt_file}")
 
            
                 # Process code with the model, case type, and prompt
                 try:
                     analysis, prompt_tokens, response_tokens = process_code_with_prompt(code, prompt_file, llm)
                 except Exception as e:
-                    print(f"Error processing {file_name} with prompt {prompt_file}: {e}")
+                    logging.error(f"Error processing {file_name} with prompt {prompt_file}: {e}")
                     continue
                 
                 total_tokens = prompt_tokens + response_tokens
@@ -99,7 +111,7 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
                 try:
                     parsed_json = json.loads(raw_response)
                 except json.JSONDecodeError as e:
-                    print(f"Error decoding JSON: {e}")
+                    logging.error(f"Error decoding JSON: {e}")
                     
                 
 
@@ -110,7 +122,7 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
                 detection_result = parsed_json.get("detected", False)
                 detection_results.append([model_name, case_type, file_name, detection_result])
 
-                print(f"Analysis for {file_name} saved to {output_file_path}")
+                logging.info(f"Analysis for {file_name} saved to {output_file_path}")
                 output_file_path = output_file_path.replace(".json", ".txt")
 
 
@@ -118,20 +130,21 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
                     output_file.write(analysis.content)
 
                
-                print(f"Analysis for {file_name} saved to {output_file_path}")
+                logging.info(f"Analysis for {file_name} saved to {output_file_path}")
 
     with open(csv_file, mode="w", newline="", encoding="utf-8") as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(["Model", "Case", "File", "Input Tokens", "Output Tokens", "Total Tokens"])
         csv_writer.writerows(results)
+        logging.info(f"All results logged to CSV: {csv_file}")
         print(f"All results logged to CSV: {csv_file}")
-    
-    csv_file = csv_file.replace(".csv", "_detection.csv")
-    with open(csv_file, mode="w", newline="", encoding="utf-8") as csvfile:
-        csv_writer = csv.writer(csvfile)
+
+    with open(csv_file2, mode="w", newline="", encoding="utf-8") as csv_file2:
+        csv_writer = csv.writer(csv_file2)
         csv_writer.writerow(["Model", "Case", "File", "Detection Result"])
         csv_writer.writerows(detection_results)
-        print(f"All results logged to CSV: {csv_file}")
+        logging.info(f"All results logged to CSV: {csv_file2}")
+        print(f"All results logged to CSV: {csv_file2}")
 
 
 
@@ -150,19 +163,22 @@ def init_models(models):
     return llms
 
 def main():
+    log_file = "analysis.log"
+    setup_logging(log_file)
     # File paths for local input and output
     config = {
         "models": ["gemini-1.0-pro-002", "gemini-1.5-flash-002", "gemini-2.0-flash-exp"],
         "cases": ["RDD vs DataFrame", "Coalesce vs Repartition", "Map vs MapPartitions", "Serialized Data Formats", "Avoiding UDFs","All"],
-        "dataset_dir": "dataset2",  # Directory containing all the dataset files
+        "dataset_dir": "dataset",  # Directory containing all the dataset files
         "prompts_dir": "prompts",  # Directory containing prompt files
         "output_dir": "output",   # Directory to save the analysis results
-        "csv_file": "results.csv"
+        "csv_file": "tokenresults.csv",
+        "csv_file2": "detectionresults.csv"
     }
     
     # Initialize the models for analysis
     llms = init_models(config["models"])
-    
+    print("Analyzing directory")
 
     analyze_directory(
         config["dataset_dir"], 
@@ -170,7 +186,8 @@ def main():
         llms,
         config["prompts_dir"], 
         config["output_dir"],
-        config["csv_file"]
+        config["csv_file"],
+        config["csv_file2"]
     )
 
 

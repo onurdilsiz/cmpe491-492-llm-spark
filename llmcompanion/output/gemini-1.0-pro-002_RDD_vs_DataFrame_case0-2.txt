@@ -1,43 +1,65 @@
 ```json
 {
   "detected": true,
-  "occurrences": 6,
+  "occurrences": 5,
   "response": [
     {
-      "rddOperation": "flatMap(lambda email: email.split(' '))",
-      "improvementExplanation": "This operation can be improved by using the `split` function of DataFrame/Dataset, which is optimized for string operations and can handle large datasets more efficiently.",
-      "dataframeEquivalent": "```python\nspam_df = spam_rdd.toDF('email').withColumn('words', F.split('email', ' ')) \nnon_spam_df = non_spam_rdd.toDF('email').withColumn('words', F.split('email', ' ')) \n```",
-      "benefits": "Using DataFrame/Dataset for splitting will reduce the number of shuffles and improve performance, especially for large datasets."
+      "rddOperation": "flatMap",
+      "location": "Line 12 and 13",
+      "improvementExplanation": "flatMap can be replaced with DataFrame's `selectExpr` or `withColumn` functions for better performance and readability.",
+      "dataframeEquivalent": """
+```python
+spam_words_df = spam_rdd.selectExpr("split(value, ' ') as words")
+non_spam_words_df = non_spam_rdd.selectExpr("split(value, ' ') as words")
+```
+""",
+      "benefits": "DataFrame's `selectExpr` and `withColumn` functions are optimized for string manipulation and can potentially reduce the number of shuffles compared to RDD's `flatMap`."
     },
     {
-      "rddOperation": "map(lambda features: LabeledPoint(1, features))",
-      "improvementExplanation": "This operation can be improved by using the `withColumn` function of DataFrame/Dataset to create a new column with the label.",
-      "dataframeEquivalent": "```python\nspam_df = spam_df.withColumn('label', F.lit(1)) \nnon_spam_df = non_spam_df.withColumn('label', F.lit(0)) \n```",
-      "benefits": "Using DataFrame/Dataset for labeling will reduce the number of shuffles and improve performance."
+      "rddOperation": "map",
+      "location": "Line 16 and 17",
+      "improvementExplanation": "map can be replaced with DataFrame's `map` function for better performance and integration with other DataFrame operations.",
+      "dataframeEquivalent": """
+```python
+spam_features_df = spam_words_df.map(lambda words: tf.transform(words))
+non_spam_features_df = non_spam_words_df.map(lambda words: tf.transform(words))
+```
+""",
+      "benefits": "DataFrame's `map` function is optimized for applying functions to each row and can leverage Catalyst Optimizer for better query planning."
     },
     {
-      "rddOperation": "join(non_spam_samples)",
-      "improvementExplanation": "This operation can be improved by using the `union` function of DataFrame/Dataset, which is more efficient for combining datasets with different labels.",
-      "dataframeEquivalent": "```python\ndata_df = spam_df.union(non_spam_df) \n```",
-      "benefits": "Using DataFrame/Dataset for combining datasets will reduce the number of shuffles and improve performance."
+      "rddOperation": "map",
+      "location": "Line 19 and 20",
+      "improvementExplanation": "map can be replaced with DataFrame's `withColumn` function for better performance and readability.",
+      "dataframeEquivalent": """
+```python
+spam_samples_df = spam_features_df.withColumn("label", lit(1))
+non_spam_samples_df = non_spam_features_df.withColumn("label", lit(0))
+```
+""",
+      "benefits": "DataFrame's `withColumn` function is optimized for adding new columns and can potentially reduce the number of shuffles compared to RDD's `map`."
     },
     {
-      "rddOperation": "randomSplit([0.8, 0.2])",
-      "improvementExplanation": "This operation can be improved by using the `randomSplit` function of DataFrame/Dataset, which is optimized for splitting datasets.",
-      "dataframeEquivalent": "```python\ntrain_df, test_df = data_df.randomSplit([0.8, 0.2]) \n```",
-      "benefits": "Using DataFrame/Dataset for splitting will improve performance and reduce the number of shuffles."
+      "rddOperation": "join",
+      "location": "Line 22",
+      "improvementExplanation": "join can be replaced with DataFrame's `union` function for better performance and scalability.",
+      "dataframeEquivalent": """
+```python
+samples_df = spam_samples_df.union(non_spam_samples_df)
+```
+""",
+      "benefits": "DataFrame's `union` function is optimized for combining DataFrames and can potentially reduce the number of shuffles compared to RDD's `join`."
     },
     {
-      "rddOperation": "map(lambda x: x.features)",
-      "improvementExplanation": "This operation can be improved by using the `select` function of DataFrame/Dataset to select the 'features' column.",
-      "dataframeEquivalent": "```python\ntest_features_df = test_df.select('features') \n```",
-      "benefits": "Using DataFrame/Dataset for selecting columns will improve performance and reduce the number of shuffles."
-    },
-    {
-      "rddOperation": "zip(predictions)",
-      "improvementExplanation": "This operation can be improved by using the `withColumn` function of DataFrame/Dataset to create a new column with the predictions.",
-      "dataframeEquivalent": "```python\ntest_df = test_df.withColumn('prediction', predictions) \n```",
-      "benefits": "Using DataFrame/Dataset for combining columns will improve performance and reduce the number of shuffles."
+      "rddOperation": "map",
+      "location": "Line 27",
+      "improvementExplanation": "map can be replaced with DataFrame's `select` function for better performance and readability.",
+      "dataframeEquivalent": """
+```python
+predictions_df = model.predict(test_samples_df.select("features"))
+```
+""",
+      "benefits": "DataFrame's `select` function is optimized for selecting columns and can potentially reduce the number of shuffles compared to RDD's `map`."
     }
   ]
 }

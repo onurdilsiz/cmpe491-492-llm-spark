@@ -4,40 +4,40 @@
   "occurrences": 6,
   "response": [
     {
-      "rddOperation": "collect() (line 7)",
-      "improvementExplanation": "collect() is an action that pulls all data from the cluster to the driver, which can be inefficient for large datasets. DataFrames/Datasets can perform lazy transformations and only pull data when needed.",
+      "rddOperation": "collect",
+      "improvementExplanation": "collect() is an action that pulls all data from the cluster to the driver, which can be inefficient for large datasets. DataFrames/Datasets offer lazy evaluation, where transformations are only executed when an action is triggered.",
       "dataframeEquivalent": "rdd.toDF().show()",
-      "benefits": "Reduced data transfer, improved performance for large datasets."
+      "benefits": "Reduced data transfer, improved performance, and better resource utilization."
     },
     {
-      "rddOperation": "flatMap() (line 11)",
-      "improvementExplanation": "flatMap() is a transformation that creates a new RDD by applying a function to each element and flattening the result. DataFrames/Datasets can perform similar operations with more efficient query optimization.",
-      "dataframeEquivalent": "rdd.toDF().select(explode(split(col('value'), ' ')).alias('word'))",
-      "benefits": "Improved query optimization, reduced shuffling."
+      "rddOperation": "flatMap",
+      "improvementExplanation": "flatMap() is a transformation that creates a new RDD by applying a function to each element and flattening the results. DataFrames/Datasets offer more efficient ways to perform similar operations.",
+      "dataframeEquivalent": "rdd.toDF().select(explode(split(col('value'), ' '))).show()",
+      "benefits": "Improved performance due to optimized execution plans and reduced shuffling."
     },
     {
-      "rddOperation": "map() (line 15)",
-      "improvementExplanation": "map() is a transformation that applies a function to each element of an RDD. DataFrames/Datasets can perform similar operations with optimized columnar processing.",
-      "dataframeEquivalent": "rdd.toDF().withColumn('count', lit(1))",
-      "benefits": "Improved performance, better resource utilization."
+      "rddOperation": "map",
+      "improvementExplanation": "map() is a transformation that applies a function to each element of an RDD. DataFrames/Datasets offer more concise and efficient ways to perform similar operations.",
+      "dataframeEquivalent": "rdd.toDF().withColumn('value', col('value')).show()",
+      "benefits": "Improved readability, reduced code complexity, and potential performance gains."
     },
     {
-      "rddOperation": "reduceByKey() (line 19)",
-      "improvementExplanation": "reduceByKey() is an action that aggregates values with the same key across partitions. DataFrames/Datasets can perform similar aggregations with optimized groupBy and aggregation functions.",
-      "dataframeEquivalent": "rdd.toDF().groupBy('word').agg(sum('count').alias('total'))",
-      "benefits": "Improved performance, reduced shuffling."
+      "rddOperation": "reduceByKey",
+      "improvementExplanation": "reduceByKey() is an action that aggregates values with the same key across partitions. DataFrames/Datasets offer more efficient ways to perform aggregations.",
+      "dataframeEquivalent": "rdd.toDF().groupBy('value').sum('count').show()",
+      "benefits": "Improved performance due to optimized aggregation algorithms and reduced shuffling."
     },
     {
-      "rddOperation": "map() (line 23)",
-      "improvementExplanation": "map() is used again to swap key-value pairs. DataFrames/Datasets can perform this operation more efficiently using column manipulation.",
-      "dataframeEquivalent": "rdd.toDF().select(col('total').alias('word'), col('word').alias('count')).orderBy('word')",
-      "benefits": "Improved performance, better resource utilization."
+      "rddOperation": "map",
+      "improvementExplanation": "map() is used again to swap the key-value pairs. DataFrames/Datasets offer more efficient ways to perform such transformations.",
+      "dataframeEquivalent": "rdd.toDF().select(col('count'), col('value')).show()",
+      "benefits": "Improved readability, reduced code complexity, and potential performance gains."
     },
     {
-      "rddOperation": "filter() (line 27)",
-      "improvementExplanation": "filter() is used to filter rows based on a condition. DataFrames/Datasets can perform filtering with optimized predicate pushdown.",
-      "dataframeEquivalent": "rdd.toDF().filter(col('word').contains('a')).orderBy('word')",
-      "benefits": "Improved performance, reduced data transfer."
+      "rddOperation": "filter",
+      "improvementExplanation": "filter() is a transformation that filters elements based on a predicate. DataFrames/Datasets offer more concise and efficient ways to perform filtering.",
+      "dataframeEquivalent": "rdd.toDF().filter(col('value').contains('a')).show()",
+      "benefits": "Improved readability, reduced code complexity, and potential performance gains."
     }
   ]
 }

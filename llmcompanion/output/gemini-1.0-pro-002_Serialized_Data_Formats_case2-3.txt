@@ -21,14 +21,14 @@
       "operation": "Reading data from a text file",
       "location": "to_df1() function, line 25",
       "improvementExplanation": "The current text file format is not optimized for efficient data processing. Switching to a serialized format like Parquet or ORC would significantly improve read performance due to columnar storage, compression, and predicate pushdown capabilities.",
-      "optimizedEquivalent": "```python\nimport pyspark.sql.functions as F\n\ndef to_df1_parquet():\n    ss = SparkSession.builder.getOrCreate()\n    df = ss.read.parquet(txt_file)\n    df.show()\n```",
+      "optimizedEquivalent": "```python\nimport pyspark.sql.functions as F\n\ndef to_df1_parquet():\n    ss = SparkSession.builder.getOrCreate()\n    df = ss.read.parquet(txt_file)\n    df.createOrReplaceTempView('people')\n    people_df = ss.sql('select * from people where age > \"19\"')\n    people_df.rdd.map(lambda t: 'Name:' + t['name'] + ', ' + 'Age:' + t['age']).foreach(print)\n```",
       "benefits": "Faster read performance, reduced storage footprint due to compression, and improved query performance through predicate pushdown."
     },
     {
       "operation": "Reading data from a text file",
-      "location": "to_df2() function, line 44",
+      "location": "to_df2() function, line 42",
       "improvementExplanation": "The current text file format is not optimized for efficient data processing. Switching to a serialized format like Parquet or ORC would significantly improve read performance due to columnar storage, compression, and predicate pushdown capabilities.",
-      "optimizedEquivalent": "```python\nimport pyspark.sql.functions as F\n\ndef to_df2_parquet():\n    ss = SparkSession.builder.getOrCreate()\n    df = ss.read.parquet(txt_file)\n    df.show()\n```",
+      "optimizedEquivalent": "```python\nimport pyspark.sql.functions as F\n\ndef to_df2_parquet():\n    ss = SparkSession.builder.getOrCreate()\n    df = ss.read.parquet(txt_file)\n    df.createOrReplaceTempView('people')\n    results = ss.sql('SELECT * FROM people')\n    results.rdd.map(lambda attr: 'name:' + attr['name'] + ', ' + 'age:' + attr['age']).foreach(print)\n```",
       "benefits": "Faster read performance, reduced storage footprint due to compression, and improved query performance through predicate pushdown."
     }
   ]

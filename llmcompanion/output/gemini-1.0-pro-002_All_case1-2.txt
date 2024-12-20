@@ -8,9 +8,9 @@
   "response1": [
     {
       "operation": "df2.repartition(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
-      "improvementExplanation": "The repartition() operation is used to increase the number of partitions in the DataFrame. However, in this case, the DataFrame is being written to a CSV file, which is a single-file format. Therefore, increasing the number of partitions will not improve performance. Instead, we can use the coalesce() operation to reduce the number of partitions to 1, which will match the number of files being written.",
+      "improvementExplanation": "The repartition() operation is used to increase the number of partitions in the DataFrame. However, since the subsequent write operation is saving the data to a single file (CSV), the increased number of partitions is not necessary. Replacing repartition() with coalesce() will reduce the number of partitions to the minimum required, improving resource utilization and potentially reducing job runtime.",
       "coalesceEquivalent": "df2.coalesce(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
-      "benefits": "Switching to coalesce() will reduce the number of partitions, which will improve performance by reducing the amount of data that needs to be shuffled."
+      "benefits": "Switching to coalesce() will:\n- Reduce the number of partitions, leading to more efficient resource utilization.\n- Potentially reduce job runtime by avoiding unnecessary shuffling."
     }
   ],
   "detected2": false,

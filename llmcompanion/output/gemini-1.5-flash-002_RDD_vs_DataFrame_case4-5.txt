@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "rddOperation": "df.rdd.collect() in write_to_protobuf function (line 216)",
+      "improvementExplanation": "The RDD operation `collect()` is used to bring all data from the distributed Spark cluster to the driver node. This is highly inefficient for large datasets, as it can lead to memory issues on the driver and negate the benefits of distributed processing.  DataFrames provide optimized execution plans that avoid such data transfers.",
+      "dataframeEquivalent": "The entire `write_to_protobuf` function should be rewritten to avoid `collect()`.  Instead, use the DataFrame's `foreachPartition` method to process data in partitions on the executors, writing directly to the output file from each executor. This avoids the data transfer bottleneck.  Example:\n```python\ndef write_to_protobuf_improved(df, path, print_intervals=1000):\n    t_start = time.time()\n    def write_partition(iterator, file):\n        for i, row in enumerate(iterator):\n            page_message = page_pb2.PageMessage()\n            page_message.idx = row[0]\n            page_message.chunk = row[1]\n            page_message.page_id = row[2]\n            page_message.page_name = row[3]\n            page_message.page = pickle.dumps(pickle.loads(row[4]))\n            page_message.synthetic_paragraphs = pickle.dumps(pickle.loads(row[5])[0])\n            page_message.synthetic_skeleton = pickle.dumps(pickle.loads(row[5])[1])\n            bytesAsString = page_message.SerializeToString()\n            file.write(bytesAsString)\n            if (i % print_intervals == 0):\n                print(\"written row {} - page_id={} (time = {})\".format(i, row[0], time.time()-t_start))\n    with open(path, \"wb\") as f:\n        df.foreachPartition(lambda iterator: write_partition(iterator, f))\n    print('FINISHED in {}'.format(time.time()-t_start))",
+      "benefits": "Switching to `foreachPartition` offers significant performance improvements by avoiding the `collect()` operation's data transfer to the driver. This reduces memory pressure on the driver, improves scalability to larger datasets, and leads to faster overall processing time.  The data is processed and written in parallel across the cluster, leveraging the distributed nature of Spark."
+    }
+  ]
+}
+```

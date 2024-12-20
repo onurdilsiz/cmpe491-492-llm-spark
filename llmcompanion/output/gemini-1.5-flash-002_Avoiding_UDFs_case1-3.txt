@@ -1,0 +1,122 @@
+```json
+{
+  "detected": true,
+  "occurrences": 18,
+  "response": [
+    {
+      "operation": "Line 12: `df1['value'].substr(5, 6)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring.  Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Weather_Station', substring(col('value'), 5, 6))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 13: `df1['value'].substr(11, 5)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('WBAN', substring(col('value'), 11, 5))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 14: `df1['value'].substr(16,8)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring before applying `to_date`. This can be directly integrated into the `to_date` function using `substring`.",
+      "alternativeEquivalent": "df1.withColumn('Observation_Date', to_date(substring(col('value'), 16, 8), \"yyyyMMdd\"))",
+      "benefits": "Combining operations avoids unnecessary intermediate steps, improving performance and reducing data shuffling."
+    },
+    {
+      "operation": "Line 15: `df1['value'].substr(24, 4)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Observation_Hour', substring(col('value'), 24, 4).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 16: `df1['value'].substr(29, 6)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Latitude', substring(col('value'), 29, 6).cast('float') / 1000)",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 17: `df1['value'].substr(35, 7)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Longitude', substring(col('value'), 35, 7).cast('float') / 1000)",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 18: `df1['value'].substr(47, 5)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Elevation', substring(col('value'), 47, 5).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 19: `df1['value'].substr(61, 3)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Wind_Direction', substring(col('value'), 61, 3).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 20: `df1['value'].substr(64, 1)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('WD_Quality_Code', substring(col('value'), 64, 1).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 21: `df1['value'].substr(71, 5)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Sky_Ceiling_Height', substring(col('value'), 71, 5).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 22: `df1['value'].substr(76, 1)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('SC_Quality_Code', substring(col('value'), 76, 1).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 23: `df1['value'].substr(79, 6)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Visibility_Distance', substring(col('value'), 79, 6).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 24: `df1['value'].substr(86, 1)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('VD_Quality_Code', substring(col('value'), 86, 1).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 25: `df1['value'].substr(88, 5)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Air_Temperature', substring(col('value'), 88, 5).cast('float') / 10)",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 26: `df1['value'].substr(93, 1)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('AT_Quality_Code', substring(col('value'), 93, 1).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 27: `df1['value'].substr(94, 5)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Dew_Point', substring(col('value'), 94, 5).cast('float'))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 28: `df1['value'].substr(99, 1)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('DP_Quality_Code', substring(col('value'), 99, 1).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 29: `df1['value'].substr(100, 5)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('Atmospheric_Pressure', substring(col('value'), 100, 5).cast('float') / 10)",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "Line 30: `df1['value'].substr(105, 1)`",
+      "improvementExplanation": "The `substr` function is used to extract a substring. Spark's built-in `substring` function provides the same functionality.",
+      "alternativeEquivalent": "df1.withColumn('AP_Quality_Code', substring(col('value'), 105, 1).cast(IntegerType()))",
+      "benefits": "Replacing substr with substring allows Spark's optimizer to push down the operation, improving performance and reducing serialization overhead."
+    }
+  ]
+}
+```

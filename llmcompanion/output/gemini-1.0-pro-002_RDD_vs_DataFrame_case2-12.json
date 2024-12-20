@@ -4,15 +4,15 @@
     "response": [
         {
             "rddOperation": "mapPartitionsWithIndex",
-            "improvementExplanation": "This operation can be improved by using a DataFrame/Dataset transformation instead of an RDD transformation. DataFrames/Datasets offer better performance and scalability due to their optimized execution engine and ability to leverage Spark SQL's query optimizer.",
+            "improvementExplanation": "This operation can be improved by using a DataFrame/Dataset transformation instead of an RDD transformation. DataFrames/Datasets offer better performance, scalability, and resource utilization compared to RDDs.",
             "dataframeEquivalent": "```python\noutput = input_data.selectExpr(\"CAST(key AS STRING)\", \"CAST(value AS LONG)\")\n```",
-            "benefits": "Using a DataFrame/Dataset transformation instead of `mapPartitionsWithIndex` can significantly improve performance and scalability. DataFrames/Datasets are optimized for Spark's execution engine and can leverage Spark SQL's query optimizer, resulting in faster query execution and reduced resource consumption."
+            "benefits": "Using a DataFrame/Dataset transformation instead of `mapPartitionsWithIndex` will result in improved performance, scalability, and resource utilization. DataFrames/Datasets are optimized for data processing and can leverage Spark's distributed computing capabilities more efficiently."
         },
         {
             "rddOperation": "reduceByKey",
-            "improvementExplanation": "This operation can be improved by using a DataFrame/Dataset aggregation function instead of an RDD reduction operation. DataFrames/Datasets offer better performance and scalability due to their optimized execution engine and ability to leverage Spark SQL's query optimizer.",
-            "dataframeEquivalent": "```python\noutput = input_data.groupBy(\"key\").sum(\"value\")\n```",
-            "benefits": "Using a DataFrame/Dataset aggregation function instead of `reduceByKey` can significantly improve performance and scalability. DataFrames/Datasets are optimized for Spark's execution engine and can leverage Spark SQL's query optimizer, resulting in faster query execution and reduced resource consumption."
+            "improvementExplanation": "This operation can be improved by using a DataFrame/Dataset aggregation instead of an RDD aggregation. DataFrames/Datasets offer better performance, scalability, and resource utilization compared to RDDs.",
+            "dataframeEquivalent": "```python\noutput = output.groupBy(\"key\").sum(\"val\")\n```",
+            "benefits": "Using a DataFrame/Dataset aggregation instead of `reduceByKey` will result in improved performance, scalability, and resource utilization. DataFrames/Datasets are optimized for data processing and can leverage Spark's distributed computing capabilities more efficiently."
         }
     ]
 }

@@ -3,16 +3,16 @@
     "occurrences": 2,
     "response": [
         {
-            "operation": "Reading CSV file from HDFS",
-            "improvementExplanation": "The current operation reads a CSV file from HDFS, which is a text-based format. This can be inefficient for large datasets due to the overhead of parsing and deserializing the data. Switching to a serialized format like Parquet or ORC can significantly improve performance by reducing the amount of data that needs to be processed.",
+            "operation": "Read CSV file",
+            "improvementExplanation": "The current CSV format is not optimized for Spark processing. Switching to Parquet or ORC would enable faster reads, compression, and query optimization through predicate pushdown.",
             "optimizedEquivalent": "```python\ncsvDF = spark.read.parquet(hdfs_path_to_csv)\n```",
-            "benefits": "Switching to Parquet or ORC will provide the following benefits:\n* Faster reads/writes: Serialized formats are more compact and efficient to read and write than text-based formats.\n* Compression: Parquet and ORC support compression, which can further reduce the amount of data that needs to be stored and processed.\n* Query optimization: Parquet and ORC support predicate pushdown, which allows Spark to filter data at the file level before reading it into memory. This can significantly improve query performance."
+            "benefits": "Faster reads, compression, and query optimization."
         },
         {
-            "operation": "Writing data to Hive/Impala table in Parquet format",
-            "improvementExplanation": "The current operation writes data to a Hive/Impala table in Parquet format. This is a good choice for storing large datasets, but it could be further optimized by using a more efficient compression codec. Snappy compression is a good general-purpose codec, but other codecs like GZIP or ZSTD may provide better compression ratios for specific data types.",
-            "optimizedEquivalent": "```python\nfilteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+'.'+tblName, partitionBy='extract_dt', compression='gzip')\n```",
-            "benefits": "Switching to a more efficient compression codec will provide the following benefits:\n* Reduced storage space: A higher compression ratio will reduce the amount of storage space required for the data.\n* Faster reads/writes: Compressed data is smaller, so it can be read and written faster."
+            "operation": "Write Parquet file",
+            "improvementExplanation": "Writing to Parquet format is already optimized for Spark. No further improvement is needed.",
+            "optimizedEquivalent": "```python\nfilteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')\n```",
+            "benefits": "Already optimized for Spark."
         }
     ]
 }

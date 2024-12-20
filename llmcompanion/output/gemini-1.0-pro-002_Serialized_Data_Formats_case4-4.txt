@@ -8,4 +8,4 @@
 
 **Explanation:**
 
-The provided Spark code does not contain any explicit input/output operations. It focuses on defining and applying user-defined functions (UDFs) to a DataFrame. While UDFs can potentially interact with external data sources, the specific implementation within the code does not demonstrate such interactions. Therefore, there are no opportunities for optimization by switching to serialized data formats like Parquet or ORC.
+The provided Spark code does not contain any input/output operations. It focuses on creating and manipulating DataFrames using user-defined functions (UDFs). While UDFs can interact with external data sources, the code snippet provided does not demonstrate any such interaction. Therefore, there are no opportunities to optimize input/output operations by switching to serialized data formats like Parquet or ORC.

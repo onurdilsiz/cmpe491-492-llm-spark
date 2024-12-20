@@ -3,28 +3,28 @@
     "occurrences": 4,
     "response": [
         {
-            "operation": "convert_case(name) (line 14)",
-            "improvementExplanation": "This UDF can be replaced with the built-in `upper()` function, which is optimized for Catalyst and provides better performance.",
+            "operation": "convert_case(s) - Line 14",
+            "improvementExplanation": "This UDF can be replaced with the built-in `upper()` function, which is optimized for Spark and avoids the overhead of serialization.",
             "alternativeEquivalent": "df2 = df.withColumn(\"Cureated Name\", col('Name').upper())",
             "benefits": "Using `upper()` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
         },
         {
-            "operation": "length(name) (line 17)",
-            "improvementExplanation": "This UDF can be replaced with the built-in `length()` function, which is optimized for Catalyst and provides better performance.",
+            "operation": "length(s) - Line 17",
+            "improvementExplanation": "This UDF can be replaced with the built-in `length()` function, which is optimized for Spark and avoids the overhead of serialization.",
             "alternativeEquivalent": "df3 = df2.withColumn(\"Length\", col('Name').length())",
             "benefits": "Using `length()` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
         },
         {
-            "operation": "to_upper(s) (line 25)",
-            "improvementExplanation": "This UDF can be replaced with the built-in `upper()` function, which is optimized for Catalyst and provides better performance.",
-            "alternativeEquivalent": "df.select(slen(\"name\").alias(\"slen(name)\"), col(\"name\").upper(), add_one(\"age\")).show()",
-            "benefits": "Using `upper()` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+            "operation": "slen(s) - Line 32",
+            "improvementExplanation": "This UDF can be replaced with the built-in `length()` function, which is optimized for Spark and avoids the overhead of serialization.",
+            "alternativeEquivalent": "df.select(col('name').length().alias('slen(name)'), ...)",
+            "benefits": "Using `length()` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
         },
         {
-            "operation": "add_one(x) (line 29)",
-            "improvementExplanation": "This UDF can be replaced with the built-in `+ 1` operator, which is optimized for Catalyst and provides better performance.",
-            "alternativeEquivalent": "df.select(slen(\"name\").alias(\"slen(name)\"), col(\"name\").upper(), col(\"age\") + 1).show()",
-            "benefits": "Using `+ 1` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+            "operation": "to_upper(s) - Line 33",
+            "improvementExplanation": "This UDF can be replaced with the built-in `upper()` function, which is optimized for Spark and avoids the overhead of serialization.",
+            "alternativeEquivalent": "df.select(..., col('name').upper(), ...)",
+            "benefits": "Using `upper()` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
         }
     ]
 }

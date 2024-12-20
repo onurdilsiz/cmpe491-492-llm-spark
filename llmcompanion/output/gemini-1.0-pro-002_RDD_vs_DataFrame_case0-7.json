@@ -4,27 +4,27 @@
     "response": [
         {
             "rddOperation": "map",
-            "improvementExplanation": "The `map` operation on RDDs can be inefficient due to the need to serialize and deserialize data for each transformation. DataFrames, on the other hand, operate on data in a columnar format, which allows for more efficient processing.",
-            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\ndf = spark.createDataFrame(rdd2)\n\n# Apply the map operation using DataFrame API\ndf = df.withColumn(\"new_salary\", df[\"salary\"] * 2)\n\n# Display the DataFrame\ndf.show()\n```",
-            "benefits": "Switching to DataFrame for the `map` operation will improve performance by reducing serialization and deserialization overhead, leading to faster execution times."
+            "improvementExplanation": "The `map` operation on RDDs can be replaced with a DataFrame/Dataset `selectExpr` or `withColumn` transformation, which can leverage Spark SQL's query optimizer for better performance and reduced shuffling.",
+            "dataframeEquivalent": "```python\n# Replace RDD map with DataFrame selectExpr\ndf2 = df.selectExpr(\"firstname || ',' || lastname as name\", \"gender\", \"salary * 2 as new_salary\")\n```",
+            "benefits": "Switching to DataFrame/Dataset for `map` operations provides:\n- **Query optimization:** Spark SQL can optimize the query plan for better performance.\n- **Reduced shuffling:** DataFrame/Dataset operations avoid unnecessary data shuffling, improving efficiency.\n- **Better resource usage:** DataFrames/Datasets utilize Spark's distributed processing capabilities more effectively."
         },
         {
             "rddOperation": "map",
-            "improvementExplanation": "Similar to the previous case, the `map` operation on RDDs can be inefficient. Using DataFrame API for this transformation will provide better performance.",
-            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\ndf = spark.createDataFrame(rdd2)\n\n# Apply the map operation using DataFrame API\ndf = df.withColumn(\"new_salary\", df[\"salary\"] * 2)\n\n# Display the DataFrame\ndf.show()\n```",
-            "benefits": "Switching to DataFrame for the `map` operation will improve performance by reducing serialization and deserialization overhead, leading to faster execution times."
+            "improvementExplanation": "The `map` operation on RDDs can be replaced with a DataFrame/Dataset `withColumn` transformation, which allows for more concise and readable code.",
+            "dataframeEquivalent": "```python\n# Replace RDD map with DataFrame withColumn\ndf2 = df.withColumn(\"name\", df[\"firstname\"] + \",\" + df[\"lastname\"])\n       .withColumn(\"new_salary\", df[\"salary\"] * 2)\n```",
+            "benefits": "Switching to DataFrame/Dataset for `map` operations provides:\n- **Concise code:** DataFrame/Dataset transformations offer a more concise and readable syntax.\n- **Maintainability:** DataFrame/Dataset code is easier to understand and maintain."
         },
         {
             "rddOperation": "map",
-            "improvementExplanation": "The `map` operation on RDDs can be inefficient due to the need to serialize and deserialize data for each transformation. DataFrames, on the other hand, operate on data in a columnar format, which allows for more efficient processing.",
-            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\ndf = spark.createDataFrame(rdd2)\n\n# Apply the map operation using DataFrame API\ndf = df.withColumn(\"new_salary\", df[\"salary\"] * 2)\n\n# Display the DataFrame\ndf.show()\n```",
-            "benefits": "Switching to DataFrame for the `map` operation will improve performance by reducing serialization and deserialization overhead, leading to faster execution times."
+            "improvementExplanation": "The `map` operation on RDDs can be replaced with a DataFrame/Dataset `withColumn` transformation, which allows for referring to column names directly.",
+            "dataframeEquivalent": "```python\n# Replace RDD map with DataFrame withColumn referring to column names\ndf2 = df.withColumn(\"name\", df.firstname + \",\" + df.lastname)\n       .withColumn(\"new_salary\", df.salary * 2)\n```",
+            "benefits": "Switching to DataFrame/Dataset for `map` operations provides:\n- **Readability:** Referring to column names directly improves code readability.\n- **Error reduction:** Using column names reduces the risk of typos or errors."
         },
         {
             "rddOperation": "map",
-            "improvementExplanation": "The `map` operation on RDDs can be inefficient due to the need to serialize and deserialize data for each transformation. DataFrames, on the other hand, operate on data in a columnar format, which allows for more efficient processing.",
-            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\ndf = spark.createDataFrame(rdd2)\n\n# Apply the map operation using DataFrame API\ndf = df.withColumn(\"new_salary\", df[\"salary\"] * 2)\n\n# Display the DataFrame\ndf.show()\n```",
-            "benefits": "Switching to DataFrame for the `map` operation will improve performance by reducing serialization and deserialization overhead, leading to faster execution times."
+            "improvementExplanation": "The `map` operation on RDDs can be replaced with a DataFrame/Dataset `withColumn` transformation, which allows for defining a custom function and applying it to each row.",
+            "dataframeEquivalent": "```python\n# Replace RDD map with DataFrame withColumn using a custom function\ndef func1(row):\n    return row.firstname + \",\" + row.lastname, row.gender.lower(), row.salary * 2\ndf2 = df.withColumn(\"name\", func1(df))\n```",
+            "benefits": "Switching to DataFrame/Dataset for `map` operations provides:\n- **Flexibility:** Custom functions allow for complex transformations and calculations.\n- **Reusability:** Custom functions can be reused in different parts of the code."
         }
     ]
 }

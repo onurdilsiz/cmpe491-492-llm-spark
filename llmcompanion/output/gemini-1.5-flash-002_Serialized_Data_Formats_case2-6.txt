@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "Reading data from HBase using `sc.newAPIHadoopRDD` (lines 328-336)",
+      "improvementExplanation": "The code reads data from HBase, likely in a row-key/value format.  This format is not optimized for analytical processing. Switching to Parquet or ORC would allow for columnar storage, significantly improving query performance, especially for filtering and aggregations.  Before switching, the data needs to be exported from HBase to a file system (e.g., HDFS) in a format that Spark can read. Then, the `sc.newAPIHadoopRDD` would be replaced with a `spark.read` operation.",
+      "optimizedEquivalent": "```python\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.appName(\"RelationExtraction\").getOrCreate()\ndata = spark.read.parquet(\"/path/to/parquet/data\")\n# ... rest of your processing ...\n```",
+      "benefits": "Faster reads, better compression, columnar storage enabling predicate pushdown for faster filtering and aggregations."
+    },
+    {
+      "operation": "Writing data to HBase using `rdd.saveAsNewAPIHadoopDataset` (lines 280-287 and 292-299)",
+      "improvementExplanation": "The code writes data to HBase, which is not ideal for large-scale analytical processing.  While Parquet/ORC are not directly compatible with HBase as a write target, you can write the processed data to Parquet/ORC files in a distributed file system (like HDFS) first. This allows for efficient storage and future querying.  The `rdd.saveAsNewAPIHadoopDataset` would be replaced with a `dataframe.write` operation.",
+      "optimizedEquivalent": "```python\nfrom pyspark.sql import SparkSession\nspark = SparkSession.builder.appName(\"RelationExtraction\").getOrCreate()\n# ... your processing to create a DataFrame called 'result_df'...\nresult_df.write.parquet(\"/path/to/parquet/output\")\n```",
+      "benefits": "Faster writes, better compression, efficient storage for future analytical queries."
+    }
+  ]
+}
+```

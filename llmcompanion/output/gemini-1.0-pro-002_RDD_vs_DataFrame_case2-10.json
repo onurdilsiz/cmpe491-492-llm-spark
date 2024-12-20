@@ -3,64 +3,64 @@
     "occurrences": 10,
     "response": [
         {
-            "rddOperation": "mapPartitions(lambda partition: find_candidate(basket=partition, sub_support=sub_support))",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset transformation for better performance. DataFrames/Datasets offer optimized query execution plans and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").groupBy(\"col\").count().filter(\"count >= sub_support\").select(\"col\")",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
+            "rddOperation": "mapPartitions(find_candidate)",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset transformation to improve performance by leveraging Spark's optimized query engine and avoiding unnecessary data shuffling.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").groupBy(\"item\").count().filter(\"count >= sub_support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
         },
         {
             "rddOperation": "reduceByKey(lambda a, b: min(a, b))",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset aggregation for better performance. DataFrames/Datasets offer optimized aggregation functions and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").groupBy(\"col\").count().filter(\"count >= sub_support\").select(\"col\").agg(min(\"count\"))",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset aggregation to improve performance by leveraging Spark's optimized aggregation functions.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").groupBy(\"item\").count().filter(\"count >= sub_support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
         },
         {
-            "rddOperation": "sortByKey()",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset sorting for better performance. DataFrames/Datasets offer optimized sorting algorithms and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").groupBy(\"col\").count().filter(\"count >= sub_support\").select(\"col\").agg(min(\"count\")).orderBy(\"col\")",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
-        },
-        {
-            "rddOperation": "map(lambda x: (x[0]))",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset projection for better performance. DataFrames/Datasets offer optimized projection operations and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").groupBy(\"col\").count().filter(\"count >= sub_support\").select(\"col\").agg(min(\"count\")).orderBy(\"col\").select(\"col\")",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
-        },
-        {
-            "rddOperation": "collect()",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset action for better performance. DataFrames/Datasets offer optimized action execution plans and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").groupBy(\"col\").count().filter(\"count >= sub_support\").select(\"col\").agg(min(\"count\")).orderBy(\"col\").select(\"col\").collect()",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
-        },
-        {
-            "rddOperation": "mapPartitions(lambda partition: find_final(basket=partition, candidate=sorted(candidate_single_rdd)))",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset join and filtering for better performance. DataFrames/Datasets offer optimized join and filtering operations and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").join(spark.createDataFrame(candidate_single_rdd, ['item']), on=user_basket['items'] == spark.createDataFrame(candidate_single_rdd, ['item'])['item'], how='inner').groupBy(\"item\").count().filter(\"count >= support\").select(\"item\")",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
+            "rddOperation": "mapPartitions(find_final)",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset transformation to improve performance by leveraging Spark's optimized query engine and avoiding unnecessary data shuffling.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").join(single_rdd.toDF(\"item\"), on=\"item\", how=\"inner\").groupBy(\"item\").count().filter(\"count >= support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
         },
         {
             "rddOperation": "reduceByKey(lambda a, b: a + b)",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset aggregation for better performance. DataFrames/Datasets offer optimized aggregation functions and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").join(spark.createDataFrame(candidate_single_rdd, ['item']), on=user_basket['items'] == spark.createDataFrame(candidate_single_rdd, ['item'])['item'], how='inner').groupBy(\"item\").count().filter(\"count >= support\").select(\"item\").agg(sum(\"count\"))",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset aggregation to improve performance by leveraging Spark's optimized aggregation functions.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").join(single_rdd.toDF(\"item\"), on=\"item\", how=\"inner\").groupBy(\"item\").count().filter(\"count >= support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
         },
         {
-            "rddOperation": "filter(lambda x: x[1] >= support)",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset filtering for better performance. DataFrames/Datasets offer optimized filtering operations and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").join(spark.createDataFrame(candidate_single_rdd, ['item']), on=user_basket['items'] == spark.createDataFrame(candidate_single_rdd, ['item'])['item'], how='inner').groupBy(\"item\").count().filter(\"count >= support\").select(\"item\").filter(\"sum(count) >= support\")",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
+            "rddOperation": "mapPartitions(find_candidate2)",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset transformation to improve performance by leveraging Spark's optimized query engine and avoiding unnecessary data shuffling.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").join(previous_op.toDF(\"item\"), on=\"item\", how=\"inner\").groupBy(\"item\").count().filter(\"count >= sub_support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
         },
         {
-            "rddOperation": "map(lambda x: x[0])",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset projection for better performance. DataFrames/Datasets offer optimized projection operations and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").join(spark.createDataFrame(candidate_single_rdd, ['item']), on=user_basket['items'] == spark.createDataFrame(candidate_single_rdd, ['item'])['item'], how='inner').groupBy(\"item\").count().filter(\"count >= support\").select(\"item\").filter(\"sum(count) >= support\").select(\"item\")",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
+            "rddOperation": "reduceByKey(lambda a, b: min(a, b))",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset aggregation to improve performance by leveraging Spark's optimized aggregation functions.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").join(previous_op.toDF(\"item\"), on=\"item\", how=\"inner\").groupBy(\"item\").count().filter(\"count >= sub_support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
         },
         {
-            "rddOperation": "collect()",
-            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset action for better performance. DataFrames/Datasets offer optimized action execution plans and can avoid unnecessary data shuffling compared to RDDs.",
-            "dataframeEquivalent": "user_basket.selectExpr(\"explode(items)\").join(spark.createDataFrame(candidate_single_rdd, ['item']), on=user_basket['items'] == spark.createDataFrame(candidate_single_rdd, ['item'])['item'], how='inner').groupBy(\"item\").count().filter(\"count >= support\").select(\"item\").filter(\"sum(count) >= support\").select(\"item\").collect()",
-            "benefits": "Switching to DataFrame/Dataset will improve query optimization, reduce data shuffling, and potentially lead to better resource utilization."
+            "rddOperation": "mapPartitions(find_final)",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset transformation to improve performance by leveraging Spark's optimized query engine and avoiding unnecessary data shuffling.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").join(pair_candidate_rdd.toDF(\"item\"), on=\"item\", how=\"inner\").groupBy(\"item\").count().filter(\"count >= support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
+        },
+        {
+            "rddOperation": "reduceByKey(lambda a, b: a + b)",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset aggregation to improve performance by leveraging Spark's optimized aggregation functions.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").join(pair_candidate_rdd.toDF(\"item\"), on=\"item\", how=\"inner\").groupBy(\"item\").count().filter(\"count >= support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
+        },
+        {
+            "rddOperation": "mapPartitions(lambda partition: find_candidate(basket=partition, sub_support=sub_support, previous_out=None))",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset transformation to improve performance by leveraging Spark's optimized query engine and avoiding unnecessary data shuffling.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").groupBy(\"item\").count().filter(\"count >= sub_support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
+        },
+        {
+            "rddOperation": "reduceByKey(lambda a, b: min(a, b))",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame/Dataset aggregation to improve performance by leveraging Spark's optimized aggregation functions.",
+            "dataframeEquivalent": "user_basket.selectExpr(\"explode(split(value, ',')) as item\").groupBy(\"item\").count().filter(\"count >= sub_support\").select(\"item\")",
+            "benefits": "This change will reduce the number of shuffles, improve query optimization, and potentially lead to faster execution times."
         }
     ]
 }

@@ -53,7 +53,7 @@
         },
         {
             "operation": "Line 56: moviePairs = uniqueJoinedRatings.map(makePairs)",
-            "improvementExplanation": "The map operation applies `makePairs` to each element.  Using `mapPartitions` would process each partition as a whole, potentially improving performance.",
+            "improvementExplanation": "The map operation applies `makePairs` to each element.  Using `mapPartitions` could improve performance if `makePairs` involves significant computation or I/O.",
             "mapPartitionsEquivalent": "moviePairs = uniqueJoinedRatings.mapPartitions(lambda partition: [makePairs(x) for x in partition])",
             "benefits": "Reduced function call overhead, potentially improved performance for I/O-bound operations."
         }
@@ -63,37 +63,37 @@
     "response3": [
         {
             "operation": "Line 38: data = sc.textFile(\"file:///SparkCourse/ml-100k/u.data\")",
-            "improvementExplanation": "The data is read as text.  Using a columnar format like Parquet will significantly improve read/write performance and enable query optimization.",
-            "optimizedEquivalent": "from pyspark.sql import SparkSession\nspark = SparkSession.builder.appName(\"MovieSimilarities\").getOrCreate()\ndata = spark.read.parquet(\"file:///SparkCourse/ml-100k/u.data.parquet\")",
+            "improvementExplanation": "The u.data file is likely a text file (CSV-like).  Using Parquet or ORC would significantly improve read/write performance and enable query optimization.",
+            "optimizedEquivalent": "spark.read.parquet(\"file:///SparkCourse/ml-100k/u.data.parquet\") # Assuming data is converted to parquet beforehand",
             "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
         },
         {
-            "operation": "Line 6: with open(\"ml-100k/u.ITEM\") as f:",
-            "improvementExplanation": "The movie names are loaded from a text file.  Storing this data in a Parquet or similar format would improve loading time.",
-            "optimizedEquivalent": "movieNamesDF = spark.read.parquet(\"ml-100k/u.ITEM.parquet\")",
-            "benefits": "Faster reads/writes, compression, and potential for query optimization."
+            "operation": "Line 7: with open(\"ml-100k/u.ITEM\") as f:",
+            "improvementExplanation": "The u.ITEM file is read line by line.  Converting it to a Parquet or ORC file would improve performance.",
+            "optimizedEquivalent": "movieNamesDF = spark.read.parquet(\"ml-100k/u.ITEM.parquet\") # Assuming data is converted to parquet beforehand",
+            "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
         }
     ],
     "detected4": true,
     "occurrences4": 3,
     "response4": [
         {
-            "operation": "Line 12: def makePairs((user, ratings)):",
-            "improvementExplanation": "This UDF can be replaced with a built-in DataFrame transformation.",
-            "alternativeEquivalent": "No direct equivalent, requires restructuring the data to avoid the need for this function.",
-            "benefits": "Enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+            "operation": "Line 14: def makePairs((user, ratings)):",
+            "improvementExplanation": "The UDF `makePairs` can be replaced with a combination of select and withColumn operations in DataFrame.",
+            "alternativeEquivalent": "ratings = ratings.selectExpr(\"user\", \"movie\", \"rating\").withColumnRenamed(\"movie\", \"movie1\").withColumnRenamed(\"rating\", \"rating1\").join(ratings.selectExpr(\"user\", \"movie\", \"rating\").withColumnRenamed(\"movie\", \"movie2\").withColumnRenamed(\"rating\", \"rating2\"), on = \"user\")",
+            "benefits": "Enables Catalyst optimizations, improving performance and reducing serialization overhead."
         },
         {
-            "operation": "Line 18: def filterDuplicates( (userID, ratings) ):",
-            "improvementExplanation": "This UDF can be replaced with a built-in DataFrame filter operation.",
-            "alternativeEquivalent": "uniqueJoinedRatings = joinedRatings.filter(lambda x: x[1][0][0] < x[1][1][0])",
-            "benefits": "Enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+            "operation": "Line 19: def filterDuplicates( (userID, ratings) ):",
+            "improvementExplanation": "The UDF `filterDuplicates` can be replaced with a filter condition in DataFrame.",
+            "alternativeEquivalent": "uniqueJoinedRatings = joinedRatings.filter(\"movie1 < movie2\")",
+            "benefits": "Enables Catalyst optimizations, improving performance and reducing serialization overhead."
         },
         {
             "operation": "Line 24: def computeCosineSimilarity(ratingPairs):",
-            "improvementExplanation": "This UDF is computationally intensive.  Consider using Spark's built-in aggregate functions or exploring vector operations for better performance.",
-            "alternativeEquivalent": "This requires a more significant restructuring of the data and operations to leverage Spark's built-in functions for vector calculations.",
-            "benefits": "Enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+            "improvementExplanation": "The UDF `computeCosineSimilarity` is computationally intensive and can't be easily replaced with built-in functions. However, consider using Spark's built-in aggregation functions for parts of the calculation if possible to reduce overhead.",
+            "alternativeEquivalent": "This UDF is difficult to replace entirely.  Consider optimizing the internal calculations or exploring vectorized operations if possible.",
+            "benefits": "Partial replacement could enable some Catalyst optimizations, potentially improving performance."
         }
     ]
 }

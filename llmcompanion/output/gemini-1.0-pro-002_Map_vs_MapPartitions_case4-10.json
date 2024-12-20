@@ -4,15 +4,15 @@
     "response": [
         {
             "operation": "df.select(col(\"Seqno\"), \\n    convertUDF(col(\"Name\")).alias(\"Name\") ) \\n.show(truncate=False)",
-            "improvementExplanation": "The map() operation in this case involves applying the `convertCase` function to each element of the `Name` column. This function performs string manipulation, which can be computationally expensive. By using mapPartitions() instead, we can process the data in batches, reducing the number of function calls and improving performance.",
-            "mapPartitionsEquivalent": "df.select(col(\"Seqno\"), \\n    col(\"Name\").mapPartitions(lambda partition: map(convertCase, partition)) \\n).show(truncate=False)",
-            "benefits": "Switching to mapPartitions() in this case would reduce function call overhead, optimize I/O, and improve performance by processing the data in batches."
+            "improvementExplanation": "The map() operation in this case is used to apply the `convertCase` function to each element of the `Name` column. This function converts the first letter of each word in the name to uppercase. However, this operation can be performed more efficiently using mapPartitions() because it allows us to process the data in batches, reducing the number of function calls and improving I/O performance.",
+            "mapPartitionsEquivalent": "df.select(col(\"Seqno\"), \\n    col(\"Name\").mapPartitions(lambda partition: map(convertCase, partition)).alias(\"Name\") ) \\n.show(truncate=False)",
+            "benefits": "Replacing map() with mapPartitions() in this case will provide the following benefits:\n\n* **Reduced function call overhead:** By processing the data in batches, we can reduce the number of times the `convertCase` function is called, improving performance.\n* **Optimized I/O:** mapPartitions() allows us to read the data from the underlying storage system in larger chunks, reducing the number of I/O operations and improving efficiency.\n* **Improved resource utilization:** By processing the data in parallel, we can utilize the available resources more efficiently, leading to faster execution times."
         },
         {
             "operation": "df.withColumn(\"Cureated Name\", upperCase(col(\"Name\"))) \\n.show(truncate=False)",
-            "improvementExplanation": "The map() operation in this case involves applying the `upperCase` function to each element of the `Name` column. This function simply converts the string to uppercase, which is a relatively lightweight operation. However, using mapPartitions() can still provide some benefits in terms of I/O optimization and resource utilization.",
+            "improvementExplanation": "The map() operation in this case is used to apply the `upperCase` function to each element of the `Name` column. This function converts the entire name to uppercase. Similar to the previous case, this operation can be performed more efficiently using mapPartitions() because it allows us to process the data in batches, reducing the number of function calls and improving I/O performance.",
             "mapPartitionsEquivalent": "df.withColumn(\"Cureated Name\", col(\"Name\").mapPartitions(lambda partition: map(upperCase, partition))) \\n.show(truncate=False)",
-            "benefits": "Switching to mapPartitions() in this case would optimize I/O and improve resource utilization by processing the data in batches."
+            "benefits": "Replacing map() with mapPartitions() in this case will provide the following benefits:\n\n* **Reduced function call overhead:** By processing the data in batches, we can reduce the number of times the `upperCase` function is called, improving performance.\n* **Optimized I/O:** mapPartitions() allows us to read the data from the underlying storage system in larger chunks, reducing the number of I/O operations and improving efficiency.\n* **Improved resource utilization:** By processing the data in parallel, we can utilize the available resources more efficiently, leading to faster execution times."
         }
     ]
 }

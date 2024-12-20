@@ -4,25 +4,25 @@
   "occurrences": 3,
   "response": [
     {
-      "operation": "Reading CSV file",
-      "location": "spark.read.csv(path)",
-      "improvementExplanation": "Reading CSV files can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to their columnar storage and compression capabilities.",
-      "optimizedEquivalent": "df = spark.read.parquet(path)",
-      "benefits": "Faster read performance, reduced storage space due to compression, and improved query optimization through predicate pushdown."
+      "operation": "Reading data from a CSV file",
+      "location": "line 24: path = sc.textFile(\"file:///root/data_team_2.csv\")",
+      "improvementExplanation": "Reading data from a CSV file can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to columnar storage, compression, and optimized file formats.",
+      "optimizedEquivalent": "```python\n# Read data from Parquet file\nfiltered_df = spark.read.parquet(\"file:///root/data_team_2.parquet\")\n```",
+      "benefits": "Switching to Parquet or ORC will provide faster read performance, better compression, and improved query optimization through predicate pushdown."
     },
     {
-      "operation": "Writing CSV file",
-      "location": "filtered_df.write.csv(output_path)",
-      "improvementExplanation": "Writing CSV files can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve write performance due to their columnar storage and compression capabilities.",
-      "optimizedEquivalent": "filtered_df.write.parquet(output_path)",
-      "benefits": "Faster write performance, reduced storage space due to compression, and improved query optimization through predicate pushdown."
+      "operation": "Writing data to a CSV file",
+      "location": "line 44: filtered_df.write \\n    .mode('default') \\n    .option(\"header\", \"false\") \\n    .csv(output_path)",
+      "improvementExplanation": "Writing data to a CSV file can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve write performance due to columnar storage, compression, and optimized file formats.",
+      "optimizedEquivalent": "```python\n# Write data to Parquet file\nfiltered_df.write.parquet(\"file:///root/filtered_data_team_2_clean.parquet\")\n```",
+      "benefits": "Switching to Parquet or ORC will provide faster write performance, better compression, and improved query optimization through predicate pushdown."
     },
     {
-      "operation": "Reading CSV file",
-      "location": "sc.textFile(\"file:///root/data_team_2.csv\")",
-      "improvementExplanation": "Reading CSV files can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to their columnar storage and compression capabilities.",
-      "optimizedEquivalent": "df = spark.read.parquet(\"file:///root/data_team_2.csv\")",
-      "benefits": "Faster read performance, reduced storage space due to compression, and improved query optimization through predicate pushdown."
+      "operation": "Reading data from a CSV file",
+      "location": "line 50: rdd1 = filtered_df.rdd.map(lambda row: ','.join(str(field) for field in row))",
+      "improvementExplanation": "Reading data from a CSV file can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to columnar storage, compression, and optimized file formats.",
+      "optimizedEquivalent": "```python\n# Read data from Parquet file\nrdd1 = spark.read.parquet(\"file:///root/filtered_data_team_2_clean.parquet\").rdd\n```",
+      "benefits": "Switching to Parquet or ORC will provide faster read performance, better compression, and improved query optimization through predicate pushdown."
     }
   ]
 }

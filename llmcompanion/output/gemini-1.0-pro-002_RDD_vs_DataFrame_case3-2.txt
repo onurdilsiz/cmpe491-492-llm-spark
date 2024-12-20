@@ -1,139 +1,67 @@
 ```json
 {
   "detected": true,
-  "occurrences": 14,
+  "occurrences": 10,
   "response": [
     {
       "rddOperation": "filter(~col('_c5').isNull())",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method, which is optimized for filtering operations.",
-      "dataframeEquivalent": "df.filter(df['_c5'].isNotNull())",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "improvementExplanation": "This RDD operation filters rows based on a null value in the '_c5' column. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with a boolean expression.",
+      "dataframeEquivalent": "filtered_not_null_product_cat_df = df.filter(df['_c5'].isNotNull())",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
       "rddOperation": "filter(~col('_c6').isNull())",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method, which is optimized for filtering operations.",
-      "dataframeEquivalent": "df.filter(df['_c6'].isNotNull())",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "improvementExplanation": "This RDD operation filters rows based on a null value in the '_c6' column. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with a boolean expression.",
+      "dataframeEquivalent": "filtered_not_null_payment_type_df = filtered_not_null_product_cat_df.filter(df['_c6'].isNotNull())",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
       "rddOperation": "filter(~col('_c7').isNull())",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method, which is optimized for filtering operations.",
-      "dataframeEquivalent": "df.filter(df['_c7'].isNotNull())",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "improvementExplanation": "This RDD operation filters rows based on a null value in the '_c7' column. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with a boolean expression.",
+      "dataframeEquivalent": "filtered_not_null_qty_df = filtered_not_null_payment_type_df.filter(df['_c7'].isNotNull())",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
       "rddOperation": "filter(~col('_c8').isNull())",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method, which is optimized for filtering operations.",
-      "dataframeEquivalent": "df.filter(df['_c8'].isNotNull())",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "improvementExplanation": "This RDD operation filters rows based on a null value in the '_c8' column. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with a boolean expression.",
+      "dataframeEquivalent": "filtered_not_null_price_df = filtered_not_null_qty_df.filter(df['_c8'].isNotNull())",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
       "rddOperation": "filter(~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with regular expressions.",
-      "dataframeEquivalent": "df.filter(~df['_c5'].rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "improvementExplanation": "This RDD operation filters rows based on a regular expression pattern. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with a regular expression.",
+      "dataframeEquivalent": "filtered_no_number_product_cat_df = filtered_not_null_price_df.filter(~df['_c5'].rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
       "rddOperation": "filter(~col('_c6').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with regular expressions.",
-      "dataframeEquivalent": "df.filter(~df['_c6'].rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "improvementExplanation": "This RDD operation filters rows based on a regular expression pattern. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with a regular expression.",
+      "dataframeEquivalent": "filtered_no_number_payment_type_df = filtered_no_number_product_cat_df.filter(~df['_c6'].rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
       "rddOperation": "filter(col('_c15').isNull() | ~col('_c15').rlike('.*\\d.*'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with logical operators and regular expressions.",
-      "dataframeEquivalent": "df.filter((df['_c15'].isNull()) | (~df['_c15'].rlike('.*\\d.*')))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "improvementExplanation": "This RDD operation filters rows based on a null value or a regular expression pattern. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with a boolean expression and a regular expression.",
+      "dataframeEquivalent": "filtered_no_number_failure_reason_df = filtered_no_number_payment_type_df.filter(df['_c15'].isNull() | ~df['_c15'].rlike('.*\\d.*'))",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
-      "rddOperation": "filter(~upper(col('_c5')).contains('ERROR'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('ERROR'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "rddOperation": "filter(~upper(col('_c5')).contains('ERROR') & ~upper(col('_c5')).contains('BOOM') & ~upper(col('_c5')).contains('THIS') & ~upper(col('_c5')).contains('CORRUPTED') & ~upper(col('_c5')).contains('!'))",
+      "improvementExplanation": "This RDD operation filters rows based on multiple conditions using string operations. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with multiple boolean expressions.",
+      "dataframeEquivalent": "filtered_product_category_df = filtered_no_number_failure_reason_df.filter(~df['_c5'].upper().contains('ERROR') & ~df['_c5'].upper().contains('BOOM') & ~df['_c5'].upper().contains('THIS') & ~df['_c5'].upper().contains('CORRUPTED') & ~df['_c5'].upper().contains('!'))",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
-      "rddOperation": "filter(~upper(col('_c5')).contains('BOOM'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('BOOM'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(~upper(col('_c5')).contains('THIS'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('THIS'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(~upper(col('_c5')).contains('CORRUPTED'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('CORRUPTED'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(~upper(col('_c5')).contains('!'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c5'].upper().contains('!'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(~upper(col('_c6')).contains('ERROR'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('ERROR'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(~upper(col('_c6')).contains('BOOM'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('BOOM'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(~upper(col('_c6')).contains('THIS'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('THIS'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(~upper(col('_c6')).contains('CORRUPTED'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('CORRUPTED'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(~upper(col('_c6')).contains('!'))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with string functions.",
-      "dataframeEquivalent": "df.filter(~df['_c6'].upper().contains('!'))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "rddOperation": "filter(~upper(col('_c6')).contains('ERROR') & ~upper(col('_c6')).contains('BOOM') & ~upper(col('_c6')).contains('THIS') & ~upper(col('_c6')).contains('CORRUPTED') & ~upper(col('_c6')).contains('!'))",
+      "improvementExplanation": "This RDD operation filters rows based on multiple conditions using string operations. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with multiple boolean expressions.",
+      "dataframeEquivalent": "filtered_payment_type_df = filtered_product_category_df.filter(~df['_c6'].upper().contains('ERROR') & ~df['_c6'].upper().contains('BOOM') & ~df['_c6'].upper().contains('THIS') & ~df['_c6'].upper().contains('CORRUPTED') & ~df['_c6'].upper().contains('!'))",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     },
     {
       "rddOperation": "filter(~col('_c7').rlike('^[^0-9]*$') & (col('_c7') != ''))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with regular expressions and logical operators.",
-      "dataframeEquivalent": "df.filter(~df['_c7'].rlike('^[^0-9]*$') & (df['_c7'] != ''))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(col('_c7').cast('int') != 0)",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with type casting and comparisons.",
-      "dataframeEquivalent": "df.filter(df['_c7'].cast('int') != 0)",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(col('_c8').rlike('^[0-9]*\\.?[0-9]+$') & (col('_c8') != ''))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with regular expressions and logical operators.",
-      "dataframeEquivalent": "df.filter(df['_c8'].rlike('^[0-9]*\\.?[0-9]+$') & (df['_c8'] != ''))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter(col('_c8').cast('int') != 0)",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with type casting and comparisons.",
-      "dataframeEquivalent": "df.filter(df['_c8'].cast('int') != 0)",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
-    },
-    {
-      "rddOperation": "filter((upper(col('_c15')).contains('NETWORK') | upper(col('_c15')).contains('UNABLE') | upper(col('_c15')).contains('INSUFFICIENT') | col('_c15').isNull()))",
-      "improvementExplanation": "This operation can be improved by using DataFrame's filter method with logical operators and string functions.",
-      "dataframeEquivalent": "df.filter((df['_c15'].upper().contains('NETWORK') | df['_c15'].upper().contains('UNABLE') | df['_c15'].upper().contains('INSUFFICIENT') | df['_c15'].isNull()))",
-      "benefits": "Improved performance, reduced shuffling, and better resource usage."
+      "improvementExplanation": "This RDD operation filters rows based on a regular expression pattern and a non-empty condition. DataFrames/Datasets can perform this operation more efficiently using the `filter` method with a regular expression and a boolean expression.",
+      "dataframeEquivalent": "filtered_qty_df = filtered_payment_type_df.filter(~df['_c7'].rlike('^[^0-9]*$') & (df['_c7'] != ''))",
+      "benefits": "DataFrames/Datasets can optimize queries and reduce shuffling, leading to improved performance and resource utilization."
     }
   ]
 }

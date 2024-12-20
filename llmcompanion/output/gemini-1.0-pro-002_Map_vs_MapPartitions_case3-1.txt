@@ -4,51 +4,51 @@
   "occurrences": 8,
   "response": [
     {
-      "operation": "map(lambda x: x.withColumn('source_ip_count_last_min', generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=1)))",
-      "improvementExplanation": "This map operation iterates over each row to calculate the 'source_ip_count_last_min' feature. Since this involves a rolling aggregate function, it can be more efficiently performed at the partition level using mapPartitions(). This reduces the number of function calls and improves I/O efficiency.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_count_last_min', generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=1))))",
+      "operation": "map() on 'source_ip_count_last_min' (line 44)",
+      "improvementExplanation": "This operation involves counting occurrences of 'source_ip' within a time window. Since the data is likely partitioned by timestamp, using mapPartitions() can efficiently process each partition in parallel, reducing the number of function calls and improving performance.",
+      "mapPartitionsEquivalent": "df = df.withColumn('source_ip_count_last_min', F.udf(lambda partition: partition.groupBy('source_ip').count().collectAsMap())('dt'))",
       "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
     },
     {
-      "operation": "map(lambda x: x.withColumn('source_ip_count_last_30_mins', generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=30)))",
-      "improvementExplanation": "Similar to the previous case, this map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_count_last_30_mins' feature.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_count_last_30_mins', generate_rolling_aggregate(col='source_ip', operation='count', timestamp_col='dt', window_in_minutes=30))))",
+      "operation": "map() on 'source_ip_count_last_30_mins' (line 46)",
+      "improvementExplanation": "Similar to the previous case, using mapPartitions() can efficiently process each partition in parallel for counting occurrences of 'source_ip' within a larger time window.",
+      "mapPartitionsEquivalent": "df = df.withColumn('source_ip_count_last_30_mins', F.udf(lambda partition: partition.groupBy('source_ip').count().collectAsMap())('dt'))",
       "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
     },
     {
-      "operation": "map(lambda x: x.withColumn('source_port_count_last_min', generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=1)))",
-      "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_port_count_last_min' feature.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_port_count_last_min', generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=1))))",
+      "operation": "map() on 'source_port_count_last_min' (line 48)",
+      "improvementExplanation": "This operation involves counting occurrences of 'source_port' within a time window. Using mapPartitions() can efficiently process each partition in parallel, reducing function call overhead and improving performance.",
+      "mapPartitionsEquivalent": "df = df.withColumn('source_port_count_last_min', F.udf(lambda partition: partition.groupBy('source_port').count().collectAsMap())('dt'))",
       "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
     },
     {
-      "operation": "map(lambda x: x.withColumn('source_port_count_last_30_mins', generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=30)))",
-      "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_port_count_last_30_mins' feature.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_port_count_last_30_mins', generate_rolling_aggregate(col='source_port', operation='count', timestamp_col='dt', window_in_minutes=30))))",
+      "operation": "map() on 'source_port_count_last_30_mins' (line 50)",
+      "improvementExplanation": "Similar to the previous case, using mapPartitions() can efficiently process each partition in parallel for counting occurrences of 'source_port' within a larger time window.",
+      "mapPartitionsEquivalent": "df = df.withColumn('source_port_count_last_30_mins', F.udf(lambda partition: partition.groupBy('source_port').count().collectAsMap())('dt'))",
       "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
     },
     {
-      "operation": "map(lambda x: x.withColumn('source_ip_avg_pkts_last_min', generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1)))",
-      "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_avg_pkts_last_min' feature.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_avg_pkts_last_min', generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1))))",
+      "operation": "map() on 'source_ip_avg_pkts_last_min' (line 52)",
+      "improvementExplanation": "This operation involves calculating the average 'orig_pkts' for each 'source_ip' within a time window. Using mapPartitions() can efficiently process each partition in parallel, reducing function call overhead and improving performance.",
+      "mapPartitionsEquivalent": "df = df.withColumn('source_ip_avg_pkts_last_min', F.udf(lambda partition: partition.groupBy('source_ip').avg('orig_pkts').collectAsMap())('dt'))",
       "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
     },
     {
-      "operation": "map(lambda x: x.withColumn('source_ip_avg_pkts_last_30_mins', generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30)))",
-      "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_avg_pkts_last_30_mins' feature.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_avg_pkts_last_30_mins', generate_rolling_aggregate(col='orig_pkts', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30))))",
+      "operation": "map() on 'source_ip_avg_pkts_last_30_mins' (line 54)",
+      "improvementExplanation": "Similar to the previous case, using mapPartitions() can efficiently process each partition in parallel for calculating the average 'orig_pkts' for each 'source_ip' within a larger time window.",
+      "mapPartitionsEquivalent": "df = df.withColumn('source_ip_avg_pkts_last_30_mins', F.udf(lambda partition: partition.groupBy('source_ip').avg('orig_pkts').collectAsMap())('dt'))",
       "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
     },
     {
-      "operation": "map(lambda x: x.withColumn('source_ip_avg_bytes_last_min', generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1)))",
-      "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_avg_bytes_last_min' feature.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_avg_bytes_last_min', generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=1))))",
+      "operation": "map() on 'source_ip_avg_bytes_last_min' (line 56)",
+      "improvementExplanation": "This operation involves calculating the average 'orig_ip_bytes' for each 'source_ip' within a time window. Using mapPartitions() can efficiently process each partition in parallel, reducing function call overhead and improving performance.",
+      "mapPartitionsEquivalent": "df = df.withColumn('source_ip_avg_bytes_last_min', F.udf(lambda partition: partition.groupBy('source_ip').avg('orig_ip_bytes').collectAsMap())('dt'))",
       "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
     },
     {
-      "operation": "map(lambda x: x.withColumn('source_ip_avg_bytes_last_30_mins', generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30)))",
-      "improvementExplanation": "This map operation can be replaced with mapPartitions() to improve efficiency for calculating the 'source_ip_avg_bytes_last_30_mins' feature.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: partition.map(lambda x: x.withColumn('source_ip_avg_bytes_last_30_mins', generate_rolling_aggregate(col='orig_ip_bytes', partition_by='source_ip', operation='avg', timestamp_col='dt', window_in_minutes=30))))",
+      "operation": "map() on 'source_ip_avg_bytes_last_30_mins' (line 58)",
+      "improvementExplanation": "Similar to the previous case, using mapPartitions() can efficiently process each partition in parallel for calculating the average 'orig_ip_bytes' for each 'source_ip' within a larger time window.",
+      "mapPartitionsEquivalent": "df = df.withColumn('source_ip_avg_bytes_last_30_mins', F.udf(lambda partition: partition.groupBy('source_ip').avg('orig_ip_bytes').collectAsMap())('dt'))",
       "benefits": "Reduced function call overhead, optimized I/O, improved resource utilization."
     }
   ]

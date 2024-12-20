@@ -1,52 +1,34 @@
 Model,Case,File,Input Tokens,Output Tokens,Total Tokens
-gemini-1.0-pro-002,RDD vs DataFrame,case0-1.py,1412,817,2229
-gemini-1.0-pro-002,Coalesce vs Repartition,case0-1.py,1390,310,1700
-gemini-1.0-pro-002,Map vs MapPartitions,case0-1.py,1379,565,1944
-gemini-1.0-pro-002,Serialized Data Formats,case0-1.py,1423,469,1892
-gemini-1.0-pro-002,Avoiding UDFs,case0-1.py,1389,310,1699
-gemini-1.0-pro-002,All,case0-1.py,2232,838,3070
-gemini-1.5-flash-002,RDD vs DataFrame,case0-1.py,1412,1147,2559
+gemini-1.0-pro-002,RDD vs DataFrame,case0-1.py,1412,794,2206
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-1.py,1390,274,1664
+gemini-1.0-pro-002,Map vs MapPartitions,case0-1.py,1379,538,1917
+gemini-1.0-pro-002,Serialized Data Formats,case0-1.py,1423,482,1905
+gemini-1.0-pro-002,Avoiding UDFs,case0-1.py,1389,335,1724
+gemini-1.0-pro-002,All,case0-1.py,2232,871,3103
+gemini-1.5-flash-002,RDD vs DataFrame,case0-1.py,1412,1160,2572
 gemini-1.5-flash-002,Coalesce vs Repartition,case0-1.py,1390,31,1421
-gemini-1.5-flash-002,Map vs MapPartitions,case0-1.py,1379,792,2171
-gemini-1.5-flash-002,Serialized Data Formats,case0-1.py,1423,772,2195
-gemini-1.5-flash-002,Avoiding UDFs,case0-1.py,1389,664,2053
-gemini-1.5-flash-002,All,case0-1.py,2232,1909,4141
+gemini-1.5-flash-002,Map vs MapPartitions,case0-1.py,1379,694,2073
+gemini-1.5-flash-002,Serialized Data Formats,case0-1.py,1423,710,2133
+gemini-1.5-flash-002,Avoiding UDFs,case0-1.py,1389,872,2261
+gemini-1.5-flash-002,All,case0-1.py,2232,2047,4279
 gemini-2.0-flash-exp,RDD vs DataFrame,case0-1.py,1412,1789,3201
 gemini-2.0-flash-exp,Coalesce vs Repartition,case0-1.py,1390,31,1421
 gemini-2.0-flash-exp,Map vs MapPartitions,case0-1.py,1379,829,2208
 gemini-2.0-flash-exp,Serialized Data Formats,case0-1.py,1423,1023,2446
 gemini-2.0-flash-exp,Avoiding UDFs,case0-1.py,1389,741,2130
 gemini-2.0-flash-exp,All,case0-1.py,2232,3066,5298
-gemini-1.0-pro-002,RDD vs DataFrame,case1-1.py,1241,236,1477
-gemini-1.0-pro-002,Coalesce vs Repartition,case1-1.py,1219,378,1597
-gemini-1.0-pro-002,Map vs MapPartitions,case1-1.py,1208,764,1972
-gemini-1.0-pro-002,Serialized Data Formats,case1-1.py,1252,427,1679
-gemini-1.0-pro-002,Avoiding UDFs,case1-1.py,1218,30,1248
-gemini-1.0-pro-002,All,case1-1.py,2061,894,2955
-gemini-1.5-flash-002,RDD vs DataFrame,case1-1.py,1241,31,1272
-gemini-1.5-flash-002,Coalesce vs Repartition,case1-1.py,1219,399,1618
-gemini-1.5-flash-002,Map vs MapPartitions,case1-1.py,1208,31,1239
-gemini-1.5-flash-002,Serialized Data Formats,case1-1.py,1252,713,1965
-gemini-1.5-flash-002,Avoiding UDFs,case1-1.py,1218,31,1249
-gemini-1.5-flash-002,All,case1-1.py,2061,639,2700
-gemini-2.0-flash-exp,RDD vs DataFrame,case1-1.py,1241,31,1272
-gemini-2.0-flash-exp,Coalesce vs Repartition,case1-1.py,1219,568,1787
-gemini-2.0-flash-exp,Map vs MapPartitions,case1-1.py,1208,31,1239
-gemini-2.0-flash-exp,Serialized Data Formats,case1-1.py,1252,715,1967
-gemini-2.0-flash-exp,Avoiding UDFs,case1-1.py,1218,31,1249
-gemini-2.0-flash-exp,All,case1-1.py,2061,878,2939
-gemini-1.0-pro-002,RDD vs DataFrame,case1-2.py,1238,30,1268
-gemini-1.0-pro-002,Coalesce vs Repartition,case1-2.py,1216,297,1513
-gemini-1.0-pro-002,Map vs MapPartitions,case1-2.py,1205,301,1506
-gemini-1.0-pro-002,Serialized Data Formats,case1-2.py,1249,323,1572
-gemini-1.0-pro-002,Avoiding UDFs,case1-2.py,1215,142,1357
-gemini-1.0-pro-002,All,case1-2.py,2058,404,2462
+gemini-1.0-pro-002,RDD vs DataFrame,case1-2.py,1238,321,1559
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-2.py,1216,306,1522
+gemini-1.0-pro-002,Map vs MapPartitions,case1-2.py,1205,387,1592
+gemini-1.0-pro-002,Serialized Data Formats,case1-2.py,1249,318,1567
+gemini-1.0-pro-002,Avoiding UDFs,case1-2.py,1215,30,1245
+gemini-1.0-pro-002,All,case1-2.py,2058,406,2464
 gemini-1.5-flash-002,RDD vs DataFrame,case1-2.py,1238,31,1269
-gemini-1.5-flash-002,Coalesce vs Repartition,case1-2.py,1216,360,1576
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-2.py,1216,376,1592
 gemini-1.5-flash-002,Map vs MapPartitions,case1-2.py,1205,31,1236
 gemini-1.5-flash-002,Serialized Data Formats,case1-2.py,1249,462,1711
 gemini-1.5-flash-002,Avoiding UDFs,case1-2.py,1215,31,1246
-gemini-1.5-flash-002,All,case1-2.py,2058,588,2646
+gemini-1.5-flash-002,All,case1-2.py,2058,580,2638
 gemini-2.0-flash-exp,RDD vs DataFrame,case1-2.py,1238,31,1269
 gemini-2.0-flash-exp,Coalesce vs Repartition,case1-2.py,1216,374,1590
 gemini-2.0-flash-exp,Map vs MapPartitions,case1-2.py,1205,31,1236

@@ -4,15 +4,15 @@
     "response": [
         {
             "rddOperation": "collect",
-            "improvementExplanation": "The `collect` action brings the entire RDD into the driver program, which can be inefficient for large datasets. DataFrames/Datasets can perform operations lazily, avoiding unnecessary data transfers.",
-            "dataframeEquivalent": "```python\n# Use show() to display a limited number of rows instead of collecting the entire DataFrame\nfor element in df.show(5):\n    print(element)\n```",
-            "benefits": "Reduces data transfer, improves performance, especially for large datasets."
+            "improvementExplanation": "The `collect` operation in RDDs fetches all data to the driver program, which can be inefficient for large datasets. DataFrames/Datasets can perform lazy transformations and avoid unnecessary data movement.",
+            "dataframeEquivalent": "```python\n# Convert RDD to DataFrame\ndf = spark.createDataFrame(rdd)\n\n# Print DataFrame content\ndf.show()\n```",
+            "benefits": "Using DataFrame/Dataset with `show` avoids unnecessary data collection and improves performance."
         },
         {
             "rddOperation": "flatMap",
-            "improvementExplanation": "The `flatMap` operation can be efficiently replaced by the `explode` function in DataFrames/Datasets, which avoids creating an intermediate RDD.",
-            "dataframeEquivalent": "```python\n# Convert the DataFrame to a Dataset of words\ndf = spark.createDataFrame(data, ['text'])\nwords_df = df.select(explode(split(df['text'], ' ')).alias('word'))\n# Display the words\nfor element in words_df.show():\n    print(element)\n```",
-            "benefits": "Improves performance by avoiding unnecessary RDD creation, reduces memory usage."
+            "improvementExplanation": "The `flatMap` operation in RDDs iterates over each element and applies a function to generate zero or more new elements. DataFrames/Datasets can perform similar operations with optimized functions like `explode` or `split`.",
+            "dataframeEquivalent": "```python\n# Convert RDD to DataFrame\ndf = spark.createDataFrame(rdd)\n\n# Split words using explode\ndf_split = df.select(explode(split(df['value'], ' ')).alias('word'))\n\n# Print split words\ndf_split.show()\n```",
+            "benefits": "Using DataFrame/Dataset with `explode` or `split` provides optimized functions for splitting strings and avoids unnecessary RDD operations."
         }
     ]
 }

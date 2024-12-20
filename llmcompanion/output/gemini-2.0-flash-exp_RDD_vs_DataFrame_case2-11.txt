@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "rddOperation": "spark.sparkContext.parallelize(distinct_buckets, numSlices=len(distinct_buckets)) (line 101)",
+      "improvementExplanation": "Creating an RDD from a Python list can be inefficient, especially for larger lists. DataFrames can be created directly from Python lists or other data sources, which is often more optimized.",
+      "dataframeEquivalent": "```python\ndf_buckets = spark.createDataFrame(distinct_buckets, StringType())\ndf_buckets = df_buckets.withColumnRenamed('value', 'uri')\n```",
+      "benefits": "Using `spark.createDataFrame` directly is more efficient than creating an RDD and then converting it to a DataFrame. It leverages Spark's internal optimizations for data loading and distribution. It also allows for schema definition, which can improve performance in subsequent operations."
+    },
+    {
+      "rddOperation": "uri_rdd.mapPartitions(process_partition) (line 102)",
+      "improvementExplanation": "Using `mapPartitions` on an RDD is a low-level operation that requires manual handling of partitions. DataFrames provide a higher-level abstraction that allows Spark to optimize data processing and partitioning automatically. The `process_partition` function can be adapted to work with DataFrames using `map` or `flatMap` with a UDF.",
+      "dataframeEquivalent": "```python\nfrom pyspark.sql.functions import pandas_udf, PandasUDFType\nfrom pyspark.sql.types import StructType, StructField, StringType, TimestampType, ArrayType\n\nschema = StructType([\n    StructField('url', StringType(), True),\n    StructField('date', StringType(), True),\n    StructField('content', StringType(), True),\n    StructField('content_type', StringType(), True)\n])\n\n@pandas_udf(schema, PandasUDFType.GROUPED_MAP)\ndef process_partition_udf(uris_df):\n    s3 = boto3.client('s3')\n    bucket = \"commoncrawl\"\n    results = []\n    for key_ in uris_df['uri']:\n        try:\n            response = s3.get_object(Bucket=bucket, Key=key_)\n            file_ = response['Body']\n\n            for record in ArchiveIterator(file_):\n                if record.rec_type == 'response':\n                    url = record.rec_headers.get_header('WARC-Target-URI')\n                    raw_date = record.rec_headers.get_header('WARC-Date')\n                    date = datetime.strptime(raw_date, '%Y-%m-%dT%H:%M:%SZ').strftime('%Y-%m-%d %H:%M:%S')\n                    content_type = record.http_headers.get_header('Content-Type')\n                    content = record.content_stream().read().decode('utf-8', errors='replace')\n                    if content_type == None:\n                        continue\n                    if content_type == 'text/html':\n                        content_type_label = 'text/html'\n                    elif 'json' in content_type:\n                        content_type_label = 'application/json'\n                    elif 'pdf' in content_type:\n                        content_type_label = 'pdf'\n                    elif content_type == 'application/xml':\n                        content_type_label = 'xml'\n                    elif content_type == 'text/csv':\n                        content_type_label = 'csv'\n                    elif content_type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':\n                        content_type_label = 'xlsx'\n                    elif 'image' in content_type:\n                        if 'jpeg' in content_type:\n                            content_type_label = 'image/jpeg'\n                        elif 'png' in content_type:\n                            content_type_label = 'image/png'\n                    else:\n                        continue\n\n                    results.append({\n                        \"url\":url,\n                        \"date\":date,\n                        \"content\":content,\n                        \"content_type\":content_type_label\n                    })\n\n        except Exception as e:\n            print(f\"Error accessing {key_}: {e}\")\n            continue\n    return pd.DataFrame(results)\n\ndf = df_buckets.groupBy().apply(process_partition_udf)\n```",
+      "benefits": "Using a Pandas UDF with `groupBy().apply()` allows Spark to handle the partitioning and data distribution more efficiently. It also allows for vectorized operations within the UDF, which can improve performance. This approach is more scalable and easier to maintain than using `mapPartitions` on an RDD."
+    },
+    {
+      "rddOperation": "json_rdd.map(lambda x: Row(**x)).toDF() (line 103)",
+      "improvementExplanation": "Converting an RDD of dictionaries to a DataFrame using `map` and `Row` is less efficient than creating a DataFrame directly from the RDD. Spark can infer the schema more efficiently when using `spark.createDataFrame` directly.",
+      "dataframeEquivalent": "```python\ndf = spark.createDataFrame(json_rdd)\n```",
+      "benefits": "Using `spark.createDataFrame` directly is more efficient as it allows Spark to infer the schema and optimize the data loading process. It avoids the overhead of creating `Row` objects and then converting them to a DataFrame. This approach is more concise and easier to read."
+    }
+  ]
+}
+```

@@ -5,9 +5,9 @@
   "response": [
     {
       "operation": "df_trip = df_trip.repartition(1000)",
-      "improvementExplanation": "This repartition() operation is used to increase the number of partitions in the DataFrame to 1000. However, since the subsequent write operation partitions the data by year and month, it is unnecessary to repartition the DataFrame beforehand. Using coalesce() instead would avoid an unnecessary shuffle and potentially improve performance.",
-      "coalesceEquivalent": "df_trip = df_trip.coalesce(1000)",
-      "benefits": "Replacing repartition() with coalesce() in this case would:\n- Reduce shuffling, as coalesce() only redistributes data within existing partitions.\n- Improve resource usage, as coalesce() avoids creating unnecessary partitions.\n- Potentially speed up the job runtime, as coalesce() is generally faster than repartition()."
+      "improvementExplanation": "In this case, repartition() is used to increase the number of partitions in the DataFrame to 1000. However, since the subsequent write operation partitions the data by year and month, it is more efficient to use coalesce() to reduce the number of partitions to the desired level (e.g., 100) before writing. This will minimize unnecessary shuffling and improve resource utilization.",
+      "coalesceEquivalent": "df_trip = df_trip.coalesce(100)",
+      "benefits": "Replacing repartition() with coalesce() in this case will:\n- Reduce shuffling, as coalesce() only merges partitions without a full shuffle.\n- Improve resource utilization, as fewer partitions require less memory and processing power.\n- Potentially speed up the write operation, as fewer partitions can be written in parallel."
     }
   ]
 }

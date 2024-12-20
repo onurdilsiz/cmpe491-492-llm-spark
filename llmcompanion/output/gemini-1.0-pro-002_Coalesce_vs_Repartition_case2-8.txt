@@ -5,9 +5,9 @@
   "response": [
     {
       "operation": "rdd.repartition(self.num_workers)",
-      "improvementExplanation": "In this case, repartition() is used to distribute the data evenly across the specified number of workers. However, since the data is already partitioned, using coalesce() instead would achieve the same distribution without incurring the overhead of a full shuffle. This would result in reduced shuffling, improved resource usage, and faster job runtime.",
+      "improvementExplanation": "In this case, repartition() is used to distribute the data evenly across the specified number of workers. However, since the data is already partitioned, using coalesce() instead would achieve the same distribution without incurring the overhead of a full shuffle. This can significantly improve performance by reducing the amount of data transferred across the network.",
       "coalesceEquivalent": "rdd.coalesce(self.num_workers)",
-      "benefits": "Reduced shuffling, improved resource usage, and faster job runtime."
+      "benefits": "Switching to coalesce() would provide the following benefits:\n- Reduced shuffling: By avoiding a full shuffle, coalesce() significantly reduces the amount of data transferred across the network, leading to faster execution times.\n- Improved resource usage: Coalesce() utilizes existing partitions, minimizing the need for additional memory allocation and reducing overall resource consumption.\n- Faster runtime: The combination of reduced shuffling and improved resource usage results in a faster overall runtime for the training process."
     }
   ]
 }

@@ -4,21 +4,21 @@
     "response": [
         {
             "rddOperation": "flatMap",
-            "improvementExplanation": "The `flatMap` operation can be replaced with a DataFrame/Dataset transformation like `select explode` to achieve the same result of splitting each line into individual words.",
-            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\nfile_df = spark.createDataFrame(file_q3)\n\n# Split each line into words using select explode\nflat_df = file_df.select(explode(split(col('value'), ' '))) \n\n# Collect the results\nflat_df.collect()\n```",
-            "benefits": "Using `select explode` on a DataFrame can be more efficient than `flatMap` on an RDD because it leverages Spark SQL's query optimizer and avoids unnecessary data shuffling."
+            "improvementExplanation": "flatMap can be replaced with DataFrame's `selectExpr` or `withColumn` for better performance and reduced shuffling.",
+            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\nfile_df = spark.createDataFrame(file_q3, schema=['line'])\n\n# Split each line into words using selectExpr\nflat_df = file_df.selectExpr('split(line, \" \") as words')\n\n# Flatten the array of words into a single column\nflat_df = flat_df.selectExpr('explode(words) as word')\n```",
+            "benefits": "Using DataFrame's `selectExpr` or `withColumn` avoids unnecessary shuffling and leverages Spark SQL's query optimizer for better performance."
         },
         {
             "rddOperation": "mapPartitions",
-            "improvementExplanation": "The `mapPartitions` operation can be replaced with a DataFrame/Dataset transformation like `withColumn` and an aggregation function like `sum` to achieve the same result of counting numbers, zeros, positive numbers, negative numbers, and non-numbers.",
-            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\nflat_df = spark.createDataFrame(flat_q3)\n\n# Define a function to count numbers, zeros, positive numbers, negative numbers, and non-numbers\ndef count_numbers(df):\n    return df.withColumn('is_number', (col('value').cast('int').isNotNull()) & (col('value') != '0'))\n            .agg(sum('is_number').alias('C'),\n                 sum(col('value') == '0').alias('Z'),\n                 sum(col('value').cast('int') > 0).alias('P'),\n                 sum(col('value').cast('int') < 0).alias('N'),\n                 count(when(col('is_number') == False, 1)).alias('S'))\n\n# Apply the function to the DataFrame\nresult_df = flat_df.groupBy().apply(count_numbers)\n\n# Collect the results\nresult_df.collect()\n```",
-            "benefits": "Using `withColumn` and aggregation functions on a DataFrame can be more efficient than `mapPartitions` on an RDD because it leverages Spark SQL's query optimizer and avoids unnecessary data shuffling."
+            "improvementExplanation": "mapPartitions can be replaced with DataFrame's `agg` for better performance and reduced shuffling.",
+            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\nflat_df = spark.createDataFrame(flat_q3, schema=['word'])\n\n# Aggregate the data using agg\nfinal_df = flat_df.agg(sum('word').alias('C'), sum(when(col('word') == '0', 1).otherwise(0)).alias('Z'), sum(when(col('word') > '0', 1).otherwise(0)).alias('P'), sum(when(col('word') < '0', 1).otherwise(0)).alias('N'), sum(when(col('word').rlike('^-?[0-9]+$'), False).otherwise(1)).alias('S'))\n\n# Collect the results\nfinal_rdd = final_df.collect()[0]\n```",
+            "benefits": "Using DataFrame's `agg` avoids unnecessary shuffling and leverages Spark SQL's query optimizer for better performance."
         },
         {
             "rddOperation": "reduce",
-            "improvementExplanation": "The `reduce` operation can be replaced with a DataFrame/Dataset aggregation function like `sum` to achieve the same result of summing up the counts of numbers, zeros, positive numbers, negative numbers, and non-numbers.",
-            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\nresult_df = spark.createDataFrame(map_q3)\n\n# Sum up the counts of numbers, zeros, positive numbers, negative numbers, and non-numbers\nsum_df = result_df.agg(sum('C').alias('C'),\n                       sum('Z').alias('Z'),\n                       sum('P').alias('P'),\n                       sum('N').alias('N'),\n                       sum('S').alias('S'))\n\n# Collect the results\nsum_df.collect()\n```",
-            "benefits": "Using `sum` on a DataFrame can be more efficient than `reduce` on an RDD because it leverages Spark SQL's query optimizer and avoids unnecessary data shuffling."
+            "improvementExplanation": "reduce can be replaced with DataFrame's `reduce` for better performance and reduced shuffling.",
+            "dataframeEquivalent": "```python\n# Create a DataFrame from the RDD\nmap_df = spark.createDataFrame(map_q3, schema=['C', 'Z', 'P', 'N', 'S'])\n\n# Reduce the DataFrame using reduce\nfinal_df = map_df.reduce(lambda x, y: (x[0] + y[0], x[1] + y[1], x[2] + y[2], x[3] + y[3], x[4] + y[4]))\n\n# Collect the results\nfinal_rdd = final_df.collect()[0]\n```",
+            "benefits": "Using DataFrame's `reduce` avoids unnecessary shuffling and leverages Spark SQL's query optimizer for better performance."
         }
     ]
 }

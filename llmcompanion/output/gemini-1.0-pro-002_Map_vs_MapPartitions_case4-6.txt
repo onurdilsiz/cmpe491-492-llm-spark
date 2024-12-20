@@ -8,10 +8,10 @@
 
 **Explanation:**
 
-The provided Spark code does not contain any instances of `map()` transformations. Therefore, there are no opportunities to replace them with `mapPartitions()` for improved efficiency.
+The provided Spark code does not contain any instances of the `map()` transformation. Therefore, there are no opportunities to replace it with `mapPartitions()` for improved efficiency.
 
 **Additional Notes:**
 
-* The code snippet includes several user-defined functions (UDFs) for data cleaning and formatting. These UDFs can be used within Spark transformations to manipulate data efficiently.
-* While `mapPartitions()` can offer performance benefits in certain scenarios, it's important to carefully evaluate the specific use case and data characteristics before making the switch.
-* Consider factors such as data size, partition size, and the nature of the transformation when deciding between `map()` and `mapPartitions()`.
+* The provided code snippet primarily focuses on defining user-defined functions (UDFs) for data cleaning and transformation.
+* While `mapPartitions()` can be beneficial for optimizing partition-level operations, it's not applicable in this specific case.
+* If the code involved processing large datasets with partition-level operations, replacing `map()` with `mapPartitions()` could potentially improve performance.

@@ -4,27 +4,22 @@
   "occurrences": 3,
   "response": [
     {
-      "operation": "UDF defined in `func1` function (line 34-38)",
-      "improvementExplanation": "This UDF simply concatenates first and last names, converts gender to lowercase, and doubles the salary. All these operations can be achieved using built-in Spark SQL functions and DataFrame/Dataset transformations.",
-      "alternativeEquivalent": """
-```python
-df.withColumn("name", concat(col("firstname"), lit(","), col("lastname")))
-  .withColumn("gender", lower(col("gender")))
-  .withColumn("salary", col("salary") * 2)
-```""",
-      "benefits": "Replacing the UDF with built-in functions and transformations enables Catalyst optimizations, improves performance by avoiding serialization overhead, and makes the code more concise and readable."
+      "operation": "UDF defined in `func1` function (line 38-42)",
+      "improvementExplanation": "The UDF `func1` performs simple string concatenation, gender conversion, and salary calculation. These operations can be achieved using built-in Spark SQL functions and DataFrame/Dataset transformations.",
+      "alternativeEquivalent": "```python\n# Using built-in functions and transformations\nrdd2 = df.rdd.map(lambda x: (x.firstname + \",\" + x.lastname, x.gender.lower(), x.salary * 2))\n```",
+      "benefits": "Replacing the UDF with built-in functions and transformations enables Catalyst optimizations, improves performance by avoiding serialization overhead, and simplifies code readability."
     },
     {
-      "operation": "UDF used in `rdd2=df.rdd.map(lambda x: func1(x)).toDF().show()` (line 40)",
-      "improvementExplanation": "This UDF usage can be replaced by the equivalent code provided in the `alternativeEquivalent` field of the previous response.",
-      "alternativeEquivalent": "See the previous response.",
-      "benefits": "Same benefits as replacing the UDF definition."
+      "operation": "UDF used in `rdd2.map(lambda x: func1(x))` (line 43)",
+      "improvementExplanation": "This UDF usage can be replaced with the equivalent code provided in the `alternativeEquivalent` field above.",
+      "alternativeEquivalent": "```python\n# Using built-in functions and transformations\nrdd2 = df.rdd.map(lambda x: (x.firstname + \",\" + x.lastname, x.gender.lower(), x.salary * 2))\n```",
+      "benefits": "Same benefits as mentioned above."
     },
     {
-      "operation": "UDF used in `rdd2=df.rdd.map(func1).toDF().show()` (line 41)",
-      "improvementExplanation": "This UDF usage can also be replaced by the equivalent code provided in the `alternativeEquivalent` field of the previous response.",
-      "alternativeEquivalent": "See the previous response.",
-      "benefits": "Same benefits as replacing the UDF definition."
+      "operation": "UDF used in `rdd2.map(func1)` (line 44)",
+      "improvementExplanation": "This UDF usage can also be replaced with the equivalent code provided in the `alternativeEquivalent` field above.",
+      "alternativeEquivalent": "```python\n# Using built-in functions and transformations\nrdd2 = df.rdd.map(lambda x: (x.firstname + \",\" + x.lastname, x.gender.lower(), x.salary * 2))\n```",
+      "benefits": "Same benefits as mentioned above."
     }
   ]
 }

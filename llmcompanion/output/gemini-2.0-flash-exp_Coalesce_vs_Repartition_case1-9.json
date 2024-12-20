@@ -1,0 +1,12 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+            "improvementExplanation": "The `repartition(1)` operation is used to reduce the number of partitions to 1 before writing the data to a table. Since the goal is to reduce the number of partitions, and not increase it, `coalesce(1)` can be used instead. `repartition()` always performs a full shuffle, while `coalesce()` can avoid a full shuffle if the target number of partitions is less than the current number of partitions. In this case, we are reducing the number of partitions to 1, so `coalesce()` is more efficient.",
+            "coalesceEquivalent": "filteredPaths.coalesce(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+            "benefits": "Switching to `coalesce(1)` will avoid a full shuffle, which will reduce the amount of data being moved across the network. This will result in improved resource usage, reduced network traffic, and faster job runtime. The output will still be a single partition as required."
+        }
+    ]
+}

@@ -1,25 +1,31 @@
 ```json
 {
   "detected": true,
-  "occurrences": 3,
+  "occurrences": 4,
   "response": [
     {
-      "operation": "convertCase UDF on line 18",
-      "improvementExplanation": "The `convertCase` UDF can be replaced with the built-in `initcap` function, which performs the same capitalization logic. This avoids the overhead of creating and registering a UDF.",
-      "alternativeEquivalent": "```python\ndf.select(col(\"Seqno\"), initcap(col(\"Name\")).alias(\"Name\"))\n.show(truncate=False)\n```",
+      "operation": "convertUDF(col(\"Name\")).alias(\"Name\")",
+      "improvementExplanation": "This UDF can be replaced with the built-in `initcap` function, which capitalizes the first letter of each word in a string. This avoids the overhead of creating and registering a UDF.",
+      "alternativeEquivalent": "df.select(col(\"Seqno\"), initcap(col(\"Name\")).alias(\"Name\")).show(truncate=False)",
       "benefits": "Using `initcap` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
     },
     {
-      "operation": "upperCase UDF on line 27",
-      "improvementExplanation": "The `upperCase` UDF can be replaced with the built-in `upper` function, which converts a string to uppercase. This eliminates the need for a custom UDF.",
-      "alternativeEquivalent": "```python\ndf.withColumn(\"Cureated Name\", upper(col(\"Name\")))\n.show(truncate=False)\n```",
+      "operation": "upperCase(col(\"Name\"))",
+      "improvementExplanation": "This UDF can be replaced with the built-in `upper` function, which converts a string to uppercase. This avoids the overhead of creating and registering a UDF.",
+      "alternativeEquivalent": "df.withColumn(\"Cureated Name\", upper(col(\"Name\"))).show(truncate=False)",
       "benefits": "Using `upper` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
     },
     {
-      "operation": "convertUDF in SQL on line 34",
-      "improvementExplanation": "The `convertUDF` UDF can be replaced with the built-in `initcap` function within the SQL query. This avoids the need to register the UDF and allows for Catalyst optimizations.",
-      "alternativeEquivalent": "```sql\nselect Seqno, initcap(Name) as Name from NAME_TABLE\n```",
+      "operation": "convertUDF(Name)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `initcap` function, which capitalizes the first letter of each word in a string. This avoids the overhead of creating and registering a UDF.",
+      "alternativeEquivalent": "spark.sql(\"select Seqno, initcap(Name) as Name from NAME_TABLE\").show(truncate=False)",
       "benefits": "Using `initcap` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "_nullsafeUDF(Name)",
+      "improvementExplanation": "This UDF can be replaced with a combination of the built-in `coalesce` and `initcap` functions. `coalesce` handles null values, and `initcap` capitalizes the first letter of each word. This avoids the overhead of creating and registering a UDF.",
+      "alternativeEquivalent": "spark.sql(\"select Seqno, initcap(coalesce(Name, '')) as Name from NAME_TABLE2\").show(truncate=False)",
+      "benefits": "Using `coalesce` and `initcap` instead of the UDF enables Catalyst optimizations, improves performance, and reduces serialization overhead."
     }
   ]
 }

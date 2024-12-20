@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "@udf(ArrayType(DoubleType()))\ndef delta_mol(array):\n    differenze = [(array[i+1] / array[i] -1)*100 if array[i] != 0.0 else 0.0 for i in range(len(array)-1) ]\n    return differenze\n \ndff = df.withColumn('delta_arry',delta_mol(F.col('array_col')))",
+      "improvementExplanation": "The UDF `delta_mol` calculates the percentage difference between consecutive elements in an array. This can be achieved using Spark's built-in functions without the need for a UDF.  We can leverage `transform` and `lag` to achieve the same result efficiently within the Spark execution engine.",
+      "alternativeEquivalent": "from pyspark.sql.functions import lag, expr\ndff = df.withColumn('delta_arry', expr(\"transform(array_col, (x, i) -> if(lag(x, 1, 0) over (rows between unbounded preceding and current row) = 0, 0, (x / lag(x, 1, 0) over (rows between unbounded preceding and current row) - 1) * 100))\"))",
+      "benefits": "Replacing the UDF with built-in functions allows Spark's Catalyst optimizer to perform more efficient query planning and execution. This leads to improved performance by avoiding the overhead of Java serialization and deserialization associated with UDFs.  It also enables the use of Spark's optimized array processing capabilities, resulting in faster computation and reduced resource consumption."
+    }
+  ]
+}
+```

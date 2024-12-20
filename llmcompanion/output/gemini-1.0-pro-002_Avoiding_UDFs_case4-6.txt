@@ -5,39 +5,39 @@
   "response": [
     {
       "operation": "extract_family_name(full_name) on line 10",
-      "improvementExplanation": "This UDF can be replaced with the `split` function and string manipulation operations. The `split` function can split the full name into a list of words, and then we can use string slicing to extract the family name.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import split\n\n# Split the full name into a list of words\nfull_name_splited = split(df['full_name'], ' ')\n\n# Extract the family name\nfamily_name = full_name_splited[1:]\n\n# Join the family name words with a space\nfamily_name = family_name.cast('string').str.join(' ')\n\n# Handle cases with only one word\nfamily_name = family_name.where(full_name_splited.size() > 1, None)\n```",
-      "benefits": "Replacing this UDF with native DataFrame/Dataset operations enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+      "improvementExplanation": "The UDF `extract_family_name` can be replaced with the built-in function `split` and `array_join` to achieve the same functionality. This approach avoids the overhead of UDF serialization and enables Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('family_name', split(df['full_name'], ' ').getItem(1).cast('string'))",
+      "benefits": "Improved performance, reduced serialization overhead, and Catalyst optimization."
     },
     {
-      "operation": "extract_given_name(full_name) on line 16",
-      "improvementExplanation": "This UDF can be replaced with the `split` function and array indexing. The `split` function can split the full name into a list of words, and then we can access the first element of the list to get the given name.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import split\n\n# Split the full name into a list of words\nfull_name_splited = split(df['full_name'], ' ')\n\n# Extract the given name\ngiven_name = full_name_splited[0]\n```",
-      "benefits": "Replacing this UDF with native DataFrame/Dataset operations enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+      "operation": "extract_given_name(full_name) on line 15",
+      "improvementExplanation": "The UDF `extract_given_name` can be replaced with the built-in function `split` and `getItem` to achieve the same functionality. This approach avoids the overhead of UDF serialization and enables Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('given_name', split(df['full_name'], ' ').getItem(0).cast('string'))",
+      "benefits": "Improved performance, reduced serialization overhead, and Catalyst optimization."
     },
     {
-      "operation": "format_phone(phone) on line 22",
-      "improvementExplanation": "This UDF can be replaced with the `regexp_replace` function. The `regexp_replace` function can be used to replace the pattern in the phone number with the desired format.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import regexp_replace\n\n# Replace the phone number pattern with the desired format\nformatted_phone = regexp_replace(df['phone'], r'\\(\\d{2}\\)\\s(\\d{4}-\\d{4})', r'+55 0\\1 \\2')\n```",
-      "benefits": "Replacing this UDF with a built-in function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+      "operation": "format_phone(phone) on line 20",
+      "improvementExplanation": "The UDF `format_phone` can be replaced with the built-in function `regexp_replace` to achieve the same functionality. This approach avoids the overhead of UDF serialization and enables Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('phone', regexp_replace(df['phone'], r'\\(\\d{2}\\)\\s(\\d{4}-\\d{4})', r'+55 0\\1 \\2'))",
+      "benefits": "Improved performance, reduced serialization overhead, and Catalyst optimization."
     },
     {
-      "operation": "clean_cpf(value) on line 28",
-      "improvementExplanation": "This UDF can be replaced with the `regexp_replace` function. The `regexp_replace` function can be used to remove all non-digit characters from the CPF value.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import regexp_replace\n\n# Remove all non-digit characters from the CPF value\ncleaned_cpf = regexp_replace(df['value'], r'\\D', '')\n```",
-      "benefits": "Replacing this UDF with a built-in function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+      "operation": "clean_cpf(value) on line 25",
+      "improvementExplanation": "The UDF `clean_cpf` can be replaced with the built-in function `regexp_replace` to achieve the same functionality. This approach avoids the overhead of UDF serialization and enables Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('cpf', regexp_replace(df['value'], r'\\D', ''))",
+      "benefits": "Improved performance, reduced serialization overhead, and Catalyst optimization."
     },
     {
-      "operation": "format_gender(value) on line 34",
-      "improvementExplanation": "This UDF can be replaced with a combination of the `lower` function and a conditional expression. The `lower` function can be used to convert the gender value to lowercase, and then we can use a conditional expression to map the lowercase value to the desired output.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import lower\n\n# Convert the gender value to lowercase\ngender_clean = lower(df['value'])\n\n# Map the lowercase value to the desired output\ngender_formatted = gender_clean.where(gender_clean == 'masculino', 'male')\n.where(gender_clean == 'feminino', 'female')\n.otherwise('unknown')\n```",
-      "benefits": "Replacing this UDF with native DataFrame/Dataset operations enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+      "operation": "format_gender(value) on line 30",
+      "improvementExplanation": "The UDF `format_gender` can be replaced with a combination of built-in functions `lower` and `case when` to achieve the same functionality. This approach avoids the overhead of UDF serialization and enables Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('gender', lower(df['value'])).withColumn('gender', case when df['gender'] == 'masculino' then 'male' when df['gender'] == 'feminino' then 'female' else 'unknown' end)",
+      "benefits": "Improved performance, reduced serialization overhead, and Catalyst optimization."
     },
     {
-      "operation": "format_date(value) on line 40",
-      "improvementExplanation": "This UDF can be replaced with the `to_date` function and the `strftime` function. The `to_date` function can be used to convert the date string to a date object, and then we can use the `strftime` function to format the date object in the desired format.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import to_date, strftime\n\n# Convert the date string to a date object\ndate_value = to_date(df['value'], '%d/%m/%Y')\n\n# Format the date object in the desired format\nformatted_date = strftime(date_value, '%Y-%m-%d')\n```",
-      "benefits": "Replacing this UDF with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+      "operation": "format_date(value) on line 35",
+      "improvementExplanation": "The UDF `format_date` can be replaced with the built-in function `to_date` and `date_format` to achieve the same functionality. This approach avoids the overhead of UDF serialization and enables Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('date', to_date(df['value'], 'dd/MM/yyyy').cast('string').date_format('yyyy-MM-dd'))",
+      "benefits": "Improved performance, reduced serialization overhead, and Catalyst optimization."
     }
   ]
 }

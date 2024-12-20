@@ -8,4 +8,4 @@
 
 **Explanation:**
 
-The provided Spark code does not perform any input/output operations. It focuses on repartitioning a DataFrame based on a salted key to ensure even distribution of records across files. While the code interacts with the DataFrame, it does not read data from external sources or write data to external storage. Therefore, there are no opportunities to optimize input/output operations by switching to serialized data formats like Parquet or ORC.
+The provided Spark code does not perform any input/output operations. It focuses on repartitioning a DataFrame based on a salted key to distribute records evenly across HDFS files. While the code interacts with the DataFrame, it does not read data from external sources or write data to external files. Therefore, there are no opportunities to optimize input/output operations by switching to serialized formats like Parquet or ORC.

@@ -1,0 +1,49 @@
+```json
+{
+  "detected0": false,
+  "occurrences0": 0,
+  "response0": [],
+  "detected1": false,
+  "occurrences1": 0,
+  "response1": [],
+  "detected2": false,
+  "occurrences2": 0,
+  "response2": [],
+  "detected3": false,
+  "occurrences3": 0,
+  "response3": [],
+  "detected4": true,
+  "occurrences4": 4,
+  "response4": [
+    {
+      "operation": "arrayMax(arr: ArrayType(FloatType())) -> Union[float, int]",
+      "improvementExplanation": "This UDF can be replaced with the built-in Spark SQL function `max`.",
+      "alternativeEquivalent": "df.withColumn('max_value', max(df['arr']))",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "arraySize(arr: ArrayType(FloatType())) -> int",
+      "improvementExplanation": "This UDF can be replaced with the built-in Spark SQL function `size`.",
+      "alternativeEquivalent": "df.withColumn('size', size(df['arr']))",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "isDate(string: str) -> bool",
+      "improvementExplanation": "This UDF can be replaced with the built-in Spark SQL function `to_date` and the `isNotNull` function.",
+      "alternativeEquivalent": "df.withColumn('is_date', to_date(df['string'], 'yyyy-MM-dd').isNotNull())",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "URLs2domain(urls: List[str]) -> List[str]",
+      "improvementExplanation": "This UDF can be replaced with a combination of the built-in Spark SQL functions `split`, `map`, and `get_tld`.",
+      "alternativeEquivalent": """
+df.withColumn('domains',
+               split(df['urls'], ',')
+               .cast('array<string>')
+               .map(lambda url: get_tld(url, as_object=True).domain + '.' + get_tld(url, as_object=True).tld))
+""",
+      "benefits": "Using built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}
+```

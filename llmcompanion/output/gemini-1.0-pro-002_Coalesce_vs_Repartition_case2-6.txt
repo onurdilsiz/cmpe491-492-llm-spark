@@ -4,10 +4,10 @@
   "occurrences": 1,
   "response": [
     {
-      "operation": "repartition(100)",
-      "improvementExplanation": "The `repartition(100)` operation is used to increase the number of partitions in the DataFrame. However, since the operation does not involve a shuffle, using `coalesce(100)` instead would achieve the same result without incurring the overhead of shuffling data across the cluster.",
-      "coalesceEquivalent": "df.coalesce(100)",
-      "benefits": "Replacing `repartition(100)` with `coalesce(100)` will:\n- Eliminate unnecessary shuffling, leading to faster execution.\n- Reduce resource consumption by avoiding data movement across the cluster.\n- Improve overall job performance."
+      "operation": "data_rdd = data_rdd.mapPartitions(lambda row: get_input(row))",
+      "improvementExplanation": "In this case, repartition() is used to increase the number of partitions in the data_rdd. However, since the subsequent operation (get_input) is a mapPartitions, which preserves the number of partitions, the repartition() operation is unnecessary. Replacing it with coalesce() will achieve the same result without incurring the overhead of a full shuffle.",
+      "coalesceEquivalent": "data_rdd = data_rdd.mapPartitions(lambda row: get_input(row)).coalesce(numPartitions)",
+      "benefits": "Replacing repartition() with coalesce() in this case will result in the following benefits:\n- Reduced shuffling: Coalesce() avoids the full shuffle required by repartition(), leading to improved performance.\n- Improved resource usage: Coalesce() consumes fewer resources compared to repartition(), as it does not involve data movement across the cluster.\n- Faster runtime: By eliminating the unnecessary shuffle, coalesce() can significantly improve the overall runtime of the job."
     }
   ]
 }

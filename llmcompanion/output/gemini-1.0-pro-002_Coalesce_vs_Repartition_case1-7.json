@@ -4,9 +4,9 @@
     "response": [
         {
             "operation": "df = df.repartition(number_of_files, '_salted_key')\n            .drop('_salted_key')",
-            "improvementExplanation": "The current `repartition()` operation is used to distribute the DataFrame based on the `_salted_key` column. However, since the goal is to create files of a specific size, using `coalesce()` instead of `repartition()` would be more efficient. `coalesce()` reduces the number of partitions without shuffling the data, which is ideal in this scenario where we only need to adjust the partition count without changing the data distribution.",
+            "improvementExplanation": "The current `repartition()` operation is used to distribute the DataFrame into a specific number of partitions based on a salted key. However, since the goal is to create files of a certain size, using `coalesce()` instead would achieve the same outcome without requiring a full shuffle. `coalesce()` simply reduces the number of partitions without changing the data distribution, which is sufficient for this scenario.",
             "coalesceEquivalent": "df = df.coalesce(number_of_files)\n            .drop('_salted_key')",
-            "benefits": "Replacing `repartition()` with `coalesce()` will avoid unnecessary shuffling, leading to improved resource utilization and faster job execution. This is because `coalesce()` simply merges partitions without moving data around, while `repartition()` involves a full shuffle operation."
+            "benefits": "Replacing `repartition()` with `coalesce()` offers several benefits:\n\n* **Reduced shuffling:** `coalesce()` avoids the need to shuffle data across the cluster, leading to faster execution times.\n* **Improved resource usage:** By reducing the number of partitions, `coalesce()` minimizes the memory and CPU resources required for the operation.\n* **Faster runtime:** The overall job runtime can be significantly improved by eliminating the shuffling overhead associated with `repartition()`."
         }
     ]
 }

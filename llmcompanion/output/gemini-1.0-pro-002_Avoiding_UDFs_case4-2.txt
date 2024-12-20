@@ -4,16 +4,16 @@
   "occurrences": 2,
   "response": [
     {
-      "operation": "UDF `new_salary` defined on line 17-20 and used on line 24-25.",
-      "improvementExplanation": "The UDF `new_salary` simply adds two columns, `salary` and `bonus`. This can be achieved using the built-in function `+` or the native DataFrame/Dataset operation `col('salary') + col('bonus')`. Replacing the UDF with a built-in function or native operation would enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+      "operation": "UDF `new_salary` defined in lines 17-21 and used in line 25",
+      "improvementExplanation": "The UDF `new_salary` simply adds two columns, `salary` and `bonus`. This can be achieved using the built-in `+` operator in Spark SQL or the `plus` function in DataFrame/Dataset operations.",
       "alternativeEquivalent": "```python\ndf.withColumn('new_salary', df.salary + df.bonus)\n```",
-      "benefits": "Replacing the UDF with a built-in function or native operation would enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+      "benefits": "Replacing the UDF with the built-in operator eliminates the need for function registration and serialization, potentially improving performance and enabling Catalyst optimizations."
     },
     {
-      "operation": "UDF `new_salary` defined on line 30-32 and used on line 35-36.",
-      "improvementExplanation": "Similar to the previous case, the UDF `new_salary` simply adds two columns, `salary` and `bonus`. This can be achieved using the built-in function `+` or the native DataFrame/Dataset operation `col('salary') + col('bonus')`. Replacing the UDF with a built-in function or native operation would enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+      "operation": "UDF `new_salary` defined in lines 28-32 and used in line 34",
+      "improvementExplanation": "Similar to the previous case, this UDF also performs a simple addition. It can be replaced with the `+` operator or the `plus` function.",
       "alternativeEquivalent": "```python\ndf.select('*', df.salary + df.bonus).alias('total_salary')\n```",
-      "benefits": "Replacing the UDF with a built-in function or native operation would enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+      "benefits": "Replacing the UDF offers the same benefits as mentioned earlier."
     }
   ]
 }

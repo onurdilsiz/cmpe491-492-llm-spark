@@ -4,9 +4,9 @@
     "response": [
         {
             "operation": "df2.repartition(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
-            "improvementExplanation": "The `repartition()` operation is used here to write the DataFrame to a CSV file with a single partition. However, since the DataFrame is already partitioned by `Weather_Station`, we can use `coalesce()` instead to reduce the number of partitions without shuffling the data. This will improve the efficiency of the write operation by reducing the number of files that need to be written.",
+            "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions in the DataFrame to 1. However, since the DataFrame is being written to a file, it is not necessary to shuffle the data across all partitions. Instead, we can use `coalesce()` to reduce the number of partitions to 1 without shuffling the data. This will improve the efficiency of the operation by reducing the amount of data that needs to be transferred across the network.",
             "coalesceEquivalent": "df2.coalesce(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
-            "benefits": "Switching to `coalesce()` in this case will reduce the amount of shuffling required, improve resource usage, and potentially speed up the job runtime."
+            "benefits": "Switching to `coalesce()` will reduce the amount of data shuffling, improve resource usage, and potentially lead to a faster job runtime."
         }
     ]
 }

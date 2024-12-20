@@ -1,0 +1,56 @@
+```json
+{
+  "detected": true,
+  "occurrences": 8,
+  "response": [
+    {
+      "operation": "azureAuditLog_df = azureAuditLog_df.withColumn(\"time\", MAP_TIME(col('time')).cast('integer'))",
+      "improvementExplanation": "The `MAP_TIME` UDF is applied to each row individually using `withColumn`. This can be inefficient as it involves calling the UDF for every single record. Since the time conversion logic can be applied to a batch of records, `mapPartitions` can be used to process the time conversion in batches, reducing the overhead of calling the UDF for each row.",
+      "mapPartitionsEquivalent": "```python\ndef map_time_partition(iterator):\n    for row in iterator:\n        string = row['time'][:-2]\n        date_time = datetime.datetime.strptime(string, \"%Y-%m-%dT%H:%M:%S.%f\")\n        date_time = datetime.datetime(date_time.year, date_time.month, date_time.day, date_time.hour, date_time.minute, date_time.second)\n        date_time = int(time.mktime(date_time.timetuple()))\n        yield Row(**row.asDict(), time=date_time)\n\nazureAuditLog_df = azureAuditLog_df.mapPartitions(map_time_partition).withColumn('time', col('time').cast('integer'))\n```",
+      "benefits": "Using `mapPartitions` reduces the overhead of calling the UDF for each row. The UDF is called once per partition instead of once per row, which can significantly improve performance, especially for large datasets. This also allows for potential optimizations within the partition processing logic."
+    },
+    {
+      "operation": "azureAuditLog_df = azureAuditLog_df.withColumn(\"severity_id\", MAP_SEVID(col('severity')).cast('integer'))",
+      "improvementExplanation": "Similar to the `MAP_TIME` UDF, the `MAP_SEVID` UDF is applied to each row individually. This can be optimized by using `mapPartitions` to process the severity mapping in batches.",
+      "mapPartitionsEquivalent": "```python\ndef map_sevid_partition(iterator):\n    for row in iterator:\n        source = row['severity']\n        if source == \"Information\":\n            severity_id = 1\n        elif source == \"Informational\":\n            severity_id = 1\n        elif source == \"Low\":\n            severity_id = 2\n        elif source == \"Medium\":\n            severity_id = 3\n        elif source == \"High\":\n            severity_id = 4\n        elif source == \"Critical\":\n            severity_id = 5\n        elif source == \"Fatial\":\n            severity_id = 6\n        elif source == \"Unknown\":\n            severity_id = 0\n        else:\n            severity_id = 99\n        yield Row(**row.asDict(), severity_id=severity_id)\n\nazureAuditLog_df = azureAuditLog_df.mapPartitions(map_sevid_partition).withColumn('severity_id', col('severity_id').cast('integer'))\n```",
+      "benefits": "By using `mapPartitions`, the `MAP_SEVID` UDF is called once per partition, reducing the overhead of calling it for each row. This can lead to significant performance improvements, especially for large datasets."
+    },
+    {
+      "operation": "azureAuditLog_df = azureAuditLog_df.withColumn(\"activity_name\", MAP_AN(col(\"unmapped.`category`\"))) ",
+      "improvementExplanation": "The `MAP_AN` UDF is applied to each row individually. This can be optimized by using `mapPartitions` to process the activity name mapping in batches.",
+      "mapPartitionsEquivalent": "```python\ndef map_an_partition(iterator):\n    for row in iterator:\n        source = row['unmapped.`category`']\n        if source == \"Write\":\n            activity_name = \"Create\"\n        elif source == \"Delete\":\n            activity_name = \"Delete\"\n        else:\n            activity_name = \"Unknown\"\n        yield Row(**row.asDict(), activity_name=activity_name)\n\nazureAuditLog_df = azureAuditLog_df.mapPartitions(map_an_partition)\n```",
+      "benefits": "Using `mapPartitions` reduces the overhead of calling the `MAP_AN` UDF for each row. The UDF is called once per partition instead of once per row, which can significantly improve performance, especially for large datasets."
+    },
+    {
+      "operation": "azureAuditLog_df = azureAuditLog_df.withColumn(\"activity_id\", MAP_AI(col(\"unmapped.`category`\")).cast('integer'))",
+      "improvementExplanation": "The `MAP_AI` UDF is applied to each row individually. This can be optimized by using `mapPartitions` to process the activity ID mapping in batches.",
+      "mapPartitionsEquivalent": "```python\ndef map_ai_partition(iterator):\n    for row in iterator:\n        source = row['unmapped.`category`']\n        if source == \"Write\":\n            activity_id = 1\n        elif source == \"Delete\":\n            activity_id = 4\n        else:\n            activity_id = 0\n        yield Row(**row.asDict(), activity_id=activity_id)\n\nazureAuditLog_df = azureAuditLog_df.mapPartitions(map_ai_partition).withColumn('activity_id', col('activity_id').cast('integer'))\n```",
+      "benefits": "By using `mapPartitions`, the `MAP_AI` UDF is called once per partition, reducing the overhead of calling it for each row. This can lead to significant performance improvements, especially for large datasets."
+    },
+    {
+      "operation": "azureAuditLog_df = azureAuditLog_df.withColumn(\"type_name\", MAP_TN(col(\"unmapped.`category`\"))) ",
+      "improvementExplanation": "The `MAP_TN` UDF is applied to each row individually. This can be optimized by using `mapPartitions` to process the type name mapping in batches.",
+      "mapPartitionsEquivalent": "```python\ndef map_tn_partition(iterator):\n    for row in iterator:\n        source = row['unmapped.`category`']\n        if source == \"Write\":\n            type_name = \"API Acitvity: API Activity: Create\"\n        elif source == \"Delete\":\n            type_name = \"API Acitvity: API Activity: Delete\"\n        else:\n            type_name = \"API Acitvity: API Activity: Unknown\"\n        yield Row(**row.asDict(), type_name=type_name)\n\nazureAuditLog_df = azureAuditLog_df.mapPartitions(map_tn_partition)\n```",
+      "benefits": "Using `mapPartitions` reduces the overhead of calling the `MAP_TN` UDF for each row. The UDF is called once per partition instead of once per row, which can significantly improve performance, especially for large datasets."
+    },
+    {
+      "operation": "azureAuditLog_df = azureAuditLog_df.withColumn(\"type_uid\", MAP_TI(col(\"unmapped.`category`\")).cast('integer'))",
+      "improvementExplanation": "The `MAP_TI` UDF is applied to each row individually. This can be optimized by using `mapPartitions` to process the type ID mapping in batches.",
+      "mapPartitionsEquivalent": "```python\ndef map_ti_partition(iterator):\n    for row in iterator:\n        source = row['unmapped.`category`']\n        if source == \"Write\":\n            type_uid = 300501\n        elif source == \"Delete\":\n            type_uid = 300504\n        else:\n            type_uid = 300500\n        yield Row(**row.asDict(), type_uid=type_uid)\n\nazureAuditLog_df = azureAuditLog_df.mapPartitions(map_ti_partition).withColumn('type_uid', col('type_uid').cast('integer'))\n```",
+      "benefits": "By using `mapPartitions`, the `MAP_TI` UDF is called once per partition, reducing the overhead of calling it for each row. This can lead to significant performance improvements, especially for large datasets."
+    },
+    {
+      "operation": "azureAuditLog_df = azureAuditLog_df.withColumn(\"`status`\", MAP_STATNAME(col(\"unmapped.`resultType`\"))) ",
+      "improvementExplanation": "The `MAP_STATNAME` UDF is applied to each row individually. This can be optimized by using `mapPartitions` to process the status name mapping in batches.",
+      "mapPartitionsEquivalent": "```python\ndef map_statname_partition(iterator):\n    for row in iterator:\n        source = row['unmapped.`resultType`']\n        if source == \"Unknown\":\n            status = \"Unknown\"\n        elif source == \"Success\":\n            status = \"Success\"\n        elif source == \"Failure\":\n            status = \"Failure\"\n        else:\n            status = \"Other\"\n        yield Row(**row.asDict(), `status`=status)\n\nazureAuditLog_df = azureAuditLog_df.mapPartitions(map_statname_partition)\n```",
+      "benefits": "Using `mapPartitions` reduces the overhead of calling the `MAP_STATNAME` UDF for each row. The UDF is called once per partition instead of once per row, which can significantly improve performance, especially for large datasets."
+    },
+    {
+      "operation": "azureAuditLog_df = azureAuditLog_df.withColumn(\"`status_id`\", MAP_STATID(col(\"unmapped.`resultType`\")).cast('integer'))",
+      "improvementExplanation": "The `MAP_STATID` UDF is applied to each row individually. This can be optimized by using `mapPartitions` to process the status ID mapping in batches.",
+      "mapPartitionsEquivalent": "```python\ndef map_statid_partition(iterator):\n    for row in iterator:\n        source = row['unmapped.`resultType`']\n        if source == \"Unknown\":\n            status_id = 0\n        elif source == \"Success\":\n            status_id = 1\n        elif source == \"Failure\":\n            status_id = 2\n        else:\n            status_id = 99\n        yield Row(**row.asDict(), `status_id`=status_id)\n\nazureAuditLog_df = azureAuditLog_df.mapPartitions(map_statid_partition).withColumn('`status_id`', col('`status_id`').cast('integer'))\n```",
+      "benefits": "By using `mapPartitions`, the `MAP_STATID` UDF is called once per partition, reducing the overhead of calling it for each row. This can lead to significant performance improvements, especially for large datasets."
+    }
+  ]
+}
+```

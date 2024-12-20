@@ -4,16 +4,16 @@
   "occurrences": 2,
   "response": [
     {
-      "operation": "pyspark_udf = udf(lambda s: convert_case(s), t.StringType())",
-      "improvementExplanation": "The map() operation in this case involves applying the `convert_case` function to each element of the 'Name' column. This function is stateless and can be applied independently to each element. Therefore, it can be efficiently performed at the partition level using mapPartitions().",
-      "mapPartitionsEquivalent": "pyspark_udf = udf(lambda partition: [convert_case(s) for s in partition], t.ArrayType(t.StringType()))",
-      "benefits": "Replacing map() with mapPartitions() in this case will reduce function call overhead, optimize I/O by processing data in batches, and improve performance by utilizing multiple cores."
+      "operation": "df2 = df.withColumn(\"Cureated Name\", pyspark_udf(col('Name')))",
+      "improvementExplanation": "The map() operation in this case involves applying the `convert_case` function to each element of the 'Name' column. This can be efficiently performed at the partition level using mapPartitions() to reduce function call overhead and potentially optimize I/O.",
+      "mapPartitionsEquivalent": "df2 = df.withColumn(\"Cureated Name\", lambda partition: partition.map(lambda row: convert_case(row['Name'])))",
+      "benefits": "Switching to mapPartitions() in this case can potentially improve performance by reducing function call overhead and optimizing I/O. This is because mapPartitions() processes data in batches, which can be more efficient than processing each element individually."
     },
     {
-      "operation": "pyspark_len_udf = udf(lambda s: length(s), t.IntegerType())",
-      "improvementExplanation": "Similar to the previous case, the map() operation here applies the `length` function to each element of the 'Name' column. This function is also stateless and can be efficiently executed at the partition level using mapPartitions().",
-      "mapPartitionsEquivalent": "pyspark_len_udf = udf(lambda partition: [length(s) for s in partition], t.ArrayType(t.IntegerType()))",
-      "benefits": "Replacing map() with mapPartitions() will reduce function call overhead, optimize I/O by processing data in batches, and improve performance by utilizing multiple cores."
+      "operation": "df3 = df2.withColumn(\"Length\", pyspark_len_udf(col('Name')))",
+      "improvementExplanation": "Similar to the previous case, the map() operation here applies the `length` function to each element of the 'Name' column. This can be efficiently performed using mapPartitions() to reduce function call overhead and potentially optimize I/O.",
+      "mapPartitionsEquivalent": "df3 = df2.withColumn(\"Length\", lambda partition: partition.map(lambda row: length(row['Name'])))",
+      "benefits": "Switching to mapPartitions() in this case can potentially improve performance by reducing function call overhead and optimizing I/O. This is because mapPartitions() processes data in batches, which can be more efficient than processing each element individually."
     }
   ]
 }

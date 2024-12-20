@@ -1,0 +1,44 @@
+```json
+{
+  "detected": true,
+  "occurrences": 6,
+  "response": [
+    {
+      "operation": "extract_family_name UDF (lines 7-12)",
+      "improvementExplanation": "The `extract_family_name` UDF splits a string and returns a substring. This can be achieved using Spark's built-in string functions like `split` and array indexing.",
+      "alternativeEquivalent": "df.withColumn('family_name', when(length(split(col('full_name'), ' ')) > 1, substring_index(substring_index(col('full_name'), ' ', -1), ' ', 1)).otherwise(None))",
+      "benefits": "Replacing the UDF with built-in functions allows Spark's optimizer to push down the operations, leading to improved performance and reduced serialization overhead."
+    },
+    {
+      "operation": "extract_given_name UDF (lines 14-16)",
+      "improvementExplanation": "The `extract_given_name` UDF splits a string and returns the first element. This can be done using `split` and `element_at`.",
+      "alternativeEquivalent": "df.withColumn('given_name', element_at(split(col('full_name'), ' '), 1))",
+      "benefits": "Using built-in functions enables Catalyst optimizations, resulting in better performance and reduced resource consumption."
+    },
+    {
+      "operation": "format_phone UDF (lines 18-21)",
+      "improvementExplanation": "The `format_phone` UDF uses regular expressions for string manipulation.  Spark's `regexp_replace` function provides a more efficient way to perform this operation.",
+      "alternativeEquivalent": "df.withColumn('formatted_phone', regexp_replace(col('phone'), r'\\(\\(\\d{2}\\)\\)\\s(\\d{4}-\\d{4})', '+55 0$1 $2'))",
+      "benefits": "Leveraging Spark's built-in functions avoids the overhead of UDF serialization and allows for better optimization by the query planner."
+    },
+    {
+      "operation": "clean_cpf UDF (lines 23-25)",
+      "improvementExplanation": "The `clean_cpf` UDF removes non-digit characters. This can be efficiently done using `regexp_replace`.",
+      "alternativeEquivalent": "df.withColumn('cleaned_cpf', regexp_replace(col('value'), r'\\D', ''))",
+      "benefits": "Replacing the UDF with `regexp_replace` improves performance and reduces the need for data serialization/deserialization."
+    },
+    {
+      "operation": "format_gender UDF (lines 27-36)",
+      "improvementExplanation": "The `format_gender` UDF performs conditional logic based on string values. This can be achieved using `when` and `otherwise` functions.",
+      "alternativeEquivalent": "df.withColumn('formatted_gender', when(lower(col('value')) == 'masculino', 'male').when(lower(col('value')) == 'feminino', 'female').otherwise('unknown'))",
+      "benefits": "Using Spark's built-in conditional functions allows for better optimization and avoids the overhead of UDF execution."
+    },
+    {
+      "operation": "format_date UDF (lines 38-41)",
+      "improvementExplanation": "The `format_date` UDF converts dates between formats. Spark's `to_date` and `date_format` functions provide a more efficient and integrated solution.",
+      "alternativeEquivalent": "df.withColumn('formatted_date', date_format(to_date(col('value'), 'dd/MM/yyyy'), 'yyyy-MM-dd'))",
+      "benefits": "Using Spark's date functions enables Catalyst optimizations and avoids the overhead of Python UDF execution, leading to significant performance improvements."
+    }
+  ]
+}
+```

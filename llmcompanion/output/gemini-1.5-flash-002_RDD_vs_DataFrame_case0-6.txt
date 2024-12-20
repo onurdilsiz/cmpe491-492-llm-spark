@@ -4,18 +4,16 @@
   "occurrences": 2,
   "response": [
     {
-      "rddOperation": "rdd.collect() (lines 16-17 and 21-22)",
-      "improvementExplanation": "The `collect()` action retrieves all the data from the RDD to the driver node. This is inefficient for large datasets as it can lead to memory issues on the driver and network bottlenecks.  DataFrames provide optimized execution plans and can distribute the processing across the cluster, avoiding the need to bring all data to the driver.",
-      "dataframeEquivalent": "Instead of creating an RDD and then collecting, we can directly create a DataFrame and then use `show()` or `printSchema()` to display the data.  This avoids the `collect()` operation entirely.",
-      "dataframeEquivalentCode": "from pyspark.sql import SparkSession\nspark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()\ndata = ['Project Gutenberg’s', 'Alice’s Adventures in Wonderland', 'Project Gutenberg’s', 'Adventures in Wonderland', 'Project Gutenberg’s']\ndf = spark.createDataFrame(data, ['text'])\ndf.show()\n\n#To show the schema\ndf.printSchema()",
-      "benefits": "Improved performance and scalability by avoiding data transfer to the driver.  Reduced memory pressure on the driver and faster execution for large datasets."
+      "rddOperation": "parallelize (line 12) and collect (line 15)",
+      "improvementExplanation": "Creating an RDD from a list and then collecting it to the driver is inefficient for larger datasets. DataFrames provide optimized data structures and execution plans for distributed processing.",
+      "dataframeEquivalent": "df = spark.createDataFrame(data, StringType()).show()",
+      "benefits": "DataFrames offer better performance and scalability compared to RDDs for this operation.  The DataFrame approach avoids transferring the entire dataset to the driver, improving performance and resource utilization, especially for large datasets."
     },
     {
-      "rddOperation": "rdd.flatMap(lambda x: x.split(\" \")) (line 19)",
-      "improvementExplanation": "The `flatMap` operation on an RDD involves splitting each string and then flattening the resulting lists. While functional, DataFrames offer built-in functions like `explode` and `split` that are optimized for this type of operation, leveraging Spark's Catalyst optimizer for better performance.",
-      "dataframeEquivalent": "The DataFrame API provides the `split` function which can be used with `explode` to achieve the same result as `flatMap`. This leverages Spark's optimized execution engine.",
-      "dataframeEquivalentCode": "from pyspark.sql import SparkSession, functions as F\nspark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()\ndata = ['Project Gutenberg’s', 'Alice’s Adventures in Wonderland', 'Project Gutenberg’s', 'Adventures in Wonderland', 'Project Gutenberg’s']\ndf = spark.createDataFrame(data, ['text'])\ndf = df.withColumn(\"words\", F.explode(F.split(df.text, \" \")))\ndf.show()",
-      "benefits": "Improved performance due to Catalyst optimizer's ability to generate efficient execution plans. Reduced data shuffling and better resource utilization compared to RDD's `flatMap`."
+      "rddOperation": "flatMap (line 18)",
+      "improvementExplanation": "The flatMap operation on RDDs can be less efficient than the equivalent explode function in DataFrames. DataFrames leverage Catalyst optimizer for better performance.",
+      "dataframeEquivalent": "from pyspark.sql.functions import explode, split\ndf = spark.createDataFrame(data, StringType())\ndf = df.withColumn(\"exploded\", explode(split(col(\"value\"), \" \"))).show()",
+      "benefits": "Using explode and split with DataFrames provides better performance and scalability compared to flatMap on RDDs. The DataFrame approach leverages Spark's optimized execution engine and avoids unnecessary data shuffling."
     }
   ]
 }

@@ -1,19 +1,13 @@
 ```json
 {
   "detected": true,
-  "occurrences": 2,
+  "occurrences": 1,
   "response": [
     {
-      "operation": "map(lambda line: line.split(' '))",
-      "improvementExplanation": "This map operation splits each line of text into a list of words. This operation can be performed more efficiently at the partition level using mapPartitions() to reduce the number of function calls and improve I/O performance.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: map(lambda line: line.split(' '), partition))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
-    },
-    {
-      "operation": "map(lambda x: (x, 1))",
-      "improvementExplanation": "This map operation creates key-value pairs from each word. This operation can also be performed more efficiently at the partition level using mapPartitions() to reduce the number of function calls and improve I/O performance.",
-      "mapPartitionsEquivalent": "mapPartitions(lambda partition: map(lambda x: (x, 1), partition))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+      "operation": "map(lambda line: line.split(' ')) in word_count() function on line 10",
+      "improvementExplanation": "This map operation splits each line of text into words, which is a batching operation that can be performed more efficiently at the partition level using mapPartitions(). This would reduce the number of function calls and improve I/O performance.",
+      "mapPartitionsEquivalent": "```python\nwc = sc.textFile(word_file).\n    flatMap(lambda line: line.split(\" \")).\n    mapPartitions(lambda partition: map(lambda line: (line, 1), partition)).\n    reduceByKey(lambda a, b: a + b)\n```",
+      "benefits": "Replacing map() with mapPartitions() in this case would:\n- Reduce function call overhead by processing data in batches within partitions.\n- Optimize I/O by reading and processing data in larger chunks.\n- Improve resource utilization by reducing the number of tasks and executors needed."
     }
   ]
 }

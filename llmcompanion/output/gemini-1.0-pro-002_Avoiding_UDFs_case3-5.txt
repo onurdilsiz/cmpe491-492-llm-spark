@@ -5,33 +5,33 @@
   "response": [
     {
       "operation": "haversine(lon1, lat1, lon2, lat2)",
-      "improvementExplanation": "This UDF calculates the great circle distance between two points on Earth. It can be replaced with the built-in Spark SQL function `ST_Distance_Sphere` for more efficient and optimized calculations.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import ST_Distance_Sphere\n\n# Calculate the distance using ST_Distance_Sphere\ndistance = joined.withColumn(\"distance\", ST_Distance_Sphere(joined[\"lat1\"], joined[\"lon1\"], joined[\"lat2\"], joined[\"lon2\"]))\n```",
-      "benefits": "Replacing this UDF with `ST_Distance_Sphere` will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+      "improvementExplanation": "This UDF calculates the great circle distance between two points on Earth. It can be replaced with the built-in Spark SQL function `distance`.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import distance\n\ndistance(col('lon1'), col('lat1'), col('lon2'), col('lat2'))\n```",
+      "benefits": "Using the built-in function avoids the overhead of defining and registering a UDF, potentially improving performance and enabling Catalyst optimizations."
     },
     {
-      "operation": "gaussian_kernel(x,h)",
-      "improvementExplanation": "This UDF calculates the Gaussian kernel function. It can be replaced with the built-in Spark SQL function `exp` for more efficient and optimized calculations.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import exp\n\n# Calculate the Gaussian kernel using exp\nk_dist = joined.withColumn(\"k_dist\", exp(-(joined[\"distance\"] / h_dist)**2))\n```",
-      "benefits": "Replacing this UDF with `exp` will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+      "operation": "gaussian_kernel(x, h)",
+      "improvementExplanation": "This UDF calculates the Gaussian kernel function. It can be replaced with the built-in Spark SQL function `exp` and arithmetic operations.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import exp\n\nexp(-(col('x') / col('h')) ** 2)\n```",
+      "benefits": "Using built-in functions and operations improves performance and reduces serialization overhead."
     },
     {
-      "operation": "get_k_dist(long1, lat1, long2, lat2,h)",
-      "improvementExplanation": "This UDF combines the haversine distance calculation and the Gaussian kernel function. It can be replaced with a combination of `ST_Distance_Sphere` and `exp` for more efficient and optimized calculations.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import ST_Distance_Sphere, exp\n\n# Calculate the distance and kernel using ST_Distance_Sphere and exp\nk_dist = joined.withColumn(\"distance\", ST_Distance_Sphere(joined[\"lat1\"], joined[\"lon1\"], joined[\"lat2\"], joined[\"lon2\"]))\n.withColumn(\"k_dist\", exp(-(joined[\"distance\"] / h_dist)**2))\n```",
-      "benefits": "Replacing this UDF with `ST_Distance_Sphere` and `exp` will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+      "operation": "get_k_dist(long1, lat1, long2, lat2, h)",
+      "improvementExplanation": "This UDF combines the `haversine` and `gaussian_kernel` functions. It can be replaced by composing the built-in `distance` function with the `exp` function and arithmetic operations.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import distance, exp\n\nexp(-(distance(col('long1'), col('lat1'), col('long2'), col('lat2')) / col('h')) ** 2)\n```",
+      "benefits": "Composing built-in functions avoids the overhead of defining and registering a UDF, potentially improving performance and enabling Catalyst optimizations."
     },
     {
-      "operation": "get_k_days(day, pred_day,h)",
-      "improvementExplanation": "This UDF calculates the difference in days between two dates and applies the Gaussian kernel function. It can be replaced with a combination of Spark SQL functions `datediff` and `exp` for more efficient and optimized calculations.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import datediff, exp\n\n# Calculate the difference in days and kernel using datediff and exp\nk_days = joined.withColumn(\"days_diff\", datediff(joined[\"date\"], pred_date))\n.withColumn(\"k_days\", exp(-(joined[\"days_diff\"] / h_days)**2))\n```",
-      "benefits": "Replacing this UDF with `datediff` and `exp` will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+      "operation": "get_k_days(day, pred_day, h)",
+      "improvementExplanation": "This UDF calculates the difference in days between two dates and applies the Gaussian kernel. It can be replaced by calculating the difference in days using arithmetic operations and applying the `exp` function.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import datediff, exp\n\nexp(-(datediff(col('pred_day'), col('day')) / col('h')) ** 2)\n```",
+      "benefits": "Using built-in functions and operations improves performance and reduces serialization overhead."
     },
     {
-      "operation": "get_k_hour(timeA,timeB,h)",
-      "improvementExplanation": "This UDF calculates the difference in hours between two times and applies the Gaussian kernel function. It can be replaced with a combination of Spark SQL functions `substring`, `cast`, `abs`, and `exp` for more efficient and optimized calculations.",
-      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import substring, cast, abs, exp\n\n# Calculate the difference in hours and kernel using substring, cast, abs, and exp\nk_hour = joined.withColumn(\"hour_diff\", abs(cast(substring(joined[\"time\"], 1, 2), 'int') - cast(substring(time, 1, 2), 'int')))\n.withColumn(\"k_hour\", exp(-(joined[\"hour_diff\"] / h_time)**2))\n```",
-      "benefits": "Replacing this UDF with `substring`, `cast`, `abs`, and `exp` will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+      "operation": "get_k_hour(timeA, timeB, h)",
+      "improvementExplanation": "This UDF calculates the difference in hours between two times and applies the Gaussian kernel. It can be replaced by calculating the difference in hours using arithmetic operations and applying the `exp` function.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import hour, exp\n\nexp(-(abs(hour(col('timeA')) - hour(col('timeB'))) / col('h')) ** 2)\n```",
+      "benefits": "Using built-in functions and operations improves performance and reduces serialization overhead."
     }
   ]
 }

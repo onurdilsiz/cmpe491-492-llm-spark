@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "line 20: `rdd.zipWithIndex().map(lambda xi: IndexedRow(xi[1], xi[0]))`",
+      "improvementExplanation": "The `map` operation in `as_block_matrix` function transforms each element of an RDD.  This involves creating an `IndexedRow` object for each row. Since this is a transformation applied to each individual element, it's not inherently partition-aware.  Switching to `mapPartitions` allows the transformation to be performed on an entire partition at once, reducing the overhead of repeatedly calling the `lambda` function for each row.  The `zipWithIndex` operation is also better handled within a partition to avoid potential index mismatches across partitions.",
+      "mapPartitionsEquivalent": "```python\ndef as_block_matrix(rdd, rowsPerBlock=65000, colsPerBlock=65000):\n    return IndexedRowMatrix(\n        rdd.zipWithIndex().mapPartitions(lambda iterator: (\n            IndexedRow(i, row) for i, row in enumerate(iterator)\n        ))\n    ).toBlockMatrix(rowsPerBlock, colsPerBlock)\n```",
+      "benefits": "Switching to `mapPartitions` offers several benefits:\n\n* **Reduced function call overhead:** The lambda function is called once per partition instead of once per element.\n* **Improved data locality:** Processing happens within each partition, reducing data movement and improving performance, especially for larger datasets.\n* **Potential for optimized I/O:**  If the `IndexedRow` creation involves I/O operations, batching them within partitions can lead to significant I/O improvements."
+    }
+  ]
+}
+```

@@ -4,37 +4,28 @@
   "occurrences": 4,
   "response": [
     {
-      "operation": "arrayMax(arr) on line 10",
-      "improvementExplanation": "The `arrayMax` UDF can be replaced with the built-in `max` function from Spark SQL. This will enable Catalyst optimizations and improve performance.",
-      "alternativeEquivalent": "df.withColumn('max_value', max(df['arr']))",
-      "benefits": "Catalyst optimizations, improved performance, reduced serialization overhead"
+      "operation": "arrayMax(arr: ArrayType(FloatType())) -> Union[float, int] (line 10)",
+      "improvementExplanation": "The `arrayMax` UDF can be replaced with the built-in `max` function from Spark SQL. This function operates directly on arrays and eliminates the need for a UDF.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import max\n\n# Replace the UDF call with the built-in function\nmax_value = df.select(max(df['array_column']))\n```",
+      "benefits": "Replacing the UDF with `max` enables Catalyst optimizations, improves performance by avoiding UDF invocation overhead, and reduces serialization costs."
     },
     {
-      "operation": "arraySize(arr) on line 13",
-      "improvementExplanation": "The `arraySize` UDF can be replaced with the built-in `size` function from Spark SQL. This will enable Catalyst optimizations and improve performance.",
-      "alternativeEquivalent": "df.withColumn('array_size', size(df['arr']))",
-      "benefits": "Catalyst optimizations, improved performance, reduced serialization overhead"
+      "operation": "arraySize(arr: ArrayType(FloatType())) -> int (line 14)",
+      "improvementExplanation": "The `arraySize` UDF can be replaced with the built-in `size` function from Spark SQL. This function directly calculates the size of arrays without requiring a UDF.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import size\n\n# Replace the UDF call with the built-in function\narray_size = df.select(size(df['array_column']))\n```",
+      "benefits": "Replacing the UDF with `size` enables Catalyst optimizations, improves performance by avoiding UDF invocation overhead, and reduces serialization costs."
     },
     {
-      "operation": "isDate(string) on line 18",
-      "improvementExplanation": "The `isDate` UDF can be replaced with the built-in `to_date` function from Spark SQL. This will enable Catalyst optimizations and improve performance.",
-      "alternativeEquivalent": "df.withColumn('is_date', to_date(df['string'], 'yyyy-MM-dd').isNotNull())",
-      "benefits": "Catalyst optimizations, improved performance, reduced serialization overhead"
+      "operation": "isDate(string: str) -> bool (line 18)",
+      "improvementExplanation": "The `isDate` UDF can be replaced with a combination of Spark SQL functions: `regexp_extract` and `to_date`. This approach leverages built-in functions for pattern matching and date conversion.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import regexp_extract, to_date\n\n# Extract the date pattern using regexp_extract\ndate_pattern = regexp_extract(df['string_column'], r'\d{4}-\d{2}-\d{2}', 0)\n\n# Convert the extracted pattern to a date using to_date\nis_date = to_date(date_pattern, 'yyyy-MM-dd').isNotNull()\n```",
+      "benefits": "Replacing the UDF with built-in functions enables Catalyst optimizations, improves performance by avoiding UDF invocation overhead, and reduces serialization costs."
     },
     {
-      "operation": "URLs2domain(urls) on line 25",
-      "improvementExplanation": "The `URLs2domain` UDF can be replaced with a combination of the built-in `split` and `array_contains` functions from Spark SQL. This will enable Catalyst optimizations and improve performance.",
-      "alternativeEquivalent": """
-df.withColumn('domains',
-               array_distinct(
-                   array_filter(
-                       split(df['urls'], '/'),
-                       lambda x: array_contains(split(x, '.'), 'www')
-                   )
-               )
-           )
-""",
-      "benefits": "Catalyst optimizations, improved performance, reduced serialization overhead"
+      "operation": "URLs2domain(urls: List[str]) -> List[str] (line 26)",
+      "improvementExplanation": "The `URLs2domain` UDF can be replaced with a combination of Spark SQL functions: `transform` and a custom function for domain extraction. This approach leverages built-in functions for array transformation and avoids the need for a UDF.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import transform\n\n# Define a custom function for domain extraction\ndef extract_domain(url):\n    return get_tld(url, as_object=True).domain + '.' + get_tld(url, as_object=True).tld\n\n# Apply the custom function to each element in the array using transform\ndomains = df.select(transform(df['urls_column'], extract_domain))\n```",
+      "benefits": "Replacing the UDF with built-in functions and a custom function enables Catalyst optimizations, improves performance by avoiding UDF invocation overhead, and reduces serialization costs."
     }
   ]
 }

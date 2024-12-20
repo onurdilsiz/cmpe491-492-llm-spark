@@ -4,10 +4,37 @@
   "occurrences": 1,
   "response": [
     {
-      "rddOperation": "repartition(10)",
-      "improvementExplanation": "Repartitioning an RDD can be computationally expensive, especially when dealing with large datasets. DataFrames/Datasets can automatically handle data partitioning and distribution, eliminating the need for explicit repartitioning.",
-      "dataframeEquivalent": "```python\nforms = spark.read.text('hdfs:///user/carrdp/FinanceML/13F/Q12015/links10.txt')\n```",
-      "benefits": "Using DataFrames/Datasets for reading text files avoids the need for manual repartitioning, leading to improved performance and reduced resource consumption."
+      "rddOperation": "foreachPartition",
+      "location": "Line 14-18",
+      "improvementExplanation": "The `foreachPartition` operation iterates over each partition of the RDD and applies a function to each element within the partition. This can be inefficient for operations that require data shuffling or aggregation across partitions. DataFrames/Datasets offer more optimized ways to perform these operations.",
+      "dataframeEquivalent": """
+```python
+forms_df = spark.read.text('hdfs:///user/carrdp/FinanceML/13F/Q12015/links10.txt') \
+    .repartition(10)
+
+def get_form(row):
+    link = row['value']
+    out = link.split("/")[-1]
+    try:
+        response = requests.get(link)
+        file = response.content
+        with open(out, 'wb') as outfile:
+            outfile.write(file)
+        call(['hadoop', 'fs', '-put', out, '/user/carrdp/FinanceML/13F/log/' + out])
+    except requests.exceptions.RequestException as err:
+        with open(out, 'w') as outfile:
+            outfile.write(str(err))
+        call(['hadoop', 'fs', '-put', out, '/user/carrdp/FinanceML/13F/log/__' + out])
+
+forms_df.foreach(get_form)
+```
+""",
+      "benefits": "Using a DataFrame/Dataset with `foreach` instead of `foreachPartition` allows for:
+
+* **Reduced shuffling:** DataFrames/Datasets can perform operations like filtering and aggregation within partitions, minimizing the need to shuffle data across the network.
+* **Query optimization:** DataFrames/Datasets leverage Spark SQL's query optimizer, which can choose the most efficient execution plan based on the data and operations involved.
+* **Better resource utilization:** DataFrames/Datasets can efficiently handle data serialization and deserialization, reducing the overhead associated with RDDs.
+"
     }
   ]
 }

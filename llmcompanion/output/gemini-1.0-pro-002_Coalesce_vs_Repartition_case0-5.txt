@@ -8,4 +8,4 @@
 
 **Explanation:**
 
-The provided Spark code does not contain any instances of `repartition()`. Therefore, there are no opportunities to replace it with `coalesce()` for improved efficiency. The code primarily focuses on data manipulation using `map()` and `collect()` operations, without any partitioning or shuffling involved.
+The provided Spark code does not contain any instances of `repartition()`. Therefore, there are no opportunities to replace it with `coalesce()` for improved efficiency. The code primarily focuses on data manipulation using `map()` and `collect()` operations, without any shuffling or partitioning involved. 

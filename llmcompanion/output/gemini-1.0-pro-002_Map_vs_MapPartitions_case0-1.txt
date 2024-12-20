@@ -4,16 +4,16 @@
   "occurrences": 2,
   "response": [
     {
-      "operation": "Map operation on line 22: `ratings = data.map(lambda l: l.split()).map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))))`",
-      "improvementExplanation": "This map operation splits each line of the input data and then extracts the user ID, movie ID, and rating. This transformation can be performed more efficiently using mapPartitions() because it allows processing multiple lines of data at once, reducing the number of function calls and improving I/O performance.",
-      "mapPartitionsEquivalent": "```python\nratings = data.mapPartitions(lambda partition: (\n    for line in partition:\n        fields = line.split()\n        yield (int(fields[0]), (int(fields[1]), float(fields[2])))\n))\n```",
-      "benefits": "Replacing map() with mapPartitions() in this case offers several benefits:\n- **Reduced function call overhead:** Processing data in batches reduces the number of function calls, leading to improved performance.\n- **Optimized I/O:** Reading and processing data in larger chunks improves I/O efficiency.\n- **Improved resource utilization:** Batch processing reduces the memory footprint and CPU usage, allowing for more efficient resource utilization."
+      "operation": "map(lambda l: l.split()).map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))))",
+      "improvementExplanation": "This map() operation splits each line of the input data into a list of tokens and then extracts the user ID, movie ID, and rating from the tokens. This operation can be performed more efficiently using mapPartitions() because it allows us to process multiple lines of data at once, reducing the number of function calls and improving I/O performance.",
+      "mapPartitionsEquivalent": "def process_partition(iterator):\n  for line in iterator:\n    tokens = line.split()\n    yield int(tokens[0]), (int(tokens[1]), float(tokens[2]))\n\nratings = data.mapPartitions(process_partition)",
+      "benefits": "Replacing map() with mapPartitions() in this case can significantly improve performance by reducing function call overhead, optimizing I/O, and improving resource utilization."
     },
     {
-      "operation": "Map operation on line 34: `moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).cache()`",
-      "improvementExplanation": "This map operation computes the cosine similarity for each pair of movies. This transformation can also be performed more efficiently using mapPartitions() because it allows calculating similarities for multiple movie pairs within a partition, reducing function call overhead and improving performance.",
-      "mapPartitionsEquivalent": "```python\nmoviePairSimilarities = moviePairRatings.mapPartitionsToPair(lambda partition: (\n    for (moviePair, ratings) in partition:\n        yield (moviePair, computeCosineSimilarity(ratings))\n)).cache()\n```",
-      "benefits": "Replacing map() with mapPartitions() in this case also offers the same benefits as mentioned above:\n- **Reduced function call overhead:** Calculating similarities in batches reduces the number of function calls, leading to improved performance.\n- **Optimized I/O:** Processing data in larger chunks improves I/O efficiency.\n- **Improved resource utilization:** Batch processing reduces the memory footprint and CPU usage, allowing for more efficient resource utilization."
+      "operation": "moviePairRatings = moviePairSimilarities.mapValues(computeCosineSimilarity).cache()",
+      "improvementExplanation": "This map() operation applies the computeCosineSimilarity function to each value in the moviePairSimilarities RDD. This operation can be performed more efficiently using mapPartitions() because it allows us to process multiple values at once, reducing the number of function calls and improving resource utilization.",
+      "mapPartitionsEquivalent": "def compute_similarities(iterator):\n  for pair, ratings in iterator:\n    yield pair, computeCosineSimilarity(ratings)\n\nmoviePairSimilarities = moviePairSimilarities.mapPartitions(compute_similarities).cache()",
+      "benefits": "Replacing map() with mapPartitions() in this case can significantly improve performance by reducing function call overhead and improving resource utilization."
     }
   ]
 }

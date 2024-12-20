@@ -1,7 +1,14 @@
 ```json
 {
-  "detected": false,
-  "occurrences": 0,
-  "response": []
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "The UDF `getMSDiff` is used to calculate the time difference in milliseconds.",
+      "improvementExplanation": "The UDF `getMSDiff` can be replaced with the built-in function `java.lang.System.currentTimeMillis()` to calculate the time difference in milliseconds. This will eliminate the need for a custom UDF and potentially improve performance.",
+      "alternativeEquivalent": "```python\nimport java.lang.System\n\n# Calculate time difference in milliseconds\ndef getMSDiff(diff):\n    """\n    Return time difference in milliseconds\n    """\n    return System.currentTimeMillis() - diff.toEpochMilli()\n```",
+      "benefits": "Replacing the UDF with a built-in function will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    }
+  ]
 }
 ```

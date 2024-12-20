@@ -1,36 +1,30 @@
 {
     "detected": true,
-    "occurrences": 5,
+    "occurrences": 4,
     "response": [
         {
-            "operation": "parsed_ratings = raw_ratings.map(lambda line: line.split(\",\"))",
-            "improvementExplanation": "This map() operation splits each line of the raw data into a list of values. This is a common operation that can be performed more efficiently using mapPartitions() because it allows processing multiple lines at once, reducing the number of function calls and improving I/O performance.",
-            "mapPartitionsEquivalent": "parsed_ratings = raw_ratings.mapPartitions(lambda partition: (line.split(\",\") for line in partition))",
+            "operation": "map(lambda line: line.split(\",\"))",
+            "improvementExplanation": "This map() operation splits each line of the input data into a list of values. This is a common operation that can be performed more efficiently using mapPartitions(). By processing data in partitions, we can reduce the number of function calls and improve I/O efficiency.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: (line.split(\",\") for line in partition))",
             "benefits": "Reduced function call overhead, optimized I/O, and improved performance for partition-level operations."
         },
         {
-            "operation": "high_ratings = parsed_ratings.filter(lambda x: float(x[2]) >= 3)",
-            "improvementExplanation": "This filter() operation selects rows where the rating is greater than or equal to 3. While filter() cannot be directly replaced with mapPartitions(), it can be combined with the map() operation to improve efficiency. By filtering within the mapPartitions() function, we can avoid unnecessary processing of rows that do not meet the criteria.",
-            "mapPartitionsEquivalent": "high_ratings = parsed_ratings.mapPartitions(lambda partition: (line for line in partition if float(line[2]) >= 3))",
-            "benefits": "Reduced function call overhead and improved performance by filtering within the mapPartitions() function."
-        },
-        {
-            "operation": "movie_counts = high_ratings.map(lambda x: (x[1], 1))",
-            "improvementExplanation": "This map() operation creates key-value pairs of (movie_id, 1) for counting occurrences. This is another common operation that can be performed more efficiently using mapPartitions() because it allows processing multiple rows at once, reducing the number of function calls and improving I/O performance.",
-            "mapPartitionsEquivalent": "movie_counts = high_ratings.mapPartitions(lambda partition: ((line[1], 1) for line in partition))",
+            "operation": "map(lambda x: (x[1], 1))",
+            "improvementExplanation": "This map() operation creates key-value pairs of (movie_id, 1) for counting occurrences. This is another example of a transformation that can be efficiently performed using mapPartitions().",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: ((x[1], 1) for x in partition))",
             "benefits": "Reduced function call overhead, optimized I/O, and improved performance for partition-level operations."
         },
         {
-            "operation": "movie_ratings = parsed_ratings.map(lambda x: (x[1], (float(x[2]), 1)))",
-            "improvementExplanation": "This map() operation creates key-value pairs of (movie_id, (rating, 1)) for aggregation. This is another common operation that can be performed more efficiently using mapPartitions() because it allows processing multiple rows at once, reducing the number of function calls and improving I/O performance.",
-            "mapPartitionsEquivalent": "movie_ratings = parsed_ratings.mapPartitions(lambda partition: ((line[1], (float(line[2]), 1)) for line in partition))",
+            "operation": "map(lambda x: (x[1], (float(x[2]), 1)))",
+            "improvementExplanation": "This map() operation creates key-value pairs of (movie_id, (rating, 1)) for aggregation. Similar to the previous cases, mapPartitions() can be used to improve efficiency.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: ((x[1], (float(x[2]), 1)) for x in partition))",
             "benefits": "Reduced function call overhead, optimized I/O, and improved performance for partition-level operations."
         },
         {
-            "operation": "final_movies = popular_movies.map(lambda x: (x[0], x[1]))",
-            "improvementExplanation": "This map() operation formats the final results as (movie_id, (ratings_count, average_rating)). This is a simple operation that can be performed efficiently using map() because it does not involve any complex calculations or data transformations.",
-            "mapPartitionsEquivalent": "final_movies = popular_movies.map(lambda x: (x[0], x[1]))",
-            "benefits": "No significant improvement in this case, as the operation is already efficient."
+            "operation": "map(lambda x: (x[0], x[1][0] / x[1][1]))",
+            "improvementExplanation": "This map() operation calculates the average rating for each movie. While this operation is not as I/O-bound as the previous ones, it can still benefit from using mapPartitions() to reduce function call overhead.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: ((x[0], x[1][0] / x[1][1]) for x in partition))",
+            "benefits": "Reduced function call overhead and improved resource utilization."
         }
     ]
 }

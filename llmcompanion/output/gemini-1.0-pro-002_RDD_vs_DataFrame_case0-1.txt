@@ -5,45 +5,45 @@
   "response": [
     {
       "rddOperation": "map",
-      "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation for better performance, as it allows for query optimizations and reduced shuffling.",
+      "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance.",
       "dataframeEquivalent": "```python\nratingsDF = ratings.toDF(['userID', 'movieID', 'rating'])\nratingsDF = ratingsDF.select('userID', 'movieID', 'rating')\n```",
-      "benefits": "Query optimizations, reduced shuffling, and better resource usage."
+      "benefits": "DataFrame/Dataset transformations can be optimized for better performance, especially when dealing with large datasets."
     },
     {
       "rddOperation": "map",
-      "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation for better performance, as it allows for query optimizations and reduced shuffling.",
+      "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance.",
       "dataframeEquivalent": "```python\njoinedRatingsDF = ratingsDF.join(ratingsDF, on='userID', how='inner')\n```",
-      "benefits": "Query optimizations, reduced shuffling, and better resource usage."
+      "benefits": "DataFrame/Dataset transformations can be optimized for better performance, especially when dealing with large datasets."
     },
     {
       "rddOperation": "filter",
-      "improvementExplanation": "The `filter` operation can be replaced with a DataFrame/Dataset filter for better performance, as it allows for query optimizations and reduced shuffling.",
+      "improvementExplanation": "The `filter` operation can be replaced with a DataFrame/Dataset filter, which can be optimized for better performance.",
       "dataframeEquivalent": "```python\nuniqueJoinedRatingsDF = joinedRatingsDF.filter(joinedRatingsDF['movieID_1'] < joinedRatingsDF['movieID_2'])\n```",
-      "benefits": "Query optimizations, reduced shuffling, and better resource usage."
+      "benefits": "DataFrame/Dataset filters can be optimized for better performance, especially when dealing with large datasets."
     },
     {
       "rddOperation": "map",
-      "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation for better performance, as it allows for query optimizations and reduced shuffling.",
-      "dataframeEquivalent": "```python\nmoviePairsDF = uniqueJoinedRatingsDF.select(col('movieID_1').alias('movie1'), col('movieID_2').alias('movie2'), col('rating_1').alias('rating1'), col('rating_2').alias('rating2'))\n```",
-      "benefits": "Query optimizations, reduced shuffling, and better resource usage."
+      "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance.",
+      "dataframeEquivalent": "```python\nmoviePairsDF = uniqueJoinedRatingsDF.selectExpr('(movieID_1, movieID_2) as moviePair', '(rating_1, rating_2) as ratings')\n```",
+      "benefits": "DataFrame/Dataset transformations can be optimized for better performance, especially when dealing with large datasets."
     },
     {
       "rddOperation": "groupByKey",
-      "improvementExplanation": "The `groupByKey` operation can be replaced with a DataFrame/Dataset groupBy for better performance, as it allows for query optimizations and reduced shuffling.",
-      "dataframeEquivalent": "```python\nmoviePairRatingsDF = moviePairsDF.groupBy('movie1', 'movie2')\n```",
-      "benefits": "Query optimizations, reduced shuffling, and better resource usage."
+      "improvementExplanation": "The `groupByKey` operation can be replaced with a DataFrame/Dataset groupBy, which can be optimized for better performance.",
+      "dataframeEquivalent": "```python\nmoviePairRatingsDF = moviePairsDF.groupBy('moviePair').agg(collect_list('ratings'))\n```",
+      "benefits": "DataFrame/Dataset groupBy can be optimized for better performance, especially when dealing with large datasets."
     },
     {
       "rddOperation": "mapValues",
-      "improvementExplanation": "The `mapValues` operation can be replaced with a DataFrame/Dataset transformation for better performance, as it allows for query optimizations and reduced shuffling.",
-      "dataframeEquivalent": "```python\nmoviePairSimilaritiesDF = moviePairRatingsDF.agg(f.expr('computeCosineSimilarity(collect_list(rating1)) as (score, numPairs)'))\n```",
-      "benefits": "Query optimizations, reduced shuffling, and better resource usage."
+      "improvementExplanation": "The `mapValues` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance.",
+      "dataframeEquivalent": "```python\nmoviePairSimilaritiesDF = moviePairRatingsDF.withColumn('similarity', F.udf(computeCosineSimilarity)(F.col('collect_list(ratings)')))\n```",
+      "benefits": "DataFrame/Dataset transformations can be optimized for better performance, especially when dealing with large datasets."
     },
     {
       "rddOperation": "cache",
-      "improvementExplanation": "The `cache` operation can be replaced with a DataFrame/Dataset cache for better performance, as it allows for query optimizations and reduced shuffling.",
+      "improvementExplanation": "The `cache` operation can be replaced with a DataFrame/Dataset cache, which can be optimized for better performance.",
       "dataframeEquivalent": "```python\nmoviePairSimilaritiesDF.cache()\n```",
-      "benefits": "Query optimizations, reduced shuffling, and better resource usage."
+      "benefits": "DataFrame/Dataset cache can be optimized for better performance, especially when dealing with large datasets."
     }
   ]
 }

@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "max(int(partition._num) for partition in agg_df.collect())",
+      "improvementExplanation": "The code uses a Python list comprehension with `agg_df.collect()` to find the maximum value of `_num`. `agg_df.collect()` brings all the data to the driver, and then the Python `max` function iterates over this list. This is inefficient because the data is already distributed across the Spark cluster. Instead of collecting all the data to the driver and then using a Python loop, we can use `mapPartitions` to perform the `max` operation on each partition and then find the max of the max values from each partition. This avoids bringing all the data to the driver and leverages Spark's distributed processing capabilities.",
+      "mapPartitionsEquivalent": "number_of_files = agg_df.mapPartitions(lambda partitions: [max(int(p._num) for p in partitions)]).collect()\nnumber_of_files = max(number_of_files)",
+      "benefits": "By using `mapPartitions`, we avoid collecting all the data to the driver, which can be a bottleneck for large datasets. The `max` operation is performed on each partition in parallel, reducing the overall processing time. This approach also reduces the memory pressure on the driver node. The `mapPartitions` transformation allows us to process data in batches, which can be more efficient than processing each row individually."
+    }
+  ]
+}
+```

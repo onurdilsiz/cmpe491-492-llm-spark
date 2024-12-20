@@ -4,37 +4,20 @@
   "occurrences": 1,
   "response": [
     {
-      "operation": "The UDF `executeRestApi` is used on line 27 to make a REST API request and return the response as a DataFrame.",
-      "improvementExplanation": "This UDF can be replaced with a combination of built-in functions and DataFrame operations. The `requests` library can be used to make the API request, and the `from_json` function can be used to convert the JSON response to a DataFrame.",
+      "operation": "UDF `executeRestApi` used on line 34 to make an API request and return a DataFrame.",
+      "improvementExplanation": "The UDF `executeRestApi` can be replaced with a combination of built-in functions and DataFrame transformations. Instead of defining a custom UDF, we can use `requests.get` directly within a DataFrame operation. This eliminates the need for serialization and allows Catalyst optimizations to be applied.",
       "alternativeEquivalent": """
 ```python
-def make_rest_api_request(verb, url, headers, body):
-  res = None
-  try:
-    if verb == "get":
-      res = requests.get(url, data=body, headers=headers)
-    elif verb == "post":
-      res = requests.post(url, data=body, headers=headers)
-    else:
-      print("another HTTP verb action")
-  except Exception as e:
-    return e
-
-  if res != None and res.status_code == 200:
-    return spark.read.json(res.text, schema=schema)
-
-  return None
-
 request_df = spark.createDataFrame([
             RestApiRequest("get", "https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json", headers, body)
           ])\
-          .withColumn("execute", make_rest_api_request(col("verb"), col("url"), col("headers"), col("body")))
+          .withColumn("response", spark.read.json(requests.get(col("url"), headers=col("headers")).text))
 
-request_df.select(explode(col("execute.Results")).alias("results"))\
+request_df.select(explode(col("response.Results")).alias("results"))\
     .select(col("results.Make_ID"), col("results.Make_Name")).show()
 ```
-      """,
-      "benefits": "Replacing the UDF with built-in functions and DataFrame operations provides several benefits:\n\n* **Catalyst Optimizations:** Built-in functions and DataFrame operations are optimized by Catalyst, Spark's query optimizer, which can lead to significant performance improvements.\n* **Improved Performance:** Avoiding UDFs reduces serialization overhead, as data does not need to be converted between Python and Java objects.\n* **Reduced Code Complexity:** Using built-in functions and DataFrame operations simplifies the code and makes it easier to maintain."
+      ",
+      "benefits": "Replacing the UDF with built-in functions and DataFrame transformations offers several benefits:\n\n* **Catalyst Optimizations:** Catalyst can optimize the execution plan for built-in functions and DataFrame operations, leading to improved performance.\n* **Reduced Serialization Overhead:** UDFs require serialization, which can be a performance bottleneck. Using built-in functions and DataFrame operations avoids this overhead.\n* **Improved Code Readability:** Replacing UDFs with built-in functions and DataFrame operations can improve code readability and maintainability."
     }
   ]
 }

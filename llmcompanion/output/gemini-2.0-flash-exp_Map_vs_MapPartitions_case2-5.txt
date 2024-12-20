@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "map(lambda x: (termIds[x[0]], x[1]) ,termSorted[0:numTerms])",
+      "improvementExplanation": "The `map` operation here is used to transform each element of the `termSorted` list, which is a list of tuples. This transformation involves accessing `termIds` using the index from the tuple. Since this operation is applied to each element of a list within a loop, it can be more efficient to perform this transformation at the partition level using `mapPartitions`. This avoids the overhead of calling the lambda function for each element individually.",
+      "mapPartitionsEquivalent": "def termMapper(itr):\n    return [ (termIds[x[0]], x[1]) for x in itr ]\n\ntopTerms.append(list(termMapper(termSorted[0:numTerms])))",
+      "benefits": "By using `mapPartitions`, we reduce the function call overhead. Instead of calling the lambda function for each element, we call the `termMapper` function once per partition (in this case, the list `termSorted[0:numTerms]`). This can lead to performance improvements, especially when the list is large. Although the list is not an RDD, the concept of applying a function to a batch of elements is similar to how `mapPartitions` works on RDDs."
+    },
+    {
+      "operation": "map(lambda doc: (docIds[doc[1]], doc[0]), docWeights.top(numDocs))",
+      "improvementExplanation": "Similar to the previous case, this `map` operation transforms each element of the list returned by `docWeights.top(numDocs)`. This transformation involves accessing `docIds` using the index from the tuple. This can be optimized by using `mapPartitions` to perform the transformation on the entire list at once, reducing the overhead of individual function calls.",
+      "mapPartitionsEquivalent": "def docMapper(itr):\n    return [ (docIds[doc[1]], doc[0]) for doc in itr ]\n\ntopDocs.append(list(docMapper(docWeights.top(numDocs))))",
+      "benefits": "Switching to `mapPartitions` reduces the function call overhead. Instead of calling the lambda function for each element, we call the `docMapper` function once per partition (in this case, the list returned by `docWeights.top(numDocs)`). This can lead to performance improvements, especially when the list is large. Although the list is not an RDD, the concept of applying a function to a batch of elements is similar to how `mapPartitions` works on RDDs."
+    }
+  ]
+}
+```

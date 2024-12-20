@@ -5,9 +5,9 @@
   "response": [
     {
       "operation": "df2.repartition(50).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/50\")",
-      "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions in the DataFrame to 50. This is likely done to improve the parallelism of the write operation, as more partitions can be written concurrently. However, in this case, the DataFrame is being written to a CSV file, which is a single-file format. Therefore, increasing the number of partitions will not provide any benefit. Instead, we can use `coalesce()` to reduce the number of partitions to 1, which will result in a single CSV file. This will reduce the amount of data that needs to be shuffled and written, potentially improving the performance of the write operation.",
+      "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions in the DataFrame to 50. This is likely done to improve the parallelism of the write operation, as more partitions can be written concurrently. However, in this case, the DataFrame is being written to a CSV file, which is a single-file format. Therefore, increasing the number of partitions will not provide any benefit. Instead, we can use `coalesce()` to reduce the number of partitions to 1, which will result in a single CSV file. This will reduce the amount of shuffling required and improve the efficiency of the write operation.",
       "coalesceEquivalent": "df2.coalesce(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/50\")",
-      "benefits": "Switching to `coalesce()` in this case will reduce the amount of data that needs to be shuffled and written, potentially improving the performance of the write operation. Additionally, it will reduce the number of files that are created, which can simplify downstream processing."
+      "benefits": "Switching to `coalesce()` will reduce the amount of shuffling required, improve resource usage, and result in a faster runtime."
     }
   ]
 }

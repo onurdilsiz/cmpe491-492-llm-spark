@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "df_5years.repartition(200).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/200\")",
+      "improvementExplanation": "The provided code uses `repartition(200)` before writing the data to CSV.  Repartitioning to 200 partitions is done before saving the data. Since the write operation is the final step, and the number of partitions is increased, this operation will cause a full shuffle.  If the number of partitions in `df_5years` is less than 200, using `coalesce` instead of `repartition` would avoid unnecessary shuffling and improve performance. `coalesce` only reduces the number of partitions and doesn't increase them, thus avoiding the shuffle.",
+      "coalesceEquivalent": "num_partitions = min(df_5years.rdd.getNumPartitions(), 200)\ndf_5years.coalesce(num_partitions).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/200\")",
+      "benefits": "Switching to `coalesce` will reduce the shuffle operations, leading to improved resource utilization and faster job execution time.  The `min` function ensures that if the initial number of partitions is already less than 200, no repartitioning occurs, further enhancing efficiency."
+    }
+  ]
+}
+```

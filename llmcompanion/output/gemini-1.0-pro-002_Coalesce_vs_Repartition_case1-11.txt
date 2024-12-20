@@ -5,9 +5,9 @@
   "response": [
     {
       "operation": "df = df.repartition(1000)",
-      "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions in the DataFrame to 1000. However, since the DataFrame is already sorted by `time`, we can achieve the same result with less shuffling by using `coalesce()` instead. `coalesce()` will simply reduce the number of partitions to the desired number without shuffling the data.",
-      "coalesceEquivalent": "df = df.coalesce(1000)",
-      "benefits": "Replacing `repartition()` with `coalesce()` in this case will reduce the amount of data shuffling, which can improve the performance of the job. Additionally, it will reduce the amount of resources used by the job, as fewer partitions will need to be processed."
+      "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions in the DataFrame to 1000. However, since the DataFrame is already sorted by `time`, using `coalesce()` instead would achieve the same result without performing a full shuffle. This would reduce the amount of data that needs to be transferred across the network, leading to improved resource usage and faster job runtime.",
+      "coalesceEquivalent": "df = df.sort(asc('time')).coalesce(1000)",
+      "benefits": "Switching to `coalesce()` in this case would:\n- Reduce shuffling, as it only redistributes data without shuffling.\n- Improve resource usage, as it avoids unnecessary data transfers.\n- Potentially lead to faster job runtime, due to reduced shuffling and improved resource utilization."
     }
   ]
 }

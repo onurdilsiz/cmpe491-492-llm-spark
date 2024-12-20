@@ -1,0 +1,93 @@
+{
+    "detected0": true,
+    "occurrences0": 6,
+    "response0": [
+        {
+            "operation": "Line 18: pages = readFile('/Users/Karim/Downloads/wiki-nlp/enwiki-latest-pages-articles1.xml', sc).sample(False, sampleSize, 11L)",
+            "improvementExplanation": "The readFile function likely returns an RDD.  This should be converted to a DataFrame for better performance and integration with Spark SQL.  Assume readFile returns text data; we'll create a DataFrame with a single 'text' column.",
+            "dataframeEquivalent": "pages_df = sqlContext.read.text('/Users/Karim/Downloads/wiki-nlp/enwiki-latest-pages-articles1.xml').sample(False, sampleSize, 11L)",
+            "benefits": "Improved query optimization, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "Line 21: plainText = wikiXmlToPlainText(pages)",
+            "improvementExplanation": "Assuming wikiXmlToPlainText processes the RDD pages and returns an RDD of strings, this should be converted to a DataFrame.",
+            "dataframeEquivalent": "plainText_df = pages_df.selectExpr('text').withColumnRenamed('text', 'plainText')",
+            "benefits": "Improved query optimization, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "Line 28: lemmatized = plainText.mapPartitions(lemmaMapper)",
+            "improvementExplanation": "This RDD operation can be replaced with a DataFrame transformation using a UDF (though we'll address UDFs later).",
+            "dataframeEquivalent": "from pyspark.sql.functions import udf\nfrom pyspark.sql.types import ArrayType, StringType\nlemma_udf = udf(lambda text: plainTextToLemmas(text, stopWords, pipeline), ArrayType(StringType()))\nlemmatized_df = plainText_df.withColumn('lemmas', lemma_udf('plainText'))",
+            "benefits": "Improved query optimization, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "Line 31: filtered = lemmatized.filter(lambda l: len(l[1]) > 1)",
+            "improvementExplanation": "This RDD filter operation can be easily translated to a DataFrame filter.",
+            "dataframeEquivalent": "filtered_df = lemmatized_df.filter(size(col('lemmas')) > 1)",
+            "benefits": "Improved query optimization, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "Line 33: return documentTermMatrix(filtered, stopWords, numTerms, sc)",
+            "improvementExplanation": "Assuming documentTermMatrix returns an RDD, it should be converted to a DataFrame.  The exact conversion depends on the output structure of documentTermMatrix.  We'll assume it returns a matrix that can be represented as a DataFrame with columns for term and count.",
+            "dataframeEquivalent": "termDocMatrix_df = documentTermMatrix(filtered_df, stopWords, numTerms, sqlContext) # Assuming documentTermMatrix is adapted to return a DataFrame",
+            "benefits": "Improved query optimization, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "Line 60: mat = RowMatrix(termDocMatrix)",
+            "improvementExplanation": "The RowMatrix is built from an RDD.  If termDocMatrix is converted to a DataFrame (as suggested above), a different approach is needed for matrix operations.  Spark's MLlib provides alternatives for DataFrame-based matrix operations.",
+            "dataframeEquivalent": "This requires a different approach using Spark's MLlib for DataFrames or a different matrix library altogether.  The specific implementation depends on the structure of termDocMatrix_df.",
+            "benefits": "Improved query optimization, reduced shuffling, and easier integration with structured data formats."
+        }
+    ],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": true,
+    "occurrences2": 4,
+    "response2": [
+        {
+            "operation": "Line 42: topTerms = map(lambda x: (termIds[x[0]], x[1]), termSorted[0:numTerms])",
+            "improvementExplanation": "This map operation can be done more efficiently within a single partition using mapPartitions.  However, since this is a small operation on a likely small dataset, the performance gain might be negligible.",
+            "mapPartitionsEquivalent": "topTerms = list(termSorted[0:numTerms]).map(lambda x: (termIds[x[0]], x[1]))",
+            "benefits": "Reduced function call overhead."
+        },
+        {
+            "operation": "Line 49: topDocs = map(lambda doc: (docIds[doc[1]], doc[0]), docWeights.top(numDocs))",
+            "improvementExplanation": "Similar to the previous map, this operation is small and the performance gain from mapPartitions might be minimal.  However, for larger datasets, mapPartitions would be beneficial.",
+            "mapPartitionsEquivalent": "topDocs = list(docWeights.top(numDocs)).map(lambda doc: (docIds[doc[1]], doc[0]))",
+            "benefits": "Reduced function call overhead."
+        },
+        {
+            "operation": "Line 58: print(\"Concept terms: \" + \", \".join(map(lambda x: x[0], termDoc[0])))",
+            "improvementExplanation": "This map is a small operation on the driver; mapPartitions is not necessary or beneficial here.",
+            "mapPartitionsEquivalent": "No change needed.",
+            "benefits": "No significant benefit."
+        },
+        {
+            "operation": "Line 59: print(\"Concept docs: \" + \", \".join(map(lambda x: x[0], termDoc[1])))",
+            "improvementExplanation": "This map is a small operation on the driver; mapPartitions is not necessary or beneficial here.",
+            "mapPartitionsEquivalent": "No change needed.",
+            "benefits": "No significant benefit."
+        }
+    ],
+    "detected3": true,
+    "occurrences3": 1,
+    "response3": [
+        {
+            "operation": "Line 18: readFile('/Users/Karim/Downloads/wiki-nlp/enwiki-latest-pages-articles1.xml', sc)",
+            "improvementExplanation": "Reading XML directly is inefficient.  Consider converting the XML to a more efficient format like Parquet before processing with Spark.",
+            "optimizedEquivalent": "Convert the XML to Parquet using external tools before running the Spark job. Then, load the Parquet file using: \nsqlContext.read.parquet('/path/to/parquet/file')",
+            "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+        }
+    ],
+    "detected4": true,
+    "occurrences4": 1,
+    "response4": [
+        {
+            "operation": "Line 24: def lemmaMapper(itr): ...",
+            "improvementExplanation": "The lemmaMapper function is a UDF.  It's better to integrate the CoreNLP pipeline's functionality directly into a DataFrame transformation using a more efficient approach, potentially involving a custom transformer.",
+            "alternativeEquivalent": "This requires a more substantial rewrite.  Explore Spark NLP or other libraries for efficient NLP processing within the DataFrame pipeline.  Avoid using a UDF for this complex operation.",
+            "benefits": "Enabling Catalyst optimizations, improving performance, and reducing serialization overhead."
+        }
+    ]
+}

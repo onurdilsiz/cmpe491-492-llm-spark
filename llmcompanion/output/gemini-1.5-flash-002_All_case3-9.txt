@@ -1,0 +1,52 @@
+```json
+{
+  "detected0": false,
+  "occurrences0": 0,
+  "response0": [],
+  "detected1": false,
+  "occurrences1": 0,
+  "response1": [],
+  "detected2": true,
+  "occurrences2": 2,
+  "response2": [
+    {
+      "operation": "df['details'] = df['details'].apply(lambda x: json.loads(x.replace(\"'\", \"\\\"\")))",
+      "improvementExplanation": "This map operation processes each row individually.  mapPartitions would process each partition as a batch, reducing function call overhead and potentially improving performance, especially with large datasets.",
+      "mapPartitionsEquivalent": "df = df.withColumn('details', F.expr('transform(details, x -> to_json(from_json(replace(x, \"'\", \"\\\"\"), MapType(StringType(), StringType())))'))",
+      "benefits": "Reduced function call overhead, improved performance for large datasets."
+    },
+    {
+      "operation": "df['oil_value'] = df['details'].apply(lambda x: x.get('oil_value', None))",
+      "improvementExplanation": "Similar to the previous example, this map operation processes each row individually. mapPartitions can improve performance by processing data in batches.",
+      "mapPartitionsEquivalent": "df = df.withColumn('oil_value', F.expr('transform(details, x -> get(from_json(x, MapType(StringType(), StringType())), \"oil_value\"))'))",
+      "benefits": "Reduced function call overhead, improved performance for large datasets."
+    }
+  ],
+  "detected3": true,
+  "occurrences3": 1,
+  "response3": [
+    {
+      "operation": "df = pd.read_csv('/Users/mac/Downloads/predictive.csv')",
+      "improvementExplanation": "Reading data from CSV is slow.  Using Parquet or ORC will significantly improve read/write performance and enable query optimization.",
+      "optimizedEquivalent": "spark.read.parquet('/Users/mac/Downloads/predictive.parquet')",
+      "benefits": "Faster reads/writes, compression, query optimization through predicate pushdown."
+    }
+  ],
+  "detected4": true,
+  "occurrences4": 2,
+  "response4": [
+    {
+      "operation": "df['details'] = df['details'].apply(lambda x: json.loads(x.replace(\"'\", \"\\\"\")))",
+      "improvementExplanation": "This UDF can be replaced with built-in Spark functions for JSON processing.",
+      "alternativeEquivalent": "df = df.withColumn('details', F.from_json(F.regexp_replace('details', \"'\", \"\\\"\"), MapType(StringType(), StringType())))",
+      "benefits": "Enables Catalyst optimizations, improves performance, reduces serialization overhead."
+    },
+    {
+      "operation": "df['oil_value'] = df['details'].apply(lambda x: x.get('oil_value', None))",
+      "improvementExplanation": "This UDF can be replaced with Spark's `get_json_object` function.",
+      "alternativeEquivalent": "df = df.withColumn('oil_value', F.get_json_object(F.col('details'), '$.oil_value'))",
+      "benefits": "Enables Catalyst optimizations, improves performance, reduces serialization overhead."
+    }
+  ]
+}
+```

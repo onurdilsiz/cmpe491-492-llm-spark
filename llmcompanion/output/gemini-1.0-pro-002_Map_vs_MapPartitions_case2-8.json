@@ -1,1 +1,18 @@
-{}
+{
+    "detected": true,
+    "occurrences": 2,
+    "response": [
+        {
+            "operation": "map(lambda x: x[0], feature_iterator)",
+            "improvementExplanation": "This map operation extracts the first element from each tuple in the feature_iterator. This can be efficiently performed at the partition level using mapPartitions, which avoids unnecessary function calls and data serialization overhead.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: (x[0] for x in partition))",
+            "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+        },
+        {
+            "operation": "map(lambda x: x[1], label_iterator)",
+            "improvementExplanation": "This map operation extracts the second element from each tuple in the label_iterator. Similar to the previous case, this can be efficiently performed at the partition level using mapPartitions.",
+            "mapPartitionsEquivalent": "mapPartitions(lambda partition: (x[1] for x in partition))",
+            "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+        }
+    ]
+}

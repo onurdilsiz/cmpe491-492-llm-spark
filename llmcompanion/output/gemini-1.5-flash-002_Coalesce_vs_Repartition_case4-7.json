@@ -1,0 +1,12 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").repartition(1)",
+            "improvementExplanation": "The repartition(1) operation is used after all data processing is complete.  The goal is to write the data to S3. Repartitioning to a single partition (1) before writing to S3 is unnecessary and causes a full data shuffle. Since the data is already processed and ready for writing, reducing the number of partitions to 1 can be achieved more efficiently using coalesce(1), which avoids the full shuffle and only performs a partial shuffle if the number of partitions is greater than 1.  In this case, it's likely that the number of partitions is already small, so coalesce will be significantly faster.",
+            "coalesceEquivalent": "azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").coalesce(1)",
+            "benefits": "Switching to coalesce(1) will significantly reduce the shuffle time and improve overall job performance.  It avoids unnecessary data movement, leading to faster execution and reduced resource consumption (CPU, memory, and network)."
+        }
+    ]
+}

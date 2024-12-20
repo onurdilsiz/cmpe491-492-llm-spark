@@ -4,10 +4,10 @@
   "occurrences": 1,
   "response": [
     {
-      "operation": "repartition(1000)",
-      "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions to 1000. This can be replaced with `coalesce()` because the goal is to reduce the number of partitions, not increase it. `coalesce()` will merge partitions without shuffling data, which can improve performance.",
-      "coalesceEquivalent": "coalesce(1000)",
-      "benefits": "Switching to `coalesce()` will reduce shuffling, improve resource usage, and potentially lead to faster runtime."
+      "operation": "repartition(10000)",
+      "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions in the RDD. However, in this case, the `coalesce()` operation can be used instead to achieve the same result without shuffling the data. This is because the `coalesce()` operation simply merges existing partitions, while `repartition()` shuffles the data to create new partitions.",
+      "coalesceEquivalent": "coalesce(10000)",
+      "benefits": "Switching to `coalesce()` will reduce the amount of data shuffling, which can improve the performance of the job. Additionally, `coalesce()` can improve resource utilization by reducing the number of partitions that need to be processed."
     }
   ]
 }

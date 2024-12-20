@@ -1,0 +1,24 @@
+{
+    "detected": true,
+    "occurrences": 3,
+    "response": [
+        {
+            "operation": "Line 68: `map(lambda x: (termIds[x[0]], x[1]) ,termSorted[0:numTerms])`",
+            "improvementExplanation": "This map operation iterates through a list of (index, weight) pairs and transforms them into (termId, weight) pairs. This operation is performed on a small list in memory, so the overhead of mapPartitions is likely to outweigh the benefits.  The data is already collected on the driver, so there's no distributed processing advantage to using mapPartitions.",
+            "mapPartitionsEquivalent": null,
+            "benefits": null
+        },
+        {
+            "operation": "Line 78: `map(lambda doc: (docIds[doc[1]], doc[0]), docWeights.top(numDocs))`",
+            "improvementExplanation": "Similar to the previous case, this map operation processes a small list of (uniqueId, weight) pairs, transforming them into (docId, weight) pairs. The overhead of mapPartitions would likely outweigh any potential benefits. The data is already collected on the driver.",
+            "mapPartitionsEquivalent": null,
+            "benefits": null
+        },
+        {
+            "operation": "Line 94: `, '.join(map(lambda x: x[0], termDoc[0]))`",
+            "improvementExplanation": "This map operation is used for a simple transformation on a small list of (term, weight) pairs, extracting only the term. This operation is performed on the driver after data has been collected, so mapPartitions is not applicable. The overhead of mapPartitions would outweigh any benefits.",
+            "mapPartitionsEquivalent": null,
+            "benefits": null
+        }
+    ]
+}

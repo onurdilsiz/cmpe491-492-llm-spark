@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").repartition(1)",
+      "improvementExplanation": "The code uses `repartition(1)` to reduce the number of partitions to 1 before writing to S3. Since the goal is to reduce the number of partitions, and not to increase it or redistribute data across a specific number of partitions, `coalesce(1)` can be used instead. `coalesce()` avoids a full shuffle, which is what `repartition()` does, and is more efficient when reducing the number of partitions.",
+      "coalesceEquivalent": "azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").coalesce(1)",
+      "benefits": "Switching to `coalesce(1)` will avoid a full shuffle, leading to reduced data movement across the network. This results in improved resource utilization, faster job runtime, and reduced cost. Since we are only reducing the number of partitions, coalesce is the more efficient choice."
+    }
+  ]
+}
+```

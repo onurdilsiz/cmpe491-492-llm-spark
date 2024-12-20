@@ -1,12 +1,18 @@
 {
     "detected": true,
-    "occurrences": 1,
+    "occurrences": 2,
     "response": [
         {
-            "operation": "map() operation on lemmatized data (line 17)",
-            "improvementExplanation": "The map() operation on the lemmatized data performs a transformation on each individual element. This can be inefficient for partition-level operations like I/O or batch processing. Replacing it with mapPartitions() allows processing data in batches within each partition, reducing function call overhead and potentially improving I/O efficiency.",
+            "operation": "map() in `preprocessing` function (line 18)",
+            "improvementExplanation": "The `lemmaMapper` function performs tokenization, sentence splitting, part-of-speech tagging, and lemmatization on each text chunk. These operations can be efficiently parallelized at the partition level using `mapPartitions` to reduce function call overhead and improve I/O performance.",
             "mapPartitionsEquivalent": "```python\nlemmatized = plainText.mapPartitions(lambda itr: map(lambda tc: (tc[0], plainTextToLemmas(tc[1], stopWords, pipeline)), itr))\n```",
-            "benefits": "Switching to mapPartitions() offers several benefits:\n- **Reduced function call overhead:** By processing data in batches within partitions, mapPartitions() reduces the number of function calls compared to map(), leading to improved performance.\n- **Optimized I/O:** For I/O-bound operations, mapPartitions() can potentially improve efficiency by reading or writing data in larger chunks within each partition.\n- **Improved resource utilization:** By reducing function call overhead and potentially optimizing I/O, mapPartitions() can lead to better resource utilization."
+            "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+        },
+        {
+            "operation": "map() in `topTermsInTopConcepts` function (line 34)",
+            "improvementExplanation": "The `map` operation within the `topTermsInTopConcepts` function iterates over each term weight and creates a tuple with the term ID and weight. This can be efficiently performed at the partition level using `mapPartitions` to reduce function call overhead and improve performance.",
+            "mapPartitionsEquivalent": "```python\ntopTerms = []\narr = v.toArray()\nfor i in range(0, numConcepts):\n    offs = i * v.numRows\n    termWeights = list(enumerate(arr[offs:offs + v.numRows]))\n    termSorted =sorted(termWeights,key=itemgetter(0),reverse=True)\n    topTerms.append(mapPartitions(lambda x: map(lambda x: (termIds[x[0]], x[1]) ,termSorted[0:numTerms])))\n```",
+            "benefits": "Reduced function call overhead and improved performance."
         }
     ]
 }

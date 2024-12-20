@@ -1,0 +1,56 @@
+```json
+{
+  "detected0": false,
+  "occurrences0": 0,
+  "response0": [],
+  "detected1": false,
+  "occurrences1": 0,
+  "response1": [],
+  "detected2": false,
+  "occurrences2": 0,
+  "response2": [],
+  "detected3": false,
+  "occurrences3": 0,
+  "response3": [],
+  "detected4": true,
+  "occurrences4": 8,
+  "response4": [
+    {
+      "operation": "extract_family_name(full_name: List[str])",
+      "improvementExplanation": "This UDF can be replaced with the built-in `split` function and string manipulation to extract the family name.",
+      "alternativeEquivalent": "df.withColumn('family_name', split(df['full_name'], ' ')[1:])",
+      "benefits": "Improves performance by leveraging Spark SQL optimizations and avoids serialization overhead."
+    },
+    {
+      "operation": "extract_given_name(full_name: List[str])",
+      "improvementExplanation": "This UDF can be replaced with the built-in `split` function to extract the given name.",
+      "alternativeEquivalent": "df.withColumn('given_name', split(df['full_name'], ' ')[0])",
+      "benefits": "Improves performance by leveraging Spark SQL optimizations and avoids serialization overhead."
+    },
+    {
+      "operation": "format_phone(phone: str)",
+      "improvementExplanation": "This UDF can be replaced with a combination of built-in string functions like `replace` and `concat` to format the phone number.",
+      "alternativeEquivalent": "df.withColumn('phone', concat('+55 0', replace(df['phone'], r'\((\d{2})\)\s(\d{4}-\d{4})', r'\1 \2')))",
+      "benefits": "Improves performance by leveraging Spark SQL optimizations and avoids serialization overhead."
+    },
+    {
+      "operation": "clean_cpf(value: str)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `regexp_replace` function to remove non-digit characters from the CPF.",
+      "alternativeEquivalent": "df.withColumn('cpf', regexp_replace(df['value'], r'\D', ''))",
+      "benefits": "Improves performance by leveraging Spark SQL optimizations and avoids serialization overhead."
+    },
+    {
+      "operation": "format_gender(value: str)",
+      "improvementExplanation": "This UDF can be replaced with a combination of built-in string functions like `lower` and `case when` to format the gender.",
+      "alternativeEquivalent": "df.withColumn('gender', case when lower(df['value']) == 'masculino' then 'male' when lower(df['value']) == 'feminino' then 'female' else 'unknown' end)",
+      "benefits": "Improves performance by leveraging Spark SQL optimizations and avoids serialization overhead."
+    },
+    {
+      "operation": "format_date(value: str)",
+      "improvementExplanation": "This UDF can be replaced with the built-in `to_date` function and `strftime` to format the date.",
+      "alternativeEquivalent": "df.withColumn('date', to_date(df['value'], 'dd/MM/yyyy').cast('string').strftime('%Y-%m-%d'))",
+      "benefits": "Improves performance by leveraging Spark SQL optimizations and avoids serialization overhead."
+    }
+  ]
+}
+```

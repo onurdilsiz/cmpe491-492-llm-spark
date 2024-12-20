@@ -1,22 +1,7 @@
 ```json
 {
-  "detected": false,
+  "detected": true,
   "occurrences": 0,
   "response": []
 }
 ```
-
-## Explanation
-
-The provided code snippet does not contain any RDD operations. It primarily uses DataFrames and Datasets for data manipulation. Therefore, there are no opportunities to replace RDDs with DataFrames/Datasets for improved performance.
-
-## Additional Notes
-
-* The code snippet demonstrates various ways to define and use User-Defined Functions (UDFs) with DataFrames.
-* It also showcases the use of `expr` and `split` functions for string manipulation within DataFrames.
-* The code includes examples of creating and querying temporary views on DataFrames.
-* The `spark.range` function is used to generate a DataFrame with a sequence of numbers.
-
-## Conclusion
-
-The provided code snippet effectively leverages DataFrames and Datasets for data analysis, demonstrating efficient and scalable data processing techniques. 

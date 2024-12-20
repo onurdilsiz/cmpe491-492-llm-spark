@@ -8,12 +8,12 @@
       "location": "line 17: data = sc.textFile(\"file:///SparkCourse/ml-100k/u.data\")",
       "improvementExplanation": "The current code reads data from a CSV file, which is a text-based format. This can be inefficient for large datasets, as it requires parsing and converting the data into a usable format. Switching to a serialized format like Parquet or ORC can significantly improve performance by reducing the amount of data that needs to be processed.",
       "optimizedEquivalent": "```python\ndata = sc.read.parquet(\"file:///SparkCourse/ml-100k/u.data.parquet\")\n```",
-      "benefits": "Using Parquet or ORC instead of CSV offers several benefits:\n* **Faster reads/writes:** Serialized formats are optimized for efficient data storage and retrieval, resulting in faster read and write operations.\n* **Compression:** Parquet and ORC support compression, which can significantly reduce the storage space required for the data.\n* **Query optimization:** These formats allow for predicate pushdown, where filters can be applied directly to the data files, further improving query performance."
+      "benefits": "Switching to Parquet or ORC offers several benefits:\n* **Faster reads/writes:** Serialized formats are optimized for efficient data storage and retrieval, resulting in faster read and write operations.\n* **Compression:** Parquet and ORC support compression, which can significantly reduce the storage space required for the data.\n* **Query optimization:** These formats allow for predicate pushdown, where filters can be applied directly to the data files, further improving query performance."
     },
     {
       "operation": "Saving results to a text file",
-      "location": "line 38: moviePairSimilarities.saveAsTextFile(\"movie-sims\")",
-      "improvementExplanation": "The current code saves the results to a text file, which is not an efficient format for storing large amounts of data. Switching to a serialized format like Parquet or ORC would allow for more efficient storage and retrieval of the results.",
+      "location": "line 44: moviePairSimilarities.saveAsTextFile(\"movie-sims\")",
+      "improvementExplanation": "The current code saves the results to a text file, which is not an efficient format for storing large amounts of data. Switching to a serialized format like Parquet or ORC can improve storage efficiency and enable faster data access for subsequent analysis.",
       "optimizedEquivalent": "```python\nmoviePairSimilarities.write.parquet(\"movie-sims.parquet\")\n```",
       "benefits": "Similar to reading data, saving results in Parquet or ORC offers the same benefits of faster reads/writes, compression, and query optimization."
     }

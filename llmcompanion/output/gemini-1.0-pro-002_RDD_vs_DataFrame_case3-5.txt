@@ -5,63 +5,73 @@
   "response": [
     {
       "rddOperation": "map",
-      "improvementExplanation": "The `map` operation is used to transform each element of the RDD into a new element. This can be inefficient for complex transformations, as it requires iterating over the entire RDD. DataFrames/Datasets offer more efficient ways to perform transformations using vectorized operations.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\njoined = joined.withColumn(\"new_column\", F.expr(\"some_complex_transformation(column1, column2)\"))\n```",
-      "benefits": "Using DataFrames/Datasets for transformations can improve performance by reducing the number of iterations and leveraging vectorized operations. This can lead to faster execution times and better resource utilization."
-    },
-    {
-      "rddOperation": "filter",
-      "improvementExplanation": "The `filter` operation is used to filter out elements from the RDD that do not meet a certain condition. This can be inefficient for large datasets, as it requires iterating over the entire RDD. DataFrames/Datasets offer more efficient ways to perform filtering using predicate pushdown.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\njoined = joined.filter(F.col(\"column1\") > 10)\n```",
-      "benefits": "Using DataFrames/Datasets for filtering can improve performance by pushing the filtering logic down to the data source, reducing the amount of data that needs to be processed. This can lead to faster execution times and better resource utilization."
-    },
-    {
-      "rddOperation": "reduce",
-      "improvementExplanation": "The `reduce` operation is used to combine all elements of the RDD into a single value. This can be inefficient for large datasets, as it requires iterating over the entire RDD multiple times. DataFrames/Datasets offer more efficient ways to perform aggregations using optimized aggregation functions.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\nsum_value = joined.agg(F.sum(\"column1\"))\n```",
-      "benefits": "Using DataFrames/Datasets for aggregations can improve performance by leveraging optimized aggregation functions and reducing the number of iterations. This can lead to faster execution times and better resource utilization."
+      "location": "line 22: stations = stations.map(lambda line: line.split(';'))",
+      "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "stations = spark.read.csv('BDA/input/stations.csv', sep=';')",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
     },
     {
       "rddOperation": "map",
-      "improvementExplanation": "The `map` operation is used to transform each element of the RDD into a new element. This can be inefficient for complex transformations, as it requires iterating over the entire RDD. DataFrames/Datasets offer more efficient ways to perform transformations using vectorized operations.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\njoined = joined.withColumn(\"new_column\", F.expr(\"some_complex_transformation(column1, column2)\"))\n```",
-      "benefits": "Using DataFrames/Datasets for transformations can improve performance by reducing the number of iterations and leveraging vectorized operations. This can lead to faster execution times and better resource utilization."
-    },
-    {
-      "rddOperation": "filter",
-      "improvementExplanation": "The `filter` operation is used to filter out elements from the RDD that do not meet a certain condition. This can be inefficient for large datasets, as it requires iterating over the entire RDD. DataFrames/Datasets offer more efficient ways to perform filtering using predicate pushdown.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\njoined = joined.filter(F.col(\"column1\") > 10)\n```",
-      "benefits": "Using DataFrames/Datasets for filtering can improve performance by pushing the filtering logic down to the data source, reducing the amount of data that needs to be processed. This can lead to faster execution times and better resource utilization."
-    },
-    {
-      "rddOperation": "reduce",
-      "improvementExplanation": "The `reduce` operation is used to combine all elements of the RDD into a single value. This can be inefficient for large datasets, as it requires iterating over the entire RDD multiple times. DataFrames/Datasets offer more efficient ways to perform aggregations using optimized aggregation functions.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\nsum_value = joined.agg(F.sum(\"column1\"))\n```",
-      "benefits": "Using DataFrames/Datasets for aggregations can improve performance by leveraging optimized aggregation functions and reducing the number of iterations. This can lead to faster execution times and better resource utilization."
+      "location": "line 24: stations = stations.map(lambda x: (x[0],(float(x[3]),float(x[4]))))",
+      "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "stations = spark.read.csv('BDA/input/stations.csv', sep=';').select('_c0', '_c3', '_c4').withColumnRenamed('_c0', 'station_id').withColumnRenamed('_c3', 'latitude').withColumnRenamed('_c4', 'longitude')",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
     },
     {
       "rddOperation": "map",
-      "improvementExplanation": "The `map` operation is used to transform each element of the RDD into a new element. This can be inefficient for complex transformations, as it requires iterating over the entire RDD. DataFrames/Datasets offer more efficient ways to perform transformations using vectorized operations.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\njoined = joined.withColumn(\"new_column\", F.expr(\"some_complex_transformation(column1, column2)\"))\n```",
-      "benefits": "Using DataFrames/Datasets for transformations can improve performance by reducing the number of iterations and leveraging vectorized operations. This can lead to faster execution times and better resource utilization."
-    },
-    {
-      "rddOperation": "filter",
-      "improvementExplanation": "The `filter` operation is used to filter out elements from the RDD that do not meet a certain condition. This can be inefficient for large datasets, as it requires iterating over the entire RDD. DataFrames/Datasets offer more efficient ways to perform filtering using predicate pushdown.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\njoined = joined.filter(F.col(\"column1\") > 10)\n```",
-      "benefits": "Using DataFrames/Datasets for filtering can improve performance by pushing the filtering logic down to the data source, reducing the amount of data that needs to be processed. This can lead to faster execution times and better resource utilization."
-    },
-    {
-      "rddOperation": "reduce",
-      "improvementExplanation": "The `reduce` operation is used to combine all elements of the RDD into a single value. This can be inefficient for large datasets, as it requires iterating over the entire RDD multiple times. DataFrames/Datasets offer more efficient ways to perform aggregations using optimized aggregation functions.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\nsum_value = joined.agg(F.sum(\"column1\"))\n```",
-      "benefits": "Using DataFrames/Datasets for aggregations can improve performance by leveraging optimized aggregation functions and reducing the number of iterations. This can lead to faster execution times and better resource utilization."
+      "location": "line 28: temps = temps.map(lambda line: line.split(';'))",
+      "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "temps = spark.read.csv('BDA/input/temperature-readings.csv', sep=';')",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
     },
     {
       "rddOperation": "map",
-      "improvementExplanation": "The `map` operation is used to transform each element of the RDD into a new element. This can be inefficient for complex transformations, as it requires iterating over the entire RDD. DataFrames/Datasets offer more efficient ways to perform transformations using vectorized operations.",
-      "dataframeEquivalent": "```python\n# Assuming `joined` is a DataFrame\njoined = joined.withColumn(\"new_column\", F.expr(\"some_complex_transformation(column1, column2)\"))\n```",
-      "benefits": "Using DataFrames/Datasets for transformations can improve performance by reducing the number of iterations and leveraging vectorized operations. This can lead to faster execution times and better resource utilization."
+      "location": "line 30: temps = temps.map(lambda x: (x[0], (datetime.strptime(x[1], '%Y-%m-%d').date(), x[2], float(x[3]))))",
+      "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "temps = spark.read.csv('BDA/input/temperature-readings.csv', sep=';').select('_c0', '_c1', '_c2', '_c3').withColumnRenamed('_c0', 'station_id').withColumnRenamed('_c1', 'date').withColumnRenamed('_c2', 'time').withColumnRenamed('_c3', 'temperature').withColumn('date', F.to_date('date'))",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
+    },
+    {
+      "rddOperation": "filter",
+      "location": "line 34: temps_filtered = temps.filter(lambda x: (x[1][0]<date(2014, 6, 7)) )",
+      "improvementExplanation": "This filter operation can be replaced with a DataFrame/Dataset filter operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "temps_filtered = temps.filter(F.col('date') < date(2014, 6, 7))",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
+    },
+    {
+      "rddOperation": "map",
+      "location": "line 40: joined = temps_filtered.map(lambda x: (x[0],(x[1][0],x[1][1],x[1][2],bc.value.get(x[0]))))",
+      "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset join operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "joined = temps_filtered.join(stations, on='station_id', how='left')",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
+    },
+    {
+      "rddOperation": "map",
+      "location": "line 52: partial_sum_rdd = joined.map(lambda x: (get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist)+get_k_days(x[1][0], pred_date,h_days), x[1][1], x[1][2]))",
+      "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "partial_sum_rdd = joined.withColumn('partial_sum', F.col('temperature') * (get_k_dist(F.col('longitude'), F.col('latitude'), pred_long, pred_lat, h_dist) + get_k_days(F.col('date'), pred_date, h_days)))",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
+    },
+    {
+      "rddOperation": "map",
+      "location": "line 56: partial_prod_rdd = joined.map(lambda x: (get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist)*get_k_days(x[1][0], pred_date,h_days), x[1][1], x[1][2]))",
+      "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "partial_prod_rdd = joined.withColumn('partial_prod', F.col('temperature') * get_k_dist(F.col('longitude'), F.col('latitude'), pred_long, pred_lat, h_dist) * get_k_days(F.col('date'), pred_date, h_days))",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
+    },
+    {
+      "rddOperation": "reduceByKey",
+      "location": "line 62: k_sum = k_sum.reduceByKey(lambda x,y: (x[0]+y[0], x[1]+y[1]))",
+      "improvementExplanation": "This reduceByKey operation can be replaced with a DataFrame/Dataset aggregation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "k_sum = k_sum.groupBy().agg(F.sum('partial_sum'), F.sum('partial_prod'))",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
+    },
+    {
+      "rddOperation": "reduceByKey",
+      "location": "line 68: k_prod = k_prod.reduceByKey(lambda x,y: (x[0]+y[0], x[1]+y[1]))",
+      "improvementExplanation": "This reduceByKey operation can be replaced with a DataFrame/Dataset aggregation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+      "dataframeEquivalent": "k_prod = k_prod.groupBy().agg(F.sum('partial_sum'), F.sum('partial_prod'))",
+      "benefits": "Improved performance, scalability, and reduced code complexity."
     }
   ]
 }

@@ -28,7 +28,7 @@
     {
       "operation": "df2.repartition(50).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/50\")",
       "improvementExplanation": "Writing to CSV is inefficient. Parquet offers better performance for large datasets.",
-      "optimizedEquivalent": "df2.repartition(50).write.format(\"parquet\").mode(\"overwrite\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/50\")",
+      "optimizedEquivalent": "df2.repartition(50).write.parquet(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/50\")",
       "benefits": "Faster writes, compression, and better compatibility with Spark's optimizations."
     }
   ],

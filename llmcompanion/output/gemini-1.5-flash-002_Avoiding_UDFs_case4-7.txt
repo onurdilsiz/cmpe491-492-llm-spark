@@ -1,0 +1,56 @@
+```json
+{
+  "detected": true,
+  "occurrences": 8,
+  "response": [
+    {
+      "operation": "MAP_AN UDF (lines 143-148)",
+      "improvementExplanation": "This UDF performs a simple mapping of strings.  It can be replaced with a `when`-`otherwise` expression or a `map` function.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"activity_name\", when(col(\"unmapped.`category`\") == \"Write\", \"Create\").when(col(\"unmapped.`category`\") == \"Delete\", \"Delete\").otherwise(\"Unknown\"))",
+      "benefits": "Replacing the UDF with a built-in function allows Spark's optimizer to push down the operation, improving performance and reducing the overhead of UDF serialization and execution."
+    },
+    {
+      "operation": "MAP_AI UDF (lines 150-155)",
+      "improvementExplanation": "This UDF maps strings to integers. This can be achieved using a `when`-`otherwise` expression.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"activity_id\", when(col(\"unmapped.`category`\") == \"Write\", lit(1)).when(col(\"unmapped.`category`\") == \"Delete\", lit(4)).otherwise(lit(0)))",
+      "benefits": "Using built-in functions enables Catalyst optimizations, leading to better performance and reduced resource consumption."
+    },
+    {
+      "operation": "MAP_TN UDF (lines 157-162)",
+      "improvementExplanation": "Similar to MAP_AN, this UDF performs string mapping and can be replaced with a `when`-`otherwise` expression.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"type_name\", when(col(\"unmapped.`category`\") == \"Write\", \"API Acitvity: API Activity: Create\").when(col(\"unmapped.`category`\") == \"Delete\", \"API Acitvity: API Activity: Delete\").otherwise(\"API Acitvity: API Activity: Unknown\"))",
+      "benefits": "Avoids the overhead of UDF execution and allows for better optimization by the Spark engine."
+    },
+    {
+      "operation": "MAP_TI UDF (lines 164-169)",
+      "improvementExplanation": "This UDF maps strings to integers and can be replaced with a `when`-`otherwise` expression.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"type_uid\", when(col(\"unmapped.`category`\") == \"Write\", lit(300501)).when(col(\"unmapped.`category`\") == \"Delete\", lit(300504)).otherwise(lit(300500)))",
+      "benefits": "Improved performance due to the elimination of UDF serialization and execution."
+    },
+    {
+      "operation": "MAP_SEVID UDF (lines 171-184)",
+      "improvementExplanation": "This UDF maps strings to integers based on severity levels.  A `when`-`otherwise` expression provides a more efficient alternative.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"severity_id\", when(col(\"severity\") == \"Information\", lit(1)).when(col(\"severity\") == \"Informational\", lit(1)).when(col(\"severity\") == \"Low\", lit(2)).when(col(\"severity\") == \"Medium\", lit(3)).when(col(\"severity\") == \"High\", lit(4)).when(col(\"severity\") == \"Critical\", lit(5)).when(col(\"severity\") == \"Fatial\", lit(6)).when(col(\"severity\") == \"Unknown\", lit(0)).otherwise(lit(99)))",
+      "benefits": "Catalyst optimization and improved performance by using native Spark functions."
+    },
+    {
+      "operation": "MAP_STATNAME UDF (lines 186-194)",
+      "improvementExplanation": "This UDF maps strings to strings. A `when`-`otherwise` expression is a more efficient and integrated solution.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"status\", when(col(\"unmapped.`resultType`\") == \"Unknown\", \"Unknown\").when(col(\"unmapped.`resultType`\") == \"Success\", \"Success\").when(col(\"unmapped.`resultType`\") == \"Failure\", \"Failure\").otherwise(\"Other\"))",
+      "benefits": "Eliminates the overhead associated with UDFs, leading to faster execution."
+    },
+    {
+      "operation": "MAP_STATID UDF (lines 196-203)",
+      "improvementExplanation": "This UDF maps strings to integers.  It's easily replaceable with a `when`-`otherwise` expression.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"status_id\", when(col(\"unmapped.`resultType`\") == \"Unknown\", lit(0)).when(col(\"unmapped.`resultType`\") == \"Success\", lit(1)).when(col(\"unmapped.`resultType`\") == \"Failure\", lit(2)).otherwise(lit(99)))",
+      "benefits": "Improved performance and code readability by using native Spark functions."
+    },
+    {
+      "operation": "MAP_TIME UDF (lines 205-212)",
+      "improvementExplanation": "This UDF parses a date string and converts it to a Unix timestamp. Spark's built-in `unix_timestamp` function with appropriate format specifier can achieve this more efficiently.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"time\", unix_timestamp(regexp_replace(col(\"time\"), \".{2}$\", \"\"), \"yyyy-MM-dd'T'HH:mm:ss.SSS\").cast(\"integer\"))",
+      "benefits": "Leveraging Spark's optimized date/time functions avoids the overhead of Python UDFs and improves performance significantly."
+    }
+  ]
+}
+```

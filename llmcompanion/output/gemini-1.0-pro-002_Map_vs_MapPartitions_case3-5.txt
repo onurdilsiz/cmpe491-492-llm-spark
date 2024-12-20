@@ -1,49 +1,37 @@
 ```json
 {
   "detected": true,
-  "occurrences": 7,
+  "occurrences": 5,
   "response": [
     {
-      "operation": "map(lambda line: line.split(\";\"))",
-      "improvementExplanation": "This map() operation splits each line of the 'stations.csv' file into an array of strings based on the semicolon delimiter. This operation can be performed more efficiently using mapPartitions() because it allows processing multiple lines at once, reducing the number of function calls and improving I/O efficiency.",
-      "mapPartitionsEquivalent": "stations = stations.mapPartitions(lambda partition: (line.split(\";\") for line in partition))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+      "operation": "map(lambda x: (x[1][2],(dist_kernel,days_kernel,get_k_hour(x[1][1], time,h_time))))",
+      "improvementExplanation": "This map operation iterates over each element in the RDD to calculate the distance, days, and hour kernels. These calculations involve accessing external data sources (stations dictionary) and performing mathematical operations. By using mapPartitions, we can process these calculations in batches, reducing the number of function calls and improving I/O efficiency.",
+      "mapPartitionsEquivalent": "def calculate_kernels(iterator):\n  for x in iterator:\n    yield (x[1][2], (get_k_dist(x[1][3][1], x[1][3][0], pred_long, pred_lat, h_dist), get_k_days(x[1][0], pred_date, h_days), get_k_hour(x[1][1], time, h_time)))\n\njoined = joined.mapPartitions(calculate_kernels)",
+      "benefits": "Reduced function call overhead, optimized I/O for accessing the stations dictionary, and improved resource utilization by processing data in batches."
     },
     {
-      "operation": "map(lambda x: (x[0],(float(x[3]),float(x[4]))))",
-      "improvementExplanation": "This map() operation converts each element in the 'stations' RDD into a key-value pair, where the key is the station ID and the value is a tuple containing the latitude and longitude. This operation can be performed more efficiently using mapPartitions() because it allows processing multiple elements at once, reducing the number of function calls and improving I/O efficiency.",
-      "mapPartitionsEquivalent": "stations = stations.mapPartitions(lambda partition: ((x[0],(float(x[3]),float(x[4]))) for x in partition))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+      "operation": "map(lambda x: (1, ((x[1][0]+x[1][1]+x[1][2])*x[0], x[1][0]+x[1][1]+ x[1][2]) ) )",
+      "improvementExplanation": "This map operation iterates over each element to calculate the sum of the kernels. By using mapPartitions, we can perform this summation in batches, reducing the number of function calls and improving resource utilization.",
+      "mapPartitionsEquivalent": "def calculate_sum(iterator):\n  for x in iterator:\n    yield (1, (x[1][0] + x[1][1] + x[1][2]) * x[0])\n\nk_sum = joined.mapPartitions(calculate_sum).reduceByKey(lambda x, y: x + y)",
+      "benefits": "Reduced function call overhead and improved resource utilization by performing summation in batches."
     },
     {
-      "operation": "map(lambda line: line.split(\";\"))",
-      "improvementExplanation": "This map() operation splits each line of the 'temperature-readings.csv' file into an array of strings based on the semicolon delimiter. This operation can be performed more efficiently using mapPartitions() because it allows processing multiple lines at once, reducing the number of function calls and improving I/O efficiency.",
-      "mapPartitionsEquivalent": "temps = temps.mapPartitions(lambda partition: (line.split(\";\") for line in partition))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+      "operation": "map(lambda x: (1, ((x[1][0]*x[1][1]*x[1][2])*x[0], x[1][0]*x[1][1]*x[1][2]) ) )",
+      "improvementExplanation": "This map operation iterates over each element to calculate the product of the kernels. By using mapPartitions, we can perform this multiplication in batches, reducing the number of function calls and improving resource utilization.",
+      "mapPartitionsEquivalent": "def calculate_product(iterator):\n  for x in iterator:\n    yield (1, (x[1][0] * x[1][1] * x[1][2]) * x[0])\n\nk_prod = joined.mapPartitions(calculate_product).reduceByKey(lambda x, y: x + y)",
+      "benefits": "Reduced function call overhead and improved resource utilization by performing multiplication in batches."
     },
     {
-      "operation": "map(lambda x: (x[0], (datetime.strptime(x[1], \"%Y-%m-%d\").date(), x[2], float(x[3]))))",
-      "improvementExplanation": "This map() operation converts each element in the 'temps' RDD into a key-value pair, where the key is the station ID and the value is a tuple containing the date, time, and temperature. This operation can be performed more efficiently using mapPartitions() because it allows processing multiple elements at once, reducing the number of function calls and improving I/O efficiency.",
-      "mapPartitionsEquivalent": "temps = temps.mapPartitions(lambda partition: ((x[0], (datetime.strptime(x[1], \"%Y-%m-%d\").date(), x[2], float(x[3]))) for x in partition))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+      "operation": "map(lambda x: (x[1][0]/x[1][1]))",
+      "improvementExplanation": "This map operation iterates over each element to calculate the final prediction value. By using mapPartitions, we can perform this division in batches, reducing the number of function calls and improving resource utilization.",
+      "mapPartitionsEquivalent": "def calculate_prediction(iterator):\n  for x in iterator:\n    yield x[1][0] / x[1][1]\n\npred_sum = k_sum.mapPartitions(calculate_prediction).collect()",
+      "benefits": "Reduced function call overhead and improved resource utilization by performing division in batches."
     },
     {
-      "operation": "map(lambda x: (x[1][0]<date(2014, 6, 7)))",
-      "improvementExplanation": "This map() operation filters the 'temps_filtered' RDD to keep only the temperature readings before the specified date. This operation can be performed more efficiently using mapPartitions() because it allows processing multiple elements at once, reducing the number of function calls and improving I/O efficiency.",
-      "mapPartitionsEquivalent": "temps_filtered = temps_filtered.mapPartitions(lambda partition: (x for x in partition if x[1][0]<date(2014, 6, 7)))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
-    },
-    {
-      "operation": "map(lambda x: (x[0],(x[1][0],x[1][1],x[1][2],bc.value.get(x[0]))))",
-      "improvementExplanation": "This map() operation joins the 'stations' and 'temps_filtered' RDDs using a broadcast variable. This operation can be performed more efficiently using mapPartitions() because it allows processing multiple elements at once, reducing the number of function calls and improving I/O efficiency.",
-      "mapPartitionsEquivalent": "joined = joined.mapPartitions(lambda partition: ((x[0],(x[1][0],x[1][1],x[1][2],bc.value.get(x[0]))) for x in partition))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
-    },
-    {
-      "operation": "map(lambda x: (get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist)+get_k_days(x[1][0], pred_date,h_days),x[1][1], x[1][2]))",
-      "improvementExplanation": "This map() operation calculates the partial sum of the distance and days kernels for each element in the 'joined' RDD. This operation can be performed more efficiently using mapPartitions() because it allows processing multiple elements at once, reducing the number of function calls and improving I/O efficiency.",
-      "mapPartitionsEquivalent": "partial_sum_rdd = joined.mapPartitions(lambda partition: ((get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist)+get_k_days(x[1][0], pred_date,h_days),x[1][1], x[1][2]) for x in partition))",
-      "benefits": "Reduced function call overhead, optimized I/O, and improved resource utilization."
+      "operation": "map(lambda x: (x[1][0]/x[1][1]))",
+      "improvementExplanation": "This map operation iterates over each element to calculate the final prediction value. By using mapPartitions, we can perform this division in batches, reducing the number of function calls and improving resource utilization.",
+      "mapPartitionsEquivalent": "def calculate_prediction(iterator):\n  for x in iterator:\n    yield x[1][0] / x[1][1]\n\npred_mup = k_prod.mapPartitions(calculate_prediction).collect()",
+      "benefits": "Reduced function call overhead and improved resource utilization by performing division in batches."
     }
   ]
 }

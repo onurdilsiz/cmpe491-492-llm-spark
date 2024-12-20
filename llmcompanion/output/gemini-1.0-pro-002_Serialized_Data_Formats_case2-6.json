@@ -3,16 +3,16 @@
     "occurrences": 2,
     "response": [
         {
-            "operation": "Reading data from HBase table `parseddata_sample` (line 104)",
-            "improvementExplanation": "HBase is a NoSQL database that stores data in key-value pairs. While it offers high scalability and real-time data access, it can be less efficient for analytical workloads compared to optimized serialized formats like Parquet or ORC. These formats provide faster reads/writes, compression, and query optimization through predicate pushdown.",
-            "optimizedEquivalent": "```python\n# Replace HBase with Parquet\ninput_rdd = sc.read.parquet(\"/path/to/parseddata_sample.parquet\")\n```",
-            "benefits": "Switching to Parquet or ORC can significantly improve performance by:\n- Reducing read/write times due to efficient data organization and compression.\n- Enabling faster queries through predicate pushdown, where filters are applied directly on the compressed data without decompressing the entire dataset."
+            "operation": "Reading data from HBase table `parseddata_sample` using `hbase_rdd = sc.newAPIHadoopRDD(...)` on line 104.",
+            "improvementExplanation": "HBase is a NoSQL database that stores data in key-value pairs. While it offers high scalability and real-time data access, it can be less efficient for large-scale data processing compared to optimized file formats like Parquet or ORC. These formats provide better compression, columnar storage, and optimized data structures for faster reads and writes.",
+            "optimizedEquivalent": "```python\n# Read data from Parquet file\nparquet_rdd = sc.read.parquet(\"/path/to/parseddata_sample.parquet\")\n```",
+            "benefits": "Switching to Parquet or ORC can significantly improve performance by:\n* **Faster reads/writes:** Optimized data structures and compression lead to faster data access.\n* **Reduced storage space:** Compression can significantly reduce the storage footprint.\n* **Improved query optimization:** Columnar storage allows for efficient predicate pushdown, where filters are applied directly to relevant columns, further improving query performance."
         },
         {
-            "operation": "Writing data to HBase table `scan_demo1` (line 124)",
-            "improvementExplanation": "Similar to reading data, writing to HBase can be less efficient for analytical workloads compared to optimized serialized formats. Using Parquet or ORC for writing can provide faster writes and better compression.",
-            "optimizedEquivalent": "```python\n# Replace HBase with Parquet\nresult.write.parquet(\"/path/to/scan_demo1.parquet\")\n```",
-            "benefits": "Switching to Parquet or ORC for writing can improve performance by:\n- Reducing write times due to efficient data organization and compression.\n- Enabling efficient data storage and retrieval for analytical workloads."
+            "operation": "Saving data to HBase table `scan_demo1` using `save_record(result)` on line 134.",
+            "improvementExplanation": "Similar to reading data, saving data to HBase can be less efficient than using optimized file formats. Writing data to Parquet or ORC files first and then loading them into HBase can provide significant performance improvements.",
+            "optimizedEquivalent": "```python\n# Save data to Parquet file\nresult.write.parquet(\"/path/to/scan_demo1.parquet\")\n\n# Load data into HBase table\nparquet_rdd = sc.read.parquet(\"/path/to/scan_demo1.parquet\")\nparquet_rdd.saveAsNewAPIHadoopDataset(\n    conf=conf, keyConverter=keyConv, valueConverter=valueConv)\n```",
+            "benefits": "The benefits of using Parquet or ORC for saving data are the same as for reading data: faster writes, reduced storage space, and improved query optimization."
         }
     ]
 }

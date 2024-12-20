@@ -1,13 +1,19 @@
 ```json
 {
   "detected": true,
-  "occurrences": 1,
+  "occurrences": 2,
   "response": [
     {
-      "operation": "Reading binary files from HDFS",
-      "improvementExplanation": "Reading binary files from HDFS can be inefficient, especially for large datasets. Using a serialized format like Parquet or ORC can significantly improve read performance by reducing the amount of data that needs to be processed. These formats also support compression, which can further reduce storage requirements and improve read times.",
-      "optimizedEquivalent": "```python\n# Read tensor slices from Parquet files\ntensorRDD = sc.read.parquet(inputDir)\n```",
-      "benefits": "Switching to Parquet or ORC can provide the following benefits:\n* **Faster read performance:** Parquet and ORC are columnar formats that allow for efficient data access, reducing the amount of data that needs to be processed.\n* **Compression:** These formats support compression, which can significantly reduce storage requirements and improve read times.\n* **Query optimization:** Parquet and ORC support predicate pushdown, which allows for more efficient query execution by filtering data at the file level."
+      "operation": "Reading files from HDFS",
+      "improvementExplanation": "Reading files from HDFS can be optimized by using a serialized format like Parquet or ORC. These formats provide faster reads/writes, compression, and query optimization.",
+      "optimizedEquivalent": "```python\n# Read files from HDFS using Parquet\nparquet_files = sc.parquetFile(inputDir)\n\n# Convert Parquet files to Spark DataFrame\nparquet_df = parquet_files.toDF()\n```",
+      "benefits": "Using Parquet or ORC can significantly improve the performance of your Spark application by reducing the time it takes to read and process data."
+    },
+    {
+      "operation": "Saving factor matrices",
+      "improvementExplanation": "Saving factor matrices can be optimized by using a serialized format like Parquet or ORC. These formats provide faster reads/writes, compression, and query optimization.",
+      "optimizedEquivalent": "```python\n# Save factor matrices using Parquet\nerrorRDD.toDF().write.parquet(outputDir)\n```",
+      "benefits": "Using Parquet or ORC can significantly improve the performance of your Spark application by reducing the time it takes to write and save data."
     }
   ]
 }

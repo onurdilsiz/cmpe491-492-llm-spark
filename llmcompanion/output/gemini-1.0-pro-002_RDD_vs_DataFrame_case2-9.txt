@@ -5,33 +5,35 @@
   "response": [
     {
       "rddOperation": "mapPartitions(pointToCell)",
-      "improvementExplanation": "This operation iterates over each partition of the RDD and applies the `pointToCell` function to each element. This can be inefficient due to the overhead of creating and shuffling intermediate data. Using a DataFrame/Dataset API can potentially optimize this operation by leveraging vectorized operations and avoiding unnecessary data movement.",
-      "dataframeEquivalent": "```python\nfrom pyspark.sql.functions import col\n\n# Assuming inputPoints is a DataFrame\ncells_counts = inputPoints.select(col('x') / omega, col('y') / omega).withColumn('cell', (col('x') / omega).cast('int'), (col('y') / omega).cast('int')).groupBy('cell').count()\n```",
-      "benefits": "This change can potentially improve performance by reducing shuffling and leveraging vectorized operations in the DataFrame/Dataset API."
+      "improvementExplanation": "This operation iterates over each partition of the RDD and applies the `pointToCell` function to each element. This can be inefficient due to the overhead of creating and shuffling intermediate data. Using a DataFrame/Dataset with a `map` transformation can potentially improve performance by avoiding unnecessary shuffling.",
+      "dataframeEquivalent": "```python\nfrom pyspark.sql import SparkSession\n\nspark = SparkSession.builder.getOrCreate()\n\n# Assuming the input data is in a DataFrame/Dataset named 'inputPoints'\ninputPoints = spark.read.csv(data_path)\n\n# Define a UDF for the pointToCell function\ndef pointToCell(point):\n    cell_x = int(math.floor(point[0] / omega))\n    cell_y = int(math.floor(point[1] / omega))\n    cell = (cell_x, cell_y)\n    return (cell, 1)\n\n# Apply the UDF using a map transformation\ncells_counts = inputPoints.rdd.map(pointToCell)\n```",
+      "benefits": "Using a DataFrame/Dataset with a `map` transformation can potentially improve performance by avoiding unnecessary shuffling and leveraging Spark's query optimizer for efficient execution."
     },
     {
       "rddOperation": "reduceByKey(lambda a,b: a + b)",
-      "improvementExplanation": "This operation reduces the RDD by key, summing the values for each key. This can be computationally expensive, especially for large datasets. Using a DataFrame/Dataset API can potentially optimize this operation by leveraging optimized aggregation functions.",
-      "dataframeEquivalent": "```python\n# Assuming cells_counts is a DataFrame\ncells_counts = cells_counts.groupBy('cell').sum('count')\n```",
-      "benefits": "This change can potentially improve performance by leveraging optimized aggregation functions in the DataFrame/Dataset API."
+      "improvementExplanation": "This operation reduces the RDD by key, summing the values for each key. This can be computationally expensive, especially for large datasets. Using a DataFrame/Dataset with a `groupBy` and `sum` aggregation can potentially improve performance by leveraging Spark's optimized aggregation functions.",
+      "dataframeEquivalent": "```python\n# Assuming 'cells_counts' is a DataFrame/Dataset\ncells_counts = cells_counts.groupBy('cell').sum('count')\n```",
+      "benefits": "Using a DataFrame/Dataset with `groupBy` and `sum` can potentially improve performance by leveraging Spark's optimized aggregation functions and reducing the amount of data shuffled."
     },
     {
       "rddOperation": "map(region_counts7)",
-      "improvementExplanation": "This operation applies the `region_counts7` function to each element of the RDD. This can be inefficient due to the overhead of creating and shuffling intermediate data. Using a DataFrame/Dataset API can potentially optimize this operation by leveraging vectorized operations and avoiding unnecessary data movement.",
-      "dataframeEquivalent": "```python\n# Assuming cells_counts is a DataFrame\ncells_counts = cells_counts.withColumn('region_counts7', udf(region_counts7, IntegerType)('cell', 'count'))\n```",
-      "benefits": "This change can potentially improve performance by reducing shuffling and leveraging vectorized operations in the DataFrame/Dataset API."
+      "improvementExplanation": "This operation applies the `region_counts7` function to each element of the RDD. This can be inefficient due to the overhead of creating and shuffling intermediate data. Using a DataFrame/Dataset with a `withColumn` transformation can potentially improve performance by avoiding unnecessary shuffling.",
+      "dataframeEquivalent": "```python\n# Assuming 'cells_counts' is a DataFrame/Dataset\nfrom pyspark.sql.functions import col\n\ndef region_counts7(cell_counts):\n    cell, _ = cell_counts\n    x, y = cell\n    total_count = 0\n    for i in range(x - 3, x + 4):\n        for j in range(y - 3, y + 4):\n            if (i, j) in cells_counts_dict:\n                total_count += cells_counts_dict[(i, j)]\n\n    return (cell, total_count)\n\n# Apply the region_counts7 function using a withColumn transformation\ncells_counts = cells_counts.withColumn('region_count', region_counts7(col('cell')))
+```",
+      "benefits": "Using a DataFrame/Dataset with `withColumn` can potentially improve performance by avoiding unnecessary shuffling and leveraging Spark's query optimizer for efficient execution."
     },
     {
       "rddOperation": "map(region_counts3)",
-      "improvementExplanation": "This operation applies the `region_counts3` function to each element of the RDD. This can be inefficient due to the overhead of creating and shuffling intermediate data. Using a DataFrame/Dataset API can potentially optimize this operation by leveraging vectorized operations and avoiding unnecessary data movement.",
-      "dataframeEquivalent": "```python\n# Assuming cells_counts is a DataFrame\ncells_counts = cells_counts.withColumn('region_counts3', udf(region_counts3, IntegerType)('cell', 'count'))\n```",
-      "benefits": "This change can potentially improve performance by reducing shuffling and leveraging vectorized operations in the DataFrame/Dataset API."
+      "improvementExplanation": "This operation applies the `region_counts3` function to each element of the RDD. This can be inefficient due to the overhead of creating and shuffling intermediate data. Using a DataFrame/Dataset with a `withColumn` transformation can potentially improve performance by avoiding unnecessary shuffling.",
+      "dataframeEquivalent": "```python\n# Assuming 'cells_counts' is a DataFrame/Dataset\nfrom pyspark.sql.functions import col\n\ndef region_counts3(cell_counts):\n    cell, _ = cell_counts\n    x, y = cell\n    total_count = 0\n    for i in range(x - 1, x + 2):\n        for j in range(y - 1, y + 2):\n            if (i, j) in cells_counts_dict:\n                total_count += cells_counts_dict[(i, j)]\n\n    return (cell, total_count)\n\n# Apply the region_counts3 function using a withColumn transformation\ncells_counts = cells_counts.withColumn('region_count', region_counts3(col('cell')))
+```",
+      "benefits": "Using a DataFrame/Dataset with `withColumn` can potentially improve performance by avoiding unnecessary shuffling and leveraging Spark's query optimizer for efficient execution."
     },
     {
       "rddOperation": "filter(lambda x: x[1] <= M)",
-      "improvementExplanation": "This operation filters the RDD based on a condition. This can be inefficient due to the overhead of iterating over the RDD. Using a DataFrame/Dataset API can potentially optimize this operation by leveraging optimized filtering functions.",
-      "dataframeEquivalent": "```python\n# Assuming cells_counts is a DataFrame\noutlierCells = cells_counts.filter(col('region_counts7') <= M)\n```",
-      "benefits": "This change can potentially improve performance by leveraging optimized filtering functions in the DataFrame/Dataset API."
+      "improvementExplanation": "This operation filters the RDD based on a condition. This can be inefficient due to the overhead of creating and shuffling intermediate data. Using a DataFrame/Dataset with a `filter` transformation can potentially improve performance by avoiding unnecessary shuffling.",
+      "dataframeEquivalent": "```python\n# Assuming 'cells_counts' is a DataFrame/Dataset\ncells_counts = cells_counts.filter(col('region_count') <= M)\n```",
+      "benefits": "Using a DataFrame/Dataset with `filter` can potentially improve performance by avoiding unnecessary shuffling and leveraging Spark's query optimizer for efficient execution."
     }
   ]
 }

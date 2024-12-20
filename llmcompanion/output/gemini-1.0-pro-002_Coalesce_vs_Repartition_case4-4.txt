@@ -8,6 +8,6 @@
 
 **Explanation:**
 
-The provided Spark code does not contain any instances of `repartition()`. Therefore, there are no opportunities to replace it with `coalesce()` for improved efficiency. The code primarily focuses on demonstrating the usage of User-Defined Functions (UDFs) in PySpark. It creates a DataFrame, defines various UDFs, applies them to the DataFrame, and performs transformations like converting strings to uppercase and calculating string lengths. 
+The provided Spark code does not contain any instances of `repartition()`. Therefore, there are no opportunities to replace it with `coalesce()` for improved efficiency. The code primarily focuses on demonstrating the usage of User-Defined Functions (UDFs) in PySpark. It creates a DataFrame, defines UDFs for string manipulation and length calculation, applies these UDFs to the DataFrame, and displays the results. 
 
-While `repartition()` and `coalesce()` are essential for optimizing data distribution and performance in Spark, their application is not relevant in the context of this code. 
+While `repartition()` and `coalesce()` are essential for optimizing data distribution and performance in Spark applications, their application is not relevant in the context of this code snippet. 

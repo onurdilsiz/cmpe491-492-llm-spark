@@ -3,16 +3,16 @@
     "occurrences": 2,
     "response": [
         {
-            "operation": "Reading CSV file from HDFS (line 10)",
-            "improvementExplanation": "The current CSV format is not optimized for efficient reads. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to columnar storage, compression, and predicate pushdown capabilities.",
+            "operation": "Reading CSV file from HDFS",
+            "improvementExplanation": "The current CSV format is not optimized for efficient reads and writes. Switching to a serialized format like Parquet or ORC can significantly improve performance due to columnar storage, compression, and predicate pushdown capabilities.",
             "optimizedEquivalent": "```python\ndf1 = spark.read.parquet(\"hdfs://namenode/output/itmd-521/drp/2000/parquet-file\")\n```",
-            "benefits": "Faster reads, reduced I/O overhead, improved query performance through predicate pushdown."
+            "benefits": "Faster reads, compression, and query optimization through predicate pushdown."
         },
         {
-            "operation": "Writing CSV file to HDFS (line 22)",
-            "improvementExplanation": "Writing data in CSV format can be inefficient due to the lack of compression and columnar storage. Switching to Parquet or ORC can significantly improve write performance and reduce storage space requirements.",
+            "operation": "Writing CSV file to HDFS",
+            "improvementExplanation": "Writing to CSV format is less efficient than using a serialized format like Parquet or ORC. Switching to Parquet or ORC can improve write performance and reduce storage space requirements.",
             "optimizedEquivalent": "```python\ndf2.repartition(1).write.parquet(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")\n```",
-            "benefits": "Faster writes, reduced storage space, improved query performance through predicate pushdown."
+            "benefits": "Faster writes, reduced storage space, and improved query performance."
         }
     ]
 }

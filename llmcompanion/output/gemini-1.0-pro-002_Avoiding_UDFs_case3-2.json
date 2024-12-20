@@ -3,28 +3,28 @@
     "occurrences": 4,
     "response": [
         {
-            "operation": "filtered_data_tony function, line 12: `~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])')`",
-            "improvementExplanation": "This UDF filters rows where the '_c5' column contains both numbers and letters. This can be replaced with the built-in `contains` function and a regular expression.",
-            "alternativeEquivalent": "```python\nfiltered_no_number_product_cat_rdd = filtered_not_null_price_rdd.filter(~col('_c5').contains(r'\\d'))\n```",
-            "benefits": "Using the built-in `contains` function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+            "operation": "UDF used for filtering null values in columns '_c5', '_c6', '_c7', and '_c8' (lines 12-16)",
+            "improvementExplanation": "This UDF can be replaced with the built-in `col().isNull()` function, which is optimized for null value checks.",
+            "alternativeEquivalent": "```python\nfiltered_not_null_product_cat_rdd = rdd.filter(~col('_c5').isNull())\nfiltered_not_null_payment_type_rdd = filtered_not_null_product_cat_rdd.filter(~col('_c6').isNull())\nfiltered_not_null_qty_rdd = filtered_not_null_payment_type_rdd.filter(~col('_c7').isNull())\nfiltered_not_null_price_rdd = filtered_not_null_qty_rdd.filter(~col('_c8').isNull())\n```",
+            "benefits": "Replacing the UDF with `col().isNull()` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
         },
         {
-            "operation": "filtered_data_tony function, line 15: `~col('_c6').rlike('(?=.*\\d)(?=.*[a-zA-Z])')`",
-            "improvementExplanation": "This UDF filters rows where the '_c6' column contains both numbers and letters. This can be replaced with the built-in `contains` function and a regular expression.",
-            "alternativeEquivalent": "```python\nfiltered_no_number_payment_type_rdd = filtered_no_number_product_cat_rdd.filter(~col('_c6').contains(r'\\d'))\n```",
-            "benefits": "Using the built-in `contains` function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+            "operation": "UDF used for filtering rows with numbers in column '_c5' (line 18)",
+            "improvementExplanation": "This UDF can be replaced with the built-in `col().rlike()` function with a regular expression that matches numbers.",
+            "alternativeEquivalent": "```python\nfiltered_no_number_product_cat_rdd = filtered_not_null_price_rdd.filter(~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))\n```",
+            "benefits": "Replacing the UDF with `col().rlike()` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
         },
         {
-            "operation": "filtered_data_tony function, line 20: `col('_c7').rlike('^[^0-9]*$') & (col('_c7') != '')`",
-            "improvementExplanation": "This UDF filters rows where the '_c7' column contains non-numeric characters. This can be replaced with the built-in `rlike` function and a regular expression.",
+            "operation": "UDF used for filtering rows with numbers in column '_c6' (line 20)",
+            "improvementExplanation": "This UDF can be replaced with the built-in `col().rlike()` function with a regular expression that matches numbers.",
+            "alternativeEquivalent": "```python\nfiltered_no_number_payment_type_rdd = filtered_no_number_product_cat_rdd.filter(~col('_c6').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))\n```",
+            "benefits": "Replacing the UDF with `col().rlike()` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "UDF used for filtering rows with numbers in column '_c7' (line 22)",
+            "improvementExplanation": "This UDF can be replaced with the built-in `col().rlike()` function with a regular expression that matches numbers.",
             "alternativeEquivalent": "```python\nfiltered_qty_rdd = filtered_payment_type_rdd.filter(~col('_c7').rlike('^[^0-9]*$') & (col('_c7') != ''))\n```",
-            "benefits": "Using the built-in `rlike` function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
-        },
-        {
-            "operation": "filtered_data_tony function, line 24: `col('_c8').rlike('^[0-9]*\\.?[0-9]+$') & (col('_c8') != '')`",
-            "improvementExplanation": "This UDF filters rows where the '_c8' column contains a numeric value. This can be replaced with the built-in `rlike` function and a regular expression.",
-            "alternativeEquivalent": "```python\nfiltered_price_rdd = non_zero_df.filter(col('_c8').rlike('^[0-9]*\\.?[0-9]+$') & (col('_c8') != ''))\n```",
-            "benefits": "Using the built-in `rlike` function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+            "benefits": "Replacing the UDF with `col().rlike()` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
         }
     ]
 }

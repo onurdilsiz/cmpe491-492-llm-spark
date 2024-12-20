@@ -1,0 +1,12 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+            "improvementExplanation": "The repartition(1) operation is used before writing the data to a Parquet table.  Since the goal is to write the data to a single partition (specified by repartition(1)), and the data is already processed and aggregated, a full shuffle is unnecessary. coalesce(1) can achieve the same outcome without the overhead of a full shuffle.  coalesce only reduces the number of partitions; it does not change the data distribution.",
+            "coalesceEquivalent": "filteredPaths.coalesce(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+            "benefits": "Switching to coalesce(1) will significantly reduce the shuffle time and resource consumption because it avoids unnecessary data movement. This leads to faster job completion and improved resource utilization. The data is already aggregated, so there's no need for a full shuffle to redistribute it into a single partition."
+        }
+    ]
+}

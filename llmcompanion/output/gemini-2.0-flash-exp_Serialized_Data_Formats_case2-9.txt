@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "Reading data from text file using `sc.textFile(data_path)`",
+      "improvementExplanation": "The code currently reads data from a text file, which is inefficient for large datasets. Text files are not optimized for columnar storage, compression, or predicate pushdown. Switching to a columnar format like Parquet or ORC would significantly improve read performance, reduce storage space, and enable query optimizations.",
+      "optimizedEquivalent": "```python\n    # read data\n    # Assuming the input data is in CSV format, we first read it as text, then convert to dataframe and save as parquet\n    rawData = sc.textFile(data_path).repartition(numPartitions=L)\n    inputPoints = rawData.map(lambda line: [float(i) for i in line.split(\",\")]).toDF(['x', 'y'])\n    parquet_path = data_path.replace(\".txt\", \".parquet\")\n    inputPoints.write.mode(\"overwrite\").parquet(parquet_path)\n\n    # Read data from parquet file\n    inputPoints = spark.read.parquet(parquet_path).rdd.map(lambda row: [row.x, row.y])\n```",
+      "benefits": "Switching to Parquet or ORC offers several benefits:\n1. **Faster Reads:** Columnar storage allows Spark to read only the necessary columns, reducing I/O overhead.\n2. **Compression:** Parquet and ORC support efficient compression algorithms, reducing storage space and I/O time.\n3. **Predicate Pushdown:** These formats enable predicate pushdown, allowing Spark to filter data at the storage layer, further reducing the amount of data read.\n4. **Schema Evolution:** Parquet and ORC support schema evolution, making it easier to handle changes in data structure over time."
+    }
+  ]
+}
+```

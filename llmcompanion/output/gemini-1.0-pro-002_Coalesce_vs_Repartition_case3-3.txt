@@ -10,4 +10,6 @@
 
 The provided Spark code does not contain any instances of `repartition()`. Therefore, there are no opportunities to replace it with `coalesce()` for improved efficiency. The code primarily focuses on data cleaning and imputation using Spark's DataFrame API. It performs operations like dropping rows with null values, filling missing values, and imputing missing values using the mean strategy. 
 
-While `repartition()` is a powerful tool for optimizing data distribution and parallelism in Spark, it is not applicable in this specific code snippet. The code does not involve any transformations or operations that would benefit from repartitioning the data. 
+While `repartition()` and `coalesce()` are both used to manage the number of partitions in a DataFrame, they have distinct purposes. `repartition()` triggers a full shuffle, distributing data evenly across the specified number of partitions. In contrast, `coalesce()` reduces the number of partitions without shuffling data, potentially improving performance by reducing data movement. 
+
+Since the provided code does not involve any partitioning operations, there is no need to consider replacing `repartition()` with `coalesce()`. 

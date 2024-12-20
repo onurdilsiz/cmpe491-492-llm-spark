@@ -1,14 +1,7 @@
 ```json
 {
-  "detected": true,
-  "occurrences": 1,
-  "response": [
-    {
-      "operation": "The UDF is used on line 44 to transform the input values from the string indexer.",
-      "improvementExplanation": "The UDF can be replaced with the built-in `transform` method of the `PipelineModel` object. This method is optimized for Spark and can improve performance by avoiding the overhead of serialization and deserialization.",
-      "alternativeEquivalent": "```python\n# Transforming the input values from the string indexer\npred_row = indexer.transform(pred_row)\n```",
-      "benefits": "Replacing the UDF with the built-in `transform` method will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
-    }
-  ]
+  "detected": false,
+  "occurrences": 0,
+  "response": []
 }
 ```

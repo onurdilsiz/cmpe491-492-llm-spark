@@ -4,8 +4,9 @@
   "occurrences": 1,
   "response": [
     {
-      "operation": "Reading data from a CSV file in the `preprocessing` function on line 10.",
-      "improvementExplanation": "The current CSV format is not optimized for Spark processing. Switching to a serialized format like Parquet or ORC can significantly improve performance due to faster reads/writes, compression, and query optimization through predicate pushdown.",
+      "operation": "Reading data from a CSV file",
+      "location": "Line 12: readFile('/Users/Karim/Downloads/wiki-nlp/enwiki-latest-pages-articles1.xml', sc)",
+      "improvementExplanation": "The current code reads data from a CSV file, which is a text-based format that is not optimized for performance. Switching to a serialized format like Parquet or ORC would significantly improve read performance due to columnar storage, compression, and predicate pushdown capabilities.",
       "optimizedEquivalent": "```python\n" +
 "import os\n" +
 "\n" +
@@ -22,7 +23,7 @@
 "\n" +
 "\n" +
 "def preprocessing(sampleSize, numTerms, sc):\n" +
-"    pages = readFile('/Users/Karim/Downloads/wiki-nlp/enwiki-latest-pages-articles1.xml', sc).sample(False, sampleSize, 11L)\n" +
+"    pages = readParquetFile('/Users/Karim/Downloads/wiki-nlp/enwiki-latest-pages-articles1.xml.parquet', sc).sample(False, sampleSize, 11L)\n" +
 "    plainText = wikiXmlToPlainText(pages)\n" +
 "\n" +
 "    stopWords = sc.broadcast(loadStopWords(\"/Users/Karim/PycharmProjects/AAspark/ch6/stopwords.txt\")).value\n" +
@@ -36,10 +37,7 @@
 "\n" +
 "    filtered = lemmatized.filter(lambda l: len(l[1]) > 1)\n" +
 "\n" +
-"    # Read data from Parquet file instead of CSV\n" +
-"    termDocMatrix = sqlContext.read.parquet(\"/path/to/termDocMatrix.parquet\")\n" +
-"\n" +
-"    return termDocMatrix, termIds, docIds, idfs\n" +
+"    return documentTermMatrix(filtered, stopWords, numTerms, sc)\n" +
 "\n" +
 "def topTermsInTopConcepts(svd, numConcepts, numTerms, termIds):\n" +
 "    v = svd.V\n" +
@@ -82,7 +80,10 @@
 "        print(\"Concept docs: \" + \", \".join(map(lambda x: x[0], termDoc[1])))\n" +
 "        print('')\n" +
 "```",
-      "benefits": "Switching to Parquet will provide faster reads/writes, compression, and query optimization through predicate pushdown."
+      "benefits": "Switching to Parquet or ORC would provide the following benefits:\n" +
+"    - Faster read performance due to columnar storage and compression.\n" +
+"    - Reduced storage space requirements due to compression.\n" +
+"    - Improved query performance through predicate pushdown, which allows Spark to filter data before reading it from disk."
     }
   ]
 }

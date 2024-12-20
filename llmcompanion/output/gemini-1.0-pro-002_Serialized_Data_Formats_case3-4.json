@@ -3,58 +3,67 @@
     "occurrences": 10,
     "response": [
         {
-            "operation": "read location data from CSV file",
-            "improvementExplanation": "Reading data from CSV files can be slow and inefficient. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to their columnar storage and compression capabilities.",
-            "optimizedEquivalent": "```python\n# Read location data from Parquet file\ndf_loc = spark.read.parquet(loc_data)\n```",
+            "operation": "Read CSV file",
+            "location": "Line 24: df_loc = spark.read.csv(loc_data, header=True)",
+            "improvementExplanation": "Reading CSV files can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to their columnar storage and compression capabilities.",
+            "optimizedEquivalent": "df_loc = spark.read.parquet(loc_data)",
             "benefits": "Faster read performance, reduced storage space due to compression, and improved query optimization through predicate pushdown."
         },
         {
-            "operation": "read hvfhs data from CSV file",
-            "improvementExplanation": "Reading data from CSV files can be slow and inefficient. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to their columnar storage and compression capabilities.",
-            "optimizedEquivalent": "```python\n# Read hvfhs data from Parquet file\ndf_hvl = spark.read.parquet(hvl_data)\n```",
+            "operation": "Read CSV file",
+            "location": "Line 36: df_hvl = spark.read.csv(hvl_data, header=True)",
+            "improvementExplanation": "Reading CSV files can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to their columnar storage and compression capabilities.",
+            "optimizedEquivalent": "df_hvl = spark.read.parquet(hvl_data)",
             "benefits": "Faster read performance, reduced storage space due to compression, and improved query optimization through predicate pushdown."
         },
         {
-            "operation": "read weather data from CSV files",
-            "improvementExplanation": "Reading data from CSV files can be slow and inefficient. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to their columnar storage and compression capabilities.",
-            "optimizedEquivalent": "```python\n# Read weather data from Parquet files\nweather_df = spark.read.parquet(weather_data)\n```",
+            "operation": "Read CSV files",
+            "location": "Line 58: weather_df = spark.read.csv(weather_data, header=True, inferSchema=True)",
+            "improvementExplanation": "Reading CSV files can be slow and inefficient, especially for large datasets. Switching to a serialized format like Parquet or ORC can significantly improve read performance due to their columnar storage and compression capabilities.",
+            "optimizedEquivalent": "weather_df = spark.read.parquet(weather_data)",
             "benefits": "Faster read performance, reduced storage space due to compression, and improved query optimization through predicate pushdown."
         },
         {
-            "operation": "read trip data from Parquet files",
-            "improvementExplanation": "Reading data from Parquet files is already an efficient approach due to its columnar storage and compression capabilities. However, ensuring that the data is partitioned by year and month can further improve query performance by allowing Spark to skip irrelevant partitions during data scans.",
-            "optimizedEquivalent": "```python\n# Read trip data from Parquet files partitioned by year and month\ndf_trip = spark.read.parquet(trip_data)\n```",
-            "benefits": "Improved query performance by reducing the amount of data scanned."
+            "operation": "Write Parquet file",
+            "location": "Line 44: df_loc.write.mode(\"overwrite\").parquet(output_data + \"location/location_table.parquet\")",
+            "improvementExplanation": "Writing Parquet files is already an optimized format, so no further improvement is needed.",
+            "optimizedEquivalent": "N/A",
+            "benefits": "N/A"
         },
         {
-            "operation": "write location table to Parquet files",
-            "improvementExplanation": "Writing data to Parquet files is already an efficient approach due to its columnar storage and compression capabilities. However, ensuring that the data is partitioned by year and month can further improve query performance by allowing Spark to skip irrelevant partitions during data scans.",
-            "optimizedEquivalent": "```python\n# Write location table to Parquet files partitioned by year and month\ndf_loc.write.partitionBy(\"year\", \"month\").mode(\"overwrite\").parquet(output_data + \"location/location_table.parquet\")\n```",
-            "benefits": "Improved query performance by reducing the amount of data scanned."
+            "operation": "Write Parquet file",
+            "location": "Line 54: df_hvl.write.mode(\"overwrite\").parquet(output_data + \"hvl/hvl_table.parquet\")",
+            "improvementExplanation": "Writing Parquet files is already an optimized format, so no further improvement is needed.",
+            "optimizedEquivalent": "N/A",
+            "benefits": "N/A"
         },
         {
-            "operation": "write hvfhs table to Parquet files",
-            "improvementExplanation": "Writing data to Parquet files is already an efficient approach due to its columnar storage and compression capabilities. However, ensuring that the data is partitioned by year and month can further improve query performance by allowing Spark to skip irrelevant partitions during data scans.",
-            "optimizedEquivalent": "```python\n# Write hvfhs table to Parquet files partitioned by year and month\ndf_hvl.write.partitionBy(\"year\", \"month\").mode(\"overwrite\").parquet(output_data + \"hvl/hvl_table.parquet\")\n```",
-            "benefits": "Improved query performance by reducing the amount of data scanned."
+            "operation": "Write Parquet file",
+            "location": "Line 78: weather_df.write.mode(\"overwrite\").parquet(output_data + \"weather/weather_table.parquet\")",
+            "improvementExplanation": "Writing Parquet files is already an optimized format, so no further improvement is needed.",
+            "optimizedEquivalent": "N/A",
+            "benefits": "N/A"
         },
         {
-            "operation": "write weather table to Parquet files",
-            "improvementExplanation": "Writing data to Parquet files is already an efficient approach due to its columnar storage and compression capabilities. However, ensuring that the data is partitioned by year and month can further improve query performance by allowing Spark to skip irrelevant partitions during data scans.",
-            "optimizedEquivalent": "```python\n# Write weather table to Parquet files partitioned by year and month\nweather_df.write.partitionBy(\"year\", \"month\").mode(\"overwrite\").parquet(output_data + \"weather/weather_table.parquet\")\n```",
-            "benefits": "Improved query performance by reducing the amount of data scanned."
+            "operation": "Write Parquet file",
+            "location": "Line 104: df_datetime = df_datetime.write.mode(\"overwrite\").parquet(output_data + \"time/datetime_table.parquet\")",
+            "improvementExplanation": "Writing Parquet files is already an optimized format, so no further improvement is needed.",
+            "optimizedEquivalent": "N/A",
+            "benefits": "N/A"
         },
         {
-            "operation": "write datetime table to Parquet files",
-            "improvementExplanation": "Writing data to Parquet files is already an efficient approach due to its columnar storage and compression capabilities. However, ensuring that the data is partitioned by year and month can further improve query performance by allowing Spark to skip irrelevant partitions during data scans.",
-            "optimizedEquivalent": "```python\n# Write datetime table to Parquet files partitioned by year and month\ndf_datetime.write.partitionBy(\"year\", \"month\").mode(\"overwrite\").parquet(output_data + \"time/datetime_table.parquet\")\n```",
-            "benefits": "Improved query performance by reducing the amount of data scanned."
+            "operation": "Read Parquet files",
+            "location": "Line 84: df_trip = spark.read.parquet(trip_data)",
+            "improvementExplanation": "Reading Parquet files is already an optimized format, so no further improvement is needed.",
+            "optimizedEquivalent": "N/A",
+            "benefits": "N/A"
         },
         {
-            "operation": "write trip table to Parquet files",
-            "improvementExplanation": "Writing data to Parquet files is already an efficient approach due to its columnar storage and compression capabilities. However, ensuring that the data is partitioned by year and month can further improve query performance by allowing Spark to skip irrelevant partitions during data scans.",
-            "optimizedEquivalent": "```python\n# Write trip table to Parquet files partitioned by year and month\ndf_trip.write.partitionBy(\"year\", \"month\").mode(\"overwrite\").parquet(output_data + \"trip/trip_table.parquet\")\n```",
-            "benefits": "Improved query performance by reducing the amount of data scanned."
+            "operation": "Write Parquet files",
+            "location": "Line 124: df_trip.write.partitionBy(\"year\", \"month\").mode(\"overwrite\").parquet(output_data + \"trip/trip_table.parquet\")",
+            "improvementExplanation": "Writing Parquet files is already an optimized format, so no further improvement is needed.",
+            "optimizedEquivalent": "N/A",
+            "benefits": "N/A"
         }
     ]
 }

@@ -3,10 +3,10 @@
     "occurrences": 1,
     "response": [
         {
-            "operation": "Reading the dataset in CSV format (line 10)",
-            "improvementExplanation": "The current CSV format is not optimized for Spark processing. Switching to a serialized format like Parquet or ORC can significantly improve performance due to:\n\n* **Faster reads/writes:** Serialized formats store data in a columnar format, allowing Spark to efficiently read and write only the required columns, reducing I/O overhead.\n* **Compression:** Serialized formats compress data, reducing storage space and network transfer times.\n* **Query optimization:** Serialized formats support predicate pushdown, enabling Spark to filter data at the storage layer, further reducing processing time.",
-            "optimizedEquivalent": "```python\n# Read the dataset in Parquet format\ndf_pyspark = spark.read.parquet(\"test2.parquet\")\n```",
-            "benefits": "Switching to Parquet or ORC will provide:\n\n* **Faster data processing:** Reduced I/O overhead, compression, and predicate pushdown lead to faster data processing.\n* **Reduced storage space:** Compression reduces storage requirements.\n* **Improved query performance:** Predicate pushdown enables faster filtering and data retrieval."
+            "operation": "Reading the dataset from a CSV file (line 10)",
+            "improvementExplanation": "The current CSV format is not optimized for Spark processing. Switching to a serialized format like Parquet or ORC can significantly improve performance due to faster reads/writes, compression, and query optimization through predicate pushdown.",
+            "optimizedEquivalent": "```python\n# Read the dataset from a Parquet file\ndf_pyspark = spark.read.parquet(\"test2.parquet\")\n```",
+            "benefits": "Switching to Parquet or ORC will provide the following benefits:\n* **Faster reads/writes:** Serialized formats like Parquet and ORC are optimized for Spark processing, resulting in faster data loading and saving times.\n* **Compression:** These formats compress data efficiently, reducing storage space requirements and network transfer times.\n* **Query optimization:** Parquet and ORC support predicate pushdown, which allows Spark to filter data at the file level, further improving query performance."
         }
     ]
 }

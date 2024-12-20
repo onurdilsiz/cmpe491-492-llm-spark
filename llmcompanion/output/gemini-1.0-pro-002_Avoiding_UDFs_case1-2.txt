@@ -5,9 +5,3 @@
   "response": []
 }
 ```
-
-**Explanation:**
-
-The provided Spark code does not contain any instances of User-Defined Functions (UDFs). All data transformations are performed using Spark's built-in functions and native DataFrame/Dataset operations. This is evident from the use of functions like `substr`, `cast`, `to_date`, and `withColumn`.
-
-Therefore, there are no UDFs to analyze or replace. The code effectively leverages Spark's built-in capabilities for data manipulation, ensuring efficient execution and avoiding the potential drawbacks associated with UDFs.

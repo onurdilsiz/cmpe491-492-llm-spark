@@ -8,18 +8,15 @@
 
 **Explanation:**
 
-The provided code does not use any RDDs. It exclusively utilizes DataFrames for data manipulation and analysis. Therefore, there are no opportunities to replace RDDs with DataFrames for performance improvement.
+The provided code snippet does not involve any RDD operations. It exclusively utilizes DataFrames for data manipulation and analysis. Therefore, there are no opportunities to replace RDDs with DataFrames for performance enhancement.
 
-**Benefits of Using DataFrames:**
+**Key Observations:**
 
-While the code already leverages DataFrames effectively, it's worth highlighting the general advantages of using DataFrames over RDDs:
-
-- **Query Optimization:** DataFrames enable Spark to optimize queries by leveraging Catalyst Optimizer, which analyzes the logical plan and applies rules to improve execution efficiency.
-- **Reduced Shuffling:** DataFrames minimize data shuffling between transformations, leading to faster processing times, especially for complex operations.
-- **Better Resource Usage:** DataFrames efficiently manage memory and CPU resources, reducing overall processing costs and improving scalability.
-- **Unified API:** DataFrames provide a unified API for various data sources, including structured, semi-structured, and unstructured data, simplifying data processing pipelines.
-- **Integration with Spark SQL:** DataFrames seamlessly integrate with Spark SQL, allowing users to write SQL-like queries for data analysis.
+- The code creates a DataFrame `df` using the `create_standard_df()` function.
+- It defines a UDF (User-Defined Function) `new_salary` to calculate the total salary based on existing salary and bonus.
+- The UDF is registered with Spark SQL and used to add a new column `new_salary` to the DataFrame.
+- Finally, the code creates a temporary view `emps` from the DataFrame and executes a SQL query to calculate and display the `salary_total`.
 
 **Conclusion:**
 
-The provided code demonstrates efficient data analysis using DataFrames, maximizing performance and resource utilization. By adhering to best practices and leveraging DataFrames effectively, users can achieve optimal results in their Spark applications.
+The provided code effectively leverages DataFrames for data processing, demonstrating an efficient approach to data analysis in Spark. As there are no RDD operations present, no replacements are necessary.

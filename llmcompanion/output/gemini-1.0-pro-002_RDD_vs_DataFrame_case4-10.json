@@ -4,15 +4,15 @@
     "response": [
         {
             "rddOperation": "map",
-            "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance and scalability.",
+            "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation using the `withColumn` method, which is more efficient for data manipulation.",
             "dataframeEquivalent": "```python\ndf.withColumn(\"Name\", upperCase(col(\"Name\")))\n```",
-            "benefits": "Using a DataFrame/Dataset transformation instead of an RDD `map` operation can lead to significant performance improvements due to query optimizations and reduced shuffling. Additionally, it can improve resource utilization by leveraging Spark's distributed processing capabilities more efficiently."
+            "benefits": "Using DataFrame/Dataset for `map` operations provides query optimizations, reduces shuffling, and improves resource utilization."
         },
         {
             "rddOperation": "filter",
-            "improvementExplanation": "The `filter` operation can be replaced with a DataFrame/Dataset filter, which can be optimized for better performance and scalability.",
-            "dataframeEquivalent": "```python\ndf.filter(col(\"Name\").like(\"%John%\"))\n```",
-            "benefits": "Using a DataFrame/Dataset filter instead of an RDD `filter` operation can lead to significant performance improvements due to query optimizations and reduced shuffling. Additionally, it can improve resource utilization by leveraging Spark's distributed processing capabilities more efficiently."
+            "improvementExplanation": "The `filter` operation can be replaced with a DataFrame/Dataset filter using the `where` clause, which is more efficient for data filtering.",
+            "dataframeEquivalent": "```python\ndf.where(col(\"Name\").isNotNull() & col(\"Name\").like(\"%John%\"))\n```",
+            "benefits": "Using DataFrame/Dataset for `filter` operations provides query optimizations, reduces shuffling, and improves resource utilization."
         }
     ]
 }

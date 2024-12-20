@@ -3,10 +3,10 @@
     "occurrences": 1,
     "response": [
         {
-            "rddOperation": "RDD creation from pandas DataFrame",
-            "improvementExplanation": "Creating an RDD from a pandas DataFrame can be inefficient, especially for large datasets. DataFrames offer optimized query execution and reduced shuffling compared to RDDs.",
-            "dataframeEquivalent": "```python\n# Convert pandas DataFrame to Spark DataFrame\nspark_df = spark.createDataFrame(features_pd)\n```",
-            "benefits": "Switching to Spark DataFrame will improve performance by leveraging optimized query execution and reducing data shuffling. This will lead to faster processing times and better resource utilization."
+            "rddOperation": "map",
+            "improvementExplanation": "The `map` operation is used to apply a function to each element of an RDD. This can be inefficient for large datasets, as it requires shuffling the data across multiple partitions. DataFrames/Datasets offer optimized functions like `apply` and `transform` that can perform the same operation more efficiently without shuffling.",
+            "dataframeEquivalent": "```python\n# Replace the RDD map operation with a DataFrame apply\nfeatures_pd = features_pd.apply(lambda row: row.map(lambda x: x * 2), axis=1)\n```",
+            "benefits": "Switching to DataFrame/Dataset for this operation can significantly improve performance by reducing shuffling and utilizing optimized functions."
         }
     ]
 }

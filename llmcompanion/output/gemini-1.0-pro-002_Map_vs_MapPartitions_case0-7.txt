@@ -5,27 +5,27 @@
   "response": [
     {
       "operation": "rdd2=rdd.map(lambda x: (x,1))",
-      "improvementExplanation": "This map() operation simply adds a constant value (1) to each element in the RDD. This can be efficiently performed at the partition level using mapPartitions().",
+      "improvementExplanation": "This map() operation simply adds a constant value (1) to each element in the RDD. This can be efficiently performed at the partition level using mapPartitions() to avoid unnecessary function calls for each element.",
       "mapPartitionsEquivalent": "rdd2 = rdd.mapPartitions(lambda partition: [(x, 1) for x in partition])",
-      "benefits": "Replacing map() with mapPartitions() reduces function call overhead and improves performance by processing data in batches within each partition."
+      "benefits": "Reduced function call overhead, improved performance for partition-level operations."
     },
     {
-      "operation": "rdd2=df.rdd.map(lambda x: \n    (x[0]+","+x[1],x[2],x[3]*2)\n    )",
-      "improvementExplanation": "This map() operation combines elements from different columns and performs a multiplication operation. These operations can be efficiently performed at the partition level using mapPartitions().",
+      "operation": "rdd2=df.rdd.map(lambda x: (x[0]+","+x[1],x[2],x[3]*2))",
+      "improvementExplanation": "This map() operation involves string concatenation and multiplication, which can be optimized by performing these operations on a batch of elements within each partition using mapPartitions().",
       "mapPartitionsEquivalent": "rdd2 = df.rdd.mapPartitions(lambda partition: [(x[0]+','+x[1], x[2], x[3]*2) for x in partition])",
-      "benefits": "Replacing map() with mapPartitions() reduces function call overhead and improves performance by processing data in batches within each partition."
+      "benefits": "Reduced function call overhead, optimized I/O, improved performance for partition-level operations."
     },
     {
-      "operation": "rdd2=df.rdd.map(lambda x: \n    (x["firstname"]+","+x["lastname"],x["gender"],x["salary"]*2)\n    )",
-      "improvementExplanation": "This map() operation accesses elements by column names and performs a multiplication operation. These operations can be efficiently performed at the partition level using mapPartitions().",
-      "mapPartitionsEquivalent": "rdd2 = df.rdd.mapPartitions(lambda partition: [(x['firstname']+','+x['lastname'], x['gender'], x['salary']*2) for x in partition])",
-      "benefits": "Replacing map() with mapPartitions() reduces function call overhead and improves performance by processing data in batches within each partition."
-    },
-    {
-      "operation": "rdd2=df.rdd.map(lambda x: \n    (x.firstname+","+x.lastname,x.gender,x.salary*2)\n    )",
-      "improvementExplanation": "This map() operation accesses elements by attribute names and performs a multiplication operation. These operations can be efficiently performed at the partition level using mapPartitions().",
+      "operation": "rdd2=df.rdd.map(lambda x: (x.firstname+","+x.lastname,x.gender,x.salary*2))",
+      "improvementExplanation": "Similar to the previous case, this map() operation involves string concatenation and multiplication, which can be optimized using mapPartitions() for batch processing within partitions.",
       "mapPartitionsEquivalent": "rdd2 = df.rdd.mapPartitions(lambda partition: [(x.firstname+','+x.lastname, x.gender, x.salary*2) for x in partition])",
-      "benefits": "Replacing map() with mapPartitions() reduces function call overhead and improves performance by processing data in batches within each partition."
+      "benefits": "Reduced function call overhead, optimized I/O, improved performance for partition-level operations."
+    },
+    {
+      "operation": "rdd2=df.rdd.map(lambda x: func1(x)).toDF().show()",
+      "improvementExplanation": "This map() operation applies a user-defined function (func1) to each element. If func1 involves batch processing or I/O-heavy operations, it can be more efficient to use mapPartitions() to apply the function to batches of elements within partitions.",
+      "mapPartitionsEquivalent": "rdd2 = df.rdd.mapPartitions(lambda partition: [func1(x) for x in partition]).toDF().show()",
+      "benefits": "Reduced function call overhead, optimized I/O, improved performance for partition-level operations."
     }
   ]
 }

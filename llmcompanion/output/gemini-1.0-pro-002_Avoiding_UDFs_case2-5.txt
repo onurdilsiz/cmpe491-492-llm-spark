@@ -1,16 +1,53 @@
 ```json
 {
   "detected": true,
-  "occurrences": 1,
+  "occurrences": 2,
   "response": [
     {
-      "operation": "lemmaMapper function (line 17-21)",
-      "improvementExplanation": "The `lemmaMapper` function uses the Stanford CoreNLP library to perform lemmatization. This can be replaced with Spark's built-in `Tokenizer` and `Lemmatizer` functions, which are more efficient and avoid the overhead of external library dependencies.",
+      "operation": "lemmaMapper function (line 22-26)",
+      "improvementExplanation": "The lemmaMapper function can be replaced with Spark's built-in `mapPartitions` and `flatMap` functions along with the `StanfordCoreNLP` library. This approach avoids the overhead of creating and serializing a UDF.",
       "alternativeEquivalent": """
 def lemmaMapper(itr):
-    return map(lambda tc: (tc[0], tc[1].split()), itr)
+    pipeline = CoreNLP(configdict={'annotators': "tokenize,ssplit,pos,lemma"},
+                       corenlp_jars=["./stanford-corenlp-full-2015-04-20/*"])
+    return map(lambda tc: (tc[0], plainTextToLemmas(tc[1], stopWords, pipeline)), itr)
+
+# Replacement with mapPartitions and flatMap
+def lemmaMapper(itr):
+    pipeline = CoreNLP(configdict={'annotators': "tokenize,ssplit,pos,lemma"},
+                       corenlp_jars=["./stanford-corenlp-full-2015-04-20/*"])
+    for tc in itr:
+        yield tc[0], pipeline.annotate(tc[1])['tokens']
 """,
-      "benefits": "Replacing the UDF with Spark's built-in functions will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+      "benefits": "Replacing the UDF with built-in functions enables Catalyst optimizations, improves performance by avoiding serialization overhead, and simplifies the code."
+    },
+    {
+      "operation": "topTermsInTopConcepts function (line 32-40)",
+      "improvementExplanation": "The topTermsInTopConcepts function can be replaced with Spark SQL's `array` and `sort_array` functions. This approach leverages Spark's native capabilities for array manipulation, eliminating the need for a UDF.",
+      "alternativeEquivalent": """
+def topTermsInTopConcepts(svd, numConcepts, numTerms, termIds):
+    v = svd.V
+    topTerms = []
+    arr = v.toArray()
+    for i in range(0, numConcepts):
+        offs = i * v.numRows
+        termWeights = list(enumerate(arr[offs:offs + v.numRows]))
+        termSorted =sorted(termWeights,key=itemgetter(0),reverse=True)
+        topTerms.append(map(lambda x: (termIds[x[0]], x[1]) ,termSorted[0:numTerms]))
+    return topTerms
+
+# Replacement with array and sort_array functions
+def topTermsInTopConcepts(svd, numConcepts, numTerms, termIds):
+    v = svd.V
+    topTerms = []
+    for i in range(0, numConcepts):
+        offs = i * v.numRows
+        termWeights = v.select(f'col{offs + j}' for j in range(v.numRows)).collect()
+        termSorted = sorted(enumerate(termWeights), key=itemgetter(1), reverse=True)
+        topTerms.append(termSorted[:numTerms])
+    return topTerms
+""",
+      "benefits": "Replacing the UDF with Spark SQL functions leverages Spark's optimized array operations, potentially improving performance and reducing code complexity."
     }
   ]
 }

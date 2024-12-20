@@ -9,7 +9,7 @@
     {
       "operation": "df2.repartition(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
       "improvementExplanation": "The code uses repartition(1) before writing to CSV.  Since the goal is to write to a single file, coalesce(1) is more efficient as it avoids unnecessary shuffling. Repartition performs a full shuffle regardless of the number of partitions, while coalesce tries to minimize data movement.",
-      "coalesceEquivalent": "df2.coalesce(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/coalesced/1\")",
+      "coalesceEquivalent": "df2.coalesce(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/coalesce/1\")",
       "benefits": "Reduced shuffling, improved resource usage, and faster job runtime."
     }
   ],
@@ -22,7 +22,7 @@
     {
       "operation": "df2.repartition(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")",
       "improvementExplanation": "The code writes data in CSV format, which is not optimized for Spark.  CSV lacks features like compression and schema enforcement, leading to slower read/write operations and increased storage costs. Parquet is a columnar storage format that offers significant performance advantages.",
-      "optimizedEquivalent": "df2.coalesce(1).write.format(\"parquet\").option(\"compression\",\"lz4\").mode(\"overwrite\").save(\"hdfs://namenode/output/itmd-521/drp/2000/parquet\")",
+      "optimizedEquivalent": "df2.coalesce(1).write.format(\"parquet\").option(\"compression\",\"lz4\").save(\"hdfs://namenode/output/itmd-521/drp/2000/parquet\")",
       "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
     }
   ],

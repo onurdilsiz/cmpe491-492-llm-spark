@@ -4,10 +4,10 @@
   "occurrences": 1,
   "response": [
     {
-      "operation": "repartition(24) on line 24",
-      "improvementExplanation": "The `repartition()` operation on line 24 is used to increase the number of partitions in the DataFrame. However, since we are only splitting the data into train, validation, and test sets, a full shuffle is not required. We can achieve the same result with `coalesce()`, which reduces the number of partitions without shuffling the data. This will improve efficiency by reducing the amount of data that needs to be transferred across the network.",
-      "coalesceEquivalent": "train_repartition_df, val_repartition_df, test_repartition_df = (airbnb_df\n                                             .coalesce(24)\n                                             .randomSplit([.7, .15, .15], seed=42))",
-      "benefits": "Switching to `coalesce()` in this case will provide the following benefits:\n* **Reduced shuffling:** By avoiding a full shuffle, we can significantly reduce the amount of data that needs to be transferred across the network, leading to faster job execution.\n* **Improved resource usage:** Reducing the number of partitions can free up resources on the cluster, allowing other jobs to run more efficiently.\n* **Faster runtime:** Overall, using `coalesce()` instead of `repartition()` can lead to a faster job runtime."
+      "operation": "train_repartition_df, val_repartition_df, test_repartition_df = (airbnb_df\n                                             .repartition(24)\n                                             .randomSplit([.7, .15, .15], seed=42))",
+      "improvementExplanation": "The `repartition()` operation is used to increase the number of partitions in the DataFrame from its original number to 24. However, in this case, the `randomSplit()` operation will shuffle the data anyway, regardless of the number of partitions. Therefore, using `coalesce()` instead of `repartition()` would be more efficient as it would avoid unnecessary shuffling and potentially improve the job runtime.",
+      "coalesceEquivalent": "train_coalesce_df, val_coalesce_df, test_coalesce_df = (airbnb_df\n                                             .coalesce(24)\n                                             .randomSplit([.7, .15, .15], seed=42))",
+      "benefits": "Switching to `coalesce()` in this case would provide the following benefits:\n\n* **Reduced shuffling:** `coalesce()` only redistributes data within existing partitions, while `repartition()` shuffles the entire dataset. This can significantly reduce the amount of data transferred across the network, leading to faster job execution.\n* **Improved resource usage:** `coalesce()` requires less memory and CPU resources compared to `repartition()`, as it avoids the overhead of shuffling the entire dataset.\n* **Faster runtime:** By reducing shuffling and resource usage, `coalesce()` can potentially improve the overall runtime of the job."
     }
   ]
 }

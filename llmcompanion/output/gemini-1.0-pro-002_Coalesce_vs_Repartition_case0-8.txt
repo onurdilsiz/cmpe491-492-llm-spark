@@ -8,4 +8,4 @@
 
 **Explanation:**
 
-The provided Spark code does not contain any instances of `repartition()`. Therefore, there are no opportunities to replace it with `coalesce()` for improved efficiency. The code performs a simple `reduceByKey()` operation on an RDD without any shuffling or partitioning involved.
+The provided Spark code does not contain any instances of `repartition()`. Therefore, there are no opportunities to replace it with `coalesce()` for improved efficiency. The code performs a simple `reduceByKey()` operation on an RDD, which does not involve any shuffling or repartitioning.

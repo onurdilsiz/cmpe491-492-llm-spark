@@ -5,9 +5,9 @@
   "response": [
     {
       "operation": "mapPartitionsWithIndex(self.process_warcs)",
-      "improvementExplanation": "The `mapPartitionsWithIndex` operation iterates over partitions of the input data and applies the `process_warcs` function to each partition. This allows for batching and optimized I/O operations within each partition, potentially improving performance compared to using `map`.",
-      "mapPartitionsEquivalent": "output = input_data.mapPartitionsWithIndex(self.process_warcs) \\n            .reduceByKey(self.reduce_by_key_func)",
-      "benefits": "Using `mapPartitionsWithIndex` instead of `map` can provide the following benefits:\n\n* **Reduced function call overhead:** By applying the function to a batch of records within each partition, the overhead of function calls is reduced.\n* **Optimized I/O:** I/O operations can be optimized within each partition, potentially reducing the number of disk seeks and improving performance.\n* **Improved resource utilization:** By processing data in batches, resources can be utilized more efficiently."
+      "improvementExplanation": "The `mapPartitionsWithIndex` operation iterates over partitions of the input data and applies the `process_warcs` function to each partition. This allows for more efficient processing of large datasets by reducing the number of function calls and optimizing I/O operations. In this case, the `process_warcs` function iterates over WARC files within each partition, which can be more efficient than processing each file individually.",
+      "mapPartitionsEquivalent": "```python\noutput = input_data.mapPartitionsWithIndex(self.process_warcs)\n```",
+      "benefits": "Switching to `mapPartitionsWithIndex` can provide the following benefits:\n\n* **Reduced function call overhead:** By processing data in partitions, we reduce the number of times the `process_warcs` function is called, which can improve performance.\n* **Optimized I/O operations:** Reading and processing WARC files within partitions can optimize I/O operations, as data is accessed sequentially within each partition.\n* **Improved resource utilization:** By processing data in parallel across partitions, we can improve resource utilization and reduce the overall processing time."
     }
   ]
 }

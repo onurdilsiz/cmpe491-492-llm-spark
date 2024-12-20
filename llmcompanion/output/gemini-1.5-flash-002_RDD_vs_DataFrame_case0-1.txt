@@ -28,16 +28,16 @@
       "benefits": "DataFrame transformations are generally faster and more efficient than RDD map operations due to optimized execution plans and better resource utilization. This leads to improved performance and scalability."
     },
     {
-      "rddOperation": "moviePairRatings = moviePairs.groupByKey() (line 50)",
+      "rddOperation": "moviePairRatings = moviePairs.groupByKey() (line 51)",
       "improvementExplanation": "The RDD `groupByKey` operation is inefficient and can lead to data skew and performance issues. DataFrame `groupBy` operations are optimized and handle data skew more effectively.",
       "dataframeEquivalent": "moviePairRatings = moviePairs.groupBy(\"movie\", \"movie2\")",
       "benefits": "DataFrame `groupBy` operations are significantly more efficient than RDD `groupByKey` operations. They handle data skew better and provide optimized aggregation capabilities, leading to improved performance and scalability."
     },
     {
-      "rddOperation": "moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).cache() (line 54)",
-      "improvementExplanation": "The RDD `mapValues` operation can be replaced with a UDF (User Defined Function) within the DataFrame API for better performance and integration with DataFrame optimizations.",
-      "dataframeEquivalent": "from pyspark.sql.functions import udf\nfrom pyspark.sql.types import StructType, StructField, DoubleType, IntegerType\ncomputeCosineSimilarityUDF = udf(computeCosineSimilarity, StructType([StructField(\"score\", DoubleType(), True), StructField(\"numPairs\", IntegerType(), True)]))\nmoviePairSimilarities = moviePairRatings.withColumn(\"similarities\", computeCosineSimilarityUDF(col(\"ratings\"))).cache()",
-      "benefits": "Using UDFs within the DataFrame API allows leveraging DataFrame optimizations, leading to better performance and scalability compared to RDD `mapValues`."
+      "rddOperation": "moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).cache() (line 55)",
+      "improvementExplanation": "The RDD `mapValues` operation can be replaced with a more efficient UDF (User Defined Function) within the DataFrame API. This allows for leveraging Spark's optimized execution engine.",
+      "dataframeEquivalent": "from pyspark.sql.functions import udf\nfrom pyspark.sql.types import StructType, StructField, DoubleType, IntegerType\ncomputeCosineSimilarityUDF = udf(computeCosineSimilarity, StructType([StructField(\"score\", DoubleType(), True), StructField(\"numPairs\", IntegerType(), True)]))\nmoviePairSimilarities = moviePairRatings.withColumn(\"similarity\", computeCosineSimilarityUDF(moviePairRatings[\"ratings\"]))",
+      "benefits": "Using UDFs within the DataFrame API allows for leveraging Spark's optimized execution engine, leading to improved performance and scalability compared to RDD `mapValues`."
     }
   ]
 }
