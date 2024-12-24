@@ -4,25 +4,25 @@
     "response0": [
         {
             "operation": "data = sc.textFile(\"file:///SparkCourse/ml-100k/u.data\")",
-            "improvementExplanation": "This RDD can be replaced with a DataFrame to leverage Spark SQL's optimized query engine and reduce shuffling.",
+            "improvementExplanation": "RDDs are less efficient than DataFrames/Datasets for structured data processing. DataFrames/Datasets offer query optimizations, reduced shuffling, and easier integration with structured data formats.",
             "dataframeEquivalent": "data = spark.read.text(\"file:///SparkCourse/ml-100k/u.data\")",
-            "benefits": "Improved performance, reduced shuffling, easier integration with structured data formats."
+            "benefits": "Improved performance, reduced shuffling, easier integration with structured data formats, and query optimizations."
         },
         {
-            "operation": "moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).cache()",
-            "improvementExplanation": "This RDD can be replaced with a DataFrame to leverage Spark SQL's optimized query engine and reduce shuffling.",
-            "dataframeEquivalent": "moviePairSimilarities = moviePairRatings.toDF().withColumn(\"similarity\", computeCosineSimilarity(col(\"value\"))).cache()",
-            "benefits": "Improved performance, reduced shuffling, easier integration with structured data formats."
+            "operation": "ratings = data.map(lambda l: l.split()).map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))))",
+            "improvementExplanation": "RDDs are less efficient than DataFrames/Datasets for structured data processing. DataFrames/Datasets offer query optimizations, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "ratings = spark.read.text(\"file:///SparkCourse/ml-100k/u.data\").rdd.map(lambda l: l.split()).map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))))",
+            "benefits": "Improved performance, reduced shuffling, easier integration with structured data formats, and query optimizations."
         }
     ],
     "detected1": true,
     "occurrences1": 1,
     "response1": [
         {
-            "operation": "moviePairSimilarities.sortByKey()",
-            "improvementExplanation": "This repartition() operation can be replaced with coalesce() as it only requires reducing partitions, not a full shuffle.",
-            "coalesceEquivalent": "moviePairSimilarities.coalesce(10)",
-            "benefits": "Reduced shuffling, improved resource usage, faster job runtime."
+            "operation": "moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).cache()",
+            "improvementExplanation": "repartition() causes a full shuffle, which can be inefficient. coalesce() reduces partitions without shuffling, improving resource usage and job runtime.",
+            "coalesceEquivalent": "moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).coalesce(8)",
+            "benefits": "Reduced shuffling, improved resource usage, and faster job runtime."
         }
     ],
     "detected2": true,
@@ -30,9 +30,9 @@
     "response2": [
         {
             "operation": "ratings = data.map(lambda l: l.split()).map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))))",
-            "improvementExplanation": "This map() operation can be replaced with mapPartitions() to improve performance for I/O-heavy operations.",
-            "mapPartitionsEquivalent": "ratings = data.mapPartitions(lambda partition: map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))), partition))",
-            "benefits": "Reduced function call overhead, optimized I/O, improved performance for partition-level operations."
+            "improvementExplanation": "map() can be inefficient for partition-level operations like I/O or batching. mapPartitions() processes data at the partition level, improving performance.",
+            "mapPartitionsEquivalent": "ratings = data.rdd.mapPartitions(lambda partition: map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))), partition))",
+            "benefits": "Reduced function call overhead, optimized I/O, and improved performance for partition-level operations."
         }
     ],
     "detected3": false,

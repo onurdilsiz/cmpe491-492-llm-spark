@@ -4,45 +4,45 @@
     "response": [
         {
             "rddOperation": "map",
-            "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance.",
+            "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can leverage distributed processing more efficiently.",
             "dataframeEquivalent": "```python\nratingsDF = ratings.toDF(['userID', 'movieID', 'rating'])\nratingsDF = ratingsDF.select('userID', 'movieID', 'rating')\n```",
-            "benefits": "DataFrame/Dataset transformations can be optimized for better performance, especially when dealing with large datasets."
+            "benefits": "Switching to DataFrame/Dataset will improve performance by leveraging optimized query execution plans and distributed processing. It will also reduce the number of shuffles and improve resource utilization."
         },
         {
             "rddOperation": "map",
-            "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance.",
+            "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can leverage distributed processing more efficiently.",
             "dataframeEquivalent": "```python\njoinedRatingsDF = ratingsDF.join(ratingsDF, on='userID', how='inner')\n```",
-            "benefits": "DataFrame/Dataset transformations can be optimized for better performance, especially when dealing with large datasets."
+            "benefits": "Switching to DataFrame/Dataset will improve performance by leveraging optimized query execution plans and distributed processing. It will also reduce the number of shuffles and improve resource utilization."
         },
         {
             "rddOperation": "filter",
-            "improvementExplanation": "The `filter` operation can be replaced with a DataFrame/Dataset filter, which can be optimized for better performance.",
+            "improvementExplanation": "The `filter` operation can be replaced with a DataFrame/Dataset filter for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can leverage distributed processing more efficiently.",
             "dataframeEquivalent": "```python\nuniqueJoinedRatingsDF = joinedRatingsDF.filter(joinedRatingsDF['movieID_1'] < joinedRatingsDF['movieID_2'])\n```",
-            "benefits": "DataFrame/Dataset filters can be optimized for better performance, especially when dealing with large datasets."
+            "benefits": "Switching to DataFrame/Dataset will improve performance by leveraging optimized query execution plans and distributed processing. It will also reduce the number of shuffles and improve resource utilization."
         },
         {
             "rddOperation": "map",
-            "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance.",
+            "improvementExplanation": "The `map` operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can leverage distributed processing more efficiently.",
             "dataframeEquivalent": "```python\nmoviePairsDF = uniqueJoinedRatingsDF.selectExpr('(movieID_1, movieID_2) as moviePair', '(rating_1, rating_2) as ratings')\n```",
-            "benefits": "DataFrame/Dataset transformations can be optimized for better performance, especially when dealing with large datasets."
+            "benefits": "Switching to DataFrame/Dataset will improve performance by leveraging optimized query execution plans and distributed processing. It will also reduce the number of shuffles and improve resource utilization."
         },
         {
             "rddOperation": "groupByKey",
-            "improvementExplanation": "The `groupByKey` operation can be replaced with a DataFrame/Dataset groupBy, which can be optimized for better performance.",
-            "dataframeEquivalent": "```python\nmoviePairRatingsDF = moviePairsDF.groupBy('moviePair').agg(collect_list('ratings'))\n```",
-            "benefits": "DataFrame/Dataset groupBy can be optimized for better performance, especially when dealing with large datasets."
+            "improvementExplanation": "The `groupByKey` operation can be replaced with a DataFrame/Dataset groupBy for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can leverage distributed processing more efficiently.",
+            "dataframeEquivalent": "```python\nmoviePairRatingsDF = moviePairsDF.groupBy('moviePair')\n```",
+            "benefits": "Switching to DataFrame/Dataset will improve performance by leveraging optimized query execution plans and distributed processing. It will also reduce the number of shuffles and improve resource utilization."
         },
         {
             "rddOperation": "mapValues",
-            "improvementExplanation": "The `mapValues` operation can be replaced with a DataFrame/Dataset transformation, which can be optimized for better performance.",
-            "dataframeEquivalent": "```python\nmoviePairSimilaritiesDF = moviePairRatingsDF.withColumn('similarity', F.udf(computeCosineSimilarity)(F.col('collect_list(ratings)')))\n```",
-            "benefits": "DataFrame/Dataset transformations can be optimized for better performance, especially when dealing with large datasets."
+            "improvementExplanation": "The `mapValues` operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can leverage distributed processing more efficiently.",
+            "dataframeEquivalent": "```python\nmoviePairSimilaritiesDF = moviePairRatingsDF.agg(computeCosineSimilarity(col('ratings')).alias('similarity'))\n```",
+            "benefits": "Switching to DataFrame/Dataset will improve performance by leveraging optimized query execution plans and distributed processing. It will also reduce the number of shuffles and improve resource utilization."
         },
         {
-            "rddOperation": "cache",
-            "improvementExplanation": "The `cache` operation can be replaced with a DataFrame/Dataset cache, which can be optimized for better performance.",
-            "dataframeEquivalent": "```python\nmoviePairSimilaritiesDF.cache()\n```",
-            "benefits": "DataFrame/Dataset cache can be optimized for better performance, especially when dealing with large datasets."
+            "rddOperation": "filter",
+            "improvementExplanation": "The `filter` operation can be replaced with a DataFrame/Dataset filter for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can leverage distributed processing more efficiently.",
+            "dataframeEquivalent": "```python\nfilteredResultsDF = moviePairSimilaritiesDF.filter((col('moviePair')[0] == movieID) | (col('moviePair')[1] == movieID)) \\\n.filter(col('similarity')[0] > scoreThreshold) \\\n.filter(col('similarity')[1] > coOccurenceThreshold)\n```",
+            "benefits": "Switching to DataFrame/Dataset will improve performance by leveraging optimized query execution plans and distributed processing. It will also reduce the number of shuffles and improve resource utilization."
         }
     ]
 }

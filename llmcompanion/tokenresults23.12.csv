@@ -1,0 +1,7 @@
+Model,Case,File,Input Tokens,Output Tokens,Total Tokens,Latency
+gemini-1.0-pro-002,RDD vs DataFrame,case0-1.py,1412,1008,2420,12.171528577804565
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-1.py,1390,310,1700,4.835018873214722
+gemini-1.0-pro-002,Map vs MapPartitions,case0-1.py,1379,445,1824,5.939464330673218
+gemini-1.0-pro-002,Serialized Data Formats,case0-1.py,1423,379,1802,5.208341121673584
+gemini-1.0-pro-002,Avoiding UDFs,case0-1.py,1389,255,1644,3.580108404159546
+gemini-1.0-pro-002,All,case0-1.py,2232,742,2974,7.020932197570801

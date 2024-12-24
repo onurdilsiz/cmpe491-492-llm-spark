@@ -1,10 +1,15 @@
 import os
 from langchain_core.prompts import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate
 from langchain_google_vertexai import ChatVertexAI
+from langchain_openai import ChatOpenAI
 import csv
 import json
 import logging
+from dotenv import load_dotenv
+import time
+load_dotenv()
 
+OPENAI_API_KEY= os.getenv("OPENAI_API_KEY")
 
 def setup_logging(log_file):
     """Setup logging to a file."""
@@ -80,13 +85,18 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
            
                 # Process code with the model, case type, and prompt
                 try:
+                    # Measure start time
+                    start_time = time.time()
                     analysis, prompt_tokens, response_tokens = process_code_with_prompt(code, prompt_file, llm)
+                    end_time = time.time()
+                    latency = end_time - start_time
+                    logging.info(f"Analysis completed in {latency:.2f} seconds")
                 except Exception as e:
                     logging.error(f"Error processing {file_name} with prompt {prompt_file}: {e}")
                     continue
                 
                 total_tokens = prompt_tokens + response_tokens
-                results.append([model_name, case_type, file_name, prompt_tokens, response_tokens, total_tokens])
+                results.append([model_name, case_type, file_name, prompt_tokens, response_tokens, total_tokens,latency])
 
 
                 # Save the result to a uniquely named file
@@ -120,7 +130,7 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
                     json.dump(parsed_json, output_file, indent=4)
 
                 detection_result = parsed_json.get("detected", False)
-                detection_results.append([model_name, case_type, file_name, detection_result])
+                detection_results.append([model_name, case_type, file_name, latency, detection_result])
 
                 logging.info(f"Analysis for {file_name} saved to {output_file_path}")
                 output_file_path = output_file_path.replace(".json", ".txt")
@@ -134,14 +144,14 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
 
     with open(csv_file, mode="w", newline="", encoding="utf-8") as csvfile:
         csv_writer = csv.writer(csvfile)
-        csv_writer.writerow(["Model", "Case", "File", "Input Tokens", "Output Tokens", "Total Tokens"])
+        csv_writer.writerow(["Model", "Case", "File", "Input Tokens", "Output Tokens", "Total Tokens","Latency"])
         csv_writer.writerows(results)
         logging.info(f"All results logged to CSV: {csv_file}")
         print(f"All results logged to CSV: {csv_file}")
 
     with open(csv_file2, mode="w", newline="", encoding="utf-8") as csv_file2:
         csv_writer = csv.writer(csv_file2)
-        csv_writer.writerow(["Model", "Case", "File", "Detection Result"])
+        csv_writer.writerow(["Model", "Case", "File","Latency", "Detection Result"])
         csv_writer.writerows(detection_results)
         logging.info(f"All results logged to CSV: {csv_file2}")
         print(f"All results logged to CSV: {csv_file2}")
@@ -151,29 +161,43 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
 
 def init_models(models):
     """Initialize the models for analysis."""
+    
     llms = {}
     for model in models:
-        llms[model] = ChatVertexAI(
-            model=model,
-            temperature=0,
-            max_tokens=None,
-            max_retries=6,
-            stop=None,
-        )
+        if model.startswith("gemini"):
+            llms[model] = ChatVertexAI(
+                model=model,
+                temperature=0,
+                max_tokens=None,
+                max_retries=6,
+                stop=None,
+            )
+        else:
+            
+            llms[model] = ChatOpenAI(
+                model=model,  # Strip prefix for OpenAI models
+                temperature=0,
+                max_tokens=None,
+                max_retries=1,
+                stop=None,
+                request_timeout=30,  # 30 seconds timeout
+                api_key=OPENAI_API_KEY,
+            )
     return llms
+    
 
 def main():
     log_file = "analysis.log"
     setup_logging(log_file)
     # File paths for local input and output
     config = {
-        "models": ["gemini-1.0-pro-002", "gemini-1.5-flash-002", "gemini-2.0-flash-exp"],
+        "models": [ "gemini-1.0-pro-002"], # gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
         "cases": ["RDD vs DataFrame", "Coalesce vs Repartition", "Map vs MapPartitions", "Serialized Data Formats", "Avoiding UDFs","All"],
-        "dataset_dir": "dataset",  # Directory containing all the dataset files
+        "dataset_dir": "dataset2",  # Directory containing all the dataset files
         "prompts_dir": "prompts",  # Directory containing prompt files
         "output_dir": "output",   # Directory to save the analysis results
-        "csv_file": "tokenresults.csv",
-        "csv_file2": "detectionresults.csv"
+        "csv_file": "tokenresults23.12.csv",
+        "csv_file2": "detectionresults23.12.csv"
     }
     
     # Initialize the models for analysis
@@ -192,4 +216,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        logging.error(f"Fatal error occurred: {e}", exc_info=True)
