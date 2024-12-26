@@ -1,0 +1,40 @@
+```json
+{
+    "detected0": true,
+    "occurrences0": 1,
+    "response0": [
+        {
+            "operation": "csvDF = spark.read.option(\"header\",\"false\").csv(hdfs_path_to_csv).toDF(\"Path\",\"FileSize\",\"BlocksCount\")",
+            "improvementExplanation": "RDD usage can be replaced with DataFrame for better query optimization, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "csvDF = spark.read.option(\"header\",\"false\").csv(hdfs_path_to_csv).toDF(\"Path\",\"FileSize\",\"BlocksCount\")",
+            "benefits": "Improved query optimization, reduced shuffling, and easier integration with structured data formats."
+        }
+    ],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+            "improvementExplanation": "repartition(1) can be replaced with coalesce(1) to avoid unnecessary shuffling when reducing partitions.",
+            "coalesceEquivalent": "filteredPaths.coalesce(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+            "benefits": "Reduced shuffling, improved resource usage, and faster job runtime."
+        }
+    ],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 1,
+    "response4": [
+        {
+            "operation": "splitPathsUDF = udf(splitPaths, ArrayType(StringType(),False))",
+            "improvementExplanation": "UDF can be replaced with native DataFrame/Dataset operations for better performance and Catalyst optimizations.",
+            "alternativeEquivalent": "csvDF.withColumn(\"Path\", explode(splitPathsUDF(csvDF[\"Path\"])))",
+            "benefits": "Enabling Catalyst optimizations, improving performance, and reducing serialization overhead."
+        }
+    ]
+}
+```

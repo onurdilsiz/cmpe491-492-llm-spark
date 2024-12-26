@@ -1,0 +1,56 @@
+```json
+{
+  "detected0": false,
+  "occurrences0": 0,
+  "response0": [],
+  "detected1": false,
+  "occurrences1": 0,
+  "response1": [],
+  "detected2": false,
+  "occurrences2": 0,
+  "response2": [],
+  "detected3": false,
+  "occurrences3": 0,
+  "response3": [],
+  "detected4": true,
+  "occurrences4": 4,
+  "response4": [
+    {
+      "operation": "extract_family_name(full_name: List[str])",
+      "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('family_name', split(df['full_name'], ' ')[1:])",
+      "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead."
+    },
+    {
+      "operation": "extract_given_name(full_name: List[str])",
+      "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('given_name', split(df['full_name'], ' ')[0])",
+      "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead."
+    },
+    {
+      "operation": "format_phone(phone: str)",
+      "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('phone', regexp_replace(df['phone'], r'\\(\\d{2}\\)\\s(\\d{4}-\\d{4})', r'+55 0\\1 \\2'))",
+      "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead."
+    },
+    {
+      "operation": "clean_cpf(value: str)",
+      "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('cpf', regexp_replace(df['cpf'], r'\\D', ''))",
+      "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead."
+    },
+    {
+      "operation": "format_gender(value: str)",
+      "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('gender', lower(df['gender'])).withColumn('gender', when(df['gender'] == 'masculino', 'male').when(df['gender'] == 'feminino', 'female').otherwise('unknown'))",
+      "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead."
+    },
+    {
+      "operation": "format_date(value: str)",
+      "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+      "alternativeEquivalent": "df.withColumn('date', to_date(df['date'], 'dd/MM/yyyy'))",
+      "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead."
+    }
+  ]
+}
+```

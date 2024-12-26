@@ -1,0 +1,50 @@
+```json
+{
+    "detected": true,
+    "occurrences": 6,
+    "response": [
+        {
+            "rddOperation": "udf",
+            "location": "Line 6",
+            "improvementExplanation": "UDFs with RDDs can be less efficient due to serialization overhead. Using DataFrame/Dataset functions can leverage Catalyst optimizations.",
+            "dataframeEquivalent": "df.withColumn('family_name', split(col('full_name'), ' ')[1])",
+            "benefits": "Switching to DataFrame functions can benefit from query optimization and potentially reduce shuffling."
+        },
+        {
+            "rddOperation": "udf",
+            "location": "Line 11",
+            "improvementExplanation": "UDFs with RDDs can be less efficient due to serialization overhead. Using DataFrame/Dataset functions can leverage Catalyst optimizations.",
+            "dataframeEquivalent": "df.withColumn('given_name', split(col('full_name'), ' ')[0])",
+            "benefits": "DataFrame functions can benefit from query optimization and potentially reduce shuffling."
+        },
+        {
+            "rddOperation": "udf",
+            "location": "Line 16",
+            "improvementExplanation": "UDFs with RDDs can be less efficient due to serialization overhead. Using DataFrame/Dataset functions can leverage Catalyst optimizations.",
+            "dataframeEquivalent": "df.withColumn('phone', regexp_replace(col('phone'), r'\\((\\d{2})\\)\\s(\\d{4}-\\d{4})', '+55 0$1 $2'))",
+            "benefits": "Switching to DataFrame functions can benefit from query optimization and potentially reduce shuffling."
+        },
+        {
+            "rddOperation": "udf",
+            "location": "Line 21",
+            "improvementExplanation": "UDFs with RDDs can be less efficient due to serialization overhead. Using DataFrame/Dataset functions can leverage Catalyst optimizations.",
+            "dataframeEquivalent": "df.withColumn('cpf', regexp_replace(col('cpf'), '\\D', ''))",
+            "benefits": "DataFrame functions can benefit from query optimization and potentially reduce shuffling."
+        },
+        {
+            "rddOperation": "udf",
+            "location": "Line 26",
+            "improvementExplanation": "UDFs with RDDs can be less efficient due to serialization overhead. Using DataFrame/Dataset functions can leverage Catalyst optimizations.",
+            "dataframeEquivalent": "df.withColumn('gender', when(lower(col('gender')) == 'masculino', 'male').when(lower(col('gender')) == 'feminino', 'female').otherwise('unknown'))",
+            "benefits": "Switching to DataFrame functions can benefit from query optimization and potentially reduce shuffling."
+        },
+        {
+            "rddOperation": "udf",
+            "location": "Line 31",
+            "improvementExplanation": "UDFs with RDDs can be less efficient due to serialization overhead. Using DataFrame/Dataset functions can leverage Catalyst optimizations.",
+            "dataframeEquivalent": "df.withColumn('date', to_date(col('date'), 'dd/MM/yyyy').cast('string'))",
+            "benefits": "DataFrame functions can benefit from query optimization and potentially reduce shuffling."
+        }
+    ]
+}
+```

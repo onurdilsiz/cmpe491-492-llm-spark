@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "total_salary = udf(lambda s, b: new_salary(s, b), DoubleType()) on line 25, used on line 29",
+      "improvementExplanation": "The UDF `total_salary` is defined to add salary and bonus. This can be directly achieved using Spark's built-in arithmetic operations on DataFrame columns. Using a UDF introduces serialization overhead and prevents Catalyst optimizations.",
+      "alternativeEquivalent": "df.withColumn('new_salary', df.salary + df.bonus)",
+      "benefits": "Replacing the UDF with a built-in operation allows Spark's Catalyst optimizer to optimize the execution plan, leading to improved performance. It also avoids the overhead of serializing and deserializing data for UDF execution."
+    },
+    {
+      "operation": "@udf(returnType=DoubleType()) def new_salary(salary, bonus): return salary  + bonus on line 34, used on line 38",
+      "improvementExplanation": "The UDF `new_salary` is defined to add salary and bonus. This can be directly achieved using Spark's built-in arithmetic operations on DataFrame columns. Using a UDF introduces serialization overhead and prevents Catalyst optimizations.",
+      "alternativeEquivalent": "df.select('*', (df.salary + df.bonus).alias('total_salary'))",
+      "benefits": "Replacing the UDF with a built-in operation allows Spark's Catalyst optimizer to optimize the execution plan, leading to improved performance. It also avoids the overhead of serializing and deserializing data for UDF execution."
+    },
+    {
+      "operation": "spark.udf.register(name='total_salary', f=new_salary) on line 44, used in SQL query on line 49",
+      "improvementExplanation": "The UDF `total_salary` is registered for use in SQL. This can be directly achieved using Spark SQL's built-in arithmetic operations. Using a UDF in SQL introduces serialization overhead and prevents Catalyst optimizations.",
+      "alternativeEquivalent": "df.createOrReplaceTempView('emps'); spark.sql('SELECT *, salary + bonus AS salary_total FROM emps')",
+      "benefits": "Replacing the UDF with a built-in SQL operation allows Spark's Catalyst optimizer to optimize the execution plan, leading to improved performance. It also avoids the overhead of serializing and deserializing data for UDF execution."
+    }
+  ]
+}
+```

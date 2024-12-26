@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "Reading text file from HDFS: `df1 = spark.read.text(\"hdfs://namenode/output/itmd-521/drp/2000/csv-file\")`",
+      "improvementExplanation": "The code reads a text file, which is likely a CSV file based on the path name. Text files are not optimized for analytical workloads. Reading text files requires parsing each line and inferring the schema, which is inefficient. Switching to a columnar format like Parquet or ORC would significantly improve read performance by allowing Spark to read only the necessary columns and leverage schema information.",
+      "optimizedEquivalent": "```python\ndf1 = spark.read.parquet(\"hdfs://namenode/output/itmd-521/drp/2000/parquet-file\")\n```\nAssuming the data is already converted to parquet format and stored in the specified path.",
+      "benefits": "Faster reads due to columnar storage, schema enforcement, and predicate pushdown. Parquet also supports compression, reducing storage space and I/O."
+    },
+    {
+      "operation": "Writing CSV file to HDFS: `df2.repartition(1).write.format(\"csv\").option(\"compression\",\"lz4\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1\")`",
+      "improvementExplanation": "The code writes the processed DataFrame to a CSV file. While compression is used, CSV is a row-based format and is not ideal for analytical queries. Writing to CSV is slower than writing to columnar formats like Parquet or ORC. Switching to Parquet or ORC would improve write performance and enable more efficient reads in subsequent operations.",
+      "optimizedEquivalent": "```python\ndf2.repartition(1).write.format(\"parquet\").mode(\"overwrite\").save(\"hdfs://namenode/output/itmd-521/drp/2000/repartition/1_parquet\")\n```",
+      "benefits": "Faster writes due to columnar storage. Parquet also supports compression, reducing storage space and I/O. Subsequent reads will be much faster due to columnar storage and predicate pushdown."
+    }
+  ]
+}
+```

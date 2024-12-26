@@ -1,0 +1,36 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 3,
+    "response4": [
+        {
+            "operation": "udf(lambda s, b: new_salary(s, b), DoubleType()) at line 28",
+            "improvementExplanation": "The UDF `total_salary` is defined using a lambda function and then registered. This can be replaced with a simple DataFrame operation using `withColumn` and a basic arithmetic operation. This avoids the overhead of UDF serialization and execution.",
+            "alternativeEquivalent": "df.withColumn('new_salary', df.salary + df.bonus)",
+            "benefits": "Avoids UDF serialization overhead, enables Catalyst optimizations, and improves performance."
+        },
+        {
+            "operation": "@udf(returnType=DoubleType()) def new_salary(salary, bonus): ... at line 38",
+            "improvementExplanation": "The UDF `new_salary` is defined using the `@udf` decorator. This can be replaced with a simple DataFrame operation using `withColumn` and a basic arithmetic operation. This avoids the overhead of UDF serialization and execution.",
+            "alternativeEquivalent": "df.withColumn('total_salary', df.salary + df.bonus)",
+            "benefits": "Avoids UDF serialization overhead, enables Catalyst optimizations, and improves performance."
+        },
+        {
+            "operation": "spark.udf.register(name='total_salary', f=new_salary) at line 49",
+            "improvementExplanation": "The UDF `new_salary` is registered for use in Spark SQL. This can be replaced with a simple SQL expression using the `+` operator directly in the SQL query. This avoids the overhead of UDF serialization and execution.",
+            "alternativeEquivalent": "SELECT *, salary + bonus AS salary_total FROM emps",
+            "benefits": "Avoids UDF serialization overhead, enables Catalyst optimizations, and improves performance."
+        }
+    ]
+}

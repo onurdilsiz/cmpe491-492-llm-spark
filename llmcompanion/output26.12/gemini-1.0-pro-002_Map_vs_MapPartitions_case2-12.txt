@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "mapPartitionsWithIndex(self.process_warcs)",
+      "improvementExplanation": "The `mapPartitionsWithIndex` operation iterates over partitions of the input data and applies the `process_warcs` function to each partition. This allows for batching and optimized I/O operations within each partition, potentially improving performance compared to using `map`.",
+      "mapPartitionsEquivalent": "output = input_data.mapPartitionsWithIndex(self.process_warcs) \\n            .reduceByKey(self.reduce_by_key_func)",
+      "benefits": "Replacing `map` with `mapPartitionsWithIndex` can provide the following benefits:\n\n* **Reduced function call overhead:** By processing data in batches within partitions, `mapPartitionsWithIndex` reduces the number of function calls compared to `map`, which can improve performance.\n* **Optimized I/O:** `mapPartitionsWithIndex` allows for efficient I/O operations within partitions, such as reading or writing data in larger chunks, which can further enhance performance.\n* **Improved resource utilization:** By processing data in parallel within partitions, `mapPartitionsWithIndex` can improve resource utilization and reduce the overall execution time."
+    }
+  ]
+}
+```

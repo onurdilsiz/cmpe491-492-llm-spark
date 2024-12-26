@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "UDF 'is_number' usage in the code",
+            "improvementExplanation": "The UDF 'is_number' is used to categorize numbers as positive, negative, zero, or non-numeric values. This UDF can be replaced with native DataFrame operations and functions to improve performance and leverage Spark's optimizations.",
+            "alternativeEquivalent": "Replace the UDF 'is_number' with native DataFrame operations and functions to achieve the same functionality. For example, you can use built-in functions like 'isnumeric', 'when', 'count', and 'sum' to achieve the desired result.",
+            "benefits": "By avoiding UDFs and utilizing native DataFrame operations, Spark can optimize query execution plans through Catalyst optimizations. This can lead to better performance, reduced serialization overhead, and improved scalability."
+        }
+    ]
+}
+```

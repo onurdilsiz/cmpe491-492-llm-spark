@@ -1,0 +1,18 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "rddOperation": "reduceByKey",
+            "location": "rdd2=rdd.reduceByKey(lambda a,b: a+b)",
+            "improvementExplanation": "Using DataFrame/Dataset API can provide better performance optimizations and leverage Catalyst query optimizer.",
+            "dataframeEquivalent": {
+                "transformation": "groupBy().agg(sum())",
+                "codeExample": "df = spark.createDataFrame(data, ['word', 'count'])\ndf.groupBy('word').agg({'count': 'sum'}).show()",
+            },
+            "benefits": "Switching to DataFrame/Dataset API can lead to query optimizations, reduced shuffling, and better resource management. DataFrames provide a higher level of abstraction and can leverage Spark's Catalyst optimizer for better performance."
+        }
+    ]
+}
+```

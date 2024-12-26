@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "URLs2domain(urls: List[str]) -> List[str]",
+            "improvementExplanation": "The map() operation in URLs2domain function iterates over each URL in the list to apply the __URL2domain function individually. This can lead to high function call overhead when processing large datasets. By using mapPartitions(), we can process multiple URLs within a partition at once, reducing the overhead of function calls and potentially improving performance.",
+            "mapPartitionsEquivalent": "@udf(ArrayType(StringType()))\ndef URLs2domain_mapPartitions(urls: Iterator[List[str]]) -> Iterator[List[str]]:\n    return [[__URL2domain(url) for url in url_list] for url_list in urls]\n\nspark.udf.register('URLs2domain_mapPartitions', URLs2domain_mapPartitions, ArrayType(StringType()))",
+            "benefits": "Switching to mapPartitions() can reduce the function call overhead by processing multiple URLs within a partition at once, leading to improved performance and optimized resource utilization for partition-level operations."
+        }
+    ]
+}
+```

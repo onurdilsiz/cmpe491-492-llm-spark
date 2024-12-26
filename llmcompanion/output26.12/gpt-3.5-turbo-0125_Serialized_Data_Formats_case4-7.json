@@ -1,0 +1,13 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "write_dynamic_frame.from_options to S3 bucket in GlueParquet format with gzip compression",
+            "location": "Line 169",
+            "improvementExplanation": "Switching from GlueParquet with gzip compression to Parquet format can improve performance by leveraging columnar storage and predicate pushdown optimization.",
+            "optimizedEquivalent": "glueContext.write_dynamic_frame.from_options(frame=azureAuditLog_df_dynf, connection_type='s3', format='parquet', connection_options={'path': S3bucket_node3_path, 'partitionKeys': []}, transformation_ctx='S3bucket_node3')",
+            "benefits": "Benefits of switching to Parquet format include faster reads/writes, efficient storage due to columnar format, and improved query performance through predicate pushdown."
+        }
+    ]
+}

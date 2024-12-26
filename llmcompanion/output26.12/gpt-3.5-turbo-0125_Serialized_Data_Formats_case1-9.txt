@@ -1,0 +1,15 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "write in Parquet format",
+            "location": "line 47",
+            "improvementExplanation": "The current operation writes data in Parquet format, which is a columnar storage format optimized for analytics workloads. Switching to Parquet can improve performance by enabling efficient data compression, faster reads, and better query optimization through predicate pushdown.",
+            "optimizedEquivalent": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+'.'+tblName, partitionBy='extract_dt', compression='snappy')",
+            "benefits": "Switching to Parquet format can lead to faster reads and writes, reduced storage space due to efficient compression, and improved query performance through predicate pushdown."
+        }
+    ]
+}
+```

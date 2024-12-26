@@ -1,0 +1,32 @@
+```json
+{
+  "detected": true,
+  "occurrences": 4,
+  "response": [
+    {
+      "operation": "convertCase UDF on line 22",
+      "improvementExplanation": "The `convertCase` UDF can be replaced with the built-in `initcap` function, which performs the same capitalization logic. This avoids the overhead of creating and registering a UDF.",
+      "alternativeEquivalent": "```python\ndf.select(col(\"Seqno\"), initcap(col(\"Name\")).alias(\"Name\"))\n.show(truncate=False)\n```",
+      "benefits": "Replacing the UDF with `initcap` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "upperCase UDF on line 32",
+      "improvementExplanation": "The `upperCase` UDF can be replaced with the built-in `upper` function, which performs the same uppercasing operation. This avoids the overhead of creating and registering a UDF.",
+      "alternativeEquivalent": "```python\ndf.withColumn(\"Cureated Name\", upper(col(\"Name\")))\n.show(truncate=False)\n```",
+      "benefits": "Replacing the UDF with `upper` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "convertUDF in SQL on line 40",
+      "improvementExplanation": "The `convertUDF` UDF can be replaced with the built-in `initcap` function in the SQL statement. This avoids the overhead of registering and using a UDF.",
+      "alternativeEquivalent": "```sql\nselect Seqno, initcap(Name) as Name from NAME_TABLE\n```",
+      "benefits": "Replacing the UDF with `initcap` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "_nullsafeUDF in SQL on line 52",
+      "improvementExplanation": "The `_nullsafeUDF` UDF can be replaced with a combination of the built-in `coalesce` and `initcap` functions. This avoids the overhead of registering and using a UDF.",
+      "alternativeEquivalent": "```sql\nselect Seqno, coalesce(initcap(Name), '') as Name from NAME_TABLE2\n```",
+      "benefits": "Replacing the UDF with `coalesce` and `initcap` enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}
+```

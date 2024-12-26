@@ -1,0 +1,44 @@
+```json
+{
+  "detected0": false,
+  "occurrences0": 0,
+  "response0": [],
+  "detected1": false,
+  "occurrences1": 0,
+  "response1": [],
+  "detected2": false,
+  "occurrences2": 0,
+  "response2": [],
+  "detected3": false,
+  "occurrences3": 0,
+  "response3": [],
+  "detected4": true,
+  "occurrences4": 4,
+  "response4": [
+    {
+      "operation": "convertUDF = udf(lambda z: convertCase(z))  \n\ndf.select(col(\"Seqno\"), \\\n    convertUDF(col(\"Name\")).alias(\"Name\") )",
+      "improvementExplanation": "The UDF `convertCase` can be replaced with built-in Spark SQL functions. Specifically, we can use `split`, `transform`, and `concat` to achieve the same result without a UDF. This avoids serialization overhead and allows Catalyst optimizer to optimize the query.",
+      "alternativeEquivalent": "from pyspark.sql.functions import expr\ndf.select(col(\"Seqno\"), expr(\"concat_ws(' ', transform(split(Name, ' '), x -> concat(upper(substring(x, 1, 1)), substring(x, 2, length(x)))))\").alias(\"Name\")).show(truncate=False)",
+      "benefits": "Avoids UDF serialization overhead, enables Catalyst optimizations, and improves performance."
+    },
+    {
+      "operation": "@udf(returnType=StringType()) \ndef upperCase(str):\n    return str.upper()\n\nupperCaseUDF = udf(lambda z:upperCase(z),StringType())    \n\ndf.withColumn(\"Cureated Name\", upperCase(col(\"Name\")))",
+      "improvementExplanation": "The UDF `upperCase` can be replaced with the built-in Spark SQL function `upper`. This avoids the overhead of UDF execution and allows Spark to optimize the query.",
+      "alternativeEquivalent": "from pyspark.sql.functions import upper\ndf.withColumn(\"Cureated Name\", upper(col(\"Name\"))).show(truncate=False)",
+      "benefits": "Avoids UDF serialization overhead, enables Catalyst optimizations, and improves performance."
+    },
+    {
+      "operation": "spark.udf.register(\"convertUDF\", convertCase,StringType())\nspark.sql(\"select Seqno, convertUDF(Name) as Name from NAME_TABLE\")",
+      "improvementExplanation": "The registered UDF `convertCase` can be replaced with the equivalent Spark SQL expression using `concat_ws`, `transform`, `split`, `upper`, and `substring`. This avoids the overhead of UDF execution and allows Spark to optimize the query.",
+      "alternativeEquivalent": "spark.sql(\"select Seqno, concat_ws(' ', transform(split(Name, ' '), x -> concat(upper(substring(x, 1, 1)), substring(x, 2, length(x))))) as Name from NAME_TABLE\").show(truncate=False)",
+      "benefits": "Avoids UDF serialization overhead, enables Catalyst optimizations, and improves performance."
+    },
+    {
+      "operation": "spark.udf.register(\"_nullsafeUDF\", lambda str: convertCase(str) if not str is None else \"\" , StringType())\n\nspark.sql(\"select _nullsafeUDF(Name) from NAME_TABLE2\")",
+      "improvementExplanation": "The registered UDF `_nullsafeUDF` can be replaced with the equivalent Spark SQL expression using `concat_ws`, `transform`, `split`, `upper`, `substring`, and `coalesce`. This avoids the overhead of UDF execution and allows Spark to optimize the query.",
+      "alternativeEquivalent": "spark.sql(\"select coalesce(concat_ws(' ', transform(split(Name, ' '), x -> concat(upper(substring(x, 1, 1)), substring(x, 2, length(x))))), '') from NAME_TABLE2\").show(truncate=False)",
+      "benefits": "Avoids UDF serialization overhead, enables Catalyst optimizations, and improves performance."
+    }
+  ]
+}
+```

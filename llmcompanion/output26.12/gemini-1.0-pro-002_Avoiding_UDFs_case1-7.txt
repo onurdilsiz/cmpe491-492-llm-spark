@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "The UDF `custom_repartitioner` is used to repartition the DataFrame based on a salted key.",
+      "improvementExplanation": "The UDF `custom_repartitioner` can be replaced with a combination of built-in functions and native DataFrame/Dataset operations. This will enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+      "alternativeEquivalent": "```python\n# Import necessary functions\nfrom pyspark.sql.functions import col, monotonically_increasing_id, ceil, count, lit\n\n# Calculate the number of records per partition\nrecords_per_partition = df.select(*dist_cols)\n    .withColumn('_partColAgg', F.concat(*dist_cols))\n    .drop(*dist_cols)\n    .groupBy('_partColAgg')\n    .agg(count(lit(1)).alias('records_count'))\n\n# Calculate the number of files per partition\nnum_files_per_partition = records_per_partition.withColumn('_num', ceil(col('records_count') / lit(max_records_in_each_file)))\n    .select('_num', '_partColAgg')\n\n# Calculate the total number of files\nmax_num_files = num_files_per_partition.agg(max('_num')).collect()[0][0]\n\n# Generate a salted key for each partition\ndf = df.withColumn('_unique_id', monotonically_increasing_id())\n    .withColumn('_salted_key', col('_unique_id') % col('_num'))\n\n# Repartition the DataFrame based on the salted key\ndf = df.repartition(max_num_files, '_salted_key')\n```",
+      "benefits": "Replacing the UDF with built-in functions and native DataFrame/Dataset operations will enable Catalyst optimizations, improve performance, and reduce serialization overhead. Catalyst optimizations allow Spark to generate more efficient execution plans, leading to faster query execution. Reducing serialization overhead minimizes the amount of data that needs to be transferred between executors, further improving performance."
+    }
+  ]
+}
+```

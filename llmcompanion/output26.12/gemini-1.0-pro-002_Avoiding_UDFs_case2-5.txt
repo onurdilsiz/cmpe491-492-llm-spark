@@ -1,0 +1,30 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "lemmaMapper function (line 17-21)",
+      "improvementExplanation": "The `lemmaMapper` function uses the `CoreNLP` library to perform lemmatization. This can be replaced with Spark's built-in `Tokenizer` and `Lemmatizer` functions, which are more efficient and optimized for Spark.",
+      "alternativeEquivalent": """
+def lemmaMapper(itr):
+    return map(lambda tc: (tc[0], Tokenizer().transform(tc[1]).collect()[0].lemmas()), itr)
+""",
+      "benefits": "Replacing the UDF with Spark's built-in functions will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    },
+    {
+      "operation": "documentTermMatrix function (line 25)",
+      "improvementExplanation": "The `documentTermMatrix` function creates a term-document matrix. This can be replaced with Spark's `HashingTF` and `IDF` functions, which are more efficient and optimized for Spark.",
+      "alternativeEquivalent": """
+def documentTermMatrix(filtered, stopWords, numTerms, sc):
+    hashingTF = HashingTF(numFeatures=numTerms)
+    tf = hashingTF.transform(filtered.map(lambda x: Row(words=x[1])))
+    idf = IDF(minDocFreq=2).fit(tf)
+    tfidf = idf.transform(tf)
+    return tfidf
+""",
+      "benefits": "Replacing the UDF with Spark's built-in functions will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    }
+  ]
+}
+```

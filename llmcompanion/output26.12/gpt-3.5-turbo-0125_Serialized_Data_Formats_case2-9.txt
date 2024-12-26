@@ -1,0 +1,15 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "read data in textFile format",
+            "location": "rawData = sc.textFile(data_path).repartition(numPartitions=L)",
+            "improvementExplanation": "The current data format being used is textFile, which is not optimized for performance and storage efficiency. Switching to a serialized format like Parquet or ORC can significantly improve performance by enabling predicate pushdown, efficient compression, and schema evolution support.",
+            "optimizedEquivalent": "rawData = spark.read.format('parquet').load(data_path).repartition(L)",
+            "benefits": "Switching to Parquet format allows for faster reads/writes, efficient compression leading to reduced storage costs, and enables predicate pushdown for query optimization."
+        }
+    ]
+}
+```

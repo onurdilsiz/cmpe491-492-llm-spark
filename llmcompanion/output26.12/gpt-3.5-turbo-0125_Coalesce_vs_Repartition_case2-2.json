@@ -1,0 +1,15 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": {
+                "location": "Line 366",
+                "code": "if sketching==1 or sketching>=3:"
+            },
+            "improvementExplanation": "The repartition() operation is used to shuffle data across partitions based on a random key. In this case, the operation can be replaced with coalesce() as it only reduces the number of partitions without shuffling data.",
+            "coalesceEquivalent": "sketchingRowsA = np.random.choice(I, numC, replace=False)",
+            "benefits": "Switching to coalesce() will reduce unnecessary shuffling of data, leading to improved resource usage and faster job runtime."
+        }
+    ]
+}

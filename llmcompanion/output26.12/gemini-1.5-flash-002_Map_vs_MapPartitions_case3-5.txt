@@ -1,0 +1,104 @@
+```json
+{
+  "detected": true,
+  "occurrences": 16,
+  "response": [
+    {
+      "operation": "Line 71: stations = stations.map(lambda line: line.split(';'))",
+      "improvementExplanation": "This map operation splits each line of the stations.csv file.  This is an I/O-bound operation where processing a whole partition at once would reduce the overhead of repeatedly opening and closing files. mapPartitions can process an entire partition's worth of lines at once, reducing the function call overhead.",
+      "mapPartitionsEquivalent": "stations = stations.mapPartitions(lambda iterator: [line.split(';') for line in iterator])",
+      "benefits": "Reduced function call overhead, improved I/O efficiency by processing an entire partition at once."
+    },
+    {
+      "operation": "Line 72: stations = stations.map(lambda x: (x[0],(float(x[3]),float(x[4]))))",
+      "improvementExplanation": "This map converts strings to floats. While not strictly I/O bound, batching this operation within mapPartitions can still reduce function call overhead.",
+      "mapPartitionsEquivalent": "stations = stations.mapPartitions(lambda iterator: [(x[0], (float(x[3]), float(x[4]))) for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 76: temps = temps.map(lambda line: line.split(';'))",
+      "improvementExplanation": "Similar to the first stations map, this splits lines from a CSV file.  mapPartitions is more efficient for this I/O-bound operation.",
+      "mapPartitionsEquivalent": "temps = temps.mapPartitions(lambda iterator: [line.split(';') for line in iterator])",
+      "benefits": "Reduced function call overhead, improved I/O efficiency."
+    },
+    {
+      "operation": "Line 77: temps = temps.map(lambda x: (x[0], (datetime.strptime(x[1], \"%Y-%m-%d\").date(), x[2], float(x[3]))))",
+      "improvementExplanation": "This map performs date and type conversions.  Batching these operations within a partition improves efficiency.",
+      "mapPartitionsEquivalent": "temps = temps.mapPartitions(lambda iterator: [(x[0], (datetime.strptime(x[1], \"%Y-%m-%d\").date(), x[2], float(x[3]))) for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 94: joined = temps_filtered.map(lambda x: (x[0],(x[1][0],x[1][1],x[1][2],bc.value.get(x[0]))))",
+      "improvementExplanation": "This map joins data from two datasets.  While not strictly I/O bound, the overhead of repeated lookups in bc.value can be reduced by processing a partition at once.",
+      "mapPartitionsEquivalent": "joined = temps_filtered.mapPartitions(lambda iterator: [(x[0], (x[1][0], x[1][1], x[1][2], bc.value.get(x[0]))) for x in iterator])",
+      "benefits": "Reduced function call overhead, potential for improved lookup efficiency."
+    },
+    {
+      "operation": "Line 112: partial_sum_rdd = joined.map(lambda x: (get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist)+get_k_days(x[1][0], pred_date,h_days), x[1][1], x[1][2]))",
+      "improvementExplanation": "This map applies multiple kernel functions.  Batching these calculations within mapPartitions reduces overhead.",
+      "mapPartitionsEquivalent": "partial_sum_rdd = joined.mapPartitions(lambda iterator: [(get_k_dist(x[1][3][1], x[1][3][0], pred_long, pred_lat, h_dist) + get_k_days(x[1][0], pred_date, h_days), x[1][1], x[1][2]) for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 117: partial_prod_rdd = joined.map(lambda x: (get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist)*get_k_days(x[1][0], pred_date,h_days), x[1][1], x[1][2]))",
+      "improvementExplanation": "Similar to the previous map, this applies kernel functions.  mapPartitions offers efficiency gains.",
+      "mapPartitionsEquivalent": "partial_prod_rdd = joined.mapPartitions(lambda iterator: [(get_k_dist(x[1][3][1], x[1][3][0], pred_long, pred_lat, h_dist) * get_k_days(x[1][0], pred_date, h_days), x[1][1], x[1][2]) for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 136: k_sum = partial_sum_rdd.map(lambda x: (1, ((x[0]+get_k_hour(time, x[1], h_time))*x[2], x[0]+get_k_hour(time, x[1], h_time))))",
+      "improvementExplanation": "This map applies a kernel function and performs calculations.  mapPartitions would reduce the overhead of repeated function calls.",
+      "mapPartitionsEquivalent": "k_sum = partial_sum_rdd.mapPartitions(lambda iterator: [(1, ((x[0] + get_k_hour(time, x[1], h_time)) * x[2], x[0] + get_k_hour(time, x[1], h_time))) for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 140: k_sum = k_sum.reduceByKey(lambda x,y: (x[0]+y[0], x[1]+y[1]))",
+      "improvementExplanation": "This is a reduceByKey operation, not a map.  This response is for map operations only.",
+      "mapPartitionsEquivalent": null,
+      "benefits": null
+    },
+    {
+      "operation": "Line 141: pred_sum = k_sum.map(lambda x: (x[1][0]/x[1][1]))",
+      "improvementExplanation": "This map performs a simple calculation.  While the benefit might be small, mapPartitions can still offer a slight performance improvement.",
+      "mapPartitionsEquivalent": "pred_sum = k_sum.mapPartitions(lambda iterator: [x[1][0] / x[1][1] for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 146: k_prod = partial_prod_rdd.map(lambda x: (1, ((x[0]*get_k_hour(time, x[1], h_time))*x[2], x[0]*get_k_hour(time, x[1], h_time))))",
+      "improvementExplanation": "Similar to the k_sum map, this applies a kernel function and performs calculations.  mapPartitions is more efficient.",
+      "mapPartitionsEquivalent": "k_prod = partial_prod_rdd.mapPartitions(lambda iterator: [(1, ((x[0] * get_k_hour(time, x[1], h_time)) * x[2], x[0] * get_k_hour(time, x[1], h_time))) for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 150: k_prod = k_prod.reduceByKey(lambda x,y: (x[0]+y[0], x[1]+y[1]))",
+      "improvementExplanation": "This is a reduceByKey operation, not a map.  This response is for map operations only.",
+      "mapPartitionsEquivalent": null,
+      "benefits": null
+    },
+    {
+      "operation": "Line 151: pred_mup = k_prod.map(lambda x: (x[1][0]/x[1][1]))",
+      "improvementExplanation": "Similar to the pred_sum map, this performs a simple calculation.  mapPartitions can offer a small performance improvement.",
+      "mapPartitionsEquivalent": "pred_mup = k_prod.mapPartitions(lambda iterator: [x[1][0] / x[1][1] for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 88: temps_filtered = temps.filter(lambda x: (x[1][0]<date(2014, 6, 7)) )",
+      "improvementExplanation": "This is a filter operation, not a map. This response is for map operations only.",
+      "mapPartitionsEquivalent": null,
+      "benefits": null
+    },
+    {
+      "operation": "Line 100: dist_kernel = joined.map(lambda x: get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist))",
+      "improvementExplanation": "This map applies the distance kernel function.  Processing this within mapPartitions reduces function call overhead.",
+      "mapPartitionsEquivalent": "dist_kernel = joined.mapPartitions(lambda iterator: [get_k_dist(x[1][3][1], x[1][3][0], pred_long, pred_lat, h_dist) for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    },
+    {
+      "operation": "Line 106: days_kernel = joined.map(lambda x: get_k_days(x[1][0], pred_date,h_days))",
+      "improvementExplanation": "This map applies the days kernel function.  mapPartitions improves efficiency by reducing function call overhead.",
+      "mapPartitionsEquivalent": "days_kernel = joined.mapPartitions(lambda iterator: [get_k_days(x[1][0], pred_date, h_days) for x in iterator])",
+      "benefits": "Reduced function call overhead."
+    }
+  ]
+}
+```

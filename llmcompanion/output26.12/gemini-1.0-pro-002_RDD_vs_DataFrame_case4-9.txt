@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "rddOperation": "udf(ArrayType(DoubleType()))",
+      "improvementExplanation": "The `delta_mol` function is defined as a User-Defined Function (UDF) that operates on RDDs. This can be inefficient for large datasets, as UDFs require data to be shuffled across the cluster. Using a DataFrame/Dataset transformation can avoid this shuffling and improve performance.",
+      "dataframeEquivalent": "```python\nfrom pyspark.sql.functions import array_zip_with\n\ndef delta_mol_df(array_col):\n    return array_zip_with(array_col[1:], array_col[:-1], lambda x, y: (x / y - 1) * 100 if y != 0.0 else 0.0)\n\ndff = df.withColumn('delta_arry', delta_mol_df(F.col('array_col')))\n```",
+      "benefits": "Replacing the UDF with a DataFrame/Dataset transformation provides the following benefits:\n* **Reduced shuffling:** Data does not need to be shuffled across the cluster, improving performance.\n* **Query optimization:** Spark can optimize the query plan for better performance.\n* **Improved resource usage:** Less data movement reduces resource consumption."
+    }
+  ]
+}
+```

@@ -1,0 +1,12 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "df.select(*dist_cols)\\",
+            "improvementExplanation": "The map() transformation is used to select specific columns from the DataFrame. Since this operation can be performed at the partition level without the need to process each row individually, it can be more efficient to use mapPartitions() instead.",
+            "mapPartitionsEquivalent": "df.rdd.mapPartitions(lambda partition: (row for row in partition))\\",
+            "benefits": "By switching to mapPartitions(), the function call overhead is reduced as the transformation is applied at the partition level. This can lead to optimized I/O operations and improved performance, especially for operations that can be batched at the partition level."
+        }
+    ]
+}

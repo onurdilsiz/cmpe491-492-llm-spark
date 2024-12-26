@@ -1,0 +1,12 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "df_5years.repartition(1).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/1\")",
+            "improvementExplanation": "The `repartition(1)` operation is used to reduce the number of partitions to 1 before writing the data to a CSV file. This forces a full shuffle of the data across the cluster, which can be inefficient if the goal is simply to reduce the number of output files. Since we are reducing the number of partitions, `coalesce(1)` can be used instead. `coalesce()` attempts to avoid a full shuffle by combining existing partitions, which is more efficient when reducing the number of partitions.",
+            "coalesceEquivalent": "df_5years.coalesce(1).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/coalesce/1\")",
+            "benefits": "Switching to `coalesce(1)` will reduce the amount of shuffling required, as it will try to combine existing partitions instead of performing a full shuffle. This will lead to improved resource usage, as less data needs to be moved across the network, and faster job runtime, as the shuffle operation is a costly operation in Spark. The output will still be a single file, as intended."
+        }
+    ]
+}

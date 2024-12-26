@@ -1,0 +1,24 @@
+{
+    "detected": true,
+    "occurrences": 3,
+    "response": [
+        {
+            "operation": "df['details'].apply(lambda x: json.loads(x.replace(\"'\", '\"')))",
+            "improvementExplanation": "The lambda function is used to convert single quotes to double quotes in the 'details' column. This can be replaced with Spark's native functions for JSON parsing.",
+            "alternativeEquivalent": "df = df.withColumn('details', F.from_json(F.col('details').cast('string'), 'map<string,string>'))",
+            "benefits": "By using Spark's native JSON parsing functions, the processing can be pushed down to the underlying engine for better performance and optimization."
+        },
+        {
+            "operation": "df['engine_alert'] = np.where(df['engine_status'] == \"Abnormal\", 1, 0)",
+            "improvementExplanation": "The np.where function is used to create a binary indicator based on 'engine_status'. This can be replaced with Spark's when-otherwise function.",
+            "alternativeEquivalent": "df = df.withColumn('engine_alert', F.when(F.col('engine_status') == 'Abnormal', 1).otherwise(0))",
+            "benefits": "Using Spark's when-otherwise function allows for better integration with Spark's query optimizer and avoids unnecessary data movement."
+        },
+        {
+            "operation": "df['status'] = np.select(conditions, choices, default=\"about to fail\")",
+            "improvementExplanation": "The np.select function is used to create the 'status' column based on conditions. This can be replaced with Spark's when-otherwise function.",
+            "alternativeEquivalent": "df = df.withColumn('status', F.when((F.col('car_age') == 'old') & (F.col('last_oil_change') == 'old'), 'fail').when((F.col('car_age') == 'old') & (F.col('last_oil_change') == '80km'), 'about to fail').when((F.col('car_age') == 'old') & ((F.col('last_oil_change') == 'new') | (F.col('last_oil_change') == '50km')), 'normal').when((F.col('car_age') == 'new') & ((F.col('last_oil_change') == 'new') | (F.col('last_oil_change') == '50km') | (F.col('last_oil_change') == '80km')), 'normal').otherwise('about to fail'))",
+            "benefits": "Replacing np.select with Spark's when-otherwise function enables better optimization and integration with Spark's processing engine."
+        }
+    ]
+}

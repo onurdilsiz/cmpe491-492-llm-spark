@@ -1,0 +1,24 @@
+{
+    "detected": true,
+    "occurrences": 3,
+    "response": [
+        {
+            "operation": "df['status'] = df['status'].map({\"normal\": 0, \"about to fail\": 1, \"fail\": 2})",
+            "improvementExplanation": "This map operation performs a simple key-value mapping on a Pandas DataFrame.  Since this is a Pandas operation and not a Spark operation, mapPartitions() is not applicable.  Pandas operations are not distributed across partitions in the same way Spark operations are.",
+            "mapPartitionsEquivalent": null,
+            "benefits": null
+        },
+        {
+            "operation": "df['car_age'] = df['car_age'].map({\"old\": 0, \"new\": 1})",
+            "improvementExplanation": "This map operation performs a simple key-value mapping on a Pandas DataFrame.  Since this is a Pandas operation and not a Spark operation, mapPartitions() is not applicable. Pandas operations are not distributed across partitions in the same way Spark operations are.",
+            "mapPartitionsEquivalent": null,
+            "benefits": null
+        },
+        {
+            "operation": "df['last_oil_change'] = df['last_oil_change'].map({\"new\": 0, \"50km\": 1, \"80km\": 2, \"old\": 3})",
+            "improvementExplanation": "This map operation performs a simple key-value mapping on a Pandas DataFrame. Since this is a Pandas operation and not a Spark operation, mapPartitions() is not applicable. Pandas operations are not distributed across partitions in the same way Spark operations are.",
+            "mapPartitionsEquivalent": null,
+            "benefits": null
+        }
+    ]
+}

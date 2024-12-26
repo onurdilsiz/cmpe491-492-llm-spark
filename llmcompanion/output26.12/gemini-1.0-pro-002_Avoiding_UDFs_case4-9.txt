@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "UDF `delta_mol` used on line 24 to calculate percentage differences between consecutive elements in an array.",
+      "improvementExplanation": "The UDF `delta_mol` can be replaced with Spark's built-in function `zip_with` and a lambda expression to achieve the same functionality without incurring the overhead of UDFs. This allows for Catalyst optimizations and potentially improved performance.",
+      "alternativeEquivalent": "```python\nfrom pyspark.sql.functions import zip_with\n\ndf = df.withColumn('delta_arry', zip_with(lambda x, y: (y / x - 1) * 100 if x != 0.0 else 0.0, F.col('array_col'), F.lag(F.col('array_col')).over(Window.orderBy('chiave')))\n```",
+      "benefits": "Replacing the UDF with a built-in function offers several benefits:\n- **Catalyst Optimizations:** Built-in functions are optimized by Catalyst, potentially leading to improved query performance.\n- **Performance Improvement:** Avoiding UDFs can reduce serialization overhead and improve execution speed.\n- **Readability:** Using built-in functions often results in more concise and readable code."
+    }
+  ]
+}
+```

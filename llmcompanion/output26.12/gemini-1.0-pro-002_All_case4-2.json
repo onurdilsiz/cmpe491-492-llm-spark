@@ -1,0 +1,30 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 2,
+    "response4": [
+        {
+            "operation": "udf(lambda s, b: new_salary(s, b), DoubleType())",
+            "improvementExplanation": "This UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation for better performance and reduced serialization overhead.",
+            "alternativeEquivalent": "df.withColumn('new_salary', df.salary + df.bonus)",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "@udf(returnType=DoubleType())\ndef new_salary(salary, bonus):\n  return salary  + bonus",
+            "improvementExplanation": "This UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation for better performance and reduced serialization overhead.",
+            "alternativeEquivalent": "df.select('*', (df.salary + df.bonus).alias('total_salary'))",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        }
+    ]
+}

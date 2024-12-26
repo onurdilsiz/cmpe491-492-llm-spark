@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "map() operation on line 10: customerDF.select('age','country').show()",
+      "improvementExplanation": "This operation iterates over each row in the DataFrame to select the 'age' and 'country' columns. This can be optimized by using mapPartitions() to process data in batches, reducing the number of function calls and improving I/O efficiency.",
+      "mapPartitionsEquivalent": "customerDF.rdd.mapPartitions(lambda partition: (row['age'], row['country']) for row in partition).toDF(['age', 'country']).show()",
+      "benefits": "Switching to mapPartitions() will reduce function call overhead, optimize I/O by processing data in batches, and improve resource utilization."
+    },
+    {
+      "operation": "map() operation on line 14: customerDF.filter((customerDF['salary'] > 30000) & (customerDF['age'] < 25)).show()",
+      "improvementExplanation": "This operation iterates over each row in the DataFrame to filter based on salary and age conditions. Using mapPartitions() can improve efficiency by processing data in batches and reducing function calls.",
+      "mapPartitionsEquivalent": "customerDF.rdd.mapPartitions(lambda partition: (row for row in partition if row['salary'] > 30000 and row['age'] < 25)).toDF().show()",
+      "benefits": "Switching to mapPartitions() will reduce function call overhead, optimize I/O by processing data in batches, and improve resource utilization."
+    }
+  ]
+}
+```

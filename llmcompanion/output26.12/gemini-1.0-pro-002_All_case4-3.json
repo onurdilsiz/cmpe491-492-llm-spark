@@ -1,0 +1,42 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 4,
+    "response4": [
+        {
+            "operation": "udf defined at line 10",
+            "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+            "alternativeEquivalent": "df.select(spark.sql('5')).display()",
+            "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead"
+        },
+        {
+            "operation": "udf defined at line 15",
+            "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+            "alternativeEquivalent": "df.select(spark.sql('5')).show()",
+            "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead"
+        },
+        {
+            "operation": "pandas_udf defined at line 20",
+            "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+            "alternativeEquivalent": "df.select(spark.sql('5')).show()",
+            "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead"
+        },
+        {
+            "operation": "my_custom_scala_fn at line 27",
+            "improvementExplanation": "UDFs can be replaced with Spark SQL functions or native DataFrame/Dataset operations for better performance and Catalyst optimization.",
+            "alternativeEquivalent": "result_df = df.selectExpr(\"spark_partition_id() as id\")",
+            "benefits": "Improved performance, Catalyst optimization, reduced serialization overhead"
+        }
+    ]
+}

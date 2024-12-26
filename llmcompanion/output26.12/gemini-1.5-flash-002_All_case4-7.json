@@ -1,0 +1,81 @@
+{
+    "detected0": true,
+    "occurrences0": 1,
+    "response0": [
+        {
+            "operation": "Line 208: azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\")",
+            "improvementExplanation": "The code converts a DataFrame to a DynamicFrame. While DynamicFrames are useful in Glue jobs, if the processing is entirely within Spark, sticking with DataFrames improves performance and avoids unnecessary conversions.",
+            "dataframeEquivalent": "No direct equivalent needed; remove the conversion to DynamicFrame and work directly with the DataFrame.",
+            "benefits": "Improved performance by avoiding unnecessary data structure conversions.  Better integration with Spark's optimized execution engine."
+        }
+    ],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "Line 208: azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").repartition(1)",
+            "improvementExplanation": "The repartition(1) operation will cause a full shuffle, even though only one partition is needed.  If the goal is to reduce the number of output files, coalesce is more efficient.",
+            "coalesceEquivalent": "azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").coalesce(1)",
+            "benefits": "Reduced shuffle time and resource consumption. Faster job completion."
+        }
+    ],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": true,
+    "occurrences3": 1,
+    "response3": [
+        {
+            "operation": "Line 218: format = \"glueparquet\",format_options={ \"compression\":\"gzip\"}",
+            "improvementExplanation": "While Glue Parquet is an optimized format, using Parquet directly with Spark provides more control and potential performance gains.  The compression is handled efficiently by Parquet itself.",
+            "optimizedEquivalent": "spark.write.parquet(S3bucket_node3_path).mode(\"append\")",
+            "benefits": "Faster read/write operations, better compression, and potential for predicate pushdown optimization."
+        }
+    ],
+    "detected4": true,
+    "occurrences4": 7,
+    "response4": [
+        {
+            "operation": "Lines 108-113: @udf\ndef MAP_AN(source): ...",
+            "improvementExplanation": "This UDF implements simple conditional logic.  This can be replaced with a combination of when() and otherwise() functions in Spark SQL.",
+            "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"activity_name\", when(col(\"unmapped.`category`\") == \"Write\", \"Create\").when(col(\"unmapped.`category`\") == \"Delete\", \"Delete\").otherwise(\"Unknown\"))",
+            "benefits": "Improved performance due to Catalyst optimization. Reduced serialization overhead."
+        },
+        {
+            "operation": "Lines 115-120: @udf\ndef MAP_AI(source): ...",
+            "improvementExplanation": "This UDF implements simple conditional logic.  This can be replaced with a combination of when() and otherwise() functions in Spark SQL.",
+            "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"activity_id\", when(col(\"unmapped.`category`\") == \"Write\", lit(1)).when(col(\"unmapped.`category`\") == \"Delete\", lit(4)).otherwise(lit(0)))",
+            "benefits": "Improved performance due to Catalyst optimization. Reduced serialization overhead."
+        },
+        {
+            "operation": "Lines 122-127: @udf\ndef MAP_TN(source): ...",
+            "improvementExplanation": "This UDF implements simple conditional logic.  This can be replaced with a combination of when() and otherwise() functions in Spark SQL.",
+            "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"type_name\", when(col(\"unmapped.`category`\") == \"Write\", \"API Acitvity: API Activity: Create\").when(col(\"unmapped.`category`\") == \"Delete\", \"API Acitvity: API Activity: Delete\").otherwise(\"API Acitvity: API Activity: Unknown\"))",
+            "benefits": "Improved performance due to Catalyst optimization. Reduced serialization overhead."
+        },
+        {
+            "operation": "Lines 129-134: @udf\ndef MAP_TI(source): ...",
+            "improvementExplanation": "This UDF implements simple conditional logic.  This can be replaced with a combination of when() and otherwise() functions in Spark SQL.",
+            "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"type_uid\", when(col(\"unmapped.`category`\") == \"Write\", lit(300501)).when(col(\"unmapped.`category`\") == \"Delete\", lit(300504)).otherwise(lit(300500)))",
+            "benefits": "Improved performance due to Catalyst optimization. Reduced serialization overhead."
+        },
+        {
+            "operation": "Lines 136-149: @udf\ndef MAP_SEVID(source): ...",
+            "improvementExplanation": "This UDF implements simple conditional logic.  This can be replaced with a combination of when() and otherwise() functions in Spark SQL.",
+            "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"severity_id\", when(col(\"severity\") == \"Information\", lit(1)).when(col(\"severity\") == \"Informational\", lit(1)).when(col(\"severity\") == \"Low\", lit(2)).when(col(\"severity\") == \"Medium\", lit(3)).when(col(\"severity\") == \"High\", lit(4)).when(col(\"severity\") == \"Critical\", lit(5)).when(col(\"severity\") == \"Fatial\", lit(6)).when(col(\"severity\") == \"Unknown\", lit(0)).otherwise(lit(99)))",
+            "benefits": "Improved performance due to Catalyst optimization. Reduced serialization overhead."
+        },
+        {
+            "operation": "Lines 151-158: @udf\ndef MAP_STATNAME(source): ...",
+            "improvementExplanation": "This UDF implements simple conditional logic.  This can be replaced with a combination of when() and otherwise() functions in Spark SQL.",
+            "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"status\", when(col(\"unmapped.`resultType`\") == \"Unknown\", \"Unknown\").when(col(\"unmapped.`resultType`\") == \"Success\", \"Success\").when(col(\"unmapped.`resultType`\") == \"Failure\", \"Failure\").otherwise(\"Other\"))",
+            "benefits": "Improved performance due to Catalyst optimization. Reduced serialization overhead."
+        },
+        {
+            "operation": "Lines 160-167: @udf\ndef MAP_STATID(source): ...",
+            "improvementExplanation": "This UDF implements simple conditional logic.  This can be replaced with a combination of when() and otherwise() functions in Spark SQL.",
+            "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn(\"status_id\", when(col(\"unmapped.`resultType`\") == \"Unknown\", lit(0)).when(col(\"unmapped.`resultType`\") == \"Success\", lit(1)).when(col(\"unmapped.`resultType`\") == \"Failure\", lit(2)).otherwise(lit(99)))",
+            "benefits": "Improved performance due to Catalyst optimization. Reduced serialization overhead."
+        }
+    ]
+}

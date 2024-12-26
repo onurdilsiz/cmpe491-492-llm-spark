@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "Line 228: sqlc.createDataFrame(output, schema=self.output_schema).coalesce(self.args.num_output_partitions).write.format(self.args.output_format).option(\"compression\", self.args.output_compression).saveAsTable(self.args.output)",
+      "improvementExplanation": "The code writes data to a table using the format specified by self.args.output_format, which defaults to 'parquet'.  However, it can be further optimized by explicitly specifying Parquet or ORC options for better performance.  Parquet and ORC offer better compression, faster read/write speeds, and support for predicate pushdown, leading to significant performance gains, especially for large datasets.",
+      "optimizedEquivalent": "sqlc.createDataFrame(output, schema=self.output_schema).coalesce(self.args.num_output_partitions).write.format(\"parquet\").option(\"compression\", \"gzip\").saveAsTable(self.args.output)",
+      "benefits": "Faster writes, better compression (gzip), and potential for improved query performance due to Parquet's support for predicate pushdown."
+    },
+    {
+      "operation": "Line 296: sqldf.write.format(self.args.output_format).saveAsTable(self.args.output)",
+      "improvementExplanation": "Similar to the previous case, this code writes data to a table.  The output format is determined by self.args.output_format.  Switching to Parquet or ORC will provide the same benefits as described above.",
+      "optimizedEquivalent": "sqldf.write.format(\"parquet\").option(\"compression\", \"gzip\").saveAsTable(self.args.output)",
+      "benefits": "Faster writes, better compression (gzip), and potential for improved query performance due to Parquet's support for predicate pushdown."
+    }
+  ]
+}
+```

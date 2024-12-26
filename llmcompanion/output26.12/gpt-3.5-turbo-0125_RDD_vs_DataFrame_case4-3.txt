@@ -1,0 +1,15 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "rddOperation": "range",
+            "location": "df = spark.range(5)",
+            "improvementExplanation": "Using DataFrame/Dataset instead of RDD can provide better performance optimizations and leverage Catalyst query optimizer.",
+            "dataframeEquivalent": "df = spark.range(5)",
+            "benefits": "Switching to DataFrame/Dataset can lead to query optimizations, reduced shuffling, and better resource usage in Spark applications."
+        }
+    ]
+}
+```

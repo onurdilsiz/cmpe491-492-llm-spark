@@ -1,0 +1,31 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "df_5years.repartition(50).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/50\")",
+            "improvementExplanation": "The `repartition(50)` operation forces a full shuffle of the data across all partitions, which can be expensive. Since the goal is to reduce the number of partitions for writing, `coalesce(50)` can be used instead if the number of partitions is being reduced. If the number of partitions is being increased, then repartition is the correct operation.",
+            "coalesceEquivalent": "df_5years.coalesce(50).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/coalesce/50\")",
+            "benefits": "Using `coalesce()` avoids a full shuffle, which can significantly reduce the amount of data movement across the network, leading to faster job execution and better resource utilization. It is more efficient when reducing the number of partitions."
+        }
+    ],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": true,
+    "occurrences3": 1,
+    "response3": [
+        {
+            "operation": "df_5years.repartition(50).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/50\")",
+            "improvementExplanation": "The code is writing data in CSV format, which is not optimized for Spark. CSV files are text-based, which means they are not efficient for storage and retrieval. Optimized formats like Parquet, ORC, or Avro are binary formats that offer better compression, faster read/write speeds, and schema evolution capabilities.",
+            "optimizedEquivalent": "df_5years.repartition(50).write.format(\"parquet\").option(\"compression\",\"snappy\").mode(\"overwrite\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/parquet/50\")",
+            "benefits": "Switching to Parquet (or ORC/Avro) provides significant performance benefits due to columnar storage, better compression (e.g., Snappy), and predicate pushdown, which allows Spark to read only the necessary columns and rows, reducing I/O and improving query performance. It also allows for schema evolution."
+        }
+    ],
+    "detected4": false,
+    "occurrences4": 0,
+    "response4": []
+}

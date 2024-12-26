@@ -1,0 +1,49 @@
+```json
+{
+"detected0": false,
+"occurrences0": 0,
+"response0": [],
+"detected1": false,
+"occurrences1": 0,
+"response1": [],
+"detected2": false,
+"occurrences2": 0,
+"response2": [],
+"detected3": false,
+"occurrences3": 0,
+"response3": [],
+"detected4": true,
+"occurrences4": 4,
+"response4": [
+{
+"operation": "arrayMax(arr: ArrayType(FloatType())) -> Union[float, int]",
+"improvementExplanation": "This UDF can be replaced with the built-in Spark SQL function `max`.",
+"alternativeEquivalent": "df.withColumn('max_value', max(df['arr']))",
+"benefits": "Using built-in functions avoids serialization overhead and enables Catalyst optimizations."
+},
+{
+"operation": "arraySize(arr: ArrayType(FloatType())) -> int",
+"improvementExplanation": "This UDF can be replaced with the built-in Spark SQL function `size`.",
+"alternativeEquivalent": "df.withColumn('size', size(df['arr']))",
+"benefits": "Using built-in functions avoids serialization overhead and enables Catalyst optimizations."
+},
+{
+"operation": "isDate(string: str) -> bool",
+"improvementExplanation": "This UDF can be replaced with the built-in Spark SQL function `to_date` and `isnotnull`.",
+"alternativeEquivalent": "df.withColumn('is_date', isnotnull(to_date(df['string'], 'yyyy-MM-dd')))",
+"benefits": "Using built-in functions avoids serialization overhead and enables Catalyst optimizations."
+},
+{
+"operation": "URLs2domain(urls: List[str]) -> List[str]",
+"improvementExplanation": "This UDF can be replaced with a combination of built-in Spark SQL functions `split`, `array_contains`, and `collect_list`.",
+"alternativeEquivalent": """
+df.withColumn('domains', collect_list(
+    split(df['urls'], ',')
+).cast('array<string>'))
+.withColumn('domains', array_contains(df['domains'], split(df['urls'], ',')[0]))
+""",
+"benefits": "Using built-in functions avoids serialization overhead and enables Catalyst optimizations."
+}
+]
+}
+```

@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "df_trip.write.partitionBy(\"year\", \"month\").mode(\"overwrite\").parquet(output_data + \"trip/trip_table.parquet\")",
+            "improvementExplanation": "The repartition() operation is used to shuffle the data and create a specific number of partitions based on the partitionBy columns. In this case, since the goal is to reduce the number of partitions without a full shuffle, coalesce() can be used instead.",
+            "coalesceEquivalent": "df_trip.write.partitionBy(\"year\", \"month\").mode(\"overwrite\").coalesce(1).parquet(output_data + \"trip/trip_table.parquet\")",
+            "benefits": "Switching to coalesce(1) will reduce shuffling overhead, improve resource usage by minimizing the number of output files, and potentially lead to faster job runtime."
+        }
+    ]
+}
+```

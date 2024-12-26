@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "repartition(100)",
+      "improvementExplanation": "The `repartition(100)` operation is used to increase the number of partitions in the DataFrame. However, since the DataFrame is already partitioned by `key`, reducing the number of partitions using `coalesce(100)` would be more efficient. This would avoid a full shuffle and improve resource utilization.",
+      "coalesceEquivalent": "df.coalesce(100)",
+      "benefits": "Switching to `coalesce()` would:\n- Reduce shuffling, as the data is already partitioned by `key`.\n- Improve resource utilization by reducing the number of partitions.\n- Potentially improve runtime by reducing the overhead of shuffling."
+    }
+  ]
+}
+```

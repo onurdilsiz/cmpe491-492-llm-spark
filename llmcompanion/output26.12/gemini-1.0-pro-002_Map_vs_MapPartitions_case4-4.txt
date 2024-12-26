@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "pyspark_udf = udf(lambda s: convert_case(s), t.StringType())",
+      "improvementExplanation": "The `convert_case` function is applied to each element of the `Name` column using the `map` transformation. This can be replaced with `mapPartitions` because the function operates on individual strings and does not require access to the entire dataset.",
+      "mapPartitionsEquivalent": "df2 = df.withColumn(\"Cureated Name\", lambda partition: partition.map(lambda row: convert_case(row['Name'])))",
+      "benefits": "Using `mapPartitions` reduces function call overhead and improves performance by processing data in batches."
+    },
+    {
+      "operation": "pyspark_len_udf = udf(lambda s: length(s), t.IntegerType())",
+      "improvementExplanation": "The `length` function is applied to each element of the `Name` column using the `map` transformation. This can be replaced with `mapPartitions` because the function operates on individual strings and does not require access to the entire dataset.",
+      "mapPartitionsEquivalent": "df3 = df2.withColumn(\"Length\", lambda partition: partition.map(lambda row: length(row['Name'])))",
+      "benefits": "Using `mapPartitions` reduces function call overhead and improves performance by processing data in batches."
+    }
+  ]
+}
+```

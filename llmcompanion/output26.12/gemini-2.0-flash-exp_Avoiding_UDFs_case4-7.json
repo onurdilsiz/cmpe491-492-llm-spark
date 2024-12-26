@@ -1,0 +1,54 @@
+{
+    "detected": true,
+    "occurrences": 8,
+    "response": [
+        {
+            "operation": "UDF `MAP_AN` defined and used on line 119 and 178",
+            "improvementExplanation": "The UDF `MAP_AN` maps string values to other string values based on conditional logic. This can be achieved using Spark's `when`/`otherwise` function or `CASE WHEN` in SQL, which are more efficient and allow Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"activity_name\", \\\n    when(col(\"unmapped.`category`\") == \"Write\", \"Create\")\\\n    .when(col(\"unmapped.`category`\") == \"Delete\", \"Delete\")\\\n    .otherwise(\"Unknown\")\n)\n```",
+            "benefits": "Using built-in functions like `when` allows Spark's Catalyst optimizer to optimize the execution plan, leading to better performance. It also avoids the serialization overhead associated with UDFs."
+        },
+        {
+            "operation": "UDF `MAP_AI` defined and used on line 128 and 179",
+            "improvementExplanation": "The UDF `MAP_AI` maps string values to integer values based on conditional logic. This can be achieved using Spark's `when`/`otherwise` function or `CASE WHEN` in SQL, which are more efficient and allow Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"activity_id\", \\\n    when(col(\"unmapped.`category`\") == \"Write\", lit(1))\\\n    .when(col(\"unmapped.`category`\") == \"Delete\", lit(4))\\\n    .otherwise(lit(0)).cast('integer')\n)\n```",
+            "benefits": "Using built-in functions like `when` allows Spark's Catalyst optimizer to optimize the execution plan, leading to better performance. It also avoids the serialization overhead associated with UDFs."
+        },
+        {
+            "operation": "UDF `MAP_TN` defined and used on line 137 and 180",
+            "improvementExplanation": "The UDF `MAP_TN` maps string values to other string values based on conditional logic. This can be achieved using Spark's `when`/`otherwise` function or `CASE WHEN` in SQL, which are more efficient and allow Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"type_name\", \\\n    when(col(\"unmapped.`category`\") == \"Write\", \"API Acitvity: API Activity: Create\")\\\n    .when(col(\"unmapped.`category`\") == \"Delete\", \"API Acitvity: API Activity: Delete\")\\\n    .otherwise(\"API Acitvity: API Activity: Unknown\")\n)\n```",
+            "benefits": "Using built-in functions like `when` allows Spark's Catalyst optimizer to optimize the execution plan, leading to better performance. It also avoids the serialization overhead associated with UDFs."
+        },
+        {
+            "operation": "UDF `MAP_TI` defined and used on line 146 and 181",
+            "improvementExplanation": "The UDF `MAP_TI` maps string values to integer values based on conditional logic. This can be achieved using Spark's `when`/`otherwise` function or `CASE WHEN` in SQL, which are more efficient and allow Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"type_uid\", \\\n    when(col(\"unmapped.`category`\") == \"Write\", lit(300501))\\\n    .when(col(\"unmapped.`category`\") == \"Delete\", lit(300504))\\\n    .otherwise(lit(300500)).cast('integer')\n)\n```",
+            "benefits": "Using built-in functions like `when` allows Spark's Catalyst optimizer to optimize the execution plan, leading to better performance. It also avoids the serialization overhead associated with UDFs."
+        },
+        {
+            "operation": "UDF `MAP_SEVID` defined and used on line 155 and 177",
+            "improvementExplanation": "The UDF `MAP_SEVID` maps string values to integer values based on conditional logic. This can be achieved using Spark's `when`/`otherwise` function or `CASE WHEN` in SQL, which are more efficient and allow Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"severity_id\", \\\n    when(col('severity') == \"Information\", lit(1))\\\n    .when(col('severity') == \"Informational\", lit(1))\\\n    .when(col('severity') == \"Low\", lit(2))\\\n    .when(col('severity') == \"Medium\", lit(3))\\\n    .when(col('severity') == \"High\", lit(4))\\\n    .when(col('severity') == \"Critical\", lit(5))\\\n    .when(col('severity') == \"Fatial\", lit(6))\\\n    .when(col('severity') == \"Unknown\", lit(0))\\\n    .otherwise(lit(99)).cast('integer')\n)\n```",
+            "benefits": "Using built-in functions like `when` allows Spark's Catalyst optimizer to optimize the execution plan, leading to better performance. It also avoids the serialization overhead associated with UDFs."
+        },
+        {
+            "operation": "UDF `MAP_STATNAME` defined and used on line 171 and 182",
+            "improvementExplanation": "The UDF `MAP_STATNAME` maps string values to other string values based on conditional logic. This can be achieved using Spark's `when`/`otherwise` function or `CASE WHEN` in SQL, which are more efficient and allow Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"`status`\", \\\n    when(col(\"unmapped.`resultType`\") == \"Unknown\", \"Unknown\")\\\n    .when(col(\"unmapped.`resultType`\") == \"Success\", \"Success\")\\\n    .when(col(\"unmapped.`resultType`\") == \"Failure\", \"Failure\")\\\n    .otherwise(\"Other\")\n)\n```",
+            "benefits": "Using built-in functions like `when` allows Spark's Catalyst optimizer to optimize the execution plan, leading to better performance. It also avoids the serialization overhead associated with UDFs."
+        },
+        {
+            "operation": "UDF `MAP_STATID` defined and used on line 171 and 183",
+            "improvementExplanation": "The UDF `MAP_STATID` maps string values to integer values based on conditional logic. This can be achieved using Spark's `when`/`otherwise` function or `CASE WHEN` in SQL, which are more efficient and allow Catalyst optimizations.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"`status_id`\", \\\n    when(col(\"unmapped.`resultType`\") == \"Unknown\", lit(0))\\\n    .when(col(\"unmapped.`resultType`\") == \"Success\", lit(1))\\\n    .when(col(\"unmapped.`resultType`\") == \"Failure\", lit(2))\\\n    .otherwise(lit(99)).cast('integer')\n)\n```",
+            "benefits": "Using built-in functions like `when` allows Spark's Catalyst optimizer to optimize the execution plan, leading to better performance. It also avoids the serialization overhead associated with UDFs."
+        },
+        {
+            "operation": "UDF `MAP_TIME` defined and used on line 171 and 176",
+            "improvementExplanation": "The UDF `MAP_TIME` parses a timestamp string, removes the last two characters, converts it to a datetime object, and then to a Unix timestamp. This can be achieved using Spark's built-in `to_timestamp` and `unix_timestamp` functions.",
+            "alternativeEquivalent": "```python\nazureAuditLog_df = azureAuditLog_df.withColumn(\"time\", \\\n    unix_timestamp(to_timestamp(substring(col('time'), 1, length(col('time')) - 2), \"yyyy-MM-dd'T'HH:mm:ss.SSS\")).cast('integer')\n)\n```",
+            "benefits": "Using built-in functions like `to_timestamp` and `unix_timestamp` allows Spark's Catalyst optimizer to optimize the execution plan, leading to better performance. It also avoids the serialization overhead associated with UDFs and is more concise."
+        }
+    ]
+}

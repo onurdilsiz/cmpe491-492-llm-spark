@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "df.select(col(\"Seqno\"), convertUDF(col(\"Name\")).alias(\"Name\")).show(truncate=False)",
+            "improvementExplanation": "The map() transformation is used to apply a UDF function to each row individually, which can lead to high function call overhead when processing large datasets. By using mapPartitions(), the UDF function can be applied at the partition level, reducing the number of function calls and improving efficiency, especially for I/O-heavy operations.",
+            "mapPartitionsEquivalent": "df.rdd.mapPartitions(lambda partition: [(row[0], convertCase(row[1])) for row in partition]).toDF([\"Seqno\", \"Name\"]).show(truncate=False)",
+            "benefits": "Switching to mapPartitions() can reduce the function call overhead by processing multiple rows in a partition at once, leading to optimized I/O operations and improved performance for partition-level transformations."
+        }
+    ]
+}
+```

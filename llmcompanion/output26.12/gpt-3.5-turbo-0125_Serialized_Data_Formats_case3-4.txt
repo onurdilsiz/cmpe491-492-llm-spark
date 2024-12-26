@@ -1,0 +1,43 @@
+```json
+{
+    "detected": true,
+    "occurrences": 5,
+    "response": [
+        {
+            "operation": "write in Parquet format",
+            "location": "Line 53",
+            "improvementExplanation": "The current data format being used is CSV for writing the location data. Switching to Parquet format can improve performance by providing better compression, faster reads/writes, and query optimization through predicate pushdown.",
+            "optimizedEquivalent": "df_loc.write.mode('overwrite').parquet(output_data + 'location/location_table.parquet')",
+            "benefits": "Switching to Parquet format can lead to faster reads/writes, improved compression, and better query performance due to predicate pushdown."
+        },
+        {
+            "operation": "write in Parquet format",
+            "location": "Line 71",
+            "improvementExplanation": "The current data format being used is CSV for writing the hvfhs data. Switching to Parquet format can improve performance by providing better compression, faster reads/writes, and query optimization through predicate pushdown.",
+            "optimizedEquivalent": "df_hvl.write.mode('overwrite').parquet(output_data + 'hvl/hvl_table.parquet')",
+            "benefits": "Switching to Parquet format can lead to faster reads/writes, improved compression, and better query performance due to predicate pushdown."
+        },
+        {
+            "operation": "write in Parquet format",
+            "location": "Line 101",
+            "improvementExplanation": "The current data format being used is CSV for writing the weather data. Switching to Parquet format can improve performance by providing better compression, faster reads/writes, and query optimization through predicate pushdown.",
+            "optimizedEquivalent": "weather_df.write.mode('overwrite').parquet(output_data + 'weather/weather_table.parquet')",
+            "benefits": "Switching to Parquet format can lead to faster reads/writes, improved compression, and better query performance due to predicate pushdown."
+        },
+        {
+            "operation": "write in Parquet format",
+            "location": "Line 151",
+            "improvementExplanation": "The current data format being used is Parquet for writing the datetime data. Switching to Parquet format is already optimized for performance and does not require any further improvement.",
+            "optimizedEquivalent": "df_datetime.write.mode('overwrite').parquet(output_data + 'time/datetime_table.parquet')",
+            "benefits": "Parquet format is already optimized for performance, providing efficient storage, compression, and query optimization."
+        },
+        {
+            "operation": "write in Parquet format",
+            "location": "Line 201",
+            "improvementExplanation": "The current data format being used is Parquet for writing the trip data. Switching to Parquet format is already optimized for performance and does not require any further improvement.",
+            "optimizedEquivalent": "df_trip.write.partitionBy('year', 'month').mode('overwrite').parquet(output_data + 'trip/trip_table.parquet')",
+            "benefits": "Parquet format is already optimized for performance, providing efficient storage, compression, and query optimization."
+        }
+    ]
+}
+```

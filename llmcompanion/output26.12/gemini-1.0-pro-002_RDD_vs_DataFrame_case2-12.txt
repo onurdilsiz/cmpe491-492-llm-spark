@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "rddOperation": "mapPartitionsWithIndex",
+      "improvementExplanation": "This operation can be improved by using a DataFrame/Dataset transformation instead of an RDD transformation. DataFrames/Datasets offer better performance and scalability, and they are easier to work with.",
+      "dataframeEquivalent": "```python\noutput = input_data.mapPartitionsWithIndex(self.process_warcs)\n```\n\nThis can be replaced with:\n\n```python\nfrom pyspark.sql.functions import udf\n\nprocess_warcs_udf = udf(self.process_warcs, ArrayType(StructType([\n    StructField(\"key\", StringType(), True),\n    StructField(\"val\", LongType(), True)\n]))) \n\noutput = input_data.withColumn(\"processed_warcs\", process_warcs_udf(input_data.index))\n```",
+      "benefits": "Using a DataFrame/Dataset transformation will improve the performance and scalability of the job. It will also make the code easier to read and maintain."
+    },
+    {
+      "rddOperation": "reduceByKey",
+      "improvementExplanation": "This operation can be improved by using a DataFrame/Dataset aggregation instead of an RDD aggregation. DataFrames/Datasets offer better performance and scalability, and they are easier to work with.",
+      "dataframeEquivalent": "```python\noutput = input_data.mapPartitionsWithIndex(self.process_warcs)\n```\n\nThis can be replaced with:\n\n```python\nfrom pyspark.sql.functions import sum\n\noutput = input_data.withColumn(\"processed_warcs\", process_warcs_udf(input_data.index))\n.groupBy(\"key\").agg(sum(\"val\").alias(\"val\"))\n```",
+      "benefits": "Using a DataFrame/Dataset aggregation will improve the performance and scalability of the job. It will also make the code easier to read and maintain."
+    }
+  ]
+}
+```

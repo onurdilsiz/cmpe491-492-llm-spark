@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "df = pd.merge(df, daily_avg_df, on=[\"thing_id\", \"date_insertion\"], how=\"left\")",
+            "improvementExplanation": "The repartition() operation is used to redistribute data across partitions after a join operation. In this case, since the join is not intended to increase the number of partitions but rather to maintain the existing partitioning, coalesce() can be used for better efficiency.",
+            "coalesceEquivalent": "df = df.merge(daily_avg_df, on=[\"thing_id\", \"date_insertion\"], how=\"left\").coalesce(df.rdd.getNumPartitions())",
+            "benefits": "Switching to coalesce() will avoid a full shuffle of data, leading to improved resource usage and faster job runtime."
+        }
+    ]
+}
+```

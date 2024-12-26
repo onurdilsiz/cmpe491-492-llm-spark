@@ -130,7 +130,8 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
                     json.dump(parsed_json, output_file, indent=4)
 
                 detection_result = parsed_json.get("detected", False)
-                detection_results.append([model_name, case_type, file_name, latency, detection_result])
+                occurrences = parsed_json.get("occurrences", 0)
+                detection_results.append([model_name, case_type, file_name, latency, detection_result, occurrences])
 
                 logging.info(f"Analysis for {file_name} saved to {output_file_path}")
                 output_file_path = output_file_path.replace(".json", ".txt")
@@ -187,17 +188,17 @@ def init_models(models):
     
 
 def main():
-    log_file = "analysis.log"
+    log_file = "analysis26.12.log"
     setup_logging(log_file)
     # File paths for local input and output
     config = {
-        "models": [ "gemini-1.0-pro-002"], # gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
+        "models": ["gpt-3.5-turbo-0125", "gemini-1.0-pro-002", "gemini-1.5-flash-002", "gemini-2.0-flash-exp" ], # gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
         "cases": ["RDD vs DataFrame", "Coalesce vs Repartition", "Map vs MapPartitions", "Serialized Data Formats", "Avoiding UDFs","All"],
-        "dataset_dir": "dataset2",  # Directory containing all the dataset files
+        "dataset_dir": "dataset",  # Directory containing all the dataset files
         "prompts_dir": "prompts",  # Directory containing prompt files
-        "output_dir": "output",   # Directory to save the analysis results
-        "csv_file": "tokenresults23.12.csv",
-        "csv_file2": "detectionresults23.12.csv"
+        "output_dir": "output26.12",   # Directory to save the analysis results
+        "csv_file": "tokenresults26.12.csv",
+        "csv_file2": "detectionresults26.12.csv"
     }
     
     # Initialize the models for analysis

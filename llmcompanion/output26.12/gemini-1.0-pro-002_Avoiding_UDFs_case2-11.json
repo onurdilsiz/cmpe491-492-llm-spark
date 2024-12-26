@@ -1,0 +1,24 @@
+{
+    "detected": true,
+    "occurrences": 3,
+    "response": [
+        {
+            "operation": "extract_title_udf(df['content']) on line 34",
+            "improvementExplanation": "The UDF `extract_title_udf` can be replaced with Spark's built-in `regexp_extract` function to extract the title from the HTML content. This approach avoids the overhead of defining and registering a UDF, potentially improving performance.",
+            "alternativeEquivalent": "```python\ndf = df.withColumn('title', regexp_extract(df['content'], '<title>(.*?)</title>', 1))\n```",
+            "benefits": "Replacing the UDF with `regexp_extract` enables Catalyst optimizations, potentially improving performance and reducing serialization overhead."
+        },
+        {
+            "operation": "extract_title_content_udf(df['content']) on line 35",
+            "improvementExplanation": "The UDF `extract_title_content_udf` can be replaced with a combination of Spark's built-in `regexp_extract` and `array` functions to extract the headings from the HTML content. This approach avoids the overhead of defining and registering a UDF, potentially improving performance.",
+            "alternativeEquivalent": "```python\ndf = df.withColumn('title_content', array(regexp_extract(df['content'], '<h[1-6]>(.*?)</h[1-6]>', 1))[:10])\n```",
+            "benefits": "Replacing the UDF with `regexp_extract` and `array` enables Catalyst optimizations, potentially improving performance and reducing serialization overhead."
+        },
+        {
+            "operation": "extract_body_content_udf(df['content']) on line 36",
+            "improvementExplanation": "The UDF `extract_body_content_udf` can be replaced with a combination of Spark's built-in `regexp_extract` and `array` functions to extract the body content from the HTML content. This approach avoids the overhead of defining and registering a UDF, potentially improving performance.",
+            "alternativeEquivalent": "```python\ndf = df.withColumn('body_content', array(regexp_extract(df['content'], '<p>(.*?)</p>', 1))[:10])\n```",
+            "benefits": "Replacing the UDF with `regexp_extract` and `array` enables Catalyst optimizations, potentially improving performance and reducing serialization overhead."
+        }
+    ]
+}

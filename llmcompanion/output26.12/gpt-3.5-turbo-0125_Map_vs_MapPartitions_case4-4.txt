@@ -1,0 +1,26 @@
+```json
+{
+    "detected": true,
+    "occurrences": 4,
+    "response": [
+        {
+            "operation": "df.withColumn(\"Cureated Name\", pyspark_udf(col('Name')))",
+            "improvementExplanation": "The map() transformation is used to apply the UDF 'convert_case' to each row individually, which can lead to high function call overhead. By using mapPartitions(), the UDF can be applied at the partition level, reducing the number of function calls and improving efficiency.",
+            "mapPartitionsEquivalent": "df2 = df.rdd.mapPartitions(lambda rows: [(row[0], convert_case(row[1])) for row in rows]).toDF(['Seqno', 'Name', 'Cureated Name'])",
+            "benefits": "Switching to mapPartitions() can reduce function call overhead by processing multiple rows in a batch, leading to improved performance for UDF operations at the partition level."
+        },
+        {
+            "operation": "df2.withColumn(\"Length\", pyspark_len_udf(col('Name')))",
+            "improvementExplanation": "Similar to the previous case, the map() transformation is used to apply the UDF 'length' to each row individually. Using mapPartitions() can batch process rows at the partition level, reducing function call overhead and enhancing performance.",
+            "mapPartitionsEquivalent": "df3 = df2.rdd.mapPartitions(lambda rows: [(row[0], row[1], length(row[1])) for row in rows]).toDF(['Seqno', 'Name', 'Length'])",
+            "benefits": "Replacing map() with mapPartitions() can optimize I/O operations by processing data in larger chunks, leading to improved resource utilization and overall efficiency."
+        },
+        {
+            "operation": "df.select(slen(\"name\").alias(\"slen(name)\"), to_upper(\"name\"), add_one(\"age\"))",
+            "improvementExplanation": "In this case, the map() transformation is used implicitly within the UDFs 'slen', 'to_upper', and 'add_one' applied to each row individually. Utilizing mapPartitions() can enhance performance by processing multiple rows in a batch at the partition level.",
+            "mapPartitionsEquivalent": "df_result = df.rdd.mapPartitions(lambda rows: [(row[0], row[1], slen(row[1]), to_upper(row[1]), add_one(row[2])) for row in rows]).toDF(['id', 'name', 'slen(name)', 'to_upper(name)', 'add_one(age)'])",
+            "benefits": "By switching to mapPartitions(), the code can benefit from reduced function call overhead, optimized I/O operations, and improved performance for UDFs applied at the partition level."
+        }
+    ]
+}
+```

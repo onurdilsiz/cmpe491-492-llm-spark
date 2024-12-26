@@ -1,28 +1,266 @@
-2024-12-24 15:40:27,075 - INFO - Logging initialized.
-2024-12-24 15:40:28,079 - INFO - Processing file: case0-1.py
-2024-12-24 15:40:28,095 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-1.0-pro-002 using prompt: prompts\prompt0.txt
-2024-12-24 15:40:40,266 - INFO - Analysis completed in 12.17 seconds
-2024-12-24 15:40:40,266 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_RDD_vs_DataFrame_case0-1.json
-2024-12-24 15:40:40,266 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_RDD_vs_DataFrame_case0-1.txt
-2024-12-24 15:40:40,266 - INFO - Analyzing case: Coalesce vs Repartition with model: gemini-1.0-pro-002 using prompt: prompts\prompt1.txt
-2024-12-24 15:40:45,101 - INFO - Analysis completed in 4.84 seconds
-2024-12-24 15:40:45,101 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_Coalesce_vs_Repartition_case0-1.json
-2024-12-24 15:40:45,101 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_Coalesce_vs_Repartition_case0-1.txt
-2024-12-24 15:40:45,101 - INFO - Analyzing case: Map vs MapPartitions with model: gemini-1.0-pro-002 using prompt: prompts\prompt2.txt
-2024-12-24 15:40:51,041 - INFO - Analysis completed in 5.94 seconds
-2024-12-24 15:40:51,041 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_Map_vs_MapPartitions_case0-1.json
-2024-12-24 15:40:51,041 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_Map_vs_MapPartitions_case0-1.txt
-2024-12-24 15:40:51,041 - INFO - Analyzing case: Serialized Data Formats with model: gemini-1.0-pro-002 using prompt: prompts\prompt3.txt
-2024-12-24 15:40:56,249 - INFO - Analysis completed in 5.21 seconds
-2024-12-24 15:40:56,249 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_Serialized_Data_Formats_case0-1.json
-2024-12-24 15:40:56,249 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_Serialized_Data_Formats_case0-1.txt
-2024-12-24 15:40:56,249 - INFO - Analyzing case: Avoiding UDFs with model: gemini-1.0-pro-002 using prompt: prompts\prompt4.txt
-2024-12-24 15:40:59,829 - INFO - Analysis completed in 3.58 seconds
-2024-12-24 15:40:59,829 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_Avoiding_UDFs_case0-1.json
-2024-12-24 15:40:59,829 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_Avoiding_UDFs_case0-1.txt
-2024-12-24 15:40:59,829 - INFO - Analyzing case: All with model: gemini-1.0-pro-002 using prompt: prompts\prompt5.txt
-2024-12-24 15:41:06,850 - INFO - Analysis completed in 7.02 seconds
-2024-12-24 15:41:06,866 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_All_case0-1.json
-2024-12-24 15:41:06,866 - INFO - Analysis for case0-1.py saved to output\gemini-1.0-pro-002_All_case0-1.txt
-2024-12-24 15:41:06,866 - INFO - All results logged to CSV: tokenresults23.12.csv
-2024-12-24 15:41:06,866 - INFO - All results logged to CSV: <_io.TextIOWrapper name='detectionresults23.12.csv' mode='w' encoding='utf-8'>
+2024-12-26 21:29:48,456 - INFO - Logging initialized.
+2024-12-26 21:29:53,372 - INFO - Processing file: case0-1.py
+2024-12-26 21:29:53,385 - INFO - Analyzing case: RDD vs DataFrame with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt0.txt
+2024-12-26 21:29:59,802 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:30:00,072 - INFO - Analysis completed in 6.69 seconds
+2024-12-26 21:30:00,074 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_RDD_vs_DataFrame_case0-1.json
+2024-12-26 21:30:00,074 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_RDD_vs_DataFrame_case0-1.txt
+2024-12-26 21:30:00,075 - INFO - Analyzing case: Coalesce vs Repartition with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt1.txt
+2024-12-26 21:30:02,440 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:30:02,451 - INFO - Analysis completed in 2.38 seconds
+2024-12-26 21:30:02,452 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_Coalesce_vs_Repartition_case0-1.json
+2024-12-26 21:30:02,454 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_Coalesce_vs_Repartition_case0-1.txt
+2024-12-26 21:30:02,454 - INFO - Analyzing case: Map vs MapPartitions with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt2.txt
+2024-12-26 21:30:05,030 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:30:05,041 - INFO - Analysis completed in 2.59 seconds
+2024-12-26 21:30:05,043 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_Map_vs_MapPartitions_case0-1.json
+2024-12-26 21:30:05,043 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_Map_vs_MapPartitions_case0-1.txt
+2024-12-26 21:30:05,043 - INFO - Analyzing case: Serialized Data Formats with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt3.txt
+2024-12-26 21:30:07,485 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:30:07,493 - INFO - Analysis completed in 2.45 seconds
+2024-12-26 21:30:07,494 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_Serialized_Data_Formats_case0-1.json
+2024-12-26 21:30:07,495 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_Serialized_Data_Formats_case0-1.txt
+2024-12-26 21:30:07,495 - INFO - Analyzing case: Avoiding UDFs with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt4.txt
+2024-12-26 21:30:10,527 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:30:10,532 - INFO - Analysis completed in 3.04 seconds
+2024-12-26 21:30:10,533 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_Avoiding_UDFs_case0-1.json
+2024-12-26 21:30:10,533 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_Avoiding_UDFs_case0-1.txt
+2024-12-26 21:30:10,533 - INFO - Analyzing case: All with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt5.txt
+2024-12-26 21:30:17,181 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:30:17,193 - INFO - Analysis completed in 6.66 seconds
+2024-12-26 21:30:17,195 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_All_case0-1.json
+2024-12-26 21:30:17,196 - INFO - Analysis for case0-1.py saved to output26.12\gpt-3.5-turbo-0125_All_case0-1.txt
+2024-12-26 21:30:17,196 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-1.0-pro-002 using prompt: prompts\prompt0.txt
+2024-12-26 21:30:27,910 - INFO - Analysis completed in 10.71 seconds
+2024-12-26 21:30:27,912 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_RDD_vs_DataFrame_case0-1.json
+2024-12-26 21:30:27,917 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_RDD_vs_DataFrame_case0-1.txt
+2024-12-26 21:30:27,917 - INFO - Analyzing case: Coalesce vs Repartition with model: gemini-1.0-pro-002 using prompt: prompts\prompt1.txt
+2024-12-26 21:30:32,592 - INFO - Analysis completed in 4.67 seconds
+2024-12-26 21:30:32,592 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_Coalesce_vs_Repartition_case0-1.json
+2024-12-26 21:30:32,593 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_Coalesce_vs_Repartition_case0-1.txt
+2024-12-26 21:30:32,593 - INFO - Analyzing case: Map vs MapPartitions with model: gemini-1.0-pro-002 using prompt: prompts\prompt2.txt
+2024-12-26 21:30:38,452 - INFO - Analysis completed in 5.86 seconds
+2024-12-26 21:30:38,453 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_Map_vs_MapPartitions_case0-1.json
+2024-12-26 21:30:38,454 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_Map_vs_MapPartitions_case0-1.txt
+2024-12-26 21:30:38,454 - INFO - Analyzing case: Serialized Data Formats with model: gemini-1.0-pro-002 using prompt: prompts\prompt3.txt
+2024-12-26 21:30:44,720 - INFO - Analysis completed in 6.27 seconds
+2024-12-26 21:30:44,721 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_Serialized_Data_Formats_case0-1.json
+2024-12-26 21:30:44,722 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_Serialized_Data_Formats_case0-1.txt
+2024-12-26 21:30:44,722 - INFO - Analyzing case: Avoiding UDFs with model: gemini-1.0-pro-002 using prompt: prompts\prompt4.txt
+2024-12-26 21:30:49,388 - INFO - Analysis completed in 4.67 seconds
+2024-12-26 21:30:49,394 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_Avoiding_UDFs_case0-1.json
+2024-12-26 21:30:49,395 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_Avoiding_UDFs_case0-1.txt
+2024-12-26 21:30:49,395 - INFO - Analyzing case: All with model: gemini-1.0-pro-002 using prompt: prompts\prompt5.txt
+2024-12-26 21:30:57,963 - INFO - Analysis completed in 8.57 seconds
+2024-12-26 21:30:57,964 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_All_case0-1.json
+2024-12-26 21:30:57,965 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.0-pro-002_All_case0-1.txt
+2024-12-26 21:30:57,965 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-1.5-flash-002 using prompt: prompts\prompt0.txt
+2024-12-26 21:31:08,437 - INFO - Analysis completed in 10.47 seconds
+2024-12-26 21:31:08,437 - ERROR - Error decoding JSON: Invalid \escape: line 9 column 264 (char 692)
+2024-12-26 21:31:08,437 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_RDD_vs_DataFrame_case0-1.json
+2024-12-26 21:31:08,438 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_RDD_vs_DataFrame_case0-1.txt
+2024-12-26 21:31:08,438 - INFO - Analyzing case: Coalesce vs Repartition with model: gemini-1.5-flash-002 using prompt: prompts\prompt1.txt
+2024-12-26 21:31:10,313 - INFO - Analysis completed in 1.87 seconds
+2024-12-26 21:31:10,314 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_Coalesce_vs_Repartition_case0-1.json
+2024-12-26 21:31:10,315 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_Coalesce_vs_Repartition_case0-1.txt
+2024-12-26 21:31:10,315 - INFO - Analyzing case: Map vs MapPartitions with model: gemini-1.5-flash-002 using prompt: prompts\prompt2.txt
+2024-12-26 21:31:16,483 - INFO - Analysis completed in 6.17 seconds
+2024-12-26 21:31:16,485 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_Map_vs_MapPartitions_case0-1.json
+2024-12-26 21:31:16,490 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_Map_vs_MapPartitions_case0-1.txt
+2024-12-26 21:31:16,490 - INFO - Analyzing case: Serialized Data Formats with model: gemini-1.5-flash-002 using prompt: prompts\prompt3.txt
+2024-12-26 21:31:21,903 - INFO - Analysis completed in 5.41 seconds
+2024-12-26 21:31:21,904 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_Serialized_Data_Formats_case0-1.json
+2024-12-26 21:31:21,905 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_Serialized_Data_Formats_case0-1.txt
+2024-12-26 21:31:21,905 - INFO - Analyzing case: Avoiding UDFs with model: gemini-1.5-flash-002 using prompt: prompts\prompt4.txt
+2024-12-26 21:31:26,947 - INFO - Analysis completed in 5.04 seconds
+2024-12-26 21:31:26,948 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_Avoiding_UDFs_case0-1.json
+2024-12-26 21:31:26,949 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_Avoiding_UDFs_case0-1.txt
+2024-12-26 21:31:26,949 - INFO - Analyzing case: All with model: gemini-1.5-flash-002 using prompt: prompts\prompt5.txt
+2024-12-26 21:31:38,788 - INFO - Analysis completed in 11.84 seconds
+2024-12-26 21:31:38,790 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_All_case0-1.json
+2024-12-26 21:31:38,790 - INFO - Analysis for case0-1.py saved to output26.12\gemini-1.5-flash-002_All_case0-1.txt
+2024-12-26 21:31:38,791 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-2.0-flash-exp using prompt: prompts\prompt0.txt
+2024-12-26 21:31:55,653 - INFO - Analysis completed in 16.86 seconds
+2024-12-26 21:31:55,653 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_RDD_vs_DataFrame_case0-1.json
+2024-12-26 21:31:55,653 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_RDD_vs_DataFrame_case0-1.txt
+2024-12-26 21:31:55,654 - INFO - Analyzing case: Coalesce vs Repartition with model: gemini-2.0-flash-exp using prompt: prompts\prompt1.txt
+2024-12-26 21:31:57,644 - INFO - Analysis completed in 1.99 seconds
+2024-12-26 21:31:57,645 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_Coalesce_vs_Repartition_case0-1.json
+2024-12-26 21:31:57,646 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_Coalesce_vs_Repartition_case0-1.txt
+2024-12-26 21:31:57,646 - INFO - Analyzing case: Map vs MapPartitions with model: gemini-2.0-flash-exp using prompt: prompts\prompt2.txt
+2024-12-26 21:32:06,168 - INFO - Analysis completed in 8.52 seconds
+2024-12-26 21:32:06,170 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_Map_vs_MapPartitions_case0-1.json
+2024-12-26 21:32:06,171 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_Map_vs_MapPartitions_case0-1.txt
+2024-12-26 21:32:06,171 - INFO - Analyzing case: Serialized Data Formats with model: gemini-2.0-flash-exp using prompt: prompts\prompt3.txt
+2024-12-26 21:32:14,382 - INFO - Analysis completed in 8.21 seconds
+2024-12-26 21:32:14,384 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_Serialized_Data_Formats_case0-1.json
+2024-12-26 21:32:14,385 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_Serialized_Data_Formats_case0-1.txt
+2024-12-26 21:32:14,385 - INFO - Analyzing case: Avoiding UDFs with model: gemini-2.0-flash-exp using prompt: prompts\prompt4.txt
+2024-12-26 21:32:20,588 - INFO - Analysis completed in 6.20 seconds
+2024-12-26 21:32:20,589 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_Avoiding_UDFs_case0-1.json
+2024-12-26 21:32:20,590 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_Avoiding_UDFs_case0-1.txt
+2024-12-26 21:32:20,590 - INFO - Analyzing case: All with model: gemini-2.0-flash-exp using prompt: prompts\prompt5.txt
+2024-12-26 21:32:43,645 - INFO - Analysis completed in 23.05 seconds
+2024-12-26 21:32:43,650 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_All_case0-1.json
+2024-12-26 21:32:43,651 - INFO - Analysis for case0-1.py saved to output26.12\gemini-2.0-flash-exp_All_case0-1.txt
+2024-12-26 21:32:43,651 - INFO - Processing file: case0-10.py
+2024-12-26 21:32:43,667 - INFO - Analyzing case: RDD vs DataFrame with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt0.txt
+2024-12-26 21:32:50,583 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:32:50,595 - INFO - Analysis completed in 6.93 seconds
+2024-12-26 21:32:50,597 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_RDD_vs_DataFrame_case0-10.json
+2024-12-26 21:32:50,598 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_RDD_vs_DataFrame_case0-10.txt
+2024-12-26 21:32:50,599 - INFO - Analyzing case: Coalesce vs Repartition with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt1.txt
+2024-12-26 21:32:52,781 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:32:52,804 - INFO - Analysis completed in 2.20 seconds
+2024-12-26 21:32:52,807 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_Coalesce_vs_Repartition_case0-10.json
+2024-12-26 21:32:52,809 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_Coalesce_vs_Repartition_case0-10.txt
+2024-12-26 21:32:52,809 - INFO - Analyzing case: Map vs MapPartitions with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt2.txt
+2024-12-26 21:32:56,778 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:32:56,784 - INFO - Analysis completed in 3.97 seconds
+2024-12-26 21:32:56,785 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_Map_vs_MapPartitions_case0-10.json
+2024-12-26 21:32:56,786 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_Map_vs_MapPartitions_case0-10.txt
+2024-12-26 21:32:56,786 - INFO - Analyzing case: Serialized Data Formats with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt3.txt
+2024-12-26 21:33:00,374 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:33:00,388 - INFO - Analysis completed in 3.60 seconds
+2024-12-26 21:33:00,394 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_Serialized_Data_Formats_case0-10.json
+2024-12-26 21:33:00,397 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_Serialized_Data_Formats_case0-10.txt
+2024-12-26 21:33:00,397 - INFO - Analyzing case: Avoiding UDFs with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt4.txt
+2024-12-26 21:33:02,385 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:33:02,389 - INFO - Analysis completed in 1.99 seconds
+2024-12-26 21:33:02,391 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_Avoiding_UDFs_case0-10.json
+2024-12-26 21:33:02,394 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_Avoiding_UDFs_case0-10.txt
+2024-12-26 21:33:02,395 - INFO - Analyzing case: All with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt5.txt
+2024-12-26 21:33:08,457 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:33:08,468 - INFO - Analysis completed in 6.07 seconds
+2024-12-26 21:33:08,471 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_All_case0-10.json
+2024-12-26 21:33:08,472 - INFO - Analysis for case0-10.py saved to output26.12\gpt-3.5-turbo-0125_All_case0-10.txt
+2024-12-26 21:33:08,473 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-1.0-pro-002 using prompt: prompts\prompt0.txt
+2024-12-26 21:33:18,308 - INFO - Analysis completed in 9.83 seconds
+2024-12-26 21:33:18,310 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_RDD_vs_DataFrame_case0-10.json
+2024-12-26 21:33:18,312 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_RDD_vs_DataFrame_case0-10.txt
+2024-12-26 21:33:18,312 - INFO - Analyzing case: Coalesce vs Repartition with model: gemini-1.0-pro-002 using prompt: prompts\prompt1.txt
+2024-12-26 21:33:21,669 - INFO - Analysis completed in 3.36 seconds
+2024-12-26 21:33:21,669 - ERROR - Error decoding JSON: Extra data: line 7 column 1 (char 63)
+2024-12-26 21:33:21,669 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_Coalesce_vs_Repartition_case0-10.json
+2024-12-26 21:33:21,670 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_Coalesce_vs_Repartition_case0-10.txt
+2024-12-26 21:33:21,671 - INFO - Analyzing case: Map vs MapPartitions with model: gemini-1.0-pro-002 using prompt: prompts\prompt2.txt
+2024-12-26 21:33:27,653 - INFO - Analysis completed in 5.98 seconds
+2024-12-26 21:33:27,654 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_Map_vs_MapPartitions_case0-10.json
+2024-12-26 21:33:27,655 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_Map_vs_MapPartitions_case0-10.txt
+2024-12-26 21:33:27,656 - INFO - Analyzing case: Serialized Data Formats with model: gemini-1.0-pro-002 using prompt: prompts\prompt3.txt
+2024-12-26 21:33:31,506 - INFO - Analysis completed in 3.85 seconds
+2024-12-26 21:33:31,508 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_Serialized_Data_Formats_case0-10.json
+2024-12-26 21:33:31,510 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_Serialized_Data_Formats_case0-10.txt
+2024-12-26 21:33:31,510 - INFO - Analyzing case: Avoiding UDFs with model: gemini-1.0-pro-002 using prompt: prompts\prompt4.txt
+2024-12-26 21:33:34,595 - INFO - Analysis completed in 3.09 seconds
+2024-12-26 21:33:34,596 - ERROR - Error decoding JSON: Extra data: line 7 column 1 (char 63)
+2024-12-26 21:33:34,597 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_Avoiding_UDFs_case0-10.json
+2024-12-26 21:33:34,597 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_Avoiding_UDFs_case0-10.txt
+2024-12-26 21:33:34,597 - INFO - Analyzing case: All with model: gemini-1.0-pro-002 using prompt: prompts\prompt5.txt
+2024-12-26 21:33:41,366 - INFO - Analysis completed in 6.77 seconds
+2024-12-26 21:33:41,368 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_All_case0-10.json
+2024-12-26 21:33:41,370 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.0-pro-002_All_case0-10.txt
+2024-12-26 21:33:41,370 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-1.5-flash-002 using prompt: prompts\prompt0.txt
+2024-12-26 21:33:46,795 - INFO - Analysis completed in 5.42 seconds
+2024-12-26 21:33:46,797 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_RDD_vs_DataFrame_case0-10.json
+2024-12-26 21:33:46,802 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_RDD_vs_DataFrame_case0-10.txt
+2024-12-26 21:33:46,802 - INFO - Analyzing case: Coalesce vs Repartition with model: gemini-1.5-flash-002 using prompt: prompts\prompt1.txt
+2024-12-26 21:33:47,946 - INFO - Analysis completed in 1.14 seconds
+2024-12-26 21:33:47,946 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_Coalesce_vs_Repartition_case0-10.json
+2024-12-26 21:33:47,947 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_Coalesce_vs_Repartition_case0-10.txt
+2024-12-26 21:33:47,947 - INFO - Analyzing case: Map vs MapPartitions with model: gemini-1.5-flash-002 using prompt: prompts\prompt2.txt
+2024-12-26 21:33:51,204 - INFO - Analysis completed in 3.26 seconds
+2024-12-26 21:33:51,205 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_Map_vs_MapPartitions_case0-10.json
+2024-12-26 21:33:51,206 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_Map_vs_MapPartitions_case0-10.txt
+2024-12-26 21:33:51,206 - INFO - Analyzing case: Serialized Data Formats with model: gemini-1.5-flash-002 using prompt: prompts\prompt3.txt
+2024-12-26 21:33:55,276 - INFO - Analysis completed in 4.07 seconds
+2024-12-26 21:33:55,278 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_Serialized_Data_Formats_case0-10.json
+2024-12-26 21:33:55,279 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_Serialized_Data_Formats_case0-10.txt
+2024-12-26 21:33:55,279 - INFO - Analyzing case: Avoiding UDFs with model: gemini-1.5-flash-002 using prompt: prompts\prompt4.txt
+2024-12-26 21:34:01,205 - INFO - Analysis completed in 5.93 seconds
+2024-12-26 21:34:01,206 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_Avoiding_UDFs_case0-10.json
+2024-12-26 21:34:01,207 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_Avoiding_UDFs_case0-10.txt
+2024-12-26 21:34:01,207 - INFO - Analyzing case: All with model: gemini-1.5-flash-002 using prompt: prompts\prompt5.txt
+2024-12-26 21:34:10,430 - INFO - Analysis completed in 9.22 seconds
+2024-12-26 21:34:10,436 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_All_case0-10.json
+2024-12-26 21:34:10,437 - INFO - Analysis for case0-10.py saved to output26.12\gemini-1.5-flash-002_All_case0-10.txt
+2024-12-26 21:34:10,437 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-2.0-flash-exp using prompt: prompts\prompt0.txt
+2024-12-26 21:34:18,686 - INFO - Analysis completed in 8.25 seconds
+2024-12-26 21:34:18,687 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_RDD_vs_DataFrame_case0-10.json
+2024-12-26 21:34:18,688 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_RDD_vs_DataFrame_case0-10.txt
+2024-12-26 21:34:18,688 - INFO - Analyzing case: Coalesce vs Repartition with model: gemini-2.0-flash-exp using prompt: prompts\prompt1.txt
+2024-12-26 21:34:19,940 - INFO - Analysis completed in 1.25 seconds
+2024-12-26 21:34:19,940 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_Coalesce_vs_Repartition_case0-10.json
+2024-12-26 21:34:19,941 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_Coalesce_vs_Repartition_case0-10.txt
+2024-12-26 21:34:19,941 - INFO - Analyzing case: Map vs MapPartitions with model: gemini-2.0-flash-exp using prompt: prompts\prompt2.txt
+2024-12-26 21:34:25,097 - INFO - Analysis completed in 5.16 seconds
+2024-12-26 21:34:25,098 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_Map_vs_MapPartitions_case0-10.json
+2024-12-26 21:34:25,099 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_Map_vs_MapPartitions_case0-10.txt
+2024-12-26 21:34:25,099 - INFO - Analyzing case: Serialized Data Formats with model: gemini-2.0-flash-exp using prompt: prompts\prompt3.txt
+2024-12-26 21:34:26,353 - INFO - Analysis completed in 1.25 seconds
+2024-12-26 21:34:26,354 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_Serialized_Data_Formats_case0-10.json
+2024-12-26 21:34:26,354 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_Serialized_Data_Formats_case0-10.txt
+2024-12-26 21:34:26,355 - INFO - Analyzing case: Avoiding UDFs with model: gemini-2.0-flash-exp using prompt: prompts\prompt4.txt
+2024-12-26 21:34:33,964 - INFO - Analysis completed in 7.61 seconds
+2024-12-26 21:34:33,965 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_Avoiding_UDFs_case0-10.json
+2024-12-26 21:34:33,966 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_Avoiding_UDFs_case0-10.txt
+2024-12-26 21:34:33,966 - INFO - Analyzing case: All with model: gemini-2.0-flash-exp using prompt: prompts\prompt5.txt
+2024-12-26 21:34:43,845 - INFO - Analysis completed in 9.88 seconds
+2024-12-26 21:34:43,846 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_All_case0-10.json
+2024-12-26 21:34:43,846 - INFO - Analysis for case0-10.py saved to output26.12\gemini-2.0-flash-exp_All_case0-10.txt
+2024-12-26 21:34:43,847 - INFO - Processing file: case0-11.py
+2024-12-26 21:34:43,859 - INFO - Analyzing case: RDD vs DataFrame with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt0.txt
+2024-12-26 21:34:55,765 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:34:55,774 - INFO - Analysis completed in 11.91 seconds
+2024-12-26 21:34:55,776 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_RDD_vs_DataFrame_case0-11.json
+2024-12-26 21:34:55,777 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_RDD_vs_DataFrame_case0-11.txt
+2024-12-26 21:34:55,778 - INFO - Analyzing case: Coalesce vs Repartition with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt1.txt
+2024-12-26 21:34:58,017 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:34:58,028 - INFO - Analysis completed in 2.25 seconds
+2024-12-26 21:34:58,032 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_Coalesce_vs_Repartition_case0-11.json
+2024-12-26 21:34:58,034 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_Coalesce_vs_Repartition_case0-11.txt
+2024-12-26 21:34:58,034 - INFO - Analyzing case: Map vs MapPartitions with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt2.txt
+2024-12-26 21:35:03,249 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:35:03,258 - INFO - Analysis completed in 5.22 seconds
+2024-12-26 21:35:03,260 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_Map_vs_MapPartitions_case0-11.json
+2024-12-26 21:35:03,261 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_Map_vs_MapPartitions_case0-11.txt
+2024-12-26 21:35:03,262 - INFO - Analyzing case: Serialized Data Formats with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt3.txt
+2024-12-26 21:35:06,782 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:35:06,789 - INFO - Analysis completed in 3.53 seconds
+2024-12-26 21:35:06,791 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_Serialized_Data_Formats_case0-11.json
+2024-12-26 21:35:06,796 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_Serialized_Data_Formats_case0-11.txt
+2024-12-26 21:35:06,796 - INFO - Analyzing case: Avoiding UDFs with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt4.txt
+2024-12-26 21:35:10,378 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:35:10,384 - INFO - Analysis completed in 3.59 seconds
+2024-12-26 21:35:10,385 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_Avoiding_UDFs_case0-11.json
+2024-12-26 21:35:10,386 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_Avoiding_UDFs_case0-11.txt
+2024-12-26 21:35:10,386 - INFO - Analyzing case: All with model: gpt-3.5-turbo-0125 using prompt: prompts\prompt5.txt
+2024-12-26 21:35:15,770 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-26 21:35:15,775 - INFO - Analysis completed in 5.39 seconds
+2024-12-26 21:35:15,776 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_All_case0-11.json
+2024-12-26 21:35:15,776 - INFO - Analysis for case0-11.py saved to output26.12\gpt-3.5-turbo-0125_All_case0-11.txt
+2024-12-26 21:35:15,777 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-1.0-pro-002 using prompt: prompts\prompt0.txt
+2024-12-26 21:35:27,507 - INFO - Analysis completed in 11.73 seconds
+2024-12-26 21:35:27,508 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_RDD_vs_DataFrame_case0-11.json
+2024-12-26 21:35:27,509 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_RDD_vs_DataFrame_case0-11.txt
+2024-12-26 21:35:27,509 - INFO - Analyzing case: Coalesce vs Repartition with model: gemini-1.0-pro-002 using prompt: prompts\prompt1.txt
+2024-12-26 21:35:31,451 - INFO - Analysis completed in 3.94 seconds
+2024-12-26 21:35:31,452 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_Coalesce_vs_Repartition_case0-11.json
+2024-12-26 21:35:31,453 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_Coalesce_vs_Repartition_case0-11.txt
+2024-12-26 21:35:31,453 - INFO - Analyzing case: Map vs MapPartitions with model: gemini-1.0-pro-002 using prompt: prompts\prompt2.txt
+2024-12-26 21:35:38,596 - INFO - Analysis completed in 7.14 seconds
+2024-12-26 21:35:38,602 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_Map_vs_MapPartitions_case0-11.json
+2024-12-26 21:35:38,604 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_Map_vs_MapPartitions_case0-11.txt
+2024-12-26 21:35:38,604 - INFO - Analyzing case: Serialized Data Formats with model: gemini-1.0-pro-002 using prompt: prompts\prompt3.txt
+2024-12-26 21:35:44,101 - INFO - Analysis completed in 5.50 seconds
+2024-12-26 21:35:44,102 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_Serialized_Data_Formats_case0-11.json
+2024-12-26 21:35:44,102 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_Serialized_Data_Formats_case0-11.txt
+2024-12-26 21:35:44,102 - INFO - Analyzing case: Avoiding UDFs with model: gemini-1.0-pro-002 using prompt: prompts\prompt4.txt
+2024-12-26 21:35:45,531 - INFO - Analysis completed in 1.43 seconds
+2024-12-26 21:35:45,531 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_Avoiding_UDFs_case0-11.json
+2024-12-26 21:35:45,532 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_Avoiding_UDFs_case0-11.txt
+2024-12-26 21:35:45,532 - INFO - Analyzing case: All with model: gemini-1.0-pro-002 using prompt: prompts\prompt5.txt
+2024-12-26 21:35:56,526 - INFO - Analysis completed in 10.99 seconds
+2024-12-26 21:35:56,527 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_All_case0-11.json
+2024-12-26 21:35:56,529 - INFO - Analysis for case0-11.py saved to output26.12\gemini-1.0-pro-002_All_case0-11.txt
+2024-12-26 21:35:56,529 - INFO - Analyzing case: RDD vs DataFrame with model: gemini-1.5-flash-002 using prompt: prompts\prompt0.txt

@@ -1,0 +1,21 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "rddOperation": "generate_rolling_aggregate",
+      "improvementExplanation": "The `generate_rolling_aggregate` function uses RDDs internally for windowed aggregations. This can be inefficient for large datasets due to multiple shuffles and data transfers. DataFrame/Dataset API provides optimized window functions that can significantly improve performance.",
+      "dataframeEquivalent": """
+df = df.withColumn(
+    "source_ip_count_last_min",
+    F.count("source_ip").over(
+        Window.partitionBy("source_ip").orderBy("dt").rowsBetween(-59, 0)
+    ),
+)
+""",
+      "benefits": "Replacing RDD-based `generate_rolling_aggregate` with DataFrame window functions will:\n- Reduce shuffling and data transfers, leading to faster execution.\n- Improve resource utilization by leveraging Spark's optimized windowing engine.\n- Simplify code and make it more readable."
+    }
+  ]
+}
+```

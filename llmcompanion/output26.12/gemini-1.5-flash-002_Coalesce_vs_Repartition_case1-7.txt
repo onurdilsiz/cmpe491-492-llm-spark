@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "df = df.repartition(number_of_files, '_salted_key')\\n            .drop('_salted_key')",
+      "improvementExplanation": "The repartition operation is used to redistribute data based on a salted key to improve data distribution across partitions.  However, the number of partitions is already determined by `number_of_files`, which is calculated based on the desired maximum records per file.  Since we are not increasing the number of partitions, but rather redistributing data within the existing number, a full shuffle is unnecessary. `coalesce` can achieve the redistribution without a full shuffle, leading to performance gains.",
+      "coalesceEquivalent": "df = df.coalesce(number_of_files)\n            .drop('_salted_key')",
+      "benefits": "Switching to `coalesce` reduces the shuffling overhead significantly because it avoids a full data shuffle. This leads to improved resource utilization (less CPU and network usage) and a faster job runtime, especially beneficial for large datasets."
+    }
+  ]
+}
+```

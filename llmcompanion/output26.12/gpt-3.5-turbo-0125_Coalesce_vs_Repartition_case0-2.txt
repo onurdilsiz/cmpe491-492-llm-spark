@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "samples.randomSplit([0.8, 0.2])",
+            "improvementExplanation": "The repartition() operation is used to split the data into training and testing sets with a specific partitioning strategy. In this context, the operation does not require a full shuffle as it only needs to redistribute the data based on the split percentages.",
+            "coalesceEquivalent": "train_samples = samples.randomSplit([0.8], seed=123)[0]\ntest_samples = samples.randomSplit([0.2], seed=123)[1]",
+            "benefits": "By replacing repartition() with coalesce(), the shuffle overhead can be reduced as coalesce() only decreases the number of partitions without full data movement. This can lead to improved resource usage and faster job runtime."
+        }
+    ]
+}
+```

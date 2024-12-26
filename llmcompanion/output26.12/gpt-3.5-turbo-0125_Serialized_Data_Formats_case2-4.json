@@ -1,0 +1,13 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "write in text format",
+            "location": "results.saveAsTextFile('check_prem_typ_desc.out')",
+            "improvementExplanation": "Switching to a serialized format like Parquet or ORC can significantly improve performance by enabling columnar storage, efficient compression, and predicate pushdown optimizations.",
+            "optimizedEquivalent": "results.write.parquet('check_prem_typ_desc.parquet')",
+            "benefits": "Benefits of switching to Parquet or ORC include faster reads/writes, better compression ratios, and improved query performance through predicate pushdown."
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+```json
+{
+    "detected": true,
+    "occurrences": 7,
+    "response": [
+        {
+            "operation": "Line 97",
+            "improvementExplanation": "The map() transformation is used to apply custom logic row by row, which can lead to high function call overhead. By switching to mapPartitions(), the custom logic can be applied at the partition level, reducing the number of function calls and improving performance.",
+            "mapPartitionsEquivalent": "azureAuditLog_df = azureAuditLog_df.rdd.mapPartitions(lambda iterator: [(row['time'], MAP_TIME(row['time'])) for row in iterator]).toDF(['time', 'time_unix'])",
+            "benefits": "Switching to mapPartitions() reduces the function call overhead by processing multiple rows at once within a partition, leading to optimized performance for time-intensive operations."
+        },
+        {
+            "operation": "Line 101",
+            "improvementExplanation": "The map() transformation is used to apply custom logic row by row, which can be inefficient for I/O-heavy operations. Using mapPartitions() allows processing multiple rows at once within a partition, improving efficiency for such operations.",
+            "mapPartitionsEquivalent": "azureAuditLog_df = azureAuditLog_df.rdd.mapPartitions(lambda iterator: [(row['severity'], MAP_SEVID(row['severity'])) for row in iterator]).toDF(['severity', 'severity_id'])",
+            "benefits": "Replacing map() with mapPartitions() optimizes I/O operations by processing data in batches at the partition level, leading to improved performance for I/O-heavy transformations."
+        },
+        {
+            "operation": "Line 105",
+            "improvementExplanation": "The map() transformation is used to apply custom logic row by row, which can result in high function call overhead. Utilizing mapPartitions() enables processing multiple rows at once within a partition, reducing function calls and enhancing performance.",
+            "mapPartitionsEquivalent": "azureAuditLog_df = azureAuditLog_df.rdd.mapPartitions(lambda iterator: [(row['unmapped.`category`'], MAP_AN(row['unmapped.`category`'])) for row in iterator]).toDF(['unmapped.`category`', 'activity_name'])",
+            "benefits": "Switching to mapPartitions() decreases function call overhead by processing data in larger batches at the partition level, leading to improved performance for custom logic transformations."
+        },
+        {
+            "operation": "Line 109",
+            "improvementExplanation": "The map() transformation is used to apply custom logic row by row, which can be inefficient for I/O-heavy operations. Employing mapPartitions() allows processing multiple rows at once within a partition, enhancing efficiency for such operations.",
+            "mapPartitionsEquivalent": "azureAuditLog_df = azureAuditLog_df.rdd.mapPartitions(lambda iterator: [(row['unmapped.`category`'], MAP_AI(row['unmapped.`category`'])) for row in iterator]).toDF(['unmapped.`category`', 'activity_id'])",
+            "benefits": "Replacing map() with mapPartitions() optimizes I/O operations by processing data in batches at the partition level, leading to improved efficiency for I/O-intensive transformations."
+        },
+        {
+            "operation": "Line 113",
+            "improvementExplanation": "The map() transformation is used to apply custom logic row by row, which can lead to high function call overhead. By transitioning to mapPartitions(), the custom logic can be applied at the partition level, reducing function calls and enhancing performance.",
+            "mapPartitionsEquivalent": "azureAuditLog_df = azureAuditLog_df.rdd.mapPartitions(lambda iterator: [(row['unmapped.`category`'], MAP_TN(row['unmapped.`category`'])) for row in iterator]).toDF(['unmapped.`category`', 'type_name'])",
+            "benefits": "Switching to mapPartitions() decreases function call overhead by processing data in larger batches at the partition level, leading to optimized performance for custom logic transformations."
+        },
+        {
+            "operation": "Line 117",
+            "improvementExplanation": "The map() transformation is used to apply custom logic row by row, which can be inefficient for I/O-heavy operations. Utilizing mapPartitions() allows processing multiple rows at once within a partition, improving efficiency for such operations.",
+            "mapPartitionsEquivalent": "azureAuditLog_df = azureAuditLog_df.rdd.mapPartitions(lambda iterator: [(row['unmapped.`resultType`'], MAP_STATNAME(row['unmapped.`resultType`'])) for row in iterator]).toDF(['unmapped.`resultType`', '`status`'])",
+            "benefits": "Replacing map() with mapPartitions() optimizes I/O operations by processing data in batches at the partition level, leading to improved efficiency for I/O-intensive transformations."
+        },
+        {
+            "operation": "Line 121",
+            "improvementExplanation": "The map() transformation is used to apply custom logic row by row, which can lead to high function call overhead. By transitioning to mapPartitions(), the custom logic can be applied at the partition level, reducing function calls and enhancing performance.",
+            "mapPartitionsEquivalent": "azureAuditLog_df = azureAuditLog_df.rdd.mapPartitions(lambda iterator: [(row['unmapped.`resultType`'], MAP_STATID(row['unmapped.`resultType`'])) for row in iterator]).toDF(['unmapped.`resultType`', '`status_id`'])",
+            "benefits": "Switching to mapPartitions() decreases function call overhead by processing data in larger batches at the partition level, leading to optimized performance for custom logic transformations."
+        }
+    ]
+}
+```

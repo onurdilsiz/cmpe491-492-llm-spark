@@ -1,0 +1,29 @@
+```json
+{
+    "detected": true,
+    "occurrences": 3,
+    "response": [
+        {
+            "operation": "UDF to extract title",
+            "location": "Line 96",
+            "improvementExplanation": "The UDF 'extract_title' can be replaced with Spark's built-in functions to extract the title from HTML content. Using native DataFrame operations like 'regexp_extract' with appropriate regex patterns can achieve the same functionality without the need for a UDF.",
+            "alternativeEquivalent": "df = df.withColumn('title', regexp_extract(df['content'], '<title>(.*?)</title>', 1))",
+            "benefits": "Replacing the UDF with a built-in function can leverage Catalyst optimizations, improve performance by utilizing Spark's internal optimizations, and reduce serialization overhead."
+        },
+        {
+            "operation": "UDF to extract title content (headings)",
+            "location": "Line 101",
+            "improvementExplanation": "The UDF 'extract_title_content' can be replaced with Spark's built-in functions to extract headings from HTML content. Using native DataFrame operations like 'regexp_extract' with appropriate regex patterns can achieve the same functionality without the need for a UDF.",
+            "alternativeEquivalent": "df = df.withColumn('title_content', regexp_extract_all(df['content'], '<h[1-6]>(.*?)</h[1-6]>', 1))",
+            "benefits": "Replacing the UDF with a built-in function can leverage Catalyst optimizations, improve performance by utilizing Spark's internal optimizations, and reduce serialization overhead."
+        },
+        {
+            "operation": "UDF to extract body content (paragraphs)",
+            "location": "Line 106",
+            "improvementExplanation": "The UDF 'extract_body_content' can be replaced with Spark's built-in functions to extract paragraphs from HTML content. Using native DataFrame operations like 'regexp_extract_all' with appropriate regex patterns can achieve the same functionality without the need for a UDF.",
+            "alternativeEquivalent": "df = df.withColumn('body_content', regexp_extract_all(df['content'], '<p>(.*?)</p>', 1))",
+            "benefits": "Replacing the UDF with a built-in function can leverage Catalyst optimizations, improve performance by utilizing Spark's internal optimizations, and reduce serialization overhead."
+        }
+    ]
+}
+```

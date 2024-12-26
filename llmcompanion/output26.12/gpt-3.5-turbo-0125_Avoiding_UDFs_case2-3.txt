@@ -1,0 +1,33 @@
+```json
+{
+    "detected": true,
+    "occurrences": 2,
+    "response": [
+        {
+            "operation": "topn function in top3_1()",
+            "improvementExplanation": "The topn function can be replaced with Spark's native DataFrame operations to achieve the same functionality without the need for a custom UDF. By using Spark transformations and actions, we can avoid the overhead of UDF serialization and enable Catalyst optimizations.",
+            "alternativeEquivalent": "ret = rdd.map(lambda line: line.split(' ')) \
+        .filter(lambda e: len(e) == 2) \
+        .map(lambda e: ((random.randint(1, 10), e[0]), e[1])) \
+        .groupByKey() \
+        .flatMap(lambda e: sorted(e[1], reverse=True)[:min(len(e[1]), 3)]) \
+        .groupByKey() \
+        .flatMap(lambda e: sorted(e[1], reverse=True)[:min(len(e[1]), 3)]) \
+        .collect()",
+            "benefits": "Replacing the topn UDF with native Spark operations improves performance by leveraging Spark's optimizations and reducing the overhead of UDF serialization."
+        },
+        {
+            "operation": "f and g functions in top3()",
+            "improvementExplanation": "The f and g functions can be replaced with Spark's aggregateByKey transformation to achieve the same functionality without custom UDFs. Using aggregateByKey allows us to perform the aggregation efficiently within Spark's execution engine, avoiding the need for UDF serialization.",
+            "alternativeEquivalent": "ret = rdd.map(lambda line: line.split(' ')) \
+        .filter(lambda e: len(e) == 2) \
+        .aggregateByKey(zeroValue=[], \
+                        seqFunc=lambda a, b: a + [b], \
+                        combFunc=lambda a, b: sorted(a + b, reverse=True)[:min(len(a + b), 3]) \
+        ) \
+        .collect()",
+            "benefits": "Replacing the f and g UDFs with aggregateByKey transformation enhances performance by leveraging Spark's built-in functionality and reducing the overhead of custom UDFs."
+        }
+    ]
+}
+```

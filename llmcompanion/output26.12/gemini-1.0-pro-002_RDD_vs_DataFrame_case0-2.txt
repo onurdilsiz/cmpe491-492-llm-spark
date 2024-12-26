@@ -1,0 +1,61 @@
+```json
+{
+  "detected": true,
+  "occurrences": 5,
+  "response": [
+    {
+      "rddOperation": "flatMap",
+      "location": "Line 12 and 13",
+      "improvementExplanation": "flatMap can be replaced with DataFrame's `selectExpr` or `withColumn` for better performance and reduced shuffling.",
+      "dataframeEquivalent": """
+```python
+spam_words = spam_rdd.selectExpr("split(value, ' ') as words").select(explode("words").alias("word"))
+non_spam_words = non_spam_rdd.selectExpr("split(value, ' ') as words").select(explode("words").alias("word"))
+```""",
+      "benefits": "Reduces shuffling by processing the data in a single pass and avoids unnecessary intermediate RDDs."
+    },
+    {
+      "rddOperation": "map",
+      "location": "Line 16 and 17",
+      "improvementExplanation": "map can be replaced with DataFrame's `select` or `withColumn` for better performance and reduced shuffling.",
+      "dataframeEquivalent": """
+```python
+spam_features = spam_words.select(tf.transform(col("word")).alias("features"))
+non_spam_features = non_spam_words.select(tf.transform(col("word")).alias("features"))
+```""",
+      "benefits": "Reduces shuffling by processing the data in a single pass and avoids unnecessary intermediate RDDs."
+    },
+    {
+      "rddOperation": "map",
+      "location": "Line 19 and 20",
+      "improvementExplanation": "map can be replaced with DataFrame's `withColumn` for better performance and reduced shuffling.",
+      "dataframeEquivalent": """
+```python
+spam_samples = spam_features.withColumn("label", lit(1))
+non_spam_samples = non_spam_features.withColumn("label", lit(0))
+```""",
+      "benefits": "Reduces shuffling by processing the data in a single pass and avoids unnecessary intermediate RDDs."
+    },
+    {
+      "rddOperation": "join",
+      "location": "Line 22",
+      "improvementExplanation": "join can be replaced with DataFrame's `union` for better performance and reduced shuffling.",
+      "dataframeEquivalent": """
+```python
+samples = spam_samples.union(non_spam_samples)
+```""",
+      "benefits": "Reduces shuffling by combining the data in a single pass and avoids unnecessary intermediate RDDs."
+    },
+    {
+      "rddOperation": "map",
+      "location": "Line 27",
+      "improvementExplanation": "map can be replaced with DataFrame's `select` for better performance and reduced shuffling.",
+      "dataframeEquivalent": """
+```python
+predictions = model.predict(test_samples.select("features"))
+```""",
+      "benefits": "Reduces shuffling by processing the data in a single pass and avoids unnecessary intermediate RDDs."
+    }
+  ]
+}
+```

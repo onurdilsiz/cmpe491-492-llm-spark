@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "Lines 20-23: `total_salary = udf(lambda s, b: new_salary(s, b), DoubleType())` and its usage in `df.withColumn('new_salary', total_salary(df.salary, df.bonus))`",
+      "improvementExplanation": "The UDF `new_salary` simply adds two columns. This can be directly replaced with the built-in `+` operator in Spark.",
+      "alternativeEquivalent": "df.withColumn('new_salary', df.salary + df.bonus)",
+      "benefits": "Replacing the UDF eliminates the overhead of UDF registration, serialization, and deserialization.  Spark's built-in operators are optimized by Catalyst, leading to improved performance and execution plans."
+    },
+    {
+      "operation": "Lines 28-31: `@udf(returnType=DoubleType())\ndef new_salary(salary, bonus):\n  return salary  + bonus` and its usage in `df.select('*', new_salary(df.salary, df.bonus).alias('total_salary'))`",
+      "improvementExplanation": "Similar to the previous case, this UDF performs a simple addition.  It's more efficient to use Spark's built-in addition operator.",
+      "alternativeEquivalent": "df.select('*', (df.salary + df.bonus).alias('total_salary'))",
+      "benefits": "Replacing the UDF avoids the overhead associated with UDFs, allowing Spark's optimizer to generate a more efficient execution plan. This results in better performance and reduced resource consumption."
+    }
+  ]
+}
+```

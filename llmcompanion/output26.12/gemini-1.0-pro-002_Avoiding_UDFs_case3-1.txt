@@ -1,0 +1,56 @@
+```json
+{
+  "detected": true,
+  "occurrences": 8,
+  "response": [
+    {
+      "operation": "generate_rolling_aggregate(col=\"source_ip\", operation=\"count\", timestamp_col=\"dt\", window_in_minutes=1)",
+      "improvementExplanation": "This UDF can be replaced with Spark's built-in `window` function and `count` aggregate function. This approach avoids the overhead of defining and registering a UDF, and leverages Spark's optimized windowing capabilities.",
+      "alternativeEquivalent": "```python\ndf = df.withColumn(\n    \"source_ip_count_last_min\",\n    F.window(F.col(\"dt\"), \"1 minute\").count(\"source_ip\")\n)\n```",
+      "benefits": "Replacing the UDF with a built-in function improves performance by enabling Catalyst optimizations and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col=\"source_ip\", operation=\"count\", timestamp_col=\"dt\", window_in_minutes=30)",
+      "improvementExplanation": "This UDF can be replaced with Spark's built-in `window` function and `count` aggregate function. This approach avoids the overhead of defining and registering a UDF, and leverages Spark's optimized windowing capabilities.",
+      "alternativeEquivalent": "```python\ndf = df.withColumn(\n    \"source_ip_count_last_30_mins\",\n    F.window(F.col(\"dt\"), \"30 minutes\").count(\"source_ip\")\n)\n```",
+      "benefits": "Replacing the UDF with a built-in function improves performance by enabling Catalyst optimizations and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col=\"source_port\", operation=\"count\", timestamp_col=\"dt\", window_in_minutes=1)",
+      "improvementExplanation": "This UDF can be replaced with Spark's built-in `window` function and `count` aggregate function. This approach avoids the overhead of defining and registering a UDF, and leverages Spark's optimized windowing capabilities.",
+      "alternativeEquivalent": "```python\ndf = df.withColumn(\n    \"source_port_count_last_min\",\n    F.window(F.col(\"dt\"), \"1 minute\").count(\"source_port\")\n)\n```",
+      "benefits": "Replacing the UDF with a built-in function improves performance by enabling Catalyst optimizations and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col=\"source_port\", operation=\"count\", timestamp_col=\"dt\", window_in_minutes=30)",
+      "improvementExplanation": "This UDF can be replaced with Spark's built-in `window` function and `count` aggregate function. This approach avoids the overhead of defining and registering a UDF, and leverages Spark's optimized windowing capabilities.",
+      "alternativeEquivalent": "```python\ndf = df.withColumn(\n    \"source_port_count_last_30_mins\",\n    F.window(F.col(\"dt\"), \"30 minutes\").count(\"source_port\")\n)\n```",
+      "benefits": "Replacing the UDF with a built-in function improves performance by enabling Catalyst optimizations and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col=\"orig_pkts\", partition_by=\"source_ip\", operation=\"avg\", timestamp_col=\"dt\", window_in_minutes=1)",
+      "improvementExplanation": "This UDF can be replaced with Spark's built-in `window` function and `avg` aggregate function. This approach avoids the overhead of defining and registering a UDF, and leverages Spark's optimized windowing capabilities.",
+      "alternativeEquivalent": "```python\ndf = df.withColumn(\n    \"source_ip_avg_pkts_last_min\",\n    F.window(F.col(\"dt\"), \"1 minute\").avg(\"orig_pkts\").over(F.partitionBy(\"source_ip\"))\n)\n```",
+      "benefits": "Replacing the UDF with a built-in function improves performance by enabling Catalyst optimizations and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col=\"orig_pkts\", partition_by=\"source_ip\", operation=\"avg\", timestamp_col=\"dt\", window_in_minutes=30)",
+      "improvementExplanation": "This UDF can be replaced with Spark's built-in `window` function and `avg` aggregate function. This approach avoids the overhead of defining and registering a UDF, and leverages Spark's optimized windowing capabilities.",
+      "alternativeEquivalent": "```python\ndf = df.withColumn(\n    \"source_ip_avg_pkts_last_30_mins\",\n    F.window(F.col(\"dt\"), \"30 minutes\").avg(\"orig_pkts\").over(F.partitionBy(\"source_ip\"))\n)\n```",
+      "benefits": "Replacing the UDF with a built-in function improves performance by enabling Catalyst optimizations and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col=\"orig_ip_bytes\", partition_by=\"source_ip\", operation=\"avg\", timestamp_col=\"dt\", window_in_minutes=1)",
+      "improvementExplanation": "This UDF can be replaced with Spark's built-in `window` function and `avg` aggregate function. This approach avoids the overhead of defining and registering a UDF, and leverages Spark's optimized windowing capabilities.",
+      "alternativeEquivalent": "```python\ndf = df.withColumn(\n    \"source_ip_avg_bytes_last_min\",\n    F.window(F.col(\"dt\"), \"1 minute\").avg(\"orig_ip_bytes\").over(F.partitionBy(\"source_ip\"))\n)\n```",
+      "benefits": "Replacing the UDF with a built-in function improves performance by enabling Catalyst optimizations and reduces serialization overhead."
+    },
+    {
+      "operation": "generate_rolling_aggregate(col=\"orig_ip_bytes\", partition_by=\"source_ip\", operation=\"avg\", timestamp_col=\"dt\", window_in_minutes=30)",
+      "improvementExplanation": "This UDF can be replaced with Spark's built-in `window` function and `avg` aggregate function. This approach avoids the overhead of defining and registering a UDF, and leverages Spark's optimized windowing capabilities.",
+      "alternativeEquivalent": "```python\ndf = df.withColumn(\n    \"source_ip_avg_bytes_last_30_mins\",\n    F.window(F.col(\"dt\"), \"30 minutes\").avg(\"orig_ip_bytes\").over(F.partitionBy(\"source_ip\"))\n)\n```",
+      "benefits": "Replacing the UDF with a built-in function improves performance by enabling Catalyst optimizations and reduces serialization overhead."
+    }
+  ]
+}
+```

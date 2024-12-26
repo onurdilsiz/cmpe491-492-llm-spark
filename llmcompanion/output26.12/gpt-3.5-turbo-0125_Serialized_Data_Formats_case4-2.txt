@@ -1,0 +1,15 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "write in CSV format",
+            "location": "df.write.csv('/path/to/output')",
+            "improvementExplanation": "Switching to Parquet format can improve performance by providing better compression, faster reads/writes, and enabling predicate pushdown for query optimization.",
+            "optimizedEquivalent": "df.write.parquet('/path/to/output')",
+            "benefits": "Benefits of switching to Parquet format include improved performance due to efficient compression, faster reads/writes, and enhanced query optimization through predicate pushdown."
+        }
+    ]
+}
+```

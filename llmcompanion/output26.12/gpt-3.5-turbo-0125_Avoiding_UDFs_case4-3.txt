@@ -1,0 +1,32 @@
+```json
+{
+    "detected": true,
+    "occurrences": 4,
+    "response": [
+        {
+            "operation": "df.select(five_udf()).display()",
+            "improvementExplanation": "The UDF 'five' is used to return a constant value of 5. This UDF can be replaced with a native DataFrame operation to avoid the overhead of UDF serialization and enable Catalyst optimizations.",
+            "alternativeEquivalent": "df.withColumn('five', lit(5)).show()",
+            "benefits": "Replacing the UDF with a native DataFrame operation improves performance by avoiding UDF serialization overhead and enables Catalyst optimizations."
+        },
+        {
+            "operation": "df.select(five()).show()",
+            "improvementExplanation": "The UDF 'five' is used to return a constant value of 5. This UDF can be replaced with a native DataFrame operation to avoid the overhead of UDF serialization and enable Catalyst optimizations.",
+            "alternativeEquivalent": "df.withColumn('five', lit(5)).show()",
+            "benefits": "Replacing the UDF with a native DataFrame operation improves performance by avoiding UDF serialization overhead and enables Catalyst optimizations."
+        },
+        {
+            "operation": "df.select(five()).show()",
+            "improvementExplanation": "The UDF 'five' is used to return a constant value of 5. This UDF can be replaced with a native DataFrame operation to avoid the overhead of UDF serialization and enable Catalyst optimizations.",
+            "alternativeEquivalent": "df.withColumn('five', lit(5)).show()",
+            "benefits": "Replacing the UDF with a native DataFrame operation improves performance by avoiding UDF serialization overhead and enables Catalyst optimizations."
+        },
+        {
+            "operation": "df.select(identity('id')).display()",
+            "improvementExplanation": "The UDF 'identity' is used to return the input column 'id' as is. This UDF can be replaced with a native DataFrame operation to avoid the overhead of UDF serialization and enable Catalyst optimizations.",
+            "alternativeEquivalent": "df.withColumn('id_copy', col('id')).show()",
+            "benefits": "Replacing the UDF with a native DataFrame operation improves performance by avoiding UDF serialization overhead and enables Catalyst optimizations."
+        }
+    ]
+}
+```

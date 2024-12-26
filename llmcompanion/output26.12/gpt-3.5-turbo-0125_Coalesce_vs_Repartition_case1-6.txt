@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "df_5years.repartition(200).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/200\")",
+            "improvementExplanation": "The repartition(200) operation is used to increase the number of partitions to 200 before writing the data. However, in this case, since the goal is to reduce the number of partitions for writing the data, coalesce() can be more efficient.",
+            "coalesceEquivalent": "df_5years.coalesce(200).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/200\")",
+            "benefits": "Switching to coalesce(200) will reduce unnecessary shuffling and improve resource usage by minimizing data movement across the cluster, leading to faster job runtime."
+        }
+    ]
+}
+```

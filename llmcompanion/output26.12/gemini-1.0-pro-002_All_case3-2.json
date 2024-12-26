@@ -1,0 +1,45 @@
+{
+    "detected0": true,
+    "occurrences0": 1,
+    "response0": [
+        {
+            "operation": "filtered_data_tony(rdd)",
+            "improvementExplanation": "The provided code uses RDDs for data processing. RDDs are a lower-level abstraction in Spark, while DataFrames/Datasets offer a higher-level, structured API with optimized query execution and easier integration with structured data formats.",
+            "dataframeEquivalent": "```python\nfrom pyspark.sql.functions import upper, col\n\ndef filtered_data_tony(df):\n    # Filter rows where '_c5' is null and show the results\n    filtered_not_null_product_cat_df = df.filter(~col('_c5').isNull())\n    filtered_not_null_payment_type_df = filtered_not_null_product_cat_df.filter(~col('_c6').isNull())\n    filtered_not_null_qty_df = filtered_not_null_payment_type_df.filter(~col('_c7').isNull())\n    filtered_not_null_price_df = filtered_not_null_qty_df.filter(~col('_c8').isNull())\n    # There are no null values from c5-c8 which is what matters so this is fine\n\n    #_c5 is product category\n    # None of them contain any numbers so the data seems to be clean\n    filtered_no_number_product_cat_df = filtered_not_null_price_df.filter(~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))\n    filtered_no_number_payment_type_df = filtered_no_number_product_cat_df.filter(~col('_c6').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))\n    \n    filtered_no_number_failure_reason_df = filtered_no_number_payment_type_df.filter(\n        col('_c15').isNull() | ~col('_c15').rlike('.*\\d.*')\n    )\n\n    #refined_filter_price_rdd = df.filter(~col('_c8').rlike('^[^0-9]*$') & (col('_c8') != '') & (col('_c8') != \"46284y924\"))\n    #filtered_price_rdd.show()\n\n    filtered_product_category_df = filtered_no_number_failure_reason_df.filter(\n        ~upper(col('_c5')).contains(\"ERROR\") & \n        ~upper(col('_c5')).contains(\"BOOM\") & \n        ~upper(col('_c5')).contains(\"THIS\") & \n        ~upper(col('_c5')).contains(\"CORRUPTED\") & \n        ~upper(col('_c5')).contains(\"!\")\n    )\n    #filtered_product_category_rdd.show()\n    #_c6 payment_type 6 Errors for payment type\n    filtered_payment_type_df = filtered_product_category_df.filter(\n        ~upper(col('_c6')).contains(\"ERROR\") & \n        ~upper(col('_c6')).contains(\"BOOM\") & \n        ~upper(col('_c6')).contains(\"THIS\") & \n        ~upper(col('_c6')).contains(\"CORRUPTED\") & \n        ~upper(col('_c6')).contains(\"!\")\n    )\n\n    #_c7 qty 10 errors found\n    filtered_qty_df = filtered_payment_type_df.filter(~col('_c7').rlike('^[^0-9]*$') & (col('_c7') != ''))\n    non_zero_df = filtered_qty_df.filter(col('_c7').cast('int') != 0)\n\n    filtered_price_df = non_zero_df.filter(col('_c8').rlike('^[0-9]*\\.?[0-9]+$') & (col('_c8') != ''))\n    filtered_price_df = filtered_price_df.filter(col('_c8').cast('int') != 0)\n    # Filter out rows where '_c15' contains any of the keywords 11 erros\n    filtered_excluded_keywords_df = filtered_price_df.filter(\n        (upper(col('_c15')).contains(\"NETWORK\") | \n        upper(col('_c15')).contains(\"UNABLE\") | \n        upper(col('_c15')).contains(\"INSUFFICIENT\") | col('_c15').isNull())\n    )\n\n\n    return filtered_excluded_keywords_df\n```",
+            "benefits": "Converting RDDs to DataFrames/Datasets will enable:\n- **Query optimizations:** Spark SQL optimizer can leverage Catalyst optimizer for efficient query execution.\n- **Reduced shuffling:** DataFrames/Datasets avoid unnecessary data shuffles, improving performance.\n- **Easier integration with structured data formats:** DataFrames/Datasets seamlessly integrate with structured data formats like Parquet, ORC, and Avro."
+        }
+    ],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "filtered_df.repartition(10)",
+            "improvementExplanation": "The code uses repartition(10) to increase the number of partitions. However, this operation involves a full shuffle, which can be expensive. In this case, reducing the number of partitions using coalesce() is sufficient.",
+            "coalesceEquivalent": "```python\nfiltered_df = filtered_df.coalesce(10)\n```",
+            "benefits": "Switching to coalesce() will:\n- **Reduce shuffling:** Avoids unnecessary data movement and improves performance.\n- **Improved resource usage:** Reduces the number of partitions, potentially lowering resource consumption.\n- **Faster job runtime:** Overall job execution time can be reduced."
+        }
+    ],
+    "detected2": true,
+    "occurrences2": 1,
+    "response2": [
+        {
+            "operation": "filtered_df.map(lambda row: ','.join(str(field) for field in row))",
+            "improvementExplanation": "The code uses map() to convert each row of the DataFrame into a comma-separated string. This operation can be inefficient for partition-level operations like I/O. mapPartitions() is a better choice for such scenarios.",
+            "mapPartitionsEquivalent": "```python\nfiltered_df = filtered_df.mapPartitions(lambda partition: ','.join(str(field) for field in partition))\n```",
+            "benefits": "Switching to mapPartitions() will:\n- **Reduced function call overhead:** Avoids unnecessary function calls for each row.\n- **Optimized I/O:** Enables efficient I/O operations at the partition level.\n- **Improved performance for partition-level operations:** Optimizes performance for operations that can be performed at the partition level."
+        }
+    ],
+    "detected3": true,
+    "occurrences3": 1,
+    "response3": [
+        {
+            "operation": "path = sc.textFile(\"file:///root/data_team_2.csv\")",
+            "improvementExplanation": "The code reads data from a CSV file using sc.textFile(). CSV is not an optimized data format for Spark. Switching to Parquet, ORC, or Avro will improve read/write performance and enable query optimization.",
+            "optimizedEquivalent": "```python\npath = \"file:///root/data_team_2.parquet\"\n# Read Parquet file\ndf = spark.read.parquet(path)\n```",
+            "benefits": "Switching to optimized formats will:\n- **Faster reads/writes:** Parquet, ORC, and Avro offer faster read/write performance compared to CSV.\n- **Compression:** These formats support compression, reducing storage space and network transfer time.\n- **Query optimization through predicate pushdown:** Spark can push predicates down to the data source, improving query performance."
+        }
+    ],
+    "detected4": false,
+    "occurrences4": 0,
+    "response4": []
+}

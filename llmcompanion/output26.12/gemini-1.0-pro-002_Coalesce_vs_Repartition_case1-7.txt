@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "df = df.repartition(number_of_files, '_salted_key')",
+      "improvementExplanation": "The repartition() operation is used to distribute the DataFrame into a specified number of partitions based on the '_salted_key' column. However, since the goal is to create files with a maximum number of records, a full shuffle is not necessary. Instead, we can use coalesce() to simply reduce the number of partitions without shuffling the data.",
+      "coalesceEquivalent": "df = df.coalesce(number_of_files)",
+      "benefits": "Replacing repartition() with coalesce() in this case will significantly reduce the amount of data shuffling, leading to improved resource usage and faster job runtime. This is because coalesce() only merges partitions without moving data around, while repartition() involves a full shuffle."
+    }
+  ]
+}
+```

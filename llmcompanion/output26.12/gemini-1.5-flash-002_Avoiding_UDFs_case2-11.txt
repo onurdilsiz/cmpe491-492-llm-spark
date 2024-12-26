@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "def extract_title(content): ... extract_title_udf = udf(extract_title, StringType()) ... df = df.withColumn('title', extract_title_udf(df['content']))",
+      "improvementExplanation": "The `extract_title` UDF uses BeautifulSoup to extract the title from HTML content. This can be replaced by using Spark's built-in functions and regular expressions for better performance and optimization.  UDFs often hinder Spark's optimization capabilities because they are executed outside the Spark engine.",
+      "alternativeEquivalent": "from pyspark.sql.functions import regexp_extract\ndf = df.withColumn('title', regexp_extract(df['content'], '<title>(.*?)</title>', 1))",
+      "benefits": "Replacing the UDF with `regexp_extract` allows Spark's Catalyst optimizer to push down the extraction logic, leading to improved performance and reduced serialization overhead.  It avoids the overhead of transferring data to the driver for processing by the UDF."
+    },
+    {
+      "operation": "def extract_title_content(content): ... extract_title_content_udf = udf(extract_title_content, ArrayType(StringType())) ... df = df.withColumn('title_content', extract_title_content_udf(df['content']))",
+      "improvementExplanation": "The `extract_title_content` UDF extracts headings from HTML content using BeautifulSoup.  Similar to `extract_title`, this can be significantly improved by using Spark's built-in functions and potentially a combination of regular expressions and string manipulation functions within Spark for better performance and optimization.",
+      "alternativeEquivalent": "from pyspark.sql.functions import regexp_extract, split, array\ndf = df.withColumn('title_content', array(*[regexp_extract(df.content, f'<h{i}>(.*?)</h{i}>', 1) for i in range(1,7)]))\ndf = df.withColumn(\"title_content\", split(df.title_content, ','))\n",
+      "benefits": "Replacing the UDF enables Catalyst optimizations, improving performance by avoiding the overhead of UDF execution outside the Spark engine and reducing data serialization."
+    },
+    {
+      "operation": "def extract_body_content(content): ... extract_body_content_udf = udf(extract_body_content, ArrayType(StringType())) ... df = df.withColumn('body_content', extract_body_content_udf(df['content']))",
+      "improvementExplanation": "The `extract_body_content` UDF extracts paragraph text from HTML content using BeautifulSoup.  This is another candidate for replacement with Spark's built-in functions and regular expressions for better performance and optimization.  The use of a UDF here prevents Spark from optimizing the query plan.",
+      "alternativeEquivalent": "from pyspark.sql.functions import regexp_extract, split, array\ndf = df.withColumn('body_content', split(regexp_extract(df.content, '<p>(.*?)</p>', 0), '</p><p>'))",
+      "benefits": "Replacing the UDF allows Spark's Catalyst optimizer to incorporate the extraction logic, resulting in improved performance and reduced serialization costs.  It avoids the overhead of transferring data to the driver for processing by the UDF."
+    }
+  ]
+}
+```

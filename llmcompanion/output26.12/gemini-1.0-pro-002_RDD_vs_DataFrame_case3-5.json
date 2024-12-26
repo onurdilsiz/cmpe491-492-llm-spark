@@ -1,0 +1,76 @@
+{
+    "detected": true,
+    "occurrences": 10,
+    "response": [
+        {
+            "rddOperation": "map",
+            "location": "line 22: stations = stations.map(lambda line: line.split(';'))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "stations = spark.read.csv('BDA/input/stations.csv', sep=';')",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "map",
+            "location": "line 24: stations = stations.map(lambda x: (x[0],(float(x[3]),float(x[4]))))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "stations = stations.select('0', '3', '4').withColumn('lat', stations['3'].cast('float')).withColumn('long', stations['4'].cast('float'))",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "map",
+            "location": "line 28: temps = temps.map(lambda line: line.split(';'))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "temps = spark.read.csv('BDA/input/temperature-readings.csv', sep=';')",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "map",
+            "location": "line 30: temps = temps.map(lambda x: (x[0], (datetime.strptime(x[1], '%Y-%m-%d').date(), x[2], float(x[3]))))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "temps = temps.select('0', '1', '2', '3').withColumn('date', F.to_date(temps['1'], 'yyyy-MM-dd')).withColumn('temp', temps['3'].cast('float'))",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "filter",
+            "location": "line 34: temps_filtered = temps.filter(lambda x: (x[1][0]<date(2014, 6, 7)) )",
+            "improvementExplanation": "This filter operation can be replaced with a DataFrame/Dataset filter operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "temps_filtered = temps.filter(temps['date'] < date(2014, 6, 7))",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "map",
+            "location": "line 38: joined = temps_filtered.map(lambda x: (x[0],(x[1][0],x[1][1],x[1][2],bc.value.get(x[0]))))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset join operation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "joined = temps_filtered.join(stations, on=['0'], how='left')",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "map",
+            "location": "line 46: partial_sum_rdd = joined.map(lambda x: (get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist)+get_k_days(x[1][0], pred_date,h_days), x[1][1], x[1][2]))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "partial_sum_rdd = joined.withColumn('partial_sum', F.col('dist_kernel') + F.col('days_kernel'))",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "map",
+            "location": "line 48: partial_prod_rdd = joined.map(lambda x: (get_k_dist(x[1][3][1],x[1][3][0],pred_long,pred_lat,h_dist)*get_k_days(x[1][0], pred_date,h_days), x[1][1], x[1][2]))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "partial_prod_rdd = joined.withColumn('partial_prod', F.col('dist_kernel') * F.col('days_kernel'))",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "map",
+            "location": "line 54: k_sum = partial_sum_rdd.map(lambda x: (1, ((x[0]+get_k_hour(time, x[1], h_time))*x[2], x[0]+get_k_hour(time, x[1], h_time)) ))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "k_sum = partial_sum_rdd.withColumn('numerator', (F.col('partial_sum') + F.col('hour_kernel')) * F.col('temp')).withColumn('denominator', F.col('partial_sum') + F.col('hour_kernel'))",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        },
+        {
+            "rddOperation": "map",
+            "location": "line 56: k_prod = partial_prod_rdd.map(lambda x: (1, ((x[0]*get_k_hour(time, x[1], h_time))*x[2], x[0]*get_k_hour(time, x[1], h_time)) ))",
+            "improvementExplanation": "This map operation can be replaced with a DataFrame/Dataset transformation for better performance and scalability. DataFrames/Datasets offer optimized query execution plans and can handle larger datasets more efficiently.",
+            "dataframeEquivalent": "k_prod = partial_prod_rdd.withColumn('numerator', (F.col('partial_prod') * F.col('hour_kernel')) * F.col('temp')).withColumn('denominator', F.col('partial_prod') * F.col('hour_kernel'))",
+            "benefits": "Improved performance, scalability, and reduced code complexity."
+        }
+    ]
+}

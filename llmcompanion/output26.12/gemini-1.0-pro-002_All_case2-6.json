@@ -1,0 +1,30 @@
+{
+    "detected0": true,
+    "occurrences0": 2,
+    "response0": [
+        {
+            "operation": "data_rdd = hbase_rdd.map(lambda x: x[1]).map(lambda x: x.split(\"\n\"))",
+            "improvementExplanation": "RDDs are used to split the input data into lines. This can be replaced with DataFrame/Dataset for better performance and easier integration with structured data formats.",
+            "dataframeEquivalent": "data_df = hbase_rdd.toDF().selectExpr(\"split(value, '\\n') as lines\")",
+            "benefits": "Using DataFrame/Dataset will enable query optimizations, reduce shuffling, and simplify integration with structured data formats."
+        },
+        {
+            "operation": "data_rdd = data_rdd.mapPartitions(lambda row: get_input(row))",
+            "improvementExplanation": "RDDs are used to process data in partitions. This can be replaced with DataFrame/Dataset for better performance and easier integration with structured data formats.",
+            "dataframeEquivalent": "data_df = data_df.rdd.mapPartitions(lambda row: get_input(row)).toDF()",
+            "benefits": "Using DataFrame/Dataset will enable query optimizations, reduce shuffling, and simplify integration with structured data formats."
+        }
+    ],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": false,
+    "occurrences4": 0,
+    "response4": []
+}

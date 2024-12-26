@@ -1,0 +1,40 @@
+```json
+{
+    "detected0": true,
+    "occurrences0": 1,
+    "response0": [
+        {
+            "operation": "df.randomSplit(weights=[0.8, 0.2], seed=200)",
+            "improvementExplanation": "RDD usage can be replaced with DataFrame/Dataset to leverage Catalyst optimizations, better query planning, and easier integration with structured data formats.",
+            "dataframeEquivalent": "df_train, df_test = df.randomSplit(weights=[0.8, 0.2], seed=200)",
+            "benefits": "Improved performance, query optimization, and better resource utilization."
+        }
+    ],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "df.randomSplit(weights=[0.8, 0.2], seed=200)",
+            "improvementExplanation": "repartition() can be replaced with coalesce() to avoid unnecessary shuffling when reducing partitions.",
+            "coalesceEquivalent": "df_train, df_test = df.randomSplit(weights=[0.8, 0.2], seed=200).coalesce(2)",
+            "benefits": "Reduced shuffling, improved resource usage, and faster job runtime."
+        }
+    ],
+    "detected2": true,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": true,
+    "occurrences3": 1,
+    "response3": [
+        {
+            "operation": ".csv(conf['filepaths'], inferSchema=True, header=True)",
+            "improvementExplanation": "Switching to optimized formats like Parquet, ORC, or Avro can provide faster reads/writes, compression benefits, and query optimization through predicate pushdown.",
+            "optimizedEquivalent": ".parquet(conf['filepaths'])",
+            "benefits": "Improved performance, compression, and query optimization."
+        }
+    ],
+    "detected4": true,
+    "occurrences4": 0,
+    "response4": []
+}
+```

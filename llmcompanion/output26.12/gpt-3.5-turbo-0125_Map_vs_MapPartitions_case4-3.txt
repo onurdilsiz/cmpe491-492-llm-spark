@@ -1,0 +1,20 @@
+```json
+{
+    "detected": true,
+    "occurrences": 2,
+    "response": [
+        {
+            "operation": "df.select(five_udf()).display()",
+            "improvementExplanation": "The map() transformation is used to apply the UDF 'five_udf' to each row individually, which can lead to high function call overhead. By using mapPartitions(), the UDF can be applied at the partition level, reducing the number of function calls and improving efficiency.",
+            "mapPartitionsEquivalent": "df.rdd.mapPartitions(lambda partition: [five() for _ in partition]).toDF()",
+            "benefits": "Switching to mapPartitions() can reduce function call overhead and improve performance by processing data at the partition level."
+        },
+        {
+            "operation": "df.select(identity('id')).display()",
+            "improvementExplanation": "The map() transformation is used to apply the UDF 'identity' to each row individually, which can be inefficient for I/O-heavy operations. By using mapPartitions(), the UDF can process data in batches at the partition level, optimizing I/O operations and improving performance.",
+            "mapPartitionsEquivalent": "df.rdd.mapPartitions(lambda partition: [identity(row) for row in partition]).toDF()",
+            "benefits": "Replacing map() with mapPartitions() can optimize I/O operations, reduce function call overhead, and enhance performance for partition-level operations."
+        }
+    ]
+}
+```

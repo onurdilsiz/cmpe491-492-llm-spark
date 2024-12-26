@@ -1,0 +1,42 @@
+{
+    "detected": true,
+    "occurrences": 6,
+    "response": [
+        {
+            "operation": "extract_family_name(full_name: List[str])",
+            "improvementExplanation": "The `extract_family_name` function can be applied to each element of the `full_name` list independently. This operation is suitable for mapPartitions() because it can process multiple elements at once, reducing function call overhead and improving performance.",
+            "mapPartitionsEquivalent": "def extract_family_name_partitions(iterator):\n  for full_name in iterator:\n    yield full_name.split(\" \")[1:] if len(full_name.split(\" \")) > 1 else None\n\n# Replace the existing UDF with the mapPartitions version\nextract_family_name = udf(extract_family_name_partitions, StringType())",
+            "benefits": "Reduced function call overhead, improved performance, and optimized resource utilization."
+        },
+        {
+            "operation": "extract_given_name(full_name: List[str])",
+            "improvementExplanation": "Similar to `extract_family_name`, the `extract_given_name` function can be applied to each element of the `full_name` list independently, making it suitable for mapPartitions().",
+            "mapPartitionsEquivalent": "def extract_given_name_partitions(iterator):\n  for full_name in iterator:\n    yield full_name.split(\" \")[0]\n\n# Replace the existing UDF with the mapPartitions version\nextract_given_name = udf(extract_given_name_partitions, StringType())",
+            "benefits": "Reduced function call overhead, improved performance, and optimized resource utilization."
+        },
+        {
+            "operation": "format_phone(phone: str)",
+            "improvementExplanation": "The `format_phone` function performs string manipulation on individual phone numbers. This operation is suitable for mapPartitions() because it can process multiple phone numbers at once, reducing function call overhead and improving performance.",
+            "mapPartitionsEquivalent": "def format_phone_partitions(iterator):\n  pattern = r\"\\(\\(\\d{2}\\)\\s(\\d{4}-\\d{4})\\)\"\n  for phone in iterator:\n    yield re.sub(pattern, r\"\\+55 0\\1 \\2\", phone)\n\n# Replace the existing UDF with the mapPartitions version\nformat_phone = udf(format_phone_partitions, StringType())",
+            "benefits": "Reduced function call overhead, improved performance, and optimized resource utilization."
+        },
+        {
+            "operation": "clean_cpf(value: str)",
+            "improvementExplanation": "The `clean_cpf` function performs string manipulation on individual CPF values. This operation is suitable for mapPartitions() because it can process multiple CPF values at once, reducing function call overhead and improving performance.",
+            "mapPartitionsEquivalent": "def clean_cpf_partitions(iterator):\n  for value in iterator:\n    yield re.sub(r\"\\D\", \"\", value)\n\n# Replace the existing UDF with the mapPartitions version\nclean_cpf = udf(clean_cpf_partitions, StringType())",
+            "benefits": "Reduced function call overhead, improved performance, and optimized resource utilization."
+        },
+        {
+            "operation": "format_gender(value: str)",
+            "improvementExplanation": "The `format_gender` function performs string manipulation on individual gender values. This operation is suitable for mapPartitions() because it can process multiple gender values at once, reducing function call overhead and improving performance.",
+            "mapPartitionsEquivalent": "def format_gender_partitions(iterator):\n  for value in iterator:\n    gender_clean = value.lower()\n\n    if gender_clean == \"masculino\":\n      yield \"male\"\n    elif gender_clean == \"feminino\":\n      yield \"female\"\n    else:\n      yield \"unknown\"\n\n# Replace the existing UDF with the mapPartitions version\nformat_gender = udf(format_gender_partitions, StringType())",
+            "benefits": "Reduced function call overhead, improved performance, and optimized resource utilization."
+        },
+        {
+            "operation": "format_date(value: str)",
+            "improvementExplanation": "The `format_date` function performs string manipulation on individual date values. This operation is suitable for mapPartitions() because it can process multiple date values at once, reducing function call overhead and improving performance.",
+            "mapPartitionsEquivalent": "def format_date_partitions(iterator):\n  for value in iterator:\n    value_date = datetime.strptime(value, \"%d/%m/%Y\")\n    yield value_date.strftime(\"%Y-%m-%d\")\n\n# Replace the existing UDF with the mapPartitions version\nformat_date = udf(format_date_partitions, StringType())",
+            "benefits": "Reduced function call overhead, improved performance, and optimized resource utilization."
+        }
+    ]
+}

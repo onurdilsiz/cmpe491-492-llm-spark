@@ -1,0 +1,38 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "df.repartition(2)",
+            "improvementExplanation": "Consider using coalesce() instead of repartition() when the operation does not require a full shuffle. Coalesce() can reduce the number of partitions without performing a full shuffle.",
+            "coalesceEquivalent": "df.coalesce(2)",
+            "benefits": "Switching to coalesce() can lead to reduced shuffling, improved resource usage, and faster job runtime."
+        }
+    ],
+    "detected2": true,
+    "occurrences2": 1,
+    "response2": [
+        {
+            "operation": "df.withColumn('delta_arry', delta_mol(F.col('array_col')))",
+            "improvementExplanation": "Consider using mapPartitions() instead of map() when the transformation can be performed at the partition level. mapPartitions() can optimize partition-level operations.",
+            "mapPartitionsEquivalent": "df.rdd.mapPartitions(lambda partition: [(row['chiave'], row['array_col'], delta_mol(row['array_col'])) for row in partition]).toDF(['chiave', 'array_col', 'delta_arry'])",
+            "benefits": "Switching to mapPartitions() can reduce function call overhead, optimize I/O, and improve performance for partition-level operations."
+        }
+    ],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 1,
+    "response4": [
+        {
+            "operation": "@udf(ArrayType(DoubleType()))",
+            "improvementExplanation": "Consider replacing UDFs with Spark SQL functions or native DataFrame/Dataset operations to enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+            "alternativeEquivalent": "Use built-in Spark SQL functions or DataFrame/Dataset operations instead of UDFs.",
+            "benefits": "Avoiding UDFs can lead to Catalyst optimizations, better performance, and reduced serialization overhead."
+        }
+    ]
+}

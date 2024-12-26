@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "map() operation on line 10: filtered_no_number_product_cat_rdd = filtered_not_null_price_rdd.filter(~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "improvementExplanation": "This map() operation filters rows based on a regular expression. This operation can be performed more efficiently at the partition level using mapPartitions() to reduce function call overhead and improve I/O performance.",
+      "mapPartitionsEquivalent": "filtered_no_number_product_cat_rdd = filtered_not_null_price_rdd.mapPartitions(lambda partition: filter(lambda row: not row['_c5'].rlike('(?=.*\\d)(?=.*[a-zA-Z])'), partition))",
+      "benefits": "Switching to mapPartitions() in this case will reduce function call overhead, optimize I/O by processing data in batches within partitions, and improve overall performance."
+    }
+  ]
+}
+```

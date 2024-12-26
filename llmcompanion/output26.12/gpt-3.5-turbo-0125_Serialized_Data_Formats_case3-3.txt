@@ -1,0 +1,15 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "Read in CSV format",
+            "location": "df_pyspark = spark.read.csv(\"test2.csv\", header=True, inferSchema=True)",
+            "improvementExplanation": "Switching to a more optimized format like Parquet or ORC can significantly improve performance by providing better compression, faster reads/writes, and enabling predicate pushdown optimizations.",
+            "optimizedEquivalent": "df_pyspark = spark.read.parquet(\"test2.parquet\")",
+            "benefits": "Benefits of switching to Parquet or ORC include faster reads/writes, efficient storage due to columnar storage, better compression, and improved query performance through predicate pushdown."
+        }
+    ]
+}
+```  

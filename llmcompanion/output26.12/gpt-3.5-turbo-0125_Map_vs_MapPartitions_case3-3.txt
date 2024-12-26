@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "df_pyspark = df_pyspark.na.drop()",
+            "improvementExplanation": "The map() transformation is used to drop rows with any null values. This operation can be more efficiently performed at the partition level using mapPartitions() to reduce function call overhead.",
+            "mapPartitionsEquivalent": "df_pyspark = df_pyspark.rdd.mapPartitions(lambda iterator: filter(lambda row: not any(x is None for x in row), iterator)).toDF()",
+            "benefits": "Switching to mapPartitions() can optimize the dropping of rows with null values by processing data at the partition level, reducing function call overhead and potentially improving performance for large datasets."
+        }
+    ]
+}
+```

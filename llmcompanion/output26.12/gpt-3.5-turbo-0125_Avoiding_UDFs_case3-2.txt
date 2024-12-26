@@ -1,0 +1,14 @@
+```json
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "filtered_data_tony function",
+            "improvementExplanation": "UDFs used in the function can be replaced with Spark's built-in functions and DataFrame operations to leverage Catalyst optimizations and improve performance.",
+            "alternativeEquivalent": "filtered_excluded_keywords_rdd = df.filter((col('_c5').isNotNull()) & (col('_c6').isNotNull()) & (col('_c7').isNotNull()) & (col('_c8').isNotNull()) & (~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])')) & (~col('_c6').rlike('(?=.*\\d)(?=.*[a-zA-Z])')) & (col('_c15').isNull() | ~col('_c15').rlike('.*\\d.*')) & (~upper(col('_c5')).rlike('ERROR|BOOM|THIS|CORRUPTED|!')) & (~upper(col('_c6')).rlike('ERROR|BOOM|THIS|CORRUPTED|!')) & (~col('_c7').rlike('^[^0-9]*$') & (col('_c7') != '')) & (col('_c7').cast('int') != 0) & (col('_c8').rlike('^[0-9]*\\.?[0-9]+$') & (col('_c8') != '') & (col('_c8').cast('int') != 0) & ((upper(col('_c15')).contains('NETWORK')) | (upper(col('_c15')).contains('UNABLE')) | (upper(col('_c15')).contains('INSUFFICIENT')) | (col('_c15').isNull())))",
+            "benefits": "By replacing UDFs with built-in functions and DataFrame operations, the code can benefit from Catalyst optimizations, potentially leading to improved performance and reduced serialization overhead."
+        }
+    ]
+}
+```

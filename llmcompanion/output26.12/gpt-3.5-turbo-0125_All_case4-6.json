@@ -1,0 +1,91 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": true,
+    "occurrences2": 6,
+    "response2": [
+        {
+            "operation": "map() transformation in extract_family_name UDF",
+            "improvementExplanation": "Replace map() with mapPartitions() to optimize the operation at the partition level.",
+            "mapPartitionsEquivalent": "Use mapPartitions() instead of map() to process partitions in bulk.",
+            "benefits": "Switching to mapPartitions() reduces function call overhead and improves performance for partition-level operations."
+        },
+        {
+            "operation": "map() transformation in extract_given_name UDF",
+            "improvementExplanation": "Replace map() with mapPartitions() to optimize the operation at the partition level.",
+            "mapPartitionsEquivalent": "Use mapPartitions() instead of map() to process partitions in bulk.",
+            "benefits": "Switching to mapPartitions() reduces function call overhead and improves performance for partition-level operations."
+        },
+        {
+            "operation": "map() transformation in format_phone UDF",
+            "improvementExplanation": "Replace map() with mapPartitions() to optimize the operation at the partition level.",
+            "mapPartitionsEquivalent": "Use mapPartitions() instead of map() to process partitions in bulk.",
+            "benefits": "Switching to mapPartitions() reduces function call overhead and improves performance for partition-level operations."
+        },
+        {
+            "operation": "map() transformation in clean_cpf UDF",
+            "improvementExplanation": "Replace map() with mapPartitions() to optimize the operation at the partition level.",
+            "mapPartitionsEquivalent": "Use mapPartitions() instead of map() to process partitions in bulk.",
+            "benefits": "Switching to mapPartitions() reduces function call overhead and improves performance for partition-level operations."
+        },
+        {
+            "operation": "map() transformation in format_gender UDF",
+            "improvementExplanation": "Replace map() with mapPartitions() to optimize the operation at the partition level.",
+            "mapPartitionsEquivalent": "Use mapPartitions() instead of map() to process partitions in bulk.",
+            "benefits": "Switching to mapPartitions() reduces function call overhead and improves performance for partition-level operations."
+        },
+        {
+            "operation": "map() transformation in format_date UDF",
+            "improvementExplanation": "Replace map() with mapPartitions() to optimize the operation at the partition level.",
+            "mapPartitionsEquivalent": "Use mapPartitions() instead of map() to process partitions in bulk.",
+            "benefits": "Switching to mapPartitions() reduces function call overhead and improves performance for partition-level operations."
+        }
+    ],
+    "detected3": true,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 6,
+    "response4": [
+        {
+            "operation": "UDF extract_family_name",
+            "improvementExplanation": "Replace UDF with Spark SQL functions or native DataFrame/Dataset operations for better performance and optimization.",
+            "alternativeEquivalent": "Use DataFrame/Dataset operations to extract family name instead of UDF.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "UDF extract_given_name",
+            "improvementExplanation": "Replace UDF with Spark SQL functions or native DataFrame/Dataset operations for better performance and optimization.",
+            "alternativeEquivalent": "Use DataFrame/Dataset operations to extract given name instead of UDF.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "UDF format_phone",
+            "improvementExplanation": "Replace UDF with Spark SQL functions or native DataFrame/Dataset operations for better performance and optimization.",
+            "alternativeEquivalent": "Use DataFrame/Dataset operations to format phone instead of UDF.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "UDF clean_cpf",
+            "improvementExplanation": "Replace UDF with Spark SQL functions or native DataFrame/Dataset operations for better performance and optimization.",
+            "alternativeEquivalent": "Use DataFrame/Dataset operations to clean CPF instead of UDF.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "UDF format_gender",
+            "improvementExplanation": "Replace UDF with Spark SQL functions or native DataFrame/Dataset operations for better performance and optimization.",
+            "alternativeEquivalent": "Use DataFrame/Dataset operations to format gender instead of UDF.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "UDF format_date",
+            "improvementExplanation": "Replace UDF with Spark SQL functions or native DataFrame/Dataset operations for better performance and optimization.",
+            "alternativeEquivalent": "Use DataFrame/Dataset operations to format date instead of UDF.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        }
+    ]
+}

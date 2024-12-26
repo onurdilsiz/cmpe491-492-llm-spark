@@ -1,0 +1,42 @@
+{
+    "detected": true,
+    "occurrences": 6,
+    "response": [
+        {
+            "operation": "extract_family_name(full_name: List[str])",
+            "improvementExplanation": "The map() transformation is applied to each individual element in the DataFrame, which can lead to high function call overhead when processing large datasets. By using mapPartitions(), we can process elements in batches at the partition level, reducing the number of function calls and improving efficiency, especially for I/O-heavy operations.",
+            "mapPartitionsEquivalent": "df.withColumn('family_name', F.expr('transform_family_name(array(*))')).drop('full_name')",
+            "benefits": "Switching to mapPartitions() can reduce function call overhead, optimize I/O operations by processing data in batches at the partition level, and improve performance for partition-level transformations."
+        },
+        {
+            "operation": "extract_given_name(full_name: List[str])",
+            "improvementExplanation": "The map() transformation is applied to each individual element in the DataFrame, resulting in high function call overhead for large datasets. Using mapPartitions() allows processing elements in batches at the partition level, reducing function calls and enhancing efficiency, especially for I/O-heavy operations.",
+            "mapPartitionsEquivalent": "df.withColumn('given_name', F.expr('transform_given_name(array(*))')).drop('full_name')",
+            "benefits": "Adopting mapPartitions() can minimize function call overhead, optimize I/O operations by processing data at the partition level, and enhance performance for partition-level tasks."
+        },
+        {
+            "operation": "format_phone(phone: str)",
+            "improvementExplanation": "The map() transformation is applied individually to each element in the DataFrame, leading to increased function call overhead for large datasets. Leveraging mapPartitions() enables processing elements in batches at the partition level, reducing function calls and enhancing efficiency, particularly for I/O-intensive operations.",
+            "mapPartitionsEquivalent": "df.withColumn('formatted_phone', F.expr('transform_phone(phone)'))",
+            "benefits": "Transitioning to mapPartitions() can decrease function call overhead, optimize I/O operations by processing data in partitions, and boost performance for partition-level transformations."
+        },
+        {
+            "operation": "clean_cpf(value: str)",
+            "improvementExplanation": "The map() transformation is applied to each element individually, resulting in high function call overhead for large datasets. Utilizing mapPartitions() allows processing elements in batches at the partition level, reducing function calls and improving efficiency, especially for I/O-heavy operations.",
+            "mapPartitionsEquivalent": "df.withColumn('cleaned_cpf', F.expr('transform_cpf(value)'))",
+            "benefits": "Shifting to mapPartitions() can reduce function call overhead, optimize I/O operations by processing data at the partition level, and enhance performance for partition-level tasks."
+        },
+        {
+            "operation": "format_gender(value: str)",
+            "improvementExplanation": "The map() transformation is applied individually to each element in the DataFrame, leading to increased function call overhead for large datasets. Leveraging mapPartitions() enables processing elements in batches at the partition level, reducing function calls and enhancing efficiency, particularly for I/O-intensive operations.",
+            "mapPartitionsEquivalent": "df.withColumn('formatted_gender', F.expr('transform_gender(value)'))",
+            "benefits": "Transitioning to mapPartitions() can decrease function call overhead, optimize I/O operations by processing data in partitions, and boost performance for partition-level transformations."
+        },
+        {
+            "operation": "format_date(value: str)",
+            "improvementExplanation": "The map() transformation is applied individually to each element in the DataFrame, resulting in high function call overhead for large datasets. Using mapPartitions() allows processing elements in batches at the partition level, reducing function calls and enhancing efficiency, especially for I/O-heavy operations.",
+            "mapPartitionsEquivalent": "df.withColumn('formatted_date', F.expr('transform_date(value)'))",
+            "benefits": "Switching to mapPartitions() can reduce function call overhead, optimize I/O operations by processing data at the partition level, and improve performance for partition-level tasks."
+        }
+    ]
+}

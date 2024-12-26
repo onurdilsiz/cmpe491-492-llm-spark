@@ -1,0 +1,31 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "df_5years.repartition(200).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/200\")",
+            "improvementExplanation": "The `repartition(200)` operation forces a full shuffle of the data across all partitions, which can be expensive. Since the goal is to reduce the number of partitions for writing, and not necessarily to redistribute the data, `coalesce(200)` can be used instead. `coalesce` attempts to reduce the number of partitions without a full shuffle, which is more efficient when reducing the number of partitions.",
+            "coalesceEquivalent": "df_5years.coalesce(200).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/200\")",
+            "benefits": "Using `coalesce` instead of `repartition` reduces the amount of data shuffling, leading to improved resource usage and faster job runtime. It avoids a full shuffle, which is more efficient when reducing the number of partitions."
+        }
+    ],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": true,
+    "occurrences3": 1,
+    "response3": [
+        {
+            "operation": "df_5years.repartition(200).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/200\")",
+            "improvementExplanation": "The code is writing data in CSV format, which is not optimized for performance. CSV files are text-based, which means they are not compressed by default and require parsing during read operations. Switching to a serialized format like Parquet, ORC, or Avro can significantly improve performance due to compression, schema enforcement, and predicate pushdown.",
+            "optimizedEquivalent": "df_5years.coalesce(200).write.format(\"parquet\").option(\"compression\",\"snappy\").mode(\"overwrite\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/parquet/200\")",
+            "benefits": "Using Parquet (or ORC/Avro) provides faster read and write operations due to columnar storage and compression. It also enables query optimization through predicate pushdown, which can significantly reduce the amount of data read from disk. Additionally, Parquet is self-describing, which means it stores the schema along with the data, making it easier to work with."
+        }
+    ],
+    "detected4": false,
+    "occurrences4": 0,
+    "response4": []
+}

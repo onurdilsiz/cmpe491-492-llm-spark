@@ -1,0 +1,32 @@
+```json
+{
+    "detected": true,
+    "occurrences": 4,
+    "response": [
+        {
+            "operation": "convertUDF(col(\"Name\")).alias(\"Name\")",
+            "improvementExplanation": "The UDF 'convertCase' is used to convert the case of strings in the 'Name' column. This can be replaced with the built-in Spark SQL function 'initcap' to achieve the same result.",
+            "alternativeEquivalent": "df.withColumn(\"Name\", initcap(col(\"Name\"))).show(truncate=False)",
+            "benefits": "By using the 'initcap' function instead of a UDF, Spark can optimize the query execution plan more effectively, leading to potential performance improvements."
+        },
+        {
+            "operation": "upperCase(col(\"Name\"))",
+            "improvementExplanation": "The UDF 'upperCase' is used to convert strings to uppercase in the 'Name' column. This can be replaced with the built-in Spark SQL function 'upper' to achieve the same functionality.",
+            "alternativeEquivalent": "df.withColumn(\"Cureated Name\", upper(col(\"Name\"))).show(truncate=False)",
+            "benefits": "Replacing the UDF with the 'upper' function allows Spark to optimize the query plan better, potentially enhancing performance by avoiding UDF serialization overhead."
+        },
+        {
+            "operation": "convertUDF(Name) as Name",
+            "improvementExplanation": "The UDF 'convertCase' is used in a SQL query to convert the case of strings in the 'Name' column. This can be replaced with the built-in Spark SQL function 'initcap' for the same functionality.",
+            "alternativeEquivalent": "spark.sql(\"select Seqno, initcap(Name) as Name from NAME_TABLE\").show(truncate=False)",
+            "benefits": "Using 'initcap' function instead of a UDF in SQL queries enables Spark to leverage Catalyst optimizations, potentially improving query performance."
+        },
+        {
+            "operation": "_nullsafeUDF(Name) as Name",
+            "improvementExplanation": "The UDF '_nullsafeUDF' is used to handle null values in the 'Name' column. This can be replaced with the native DataFrame operation 'coalesce' to handle null values more efficiently.",
+            "alternativeEquivalent": "spark.sql(\"select Seqno, coalesce(Name, '') as Name from NAME_TABLE2\").show(truncate=False)",
+            "benefits": "Replacing the UDF with 'coalesce' operation allows Spark to optimize null value handling, potentially enhancing query performance and reducing serialization overhead."
+        }
+    ]
+}
+```

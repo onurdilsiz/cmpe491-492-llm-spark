@@ -1,0 +1,54 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 6,
+    "response4": [
+        {
+            "operation": "@udf(returnType=StringType())\ndef extract_family_name(full_name: List[str]):\n    full_name_splited = full_name.split(\" \")\n    return \" \".join(full_name_splited[1:]) if len(full_name_splited) > 1 else None",
+            "improvementExplanation": "The UDF `extract_family_name` can be replaced with Spark SQL functions. We can use `split` to split the full name and `array_join` to join the array elements from the second element onwards.",
+            "alternativeEquivalent": "from pyspark.sql.functions import split, array_join, expr\n\ndf = df.withColumn(\"family_name\", expr(\"array_join(slice(split(full_name, ' '), 2, size(split(full_name, ' ')) - 1), ' ')\"))",
+            "benefits": "Avoiding UDFs allows Spark's Catalyst optimizer to optimize the query execution plan, leading to better performance. It also reduces serialization overhead."
+        },
+        {
+            "operation": "@udf(returnType=StringType())\ndef extract_given_name(full_name: List[str]):\n    return full_name.split(\" \")[0]",
+            "improvementExplanation": "The UDF `extract_given_name` can be replaced with Spark SQL functions. We can use `split` to split the full name and then access the first element of the resulting array.",
+            "alternativeEquivalent": "from pyspark.sql.functions import split, element_at\n\ndf = df.withColumn(\"given_name\", element_at(split(\"full_name\", \" \"), 1))",
+            "benefits": "Avoiding UDFs allows Spark's Catalyst optimizer to optimize the query execution plan, leading to better performance. It also reduces serialization overhead."
+        },
+        {
+            "operation": "@udf(returnType=StringType())\ndef format_phone(phone: str):\n    pattern = r\"\\((\\d{2})\\)\\s(\\d{4}-\\d{4})\"\n    return re.sub(pattern, r\"+55 0\\1 \\2\", phone)",
+            "improvementExplanation": "The UDF `format_phone` can be replaced with Spark SQL's `regexp_replace` function.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace\n\ndf = df.withColumn(\"formatted_phone\", regexp_replace(\"phone\", r\"\\((\\d{2})\\)\\s(\\d{4}-\\d{4})\", r\"+55 0$1 $2\"))",
+            "benefits": "Avoiding UDFs allows Spark's Catalyst optimizer to optimize the query execution plan, leading to better performance. It also reduces serialization overhead."
+        },
+        {
+            "operation": "@udf(returnType=StringType())\ndef clean_cpf(value: str):\n    return re.sub(r\"\\D\", \"\", value)",
+            "improvementExplanation": "The UDF `clean_cpf` can be replaced with Spark SQL's `regexp_replace` function to remove non-digit characters.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace\n\ndf = df.withColumn(\"cleaned_cpf\", regexp_replace(\"cpf\", r\"\\D\", \"\"))",
+            "benefits": "Avoiding UDFs allows Spark's Catalyst optimizer to optimize the query execution plan, leading to better performance. It also reduces serialization overhead."
+        },
+        {
+            "operation": "@udf(returnType=StringType())\ndef format_gender(value: str):\n    gender_clean = value.lower()\n\n    if gender_clean == \"masculino\":\n        return \"male\"\n\n    if gender_clean == \"feminino\":\n        return \"female\"\n\n    return \"unknown\"",
+            "improvementExplanation": "The UDF `format_gender` can be replaced with Spark SQL's `when` and `otherwise` functions.",
+            "alternativeEquivalent": "from pyspark.sql.functions import when, lower\n\ndf = df.withColumn(\"formatted_gender\",\n    when(lower(\"gender\") == \"masculino\", \"male\")\n    .when(lower(\"gender\") == \"feminino\", \"female\")\n    .otherwise(\"unknown\"))",
+            "benefits": "Avoiding UDFs allows Spark's Catalyst optimizer to optimize the query execution plan, leading to better performance. It also reduces serialization overhead."
+        },
+        {
+            "operation": "@udf(returnType=StringType())\ndef format_date(value: str):\n    value_date = datetime.strptime(value, \"%d/%m/%Y\")\n    return value_date.strftime(\"%Y-%m-%d\")",
+            "improvementExplanation": "The UDF `format_date` can be replaced with Spark SQL's `to_date` and `date_format` functions.",
+            "alternativeEquivalent": "from pyspark.sql.functions import to_date, date_format\n\ndf = df.withColumn(\"formatted_date\", date_format(to_date(\"date\", \"dd/MM/yyyy\"), \"yyyy-MM-dd\"))",
+            "benefits": "Avoiding UDFs allows Spark's Catalyst optimizer to optimize the query execution plan, leading to better performance. It also reduces serialization overhead."
+        }
+    ]
+}

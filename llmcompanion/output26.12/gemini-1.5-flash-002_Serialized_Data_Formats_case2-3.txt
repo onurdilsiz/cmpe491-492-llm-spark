@@ -1,0 +1,50 @@
+```json
+{
+  "detected": true,
+  "occurrences": 7,
+  "response": [
+    {
+      "operation": "sc.textFile(word_file) at line 50",
+      "improvementExplanation": "The code reads a text file using sc.textFile.  Switching to Parquet or ORC would significantly improve performance, especially for large datasets, due to their columnar storage and compression. Text files are inefficient for analytical processing because they require scanning the entire file for each query.",
+      "optimizedEquivalent": "parquetFile = 'file:///Users/zhenglong/proj/spark_demo/data/work.parquet'\nword_df = spark.read.parquet(parquetFile)\nwc = word_df.flatMap(lambda line: line.split(\" \")).map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b)",
+      "benefits": "Faster reads and writes, better compression, and potential for predicate pushdown optimization."
+    },
+    {
+      "operation": "sc.textFile(json_file) at line 64",
+      "improvementExplanation": "The code reads a JSON file line by line using sc.textFile and then parses each line individually with json.loads. This is inefficient.  Storing the data in Parquet or ORC would allow Spark to read and process the data more efficiently in a columnar format.",
+      "optimizedEquivalent": "parquetFile = 'file:///Users/zhenglong/proj/spark_demo/data/people.parquet'\npeople_df = spark.read.parquet(parquetFile)",
+      "benefits": "Faster reads and writes, better compression, and potential for predicate pushdown optimization."
+    },
+    {
+      "operation": "ss.read.json(json_file) at line 70",
+      "improvementExplanation": "Spark's DataFrame API reads JSON data. While Spark handles JSON reasonably well, Parquet or ORC offer superior performance for large datasets due to their optimized storage format and compression.",
+      "optimizedEquivalent": "parquetFile = 'file:///Users/zhenglong/proj/spark_demo/data/people.parquet'\ndf = ss.read.parquet(parquetFile)",
+      "benefits": "Faster reads and writes, better compression, and potential for predicate pushdown optimization."
+    },
+    {
+      "operation": "sc.textFile(txt_file) at line 81",
+      "improvementExplanation": "The code reads a CSV file using sc.textFile.  This is inefficient for large datasets. Parquet or ORC provide columnar storage and compression, leading to faster query execution.",
+      "optimizedEquivalent": "parquetFile = 'file:///Users/zhenglong/proj/spark_demo/data/people.parquet'\ndf = ss.read.parquet(parquetFile)",
+      "benefits": "Faster reads and writes, better compression, and potential for predicate pushdown optimization."
+    },
+    {
+      "operation": "people_rdd = sc.textFile(txt_file) at line 102",
+      "improvementExplanation": "Similar to the previous CSV read, using Parquet or ORC would drastically improve performance for large datasets.  The schema definition is already present, making the transition straightforward.",
+      "optimizedEquivalent": "parquetFile = 'file:///Users/zhenglong/proj/spark_demo/data/people.parquet'\npeople_df = ss.read.parquet(parquetFile)",
+      "benefits": "Faster reads and writes, better compression, and potential for predicate pushdown optimization."
+    },
+    {
+      "operation": "ssc.textFileStream(log_file) at line 126",
+      "improvementExplanation": "Reading streaming data from text files is inefficient. While not directly applicable to streaming, storing the processed results in Parquet or ORC after each micro-batch would improve storage efficiency and subsequent analysis.",
+      "optimizedEquivalent": "The streaming nature of this operation makes direct replacement with Parquet/ORC challenging.  However, the results of the word count can be saved to Parquet/ORC after each micro-batch for efficient storage and later analysis.\nwc.foreachRDD(lambda rdd: rdd.toDF().write.parquet(streaming+'/output.parquet'))",
+      "benefits": "Improved storage efficiency for later analysis. Faster reads for subsequent processing."
+    },
+    {
+      "operation": "wc.saveAsTextFiles(streaming+'/output.txt') at line 152",
+      "improvementExplanation": "Saving the streaming results as text files is inefficient.  Parquet or ORC would provide better compression and faster access for later analysis.",
+      "optimizedEquivalent": "wc.foreachRDD(lambda rdd: rdd.toDF().write.parquet(streaming+'/output.parquet'))",
+      "benefits": "Faster writes, better compression, and faster reads for subsequent processing."
+    }
+  ]
+}
+```
