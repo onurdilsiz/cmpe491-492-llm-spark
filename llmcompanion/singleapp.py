@@ -165,40 +165,59 @@ def init_models(models):
     
     llms = {}
     for model in models:
-        if model.startswith("gemini"):
-            llms[model] = ChatVertexAI(
-                model=model,
-                temperature=0,
-                max_tokens=None,
-                max_retries=6,
-                stop=None,
-            )
+        if model.startswith("gemini") or model.startswith("chat-bison"):  
+            try:        
+                llms[model] = ChatVertexAI(
+                    model=model,
+                    temperature=0,
+                    max_tokens=None,
+                    max_retries=6,
+                    stop=None,
+                )
+            except Exception as e:
+                logging.error(f"Error initializing model {model}: {e}")
+        
+        elif model.startswith("meta"):
+            try:    
+                llms[model] = ChatVertexAI(    
+                    model=model,
+                    temperature=0,
+                    max_tokens=None,
+                    max_retries=6,
+                    stop=None,
+                    client_options={"api_endpoint": "us-central1-aiplatform.googleapis.com"},  # Ensure region matches deployment
+)
+            except Exception as e:
+                logging.error(f"Error initializing model {model}: {e}")
+
         else:
-            
-            llms[model] = ChatOpenAI(
-                model=model,  # Strip prefix for OpenAI models
-                temperature=0,
-                max_tokens=None,
-                max_retries=1,
-                stop=None,
-                request_timeout=30,  # 30 seconds timeout
-                api_key=OPENAI_API_KEY,
-            )
+            try:    
+                llms[model] = ChatOpenAI(
+                    model=model,  # Strip prefix for OpenAI models
+                    temperature=0,
+                    max_tokens=None,
+                    max_retries=1,
+                    stop=None,
+                    request_timeout=30,  # 30 seconds timeout
+                    api_key=OPENAI_API_KEY,
+                )
+            except Exception as e:
+                logging.error(f"Error initializing model {model}: {e}")
     return llms
     
 
 def main():
-    log_file = "analysis26.12.log"
+    log_file = "analysis05.01.log"
     setup_logging(log_file)
     # File paths for local input and output
     config = {
-        "models": ["gpt-3.5-turbo-0125", "gemini-1.0-pro-002", "gemini-1.5-flash-002", "gemini-2.0-flash-exp" ], # gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
+        "models": ["meta/llama-3.1-405b-instruct-maas" ], #meta/llama-3.1-8b-instruct-maas, gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
         "cases": ["RDD vs DataFrame", "Coalesce vs Repartition", "Map vs MapPartitions", "Serialized Data Formats", "Avoiding UDFs","All"],
         "dataset_dir": "dataset",  # Directory containing all the dataset files
         "prompts_dir": "prompts",  # Directory containing prompt files
-        "output_dir": "output26.12",   # Directory to save the analysis results
-        "csv_file": "tokenresults26.12.csv",
-        "csv_file2": "detectionresults26.12.csv"
+        "output_dir": "output05.01",   # Directory to save the analysis results
+        "csv_file": "tokenresults05.01.csv",
+        "csv_file2": "detectionresults05.01.csv"
     }
     
     # Initialize the models for analysis
