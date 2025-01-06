@@ -1,0 +1,24 @@
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "Reading CSV file using `reader()` function at line 9",
+      "improvementExplanation": "The current data format is CSV, which is a text-based format. Switching to Parquet or ORC, which are columnar storage formats, can improve performance by reducing the time it takes to read and write data. Parquet and ORC are optimized for fast data processing and provide features like compression and predicate pushdown, which can significantly improve query performance.",
+      "optimizedEquivalent": "You can use the `spark.read.parquet()` function to read Parquet files instead of CSV. Here's an example:\n\n`lines = sc.textFile(sys.argv[1], 1).map(lambda x: x.split(','))` becomes `lines = spark.read.parquet(sys.argv[1]).select('column_name')`",
+      "benefits": "Switching to Parquet or ORC can provide faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Writing output to a text file using `saveAsTextFile()` function at line 15",
+      "improvementExplanation": "The current data format is text, which is not optimized for fast data processing. Switching to Parquet or ORC can improve performance by reducing the time it takes to write data. Parquet and ORC are optimized for fast data processing and provide features like compression and predicate pushdown, which can significantly improve query performance.",
+      "optimizedEquivalent": "You can use the `spark.createDataFrame()` function to create a DataFrame from the results and then use the `write.parquet()` function to write it to a Parquet file. Here's an example:\n\n`results.saveAsTextFile('check_prem_typ_desc.out')` becomes `results.write.parquet('check_prem_typ_desc.out')`",
+      "benefits": "Switching to Parquet or ORC can provide faster writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Reading input from a text file using `textFile()` function at line 8",
+      "improvementExplanation": "The current data format is text, which is not optimized for fast data processing. Switching to Parquet or ORC can improve performance by reducing the time it takes to read data. Parquet and ORC are optimized for fast data processing and provide features like compression and predicate pushdown, which can significantly improve query performance.",
+      "optimizedEquivalent": "You can use the `spark.read.parquet()` function to read Parquet files instead of text files. Here's an example:\n\n`lines = sc.textFile(sys.argv[1], 1)` becomes `lines = spark.read.parquet(sys.argv[1])`",
+      "benefits": "Switching to Parquet or ORC can provide faster reads, compression, and query optimization through predicate pushdown."
+    }
+  ]
+}

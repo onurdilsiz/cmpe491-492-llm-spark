@@ -1,0 +1,30 @@
+{
+  "detected": true,
+  "occurrences": 4,
+  "response": [
+    {
+      "operation": "arrayMax(arr: ArrayType(FloatType())) -> Union[float, int]: return float(max(arr.values))",
+      "improvementExplanation": "The UDF arrayMax can be replaced with the built-in DataFrame/Dataset operation max() or the SQL function MAX(). This is because the max() function is optimized for performance and can take advantage of Catalyst optimizations. The UDF is currently being used to find the maximum value in an array, which can be achieved more efficiently using the built-in max() function.",
+      "alternativeEquivalent": "val df = spark.createDataFrame([(1.0, 2.0, 3.0)], ['a', 'b', 'c'])\nval maxVal = df.select(max('a')).first().getDouble(0)\n// or using SQL: val maxVal = spark.sql(\"SELECT MAX(a) FROM df\").first().getDouble(0)",
+      "benefits": "Replacing the UDF with the built-in max() function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "arraySize(arr: ArrayType(FloatType())) -> int: return len(arr)",
+      "improvementExplanation": "The UDF arraySize can be replaced with the built-in DataFrame/Dataset operation size() or the SQL function COUNT(). This is because the size() function is optimized for performance and can take advantage of Catalyst optimizations. The UDF is currently being used to find the size of an array, which can be achieved more efficiently using the built-in size() function.",
+      "alternativeEquivalent": "val df = spark.createDataFrame([(1.0, 2.0, 3.0)], ['a', 'b', 'c'])\nval size = df.count()\n// or using SQL: val size = spark.sql(\"SELECT COUNT(*) FROM df\").first().getInt(0)",
+      "benefits": "Replacing the UDF with the built-in size() function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "isDate(string: str) -> bool: try: parseDate(string, fuzzy=False, ignoretz=True) return True except Exception as exe: if not isinstance(exe, ValueError): if isinstance(exe, TypeError): pass else: print('Caught unexpected Error', exe) print(exe) return False",
+      "improvementExplanation": "The UDF isDate can be replaced with the built-in DataFrame/Dataset operation isNotNull() or the SQL function IS NOT NULL(). This is because the isNotNull() function is optimized for performance and can take advantage of Catalyst optimizations. The UDF is currently being used to check if a string can be parsed to a date, which can be achieved more efficiently using the built-in isNotNull() function.",
+      "alternativeEquivalent": "val df = spark.createDataFrame(['2022-01-01', '2022-01-02', 'invalid date'], ['date'])\nval isDate = df.filter(df('date').isNotNull()).count()\n// or using SQL: val isDate = spark.sql(\"SELECT COUNT(*) FROM df WHERE date IS NOT NULL\").first().getInt(0)",
+      "benefits": "Replacing the UDF with the built-in isNotNull() function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "URLs2domain(urls: List[str]) -> List[str]: return [__URL2domain(url) for url in urls]",
+      "improvementExplanation": "The UDF URLs2domain can be replaced with the built-in DataFrame/Dataset operation map() or the SQL function REGEXP_REPLACE(). This is because the map() function is optimized for performance and can take advantage of Catalyst optimizations. The UDF is currently being used to trim a list of URLs and leave only the root domains, which can be achieved more efficiently using the built-in map() function.",
+      "alternativeEquivalent": "val df = spark.createDataFrame(['http://example.com', 'http://sub.example.com'], ['url'])\nval domains = df.select(map('url', lambda x: get_tld(x, as_object=True).domain + '.' + get_tld(x, as_object=True).tld)).first().getString(0)\n// or using SQL: val domains = spark.sql(\"SELECT REGEXP_REPLACE(url, '.*\\.(.*)\\..*', '\\1') FROM df\").first().getString(0)",
+      "benefits": "Replacing the UDF with the built-in map() function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}

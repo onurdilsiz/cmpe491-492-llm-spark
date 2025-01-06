@@ -9,7 +9,11 @@ from dotenv import load_dotenv
 import time
 load_dotenv()
 
+
+
 OPENAI_API_KEY= os.getenv("OPENAI_API_KEY")
+
+
 
 def setup_logging(log_file):
     """Setup logging to a file."""
@@ -123,7 +127,8 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
                 except json.JSONDecodeError as e:
                     logging.error(f"Error decoding JSON: {e}")
                     
-                
+                os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
+
 
                 # Write the cleaned and parsed JSON to a file
                 with open(output_file_path, "w") as output_file:
@@ -136,6 +141,7 @@ def analyze_directory(dataset_dir, cases, models, prompts_dir, output_dir,csv_fi
                 logging.info(f"Analysis for {file_name} saved to {output_file_path}")
                 output_file_path = output_file_path.replace(".json", ".txt")
 
+                os.makedirs(os.path.dirname(output_file_path), exist_ok=True)
 
                 with open(output_file_path, "w") as output_file:
                     output_file.write(analysis.content)
@@ -177,16 +183,16 @@ def init_models(models):
             except Exception as e:
                 logging.error(f"Error initializing model {model}: {e}")
         
-        elif model.startswith("meta"):
+        elif model.startswith("publishers"):
             try:    
-                llms[model] = ChatVertexAI(    
-                    model=model,
+               llms[model] = ChatVertexAI(
+                    model="publishers/meta/models/llama-3.1-8b-instruct-maas",
                     temperature=0,
                     max_tokens=None,
                     max_retries=6,
                     stop=None,
-                    client_options={"api_endpoint": "us-central1-aiplatform.googleapis.com"},  # Ensure region matches deployment
-)
+                )
+
             except Exception as e:
                 logging.error(f"Error initializing model {model}: {e}")
 
@@ -211,7 +217,7 @@ def main():
     setup_logging(log_file)
     # File paths for local input and output
     config = {
-        "models": ["meta/llama-3.1-405b-instruct-maas" ], #meta/llama-3.1-8b-instruct-maas, gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
+        "models": ["publishers/meta/models/llama-3.1-8b-instruct-maas" ], #meta/llama-3.1-8b-instruct-maas, gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
         "cases": ["RDD vs DataFrame", "Coalesce vs Repartition", "Map vs MapPartitions", "Serialized Data Formats", "Avoiding UDFs","All"],
         "dataset_dir": "dataset",  # Directory containing all the dataset files
         "prompts_dir": "prompts",  # Directory containing prompt files

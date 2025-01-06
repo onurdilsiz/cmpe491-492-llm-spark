@@ -1,0 +1,12 @@
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").repartition(1)",
+      "improvementExplanation": "The repartition() operation is used to reduce the number of partitions from the default value to 1. However, this operation requires a full shuffle, which can be expensive. In this case, coalesce() can be used instead, which reduces the number of partitions without a full shuffle. This is because the number of partitions is being reduced, not increased.",
+      "coalesceEquivalent": "azureAuditLog_df_dynf = DynamicFrame.fromDF(azureAuditLog_df, glueContext, \"dynamic_frame\").coalesce(1)",
+      "benefits": "Switching to coalesce() reduces shuffling, improves resource usage, and results in a faster job runtime."
+    }
+  ]
+}

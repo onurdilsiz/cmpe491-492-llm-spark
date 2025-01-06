@@ -1,0 +1,54 @@
+```json
+{
+  "detected0": true,
+  "occurrences0": 1,
+  "response0": [
+    {
+      "operation": "df = spark.read.parquet(dir_path)",
+      "improvementExplanation": "The provided code uses an RDD to read a Parquet file. This can be replaced with a DataFrame/Dataset, which is more efficient and provides better query optimization. The equivalent DataFrame/Dataset transformation is: `df = spark.read.parquet(dir_path).toDF()`",
+      "dataframeEquivalent": "df = spark.read.parquet(dir_path).toDF()",
+      "benefits": "Switching to DataFrame/Dataset provides better query optimization, reduced shuffling, and easier integration with structured data formats."
+    }
+  ],
+  "detected1": true,
+  "occurrences1": 1,
+  "response1": [
+    {
+      "operation": "write_to_protobuf(df, path, print_intervals=1000)",
+      "improvementExplanation": "The provided code uses repartition() to collect data from a DataFrame/Dataset. This can be replaced with coalesce(), which reduces shuffling and improves resource usage. The equivalent coalesce() operation is: `df.coalesce(1).write(...)`",
+      "coalesceEquivalent": "df.coalesce(1).write(...)",
+      "benefits": "Switching to coalesce() reduces shuffling, improves resource usage, and speeds up job runtime."
+    }
+  ],
+  "detected2": true,
+  "occurrences2": 1,
+  "response2": [
+    {
+      "operation": "synthetic_page_skeleton_and_paragraphs_udf(p)",
+      "improvementExplanation": "The provided code uses a map() transformation to process data at the row level. This can be replaced with mapPartitions(), which is more efficient for partition-level operations. The equivalent mapPartitions() operation is: `df.mapPartitions(lambda x: ...)`",
+      "mapPartitionsEquivalent": "df.mapPartitions(lambda x: ...)",
+      "benefits": "Switching to mapPartitions() reduces function call overhead, optimizes I/O, and improves performance for partition-level operations."
+    }
+  ],
+  "detected3": true,
+  "occurrences3": 1,
+  "response3": [
+    {
+      "operation": "write_to_protobuf(df, path, print_intervals=1000)",
+      "improvementExplanation": "The provided code uses a non-optimized data format (binary) to write data to a file. This can be replaced with an optimized format like Parquet, ORC, or Avro, which provides faster reads/writes, compression, and query optimization through predicate pushdown. The equivalent optimized format is: `df.write.parquet(path)`",
+      "optimizedEquivalent": "df.write.parquet(path)",
+      "benefits": "Switching to optimized formats provides faster reads/writes, compression, and query optimization through predicate pushdown."
+    }
+  ],
+  "detected4": true,
+  "occurrences4": 1,
+  "response4": [
+    {
+      "operation": "synthetic_page_skeleton_and_paragraphs_udf(p)",
+      "improvementExplanation": "The provided code uses a User-Defined Function (UDF) to process data. This can be replaced with a Spark SQL function or native DataFrame/Dataset operation, which enables Catalyst optimizations, improves performance, and reduces serialization overhead. The equivalent alternative implementation is: `df.withColumn('synthetic_entity_linking', ...)`",
+      "alternativeEquivalent": "df.withColumn('synthetic_entity_linking', ...)",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}
+```

@@ -1,0 +1,34 @@
+{
+  "detected": true,
+  "occurrences": 4,
+  "response": [
+    {
+      "operation": "plainText.map(lambda tc: (tc[0], plainTextToLemmas(tc[1], stopWords, pipeline)), itr)",
+      "location": "line 24 in the preprocessing function",
+      "improvementExplanation": "The map() operation is used to apply the lemmatization pipeline to each token in the plain text. However, this operation can be performed at the partition level, as it involves batching and processing a large number of tokens. By using mapPartitions(), we can reduce the function call overhead and optimize I/O operations.",
+      "mapPartitionsEquivalent": "lemmatized = plainText.mapPartitions(lambda itr: [ (tc[0], plainTextToLemmas(tc[1], stopWords, pipeline)) for tc in itr])",
+      "benefits": "Switching to mapPartitions() can reduce function call overhead, optimize I/O operations, and improve resource utilization by processing large batches of tokens in parallel."
+    },
+    {
+      "operation": "map(lambda x: (termIds[x[0]], x[1]) ,termSorted[0:numTerms])",
+      "location": "line 63 in the topTermsInTopConcepts function",
+      "improvementExplanation": "The map() operation is used to transform the term weights into a list of tuples. However, this operation can be performed at the partition level, as it involves simple transformations and aggregations. By using mapPartitions(), we can reduce the function call overhead and optimize I/O operations.",
+      "mapPartitionsEquivalent": "topTerms.append(mapPartitions(lambda itr: [ (termIds[x[0]], x[1]) for x in itr], itr=termSorted[0:numTerms]))",
+      "benefits": "Switching to mapPartitions() can reduce function call overhead, optimize I/O operations, and improve resource utilization by processing large batches of term weights in parallel."
+    },
+    {
+      "operation": "map(lambda doc: (docIds[doc[1]], doc[0]), docWeights.top(numDocs))",
+      "location": "line 76 in the topDocsInTopConcepts function",
+      "improvementExplanation": "The map() operation is used to transform the document weights into a list of tuples. However, this operation can be performed at the partition level, as it involves simple transformations and aggregations. By using mapPartitions(), we can reduce the function call overhead and optimize I/O operations.",
+      "mapPartitionsEquivalent": "topDocs.append(mapPartitions(lambda itr: [ (docIds[doc[1]], doc[0]) for doc in itr], itr=docWeights.top(numDocs)))",
+      "benefits": "Switching to mapPartitions() can reduce function call overhead, optimize I/O operations, and improve resource utilization by processing large batches of document weights in parallel."
+    },
+    {
+      "operation": "map(lambda x: x[0], termDoc[0])",
+      "location": "line 91 in the main function",
+      "improvementExplanation": "The map() operation is used to extract the term IDs from the top concept terms. However, this operation can be performed at the partition level, as it involves simple transformations and aggregations. By using mapPartitions(), we can reduce the function call overhead and optimize I/O operations.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda itr: [ x[0] for x in itr], itr=termDoc[0])",
+      "benefits": "Switching to mapPartitions() can reduce function call overhead, optimize I/O operations, and improve resource utilization by processing large batches of term IDs in parallel."
+    }
+  ]
+}

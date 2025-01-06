@@ -1,0 +1,18 @@
+{
+  "detected": true,
+  "occurrences": 0,
+  "response": [
+    {
+      "operation": "df.repartition(2).rdd.map(lambda x: (x.Seqno, x.Name)).saveAsTextFile(\"/tmp/seqno\")",
+      "improvementExplanation": "The repartition operation is used to change the number of partitions in the DataFrame. However, in this case, it's used to save the data as a text file, which doesn't require a full shuffle. A coalesce operation can be used instead to reduce the number of partitions, which will result in less shuffling and improved resource usage.",
+      "coalesceEquivalent": "df.coalesce(2).rdd.map(lambda x: (x.Seqno, x.Name)).saveAsTextFile(\"/tmp/seqno\")",
+      "benefits": "Reduced shuffling, improved resource usage, and faster runtime."
+    },
+    {
+      "operation": "df.repartition(2).rdd.map(lambda x: (x.Seqno, x.Name)).saveAsTextFile(\"/tmp/seqno\")",
+      "improvementExplanation": "The repartition operation is used to change the number of partitions in the DataFrame. However, in this case, it's used to save the data as a text file, which doesn't require a full shuffle. A coalesce operation can be used instead to reduce the number of partitions, which will result in less shuffling and improved resource usage.",
+      "coalesceEquivalent": "df.coalesce(2).rdd.map(lambda x: (x.Seqno, x.Name)).saveAsTextFile(\"/tmp/seqno\")",
+      "benefits": "Reduced shuffling, improved resource usage, and faster runtime."
+    }
+  ]
+}

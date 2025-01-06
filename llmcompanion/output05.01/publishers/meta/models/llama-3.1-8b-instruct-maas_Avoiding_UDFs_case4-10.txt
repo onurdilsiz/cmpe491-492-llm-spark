@@ -1,0 +1,36 @@
+{
+  "detected": true,
+  "occurrences": 5,
+  "response": [
+    {
+      "operation": "convertUDF = udf(lambda z: convertCase(z))",
+      "improvementExplanation": "The UDF convertUDF can be replaced with a built-in function or native DataFrame/Dataset operation. The convertCase function is used to convert the case of a string. This can be achieved using the upper and lower functions provided by Spark SQL functions. The convertUDF is used in the select operation to convert the case of the Name column.",
+      "alternativeEquivalent": "df.select(col(\"Seqno\"), upper(col(\"Name\")).alias(\"Name\") ).show(truncate=False)",
+      "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "@udf(returnType=StringType()) def upperCase(str): return str.upper()",
+      "improvementExplanation": "The UDF upperCase can be replaced with a built-in function or native DataFrame/Dataset operation. The upperCase function is used to convert a string to uppercase. This can be achieved using the upper function provided by Spark SQL functions. The upperCaseUDF is used in the withColumn operation to convert the Name column to uppercase.",
+      "alternativeEquivalent": "df.withColumn(\"Cureated Name\", upper(col(\"Name\"))).show(truncate=False)",
+      "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "spark.udf.register(\"convertUDF\", convertCase,StringType())",
+      "improvementExplanation": "The UDF convertUDF can be replaced with a built-in function or native DataFrame/Dataset operation. The convertUDF is used in the SQL query to convert the case of the Name column. This can be achieved using the upper and lower functions provided by Spark SQL functions.",
+      "alternativeEquivalent": "spark.sql(\"select Seqno, upper(Name) as Name from NAME_TABLE\") .show(truncate=False)",
+      "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "spark.sql(\"select Seqno, convertUDF(Name) as Name from NAME_TABLE " + \ "where Name is not null and convertUDF(Name) like '%John%'\") .show(truncate=False)",
+      "improvementExplanation": "The UDF convertUDF can be replaced with a built-in function or native DataFrame/Dataset operation. The convertUDF is used in the SQL query to convert the case of the Name column and filter the results. This can be achieved using the upper and lower functions provided by Spark SQL functions and the where clause.",
+      "alternativeEquivalent": "spark.sql(\"select Seqno, upper(Name) as Name from NAME_TABLE where Name is not null and upper(Name) like '%John%'\") .show(truncate=False)",
+      "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "spark.sql(\"select _nullsafeUDF(Name) from NAME_TABLE2\") .show(truncate=False)",
+      "improvementExplanation": "The UDF _nullsafeUDF can be replaced with a built-in function or native DataFrame/Dataset operation. The _nullsafeUDF is used in the SQL query to convert the case of the Name column and handle null values. This can be achieved using the coalesce function provided by Spark SQL functions.",
+      "alternativeEquivalent": "spark.sql(\"select coalesce(Name, \")\") .show(truncate=False)",
+      "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    }
+  ]
+}

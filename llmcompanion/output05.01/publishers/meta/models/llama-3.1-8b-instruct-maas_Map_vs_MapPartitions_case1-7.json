@@ -1,0 +1,16 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "map() is used in the line where the '_partColAgg' column is created: .withColumn('_partColAgg', F.concat(*dist_cols))",
+            "improvementExplanation": "The map() operation is used to concatenate the distribution keys. However, this operation can be performed at the partition level, which means it can be optimized by using mapPartitions(). This is because the concatenation operation is I/O-heavy and can benefit from being executed in parallel across partitions.",
+            "mapPartitionsEquivalent": "You can replace the map() operation with mapPartitions() as follows:\n\nagg_df = df.select(*dist_cols).mapPartitions(lambda x: [F.concat(*x)]).withColumn('_partColAgg', F.col('_partColAgg')).drop(*dist_cols).groupBy('_partColAgg').agg(F.count(F.lit(1)).alias(\"records_count\"))",
+            "benefits": [
+                "Reduced function call overhead",
+                "Optimized I/O",
+                "Improved resource utilization"
+            ]
+        }
+    ]
+}

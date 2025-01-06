@@ -1,0 +1,12 @@
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName + \".\" + tblName, partitionBy='extract_dt', compression= 'snappy')",
+      "improvementExplanation": "The repartition operation is used to reduce the number of partitions to 1, which is typically used for writing data to a single file. However, this operation requires a full shuffle, which can be expensive. In this case, coalesce can be used instead, which reduces the number of partitions without a full shuffle.",
+      "coalesceEquivalent": "filteredPaths.coalesce(1).write.mode('append').format('parquet').saveAsTable(dbName + \".\" + tblName, partitionBy='extract_dt', compression= 'snappy')",
+      "benefits": "Switching to coalesce reduces shuffling, improves resource usage, and results in faster job runtime."
+    }
+  ]
+}

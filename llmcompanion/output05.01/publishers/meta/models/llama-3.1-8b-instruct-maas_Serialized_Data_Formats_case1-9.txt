@@ -1,0 +1,27 @@
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "spark.read.option(\"header\",\"false\").csv(hdfs_path_to_csv).toDF(\"Path\",\"FileSize\",\"BlocksCount\")",
+      "location": "line 14",
+      "improvementExplanation": "The current data format being used is CSV, which is a text-based format. Switching to an optimized serialized format like Parquet or ORC would improve performance by reducing the time it takes to read and write data. Parquet and ORC are columnar storage formats that are optimized for querying and can provide faster reads and writes compared to CSV.",
+      "optimizedEquivalent": "spark.read.option(\"header\",\"false\").parquet(hdfs_path_to_csv).toDF(\"Path\",\"FileSize\",\"BlocksCount\")",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+      "location": "line 43",
+      "improvementExplanation": "Although the format is already set to Parquet, the current implementation is writing data in CSV format before converting it to Parquet. This can be optimized by directly writing data in Parquet format. Additionally, the compression type can be improved by using Snappy or Gzip compression.",
+      "optimizedEquivalent": "filteredPaths.repartition(1).write.mode('append').parquet(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "csvDF = csvDF.select(\"Path\", \"BlocksCount\", \"FileSize\").filter(\"BlocksCount != 0\")",
+      "location": "line 16",
+      "improvementExplanation": "The current data format being used is CSV, which is a text-based format. Switching to an optimized serialized format like Parquet or ORC would improve performance by reducing the time it takes to read and write data. Parquet and ORC are columnar storage formats that are optimized for querying and can provide faster reads and writes compared to CSV.",
+      "optimizedEquivalent": "csvDF = csvDF.select(\"Path\", \"BlocksCount\", \"FileSize\").filter(\"BlocksCount != 0\").repartition(1).write.mode('append').parquet(hdfs_path_to_csv)",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    }
+  ]
+}

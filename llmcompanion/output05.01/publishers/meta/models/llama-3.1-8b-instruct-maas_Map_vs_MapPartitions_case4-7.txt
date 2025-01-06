@@ -1,0 +1,18 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "MAP_AN(source) = if source == 'Write': return 'Create' elif source == 'Delete': return 'Delete' else: return 'Unknown'",
+      "improvementExplanation": "The MAP_AN function is used to map 'Write' and 'Delete' to specific values. This operation can be performed at the partition level, as it involves batch processing of data. Replacing map() with mapPartitions() can reduce function call overhead and optimize I/O operations.",
+      "mapPartitionsEquivalent": "def MAP_AN(iterator):\n  for source in iterator:\n    if source == 'Write':\n      yield 'Create'\n    elif source == 'Delete':\n      yield 'Delete'\n    else:\n      yield 'Unknown'",
+      "benefits": [
+        "Reduced function call overhead",
+        "Optimized I/O operations",
+        "Improved resource utilization"
+      ]
+    }
+  ]
+}
+```

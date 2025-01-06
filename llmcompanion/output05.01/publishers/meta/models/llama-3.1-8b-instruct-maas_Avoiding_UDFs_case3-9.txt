@@ -1,0 +1,18 @@
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "df['details'] = df['details'].apply(lambda x: json.loads(x.replace("'", \"\"\")))",
+      "improvementExplanation": "The UDF is used to parse JSON data from the 'details' column. This can be replaced with a built-in function using the `from_json` method in Spark SQL or the `json.loads` method in Python. This replacement will enable Catalyst optimizations and improve performance by avoiding the need for a UDF.",
+      "alternativeEquivalent": "df = df.withColumn('details', from_json(df.details, 'json'))",
+      "benefits": "Replacing the UDF with a built-in function will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    },
+    {
+      "operation": "df['car_age'] = np.where(np.random.rand(len(df)) < 0.6, \"old\", \"new\")",
+      "improvementExplanation": "The UDF is used to generate random values for the 'car_age' column. This can be replaced with a native DataFrame operation using the `sample` method. This replacement will improve performance by avoiding the need for a UDF and reducing serialization overhead.",
+      "alternativeEquivalent": "df = df.withColumn('car_age', when(df.random.rand() < 0.6, 'old').otherwise('new'))",
+      "benefits": "Replacing the UDF with a native DataFrame operation will improve performance, reduce serialization overhead, and enable Catalyst optimizations."
+    }
+  ]
+}

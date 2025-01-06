@@ -1,0 +1,42 @@
+{
+    "detected": true,
+    "occurrences": 6,
+    "response": [
+        {
+            "operation": "line 5: df.select(five_udf()).display()",
+            "improvementExplanation": "The UDF 'five_udf' is used to select a constant value. This can be replaced with a built-in function 'lit' from Spark SQL functions.",
+            "alternativeEquivalent": "df.select(lit(5)).display()",
+            "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "line 14: df.select(five()).show()",
+            "improvementExplanation": "The UDF 'five' is used to select a constant value. This can be replaced with a built-in function 'lit' from Spark SQL functions.",
+            "alternativeEquivalent": "df.select(lit(5)).show()",
+            "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "line 20: @pandas_udf(returnType='int')\ndef five() -> int:\n    return 5",
+            "improvementExplanation": "The UDF 'five' is used to select a constant value. This can be replaced with a built-in function 'lit' from Spark SQL functions.",
+            "alternativeEquivalent": "df.select(lit(5)).show()",
+            "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "line 26: result_df = df.selectExpr(\"my_custom_scala_fn(id) as id\")",
+            "improvementExplanation": "The UDF 'my_custom_scala_fn' is used to perform a custom operation. This can be replaced with a native DataFrame/Dataset operation or a built-in function if available.",
+            "alternativeEquivalent": "result_df = df.selectExpr(\"id as id\")",
+            "benefits": "Replacing UDFs with native DataFrame/Dataset operations or built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "line 34: @pandas_udf(returnType='int')\ndef identity(rows: pd.Series) -> pd.Series:\n    return rows",
+            "improvementExplanation": "The UDF 'identity' is used to return the input rows unchanged. This can be replaced with a built-in function 'col' from Spark SQL functions.",
+            "alternativeEquivalent": "df.select(col('id')).display()",
+            "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "line 40: strings.select(expr(\"split(name, delimiter)\"))",
+            "improvementExplanation": "The UDF 'expr' is used to evaluate a string as a SQL expression. This can be replaced with a built-in function 'split' from Spark SQL functions.",
+            "alternativeEquivalent": "strings.select(split('name', 'delimiter')).show()",
+            "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        }
+    ]
+}

@@ -1,0 +1,329 @@
+{
+        # dalia
+        # dalia
+#dalia
+        #d
+        #d
+#d
+        # dalia
+        #dalia
+        # dalia
+        #dalia
+        #dalia
+        #d
+        # dalia
+        # dalia
+        # dalia
+        # dalia
+#d
+        # dalia
+# =  )
+    # dalia
+# =  )
+        # dalia
+#  )
+        # dalia
+#d
+#d
+#d
+#d
+#d
+#d
+#d
+#d
+#d
+#d
+#d
+#d
+#d
+#d
+    # dalia
+    # dalia
+#d
+#d
+#d
+        # dalia
+#d
+#d
+#d
+# =  )
+        # dalia
+#  )
+        # dalia
+#d
+        # dalia
+        # dalia
+        # dalia
+#  )
+        # dalia
+#d
+#  )
+        # dalia
+#d
+#d
+#  )
+        # dalia
+        # dalia
+#d
+        # dalia
+#d
+#d
+#d
+#d
+#d
+    # dalia
+    # dalia
+    # dalia
+    # dalia
+    # dalia
+    # dalia
+#d
+#d
+#d
+#d
+#d
+#d
+#dalia
+#d
+#d
+#d
+#d
+#d
+#d
+        if sketching == 7:
+            sketchingRate = updateMWUWeightAndSelectNextArm(sketchingRate, 1.0)
+            sketchingRows, sketchingRows_square_root, sketchingRows_P, sketchingRows_P_cube_root = calculateSketchingValues(sketchingRate)
+        elif sketching == 8:
+            sketchingRate = selectRandomRate(step)
+            sketchingRows, sketchingRows_square_root, sketchingRows_P, sketchingRows_P_cube_root = calculateSketchingValues(sketchingRate)
+        elif sketching == 9:
+            sketchingRate = updateMWUWeightAndSelectNextArm(sketchingRate, 1.0)
+            sketchingRows, sketchingRows_square_root, sketchingRows_P, sketchingRows_P_cube_root = calculateSketchingValues(sketchingRate)
+        elif sketching == 10:
+            sketchingRate = updateMWUWeightAndSelectNextArm(sketchingRate, 1.0)
+            sketchingRows, sketchingRows_square_root, sketchingRows_P, sketchingRows_P_cube_root = calculateSketchingValues(sketchingRate)
+        elif sketching == 11:
+            sketchingRate = updateSketchingRate(sketchingRate, errDelta, step)
+            sketchingRows, sketchingRows_square_root, sketchingRows_P, sketchingRows_P_cube_root = calculateSketchingValues(sketchingRate)
+
+        # solve for B
+        decompMode = 2
+#        print 'Solving for B', datetime.datetime.now()
+#	if sketching==1 or sketching>=3:
+	if (sketching == 1 or sketching >= 3) and sketchingRate < 1.0:
+	    numA = np.random.randint(2,min(sketchingRows_square_root, I))
+	    numC = int(math.ceil(sketchingRows/numA))
+	    if numC > K:
+		numC = K
+		numA = int(math.ceil(sketchingRows/numC))
+		if numA > I:
+		    numA = I
+	    #print 'rate=',sketchingRate
+	    #print 'numA=',numA
+	    #print 'numC=',numC
+	    #sketchingRowsB = np.unique(np.random.randint(0,J,numC))
+	    #sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = range(0,J)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC,replace=False)
+	    sketchingRowsB = np.random.choice(J,numC, numC
+sketchingRowsB = np.random.choice(J,numC
+#    sket
+#    sketched
+#    sketched
+#    sketched
+#    sketched
+sketchingRowsB = np.random.choice(J,numC
+    sketched
+sketchingRowsB = np.random.choice(J,numC
+    sketched
+    sketched
+    sketched
+    sketched
+    sketched
+    = np.random.choice(J)
+    sketched
+    sketched
+    sketched
+    if (sketching
+    sketched
+    if (sketch
+    sketched
+    sketched
+    sketched
+    if (sketching
+    if (sketch
+    if (sketch
+    if (sketch
+    if (sketching
+    if (sketching
+    if (sketching
+    if (sketching
+    if (function get thesh
+    if (function get
+    .

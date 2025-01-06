@@ -1,0 +1,18 @@
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "expr('add_months(to_date(date,'yyyy-MM-dd'),cast(increment as int))').alias('inc_date')",
+      "improvementExplanation": "The UDF is used to perform date arithmetic. This can be replaced with Spark's built-in date functions, specifically the `date_add` function, which is more efficient and enables Catalyst optimizations.",
+      "alternativeEquivalent": "select(col('date'), col('increment'), date_add(to_date(col('date'), 'yyyy-MM-dd'), col('increment')).alias('inc_date'))",
+      "benefits": "Replacing the UDF with the built-in `date_add` function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "expr('to_date(date,'yyyy-MM-dd')",
+      "improvementExplanation": "The UDF is used to convert a string to a date. This can be replaced with Spark's built-in `to_date` function, which is more efficient and enables Catalyst optimizations.",
+      "alternativeEquivalent": "to_date(col('date'), 'yyyy-MM-dd')",
+      "benefits": "Replacing the UDF with the built-in `to_date` function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}

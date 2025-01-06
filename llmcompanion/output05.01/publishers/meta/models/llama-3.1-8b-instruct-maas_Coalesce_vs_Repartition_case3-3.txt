@@ -1,0 +1,12 @@
+{
+  "detected": true,
+  "occurrences": 0,
+  "response": [
+    {
+      "operation": "imputer.fit(df_pyspark).transform(df_pyspark).show()",
+      "improvementExplanation": "The Imputer's fit and transform operations do not require a full shuffle. The Imputer's fit operation can be replaced with coalesce() to reduce the number of partitions and improve resource usage.",
+      "coalesceEquivalent": "imputer.fit(df_pyspark.coalesce(1)).transform(df_pyspark.coalesce(1)).show()",
+      "benefits": "Switching to coalesce() reduces shuffling, improves resource usage, and results in faster job runtime."
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+```json
+{
+  "detected0": false,
+  "occurrences0": 0,
+  "response0": [],
+  "detected1": false,
+  "occurrences1": 0,
+  "response1": [],
+  "detected2": false,
+  "occurrences2": 0,
+  "response2": [],
+  "detected3": false,
+  "occurrences3": 0,
+  "response3": [],
+  "detected4": true,
+  "occurrences4": 6,
+  "response4": [
+    {
+      "operation": "extract_family_name(full_name: List[str])",
+      "improvementExplanation": "The extract_family_name UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation. This is because the UDF performs a simple string manipulation, which can be optimized by Spark's Catalyst optimizer.",
+      "alternativeEquivalent": "from pyspark.sql.functions import substring_index\nresult = substring_index(full_name, ' ', -1)\nresult = substring_index(result, ' ', -1)\nreturn result",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "extract_given_name(full_name: List[str])",
+      "improvementExplanation": "The extract_given_name UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation. This is because the UDF performs a simple string manipulation, which can be optimized by Spark's Catalyst optimizer.",
+      "alternativeEquivalent": "from pyspark.sql.functions import substring_index\nresult = substring_index(full_name, ' ', 1)\nreturn result",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "format_phone(phone: str)",
+      "improvementExplanation": "The format_phone UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation. This is because the UDF performs a simple string manipulation, which can be optimized by Spark's Catalyst optimizer.",
+      "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace\nresult = regexp_replace(phone, r'\\((\\d{2})\\)\\s(\\d{4}-\\d{4})', r'+55 0\\1 \\2')\nreturn result",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "clean_cpf(value: str)",
+      "improvementExplanation": "The clean_cpf UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation. This is because the UDF performs a simple string manipulation, which can be optimized by Spark's Catalyst optimizer.",
+      "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace\nresult = regexp_replace(value, r'\\D', '')\nreturn result",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "format_gender(value: str)",
+      "improvementExplanation": "The format_gender UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation. This is because the UDF performs a simple string manipulation, which can be optimized by Spark's Catalyst optimizer.",
+      "alternativeEquivalent": "from pyspark.sql.functions import when\nresult = when(col('gender') == 'masculino', 'male')\nresult = when(result == None, when(col('gender') == 'feminino', 'female'))\nresult = when(result == None, 'unknown')\nreturn result",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "format_date(value: str)",
+      "improvementExplanation": "The format_date UDF can be replaced with a Spark SQL function or native DataFrame/Dataset operation. This is because the UDF performs a simple date manipulation, which can be optimized by Spark's Catalyst optimizer.",
+      "alternativeEquivalent": "from pyspark.sql.functions import to_date\nresult = to_date(value, 'dd/MM/yyyy')\nreturn result",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}
+```

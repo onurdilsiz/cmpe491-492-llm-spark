@@ -1,0 +1,30 @@
+{
+    "detected": true,
+    "occurrences": 4,
+    "response": [
+        {
+            "operation": "spark.read.format(\"csv\").option(\"header\", \"true\").load(\"path/to/data.csv\")",
+            "improvementExplanation": "The current data format being used is CSV, which is a non-optimized format for large-scale data processing. CSV is a text-based format that lacks compression and query optimization capabilities. Switching to an optimized serialized format like Parquet or ORC would improve performance by reducing the size of the data, enabling faster reads/writes, and allowing for query optimization through predicate pushdown.",
+            "optimizedEquivalent": "spark.read.format(\"parquet\").load(\"path/to/data.parquet\")",
+            "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+        },
+        {
+            "operation": "df.write.format(\"csv\").option(\"header\", \"true\").save(\"path/to/data.csv\")",
+            "improvementExplanation": "The current data format being used is CSV, which is a non-optimized format for large-scale data processing. CSV is a text-based format that lacks compression and query optimization capabilities. Switching to an optimized serialized format like Parquet or ORC would improve performance by reducing the size of the data, enabling faster reads/writes, and allowing for query optimization through predicate pushdown.",
+            "optimizedEquivalent": "df.write.format(\"parquet\").save(\"path/to/data.parquet\")",
+            "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+        },
+        {
+            "operation": "spark.read.format(\"csv\").option(\"header\", \"true\").load(\"path/to/data.csv\")",
+            "improvementExplanation": "The current data format being used is CSV, which is a non-optimized format for large-scale data processing. CSV is a text-based format that lacks compression and query optimization capabilities. Switching to an optimized serialized format like Parquet or ORC would improve performance by reducing the size of the data, enabling faster reads/writes, and allowing for query optimization through predicate pushdown.",
+            "optimizedEquivalent": "spark.read.format(\"parquet\").load(\"path/to/data.parquet\")",
+            "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+        },
+        {
+            "operation": "df.write.format(\"csv\").option(\"header\", \"true\").save(\"path/to/data.csv\")",
+            "improvementExplanation": "The current data format being used is CSV, which is a non-optimized format for large-scale data processing. CSV is a text-based format that lacks compression and query optimization capabilities. Switching to an optimized serialized format like Parquet or ORC would improve performance by reducing the size of the data, enabling faster reads/writes, and allowing for query optimization through predicate pushdown.",
+            "optimizedEquivalent": "df.write.format(\"parquet\").save(\"path/to/data.parquet\")",
+            "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+        }
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "df1['value'].substr(5, 6)",
+            "improvementExplanation": "The UDF operation 'substr' can be replaced with the built-in function 'substring' or native DataFrame/Dataset operation 'substr'. The 'substr' function is used to extract a substring from a string. In this case, it's used to extract the 'Weather_Station' from the 'value' column. However, the 'substring' function is more efficient and can be used directly on the DataFrame/Dataset.",
+            "alternativeEquivalent": "df1.withColumn('Weather_Station', substring(df1['value'], 5, 6))",
+            "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations, reducing serialization overhead, and making the code more efficient."
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "Reading data from Kinesis stream in JSON format",
+      "location": "dataframe_KinesisStream_node1 = glueContext.create_data_frame.from_options(..., classification='json', ...)",
+      "improvementExplanation": "The current data format is JSON, which can be slow for large datasets. Switching to Parquet or ORC can improve performance by reducing the size of the data and enabling faster reads/writes. Additionally, Parquet and ORC support columnar storage, which can improve query performance through predicate pushdown.",
+      "optimizedEquivalent": "dataframe_KinesisStream_node1 = glueContext.create_data_frame.from_options(..., format='parquet', ...)",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown"
+    },
+    {
+      "operation": "Writing data to S3 bucket in Glue Parquet format",
+      "location": "S3bucket_node3 = glueContext.write_dynamic_frame.from_options(..., format='glueparquet', ...)",
+      "improvementExplanation": "The current data format is Glue Parquet, which is a good choice for writing data to S3. However, using the 'parquet' format directly can provide more control over the write process and enable features like compression and encoding.",
+      "optimizedEquivalent": "S3bucket_node3 = glueContext.write_dynamic_frame.from_options(..., format='parquet', ...)",
+      "benefits": "Faster writes, compression, and query optimization through predicate pushdown"
+    }
+  ]
+}
+```

@@ -1,0 +1,94 @@
+{
+    "detected0": true,
+    "occurrences0": 7,
+    "response0": [
+        {
+            "operation": "ratings = data.map(lambda l: l.split()).map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))))",
+            "improvementExplanation": "The map() transformation can be replaced with a DataFrame/Dataset transformation to take advantage of Catalyst optimizations and improved performance. The equivalent DataFrame/Dataset transformation would be: ratings = data.selectExpr(\"*\").withColumn(\"movie_id\", col(\"1\").cast(\"int\")).withColumn(\"rating\", col(\"2\").cast(\"float\")).groupBy(\"user_id\").agg(collect_list(struct(\"movie_id\", \"rating\")).alias(\"ratings\"))",
+            "dataframeEquivalent": "ratings = data.selectExpr(\"*\").withColumn(\"movie_id\", col(\"1\").cast(\"int\")).withColumn(\"rating\", col(\"2\").cast(\"float\")).groupBy(\"user_id\").agg(collect_list(struct(\"movie_id\", \"rating\")).alias(\"ratings\"))",
+            "benefits": "Switching to DataFrame/Dataset will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+        },
+        {
+            "operation": "joinedRatings = ratings.join(ratings)",
+            "improvementExplanation": "The join() operation can be replaced with a DataFrame/Dataset join to take advantage of Catalyst optimizations and improved performance. The equivalent DataFrame/Dataset join would be: joinedRatings = ratings.join(ratings, on=\"movie_id\", how=\"inner\")",
+            "dataframeEquivalent": "joinedRatings = ratings.join(ratings, on=\"movie_id\", how=\"inner\")",
+            "benefits": "Switching to DataFrame/Dataset will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+        },
+        {
+            "operation": "uniqueJoinedRatings = joinedRatings.filter(filterDuplicates)",
+            "improvementExplanation": "The filter() operation can be replaced with a DataFrame/Dataset filter to take advantage of Catalyst optimizations and improved performance. The equivalent DataFrame/Dataset filter would be: uniqueJoinedRatings = joinedRatings.filter(col(\"movie_id\") < col(\"movie_id_2\"))",
+            "dataframeEquivalent": "uniqueJoinedRatings = joinedRatings.filter(col(\"movie_id\") < col(\"movie_id_2\"))",
+            "benefits": "Switching to DataFrame/Dataset will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+        },
+        {
+            "operation": "moviePairs = uniqueJoinedRatings.map(makePairs)",
+            "improvementExplanation": "The map() transformation can be replaced with a DataFrame/Dataset transformation to take advantage of Catalyst optimizations and improved performance. The equivalent DataFrame/Dataset transformation would be: moviePairs = uniqueJoinedRatings.selectExpr(\"*\").withColumn(\"movie_pair\", concat(col(\"movie_id\"), lit(\"_\"), col(\"movie_id_2\"))).groupBy(\"movie_pair\").agg(collect_list(struct(\"rating1\", \"rating2\")).alias(\"ratings\"))",
+            "dataframeEquivalent": "moviePairs = uniqueJoinedRatings.selectExpr(\"*\").withColumn(\"movie_pair\", concat(col(\"movie_id\"), lit(\"_\"), col(\"movie_id_2\"))).groupBy(\"movie_pair\").agg(collect_list(struct(\"rating1\", \"rating2\")).alias(\"ratings\"))",
+            "benefits": "Switching to DataFrame/Dataset will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+        },
+        {
+            "operation": "moviePairRatings = moviePairs.groupByKey()",
+            "improvementExplanation": "The groupByKey() operation can be replaced with a DataFrame/Dataset groupBy to take advantage of Catalyst optimizations and improved performance. The equivalent DataFrame/Dataset groupBy would be: moviePairRatings = moviePairs.groupBy(\"movie_pair\")",
+            "dataframeEquivalent": "moviePairRatings = moviePairs.groupBy(\"movie_pair\")",
+            "benefits": "Switching to DataFrame/Dataset will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+        },
+        {
+            "operation": "moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).cache()",
+            "improvementExplanation": "The mapValues() transformation can be replaced with a DataFrame/Dataset transformation to take advantage of Catalyst optimizations and improved performance. The equivalent DataFrame/Dataset transformation would be: moviePairSimilarities = moviePairRatings.withColumn(\"similarity\", computeCosineSimilarity(col(\"ratings\")))",
+            "dataframeEquivalent": "moviePairSimilarities = moviePairRatings.withColumn(\"similarity\", computeCosineSimilarity(col(\"ratings\")))",
+            "benefits": "Switching to DataFrame/Dataset will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+        },
+        {
+            "operation": "filteredResults = moviePairSimilarities.filter(lambda((pair,sim)): (pair[0] == movieID or pair[1] == movieID) and sim[0] > scoreThreshold and sim[1] > coOccurenceThreshold)",
+            "improvementExplanation": "The filter() operation can be replaced with a DataFrame/Dataset filter to take advantage of Catalyst optimizations and improved performance. The equivalent DataFrame/Dataset filter would be: filteredResults = moviePairSimilarities.filter((col(\"movie_pair\") == movieID) | (col(\"movie_pair\") == movieID)) and (col(\"similarity\") > scoreThreshold) and (col(\"similarity\") > coOccurenceThreshold))",
+            "dataframeEquivalent": "filteredResults = moviePairSimilarities.filter((col(\"movie_pair\") == movieID) | (col(\"movie_pair\") == movieID)) and (col(\"similarity\") > scoreThreshold) and (col(\"similarity\") > coOccurenceThreshold))",
+            "benefits": "Switching to DataFrame/Dataset will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+        }
+    ],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "moviePairRatings = moviePairs.groupByKey()",
+            "improvementExplanation": "The groupByKey() operation can be replaced with coalesce() to reduce the number of partitions and improve performance. The equivalent coalesce() operation would be: moviePairRatings = moviePairs.coalesce(1)",
+            "coalesceEquivalent": "moviePairRatings = moviePairs.coalesce(1)",
+            "benefits": "Switching to coalesce() will reduce shuffling, improve resource usage, and speed up job runtime."
+        }
+    ],
+    "detected2": true,
+    "occurrences2": 2,
+    "response2": [
+        {
+            "operation": "ratings = data.map(lambda l: l.split()).map(lambda l: (int(l[0]), (int(l[1]), float(l[2]))))",
+            "improvementExplanation": "The map() transformation can be replaced with mapPartitions() to improve performance for partition-level operations. The equivalent mapPartitions() transformation would be: ratings = data.mapPartitions(lambda x: [((int(line.split(\" \")[0]), (int(line.split(\" \")[1]), float(line.split(\" \")[2]))), 1) for line in x])",
+            "mapPartitionsEquivalent": "ratings = data.mapPartitions(lambda x: [((int(line.split(\" \")[0]), (int(line.split(\" \")[1]), float(line.split(\" \")[2]))), 1) for line in x])",
+            "benefits": "Switching to mapPartitions() will reduce function call overhead, optimize I/O, and improve performance for partition-level operations."
+        },
+        {
+            "operation": "moviePairs = uniqueJoinedRatings.map(makePairs)",
+            "improvementExplanation": "The map() transformation can be replaced with mapPartitions() to improve performance for partition-level operations. The equivalent mapPartitions() transformation would be: moviePairs = uniqueJoinedRatings.mapPartitions(lambda x: [((makePairs(line)), 1) for line in x])",
+            "mapPartitionsEquivalent": "moviePairs = uniqueJoinedRatings.mapPartitions(lambda x: [((makePairs(line)), 1) for line in x])",
+            "benefits": "Switching to mapPartitions() will reduce function call overhead, optimize I/O, and improve performance for partition-level operations."
+        }
+    ],
+    "detected3": true,
+    "occurrences3": 1,
+    "response3": [
+        {
+            "operation": "data = sc.textFile(\"file:///SparkCourse/ml-100k/u.data\")",
+            "improvementExplanation": "The textFile() operation can be replaced with a DataFrame/Dataset read to take advantage of optimized serialized formats. The equivalent DataFrame/Dataset read would be: data = spark.read.csv(\"file:///SparkCourse/ml-100k/u.data\", header=True, inferSchema=True)",
+            "optimizedEquivalent": "data = spark.read.csv(\"file:///SparkCourse/ml-100k/u.data\", header=True, inferSchema=True)",
+            "benefits": "Switching to optimized formats will enable faster reads/writes, compression, and query optimization through predicate pushdown."
+        }
+    ],
+    "detected4": true,
+    "occurrences4": 1,
+    "response4": [
+        {
+            "operation": "moviePairSimilarities = moviePairRatings.mapValues(computeCosineSimilarity).cache()",
+            "improvementExplanation": "The mapValues() transformation can be replaced with a DataFrame/Dataset transformation to take advantage of Spark SQL functions and native DataFrame/Dataset operations. The equivalent DataFrame/Dataset transformation would be: moviePairSimilarities = moviePairRatings.withColumn(\"similarity\", computeCosineSimilarity(col(\"ratings\")))",
+            "alternativeEquivalent": "moviePairSimilarities = moviePairRatings.withColumn(\"similarity\", computeCosineSimilarity(col(\"ratings\")))",
+            "benefits": "Switching to Spark SQL functions and native DataFrame/Dataset operations will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+        }
+    ]
+}

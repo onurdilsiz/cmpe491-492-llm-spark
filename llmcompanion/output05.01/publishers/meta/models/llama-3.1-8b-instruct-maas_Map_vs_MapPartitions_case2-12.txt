@@ -1,0 +1,30 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "input_data.mapPartitionsWithIndex(self.process_warcs)",
+      "location": "run_job method in CCSparkJob class",
+      "improvementExplanation": "The process_warcs method is used to process WARC records. This method is I/O-heavy as it involves downloading files from S3 and processing them. Using mapPartitions() instead of map() can improve performance by reducing the number of function calls and optimizing I/O operations. mapPartitions() allows the processing of each partition in parallel, which can lead to significant speedups for I/O-heavy operations.",
+      "mapPartitionsEquivalent": "input_data.mapPartitions(self.process_warcs)",
+      "benefits": [
+        "Reduced function call overhead",
+        "Optimized I/O operations",
+        "Improved performance for I/O-heavy operations"
+      ]
+    },
+    {
+      "operation": "warc_recs.mapPartitions(self.fetch_process_warc_records)",
+      "location": "run_job method in CCIndexWarcSparkJob class",
+      "improvementExplanation": "The fetch_process_warc_records method is used to fetch and process WARC records. This method is I/O-heavy as it involves downloading files from S3 and processing them. Using mapPartitions() instead of map() can improve performance by reducing the number of function calls and optimizing I/O operations. mapPartitions() allows the processing of each partition in parallel, which can lead to significant speedups for I/O-heavy operations.",
+      "mapPartitionsEquivalent": "warc_recs.mapPartitions(self.fetch_process_warc_records)",
+      "benefits": [
+        "Reduced function call overhead",
+        "Optimized I/O operations",
+        "Improved performance for I/O-heavy operations"
+      ]
+    }
+  ]
+}
+```

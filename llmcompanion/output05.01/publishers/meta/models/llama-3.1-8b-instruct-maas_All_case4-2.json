@@ -1,0 +1,36 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 3,
+    "response4": [
+        {
+            "operation": "Creating function new_salary(salary, bonus): return salary  + bonus",
+            "improvementExplanation": "The function new_salary can be replaced with a Spark SQL function or native DataFrame/Dataset operation.",
+            "alternativeEquivalent": "You can use the withColumn function to add a new column 'new_salary' directly.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "Registering the function total_salary with udf()",
+            "improvementExplanation": "The function total_salary can be replaced with a Spark SQL function or native DataFrame/Dataset operation.",
+            "alternativeEquivalent": "You can use the withColumn function to add a new column 'total_salary' directly.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "Registering the function total_salary with spark.udf.register()",
+            "improvementExplanation": "The function total_salary can be replaced with a Spark SQL function or native DataFrame/Dataset operation.",
+            "alternativeEquivalent": "You can use the withColumn function to add a new column 'total_salary' directly.",
+            "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+Model,Case,Success Rate
+publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,48.484848484848484
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,37.878787878787875
+publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,37.878787878787875
+publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,45.45454545454545
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,63.63636363636363

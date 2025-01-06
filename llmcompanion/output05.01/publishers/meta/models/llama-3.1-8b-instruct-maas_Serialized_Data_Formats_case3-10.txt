@@ -1,0 +1,20 @@
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "Loading the csv for the sidebar default values",
+      "location": "df = pd.read_csv(\"airport-data.csv\")",
+      "improvementExplanation": "The current data format being used is CSV, which can be optimized by switching to a serialized format like Parquet or ORC. CSV is a text-based format that can lead to slower read and write operations compared to binary formats like Parquet or ORC. Parquet and ORC are columnar storage formats that provide faster reads and writes, compression, and query optimization through predicate pushdown.",
+      "optimizedEquivalent": "spark.read.format('parquet').load('airport-data.parquet')",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Creating the dataframe for the input values",
+      "location": "pred_row = spark.createDataFrame([[distance, year, quarter, month, day_of_month, day_of_week, crs_arr_time, crs_dep_time, crs_elapsed_time, airline, origin, dest, marketing_airline_network, operated_or_branded_code_share_partners, iata_code_marketing_airline, operating_airline, iata_code_operating_airline]],",
+      "improvementExplanation": "The current data format being used is a Python list, which can be optimized by switching to a serialized format like Parquet or ORC. Python lists can lead to slower read and write operations compared to binary formats like Parquet or ORC. Parquet and ORC are columnar storage formats that provide faster reads and writes, compression, and query optimization through predicate pushdown.",
+      "optimizedEquivalent": "pred_row = spark.read.format('parquet').load('input-data.parquet')",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    }
+  ]
+}

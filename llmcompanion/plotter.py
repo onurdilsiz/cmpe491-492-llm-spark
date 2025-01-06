@@ -68,7 +68,8 @@ def modelplotter():
         scenario_data = combined_data[combined_data['Scenario'] == scenario]
         # Match the model order
         scenario_data = scenario_data.set_index('Model').reindex(models).reset_index()
-        plt.bar(x + i * width, scenario_data['Success Rate'], width, label=scenario)
+        plt.bar(x + i * width, scenario_data['Success Rate'], width, label=scenario
+                )
 
     # Add labels and title
     plt.title('Comparison of Success Rates Across Models and Scenarios', fontsize=14)

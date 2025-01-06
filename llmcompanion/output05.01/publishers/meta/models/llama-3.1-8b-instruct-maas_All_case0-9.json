@@ -1,0 +1,54 @@
+{
+    "detected0": true,
+    "occurrences0": 6,
+    "response0": [
+        {
+            "operation": "rdd = spark.sparkContext.textFile(\"/apps/sparkbyexamples/src/pyspark-examples/data.txt\")",
+            "improvementExplanation": "RDDs are not the best choice for structured data. DataFrame/Dataset can provide query optimizations, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "df = spark.read.text(\"/apps/sparkbyexamples/src/pyspark-examples/data.txt\")",
+            "benefits": "Query optimizations, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "rdd2=rdd.flatMap(lambda x: x.split(\" \"))",
+            "improvementExplanation": "RDDs are not the best choice for structured data. DataFrame/Dataset can provide query optimizations, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "df = df.select(df.value.split(\" \").alias(\"words\"))",
+            "benefits": "Query optimizations, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "rdd3=rdd2.map(lambda x: (x,1))",
+            "improvementExplanation": "RDDs are not the best choice for structured data. DataFrame/Dataset can provide query optimizations, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "df = df.withColumn(\"count\", lit(1))",
+            "benefits": "Query optimizations, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "rdd4=rdd3.reduceByKey(lambda a,b: a+b)",
+            "improvementExplanation": "RDDs are not the best choice for structured data. DataFrame/Dataset can provide query optimizations, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "df = df.groupBy(\"words\").agg(sum(\"count\").alias(\"total_count\"))",
+            "benefits": "Query optimizations, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "rdd5 = rdd4.map(lambda x: (x[1],x[0])).sortByKey()",
+            "improvementExplanation": "RDDs are not the best choice for structured data. DataFrame/Dataset can provide query optimizations, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "df = df.select(\"total_count\", \"words\").orderBy(\"total_count\")",
+            "benefits": "Query optimizations, reduced shuffling, and easier integration with structured data formats."
+        },
+        {
+            "operation": "rdd6 = rdd5.filter(lambda x : 'a' in x[1])",
+            "improvementExplanation": "RDDs are not the best choice for structured data. DataFrame/Dataset can provide query optimizations, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "df = df.filter(col(\"words\").contains(\"a\"))",
+            "benefits": "Query optimizations, reduced shuffling, and easier integration with structured data formats."
+        }
+    ],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": false,
+    "occurrences4": 0,
+    "response4": []
+}

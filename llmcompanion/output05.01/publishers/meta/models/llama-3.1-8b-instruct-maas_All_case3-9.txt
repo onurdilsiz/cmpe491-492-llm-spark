@@ -1,0 +1,45 @@
+{
+  "detected0": true,
+  "occurrences0": 1,
+  "response0": [
+    {
+      "operation": "df = pd.read_csv('/Users/mac/Downloads/predictive.csv')",
+      "improvementExplanation": "The code uses pandas DataFrame to read a CSV file. This can be replaced with Spark DataFrame to take advantage of Spark's distributed computing capabilities and optimized data processing.",
+      "dataframeEquivalent": "df = spark.read.csv('/Users/mac/Downloads/predictive.csv', header=True, inferSchema=True)",
+      "benefits": "Switching to Spark DataFrame will enable query optimizations, reduced shuffling, and easier integration with structured data formats."
+    }
+  ],
+  "detected1": true,
+  "occurrences1": 0,
+  "response1": [],
+  "detected2": true,
+  "occurrences2": 1,
+  "response2": [
+    {
+      "operation": "df['details'] = df['details'].apply(lambda x: json.loads(x.replace("'", \"\")))",
+      "improvementExplanation": "The code uses the apply() function to process each element in the 'details' column. This can be replaced with mapPartitions() to take advantage of Spark's partition-level processing capabilities.",
+      "mapPartitionsEquivalent": "df = df.mapPartitions(lambda x: (json.loads(x[0].replace("'", \"\")) for x in x))",
+      "benefits": "Switching to mapPartitions() will reduce function call overhead, optimize I/O, and improve performance for partition-level operations."
+    }
+  ],
+  "detected3": true,
+  "occurrences3": 1,
+  "response3": [
+    {
+      "operation": "df = pd.read_csv('/Users/mac/Downloads/predictive.csv')",
+      "improvementExplanation": "The code uses pandas DataFrame to read a CSV file. This can be replaced with Spark DataFrame to take advantage of Spark's optimized data formats, such as Parquet or ORC.",
+      "optimizedEquivalent": "df = spark.read.csv('/Users/mac/Downloads/predictive.csv', header=True, inferSchema=True, format='parquet')",
+      "benefits": "Switching to Spark DataFrame with optimized formats will enable faster reads/writes, compression, and query optimization through predicate pushdown."
+    }
+  ],
+  "detected4": true,
+  "occurrences4": 1,
+  "response4": [
+    {
+      "operation": "df['status'] = df['status'].map({\"normal\": 0, \"about to fail\": 1, \"fail\": 2})",
+      "improvementExplanation": "The code uses the map() function to replace string values with numeric values. This can be replaced with Spark SQL functions or native DataFrame/Dataset operations to take advantage of Catalyst optimizations.",
+      "alternativeEquivalent": "df = df.withColumn('status', when(df['status'] == 'normal', 0).when(df['status'] == 'about to fail', 1).otherwise(2))",
+      "benefits": "Avoiding UDFs will enable Catalyst optimizations, improve performance, and reduce serialization overhead."
+    }
+  ]
+}

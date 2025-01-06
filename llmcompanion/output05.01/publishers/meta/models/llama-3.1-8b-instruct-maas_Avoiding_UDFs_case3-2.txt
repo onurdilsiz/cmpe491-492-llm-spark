@@ -1,0 +1,48 @@
+{
+  "detected": true,
+  "occurrences": 7,
+  "response": [
+    {
+      "operation": "filtered_no_number_product_cat_rdd = filtered_not_null_price_rdd.filter(~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "improvementExplanation": "The UDF can be replaced with a built-in function using the `regexp_replace` function or native DataFrame/Dataset operation using the `rlike` method. The regular expression can be directly applied to the column without the need for a UDF.",
+      "alternativeEquivalent": "filtered_no_number_product_cat_rdd = filtered_not_null_price_rdd.filter(~col('_c5').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "filtered_no_number_payment_type_rdd = filtered_no_number_product_cat_rdd.filter(~col('_c6').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "improvementExplanation": "The UDF can be replaced with a built-in function using the `regexp_replace` function or native DataFrame/Dataset operation using the `rlike` method. The regular expression can be directly applied to the column without the need for a UDF.",
+      "alternativeEquivalent": "filtered_no_number_payment_type_rdd = filtered_no_number_product_cat_rdd.filter(~col('_c6').rlike('(?=.*\\d)(?=.*[a-zA-Z])'))",
+      "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "filtered_no_number_failure_reason_rdd = filtered_no_number_payment_type_rdd.filter(col('_c15').isNull() | ~col('_c15').rlike('.*\\d.*'))",
+      "improvementExplanation": "The UDF can be replaced with a built-in function using the `regexp_replace` function or native DataFrame/Dataset operation using the `rlike` method. The regular expression can be directly applied to the column without the need for a UDF.",
+      "alternativeEquivalent": "filtered_no_number_failure_reason_rdd = filtered_no_number_payment_type_rdd.filter(col('_c15').isNull() | ~col('_c15').rlike('.*\\d.*'))",
+      "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "filtered_product_category_rdd = filtered_no_number_failure_reason_rdd.filter(~upper(col('_c5')).contains(\"ERROR\") & ~upper(col('_c5')).contains(\"BOOM\") & ~upper(col('_c5')).contains(\"THIS\") & ~upper(col('_c5')).contains(\"CORRUPTED\") & ~upper(col('_c5')).contains(\"!\"))",
+      "improvementExplanation": "The UDF can be replaced with native DataFrame/Dataset operations using the `contains` method. The `upper` function can be applied directly to the column without the need for a UDF.",
+      "alternativeEquivalent": "filtered_product_category_rdd = filtered_no_number_failure_reason_rdd.filter(~upper(col('_c5')).contains(\"ERROR\") & ~upper(col('_c5')).contains(\"BOOM\") & ~upper(col('_c5')).contains(\"THIS\") & ~upper(col('_c5')).contains(\"CORRUPTED\") & ~upper(col('_c5')).contains(\"!\"))",
+      "benefits": "Replacing UDFs with native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "filtered_payment_type_rdd = filtered_product_category_rdd.filter(~upper(col('_c6')).contains(\"ERROR\") & ~upper(col('_c6')).contains(\"BOOM\") & ~upper(col('_c6')).contains(\"THIS\") & ~upper(col('_c6')).contains(\"CORRUPTED\") & ~upper(col('_c6')).contains(\"!\"))",
+      "improvementExplanation": "The UDF can be replaced with native DataFrame/Dataset operations using the `contains` method. The `upper` function can be applied directly to the column without the need for a UDF.",
+      "alternativeEquivalent": "filtered_payment_type_rdd = filtered_product_category_rdd.filter(~upper(col('_c6')).contains(\"ERROR\") & ~upper(col('_c6')).contains(\"BOOM\") & ~upper(col('_c6')).contains(\"THIS\") & ~upper(col('_c6')).contains(\"CORRUPTED\") & ~upper(col('_c6')).contains(\"!\"))",
+      "benefits": "Replacing UDFs with native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "filtered_qty_rdd = filtered_payment_type_rdd.filter(~col('_c7').rlike('^[^0-9]*$') & (col('_c7') != ''))",
+      "improvementExplanation": "The UDF can be replaced with native DataFrame/Dataset operations using the `rlike` method. The regular expression can be directly applied to the column without the need for a UDF.",
+      "alternativeEquivalent": "filtered_qty_rdd = filtered_payment_type_rdd.filter(~col('_c7').rlike('^[^0-9]*$') & (col('_c7') != ''))",
+      "benefits": "Replacing UDFs with native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    },
+    {
+      "operation": "filtered_price_rdd = filtered_price_rdd.filter(col('_c8').rlike('^[0-9]*\\.?[0-9]+$') & (col('_c8') != ''))",
+      "improvementExplanation": "The UDF can be replaced with native DataFrame/Dataset operations using the `rlike` method. The regular expression can be directly applied to the column without the need for a UDF.",
+      "alternativeEquivalent": "filtered_price_rdd = filtered_price_rdd.filter(col('_c8').rlike('^[0-9]*\\.?[0-9]+$') & (col('_c8') != ''))",
+      "benefits": "Replacing UDFs with native DataFrame/Dataset operations can improve performance by enabling Catalyst optimizations and reducing serialization overhead."
+    }
+  ]
+}

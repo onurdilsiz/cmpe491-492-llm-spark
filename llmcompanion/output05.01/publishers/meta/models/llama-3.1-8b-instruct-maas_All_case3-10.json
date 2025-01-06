@@ -1,0 +1,45 @@
+{
+    "detected0": true,
+    "occurrences0": 1,
+    "response0": [
+        {
+            "operation": "spark.createDataFrame()",
+            "improvementExplanation": "The provided code uses an RDD to create a DataFrame. This can be replaced with a DataFrame creation method, such as `spark.createDataFrame()` with a list of tuples or a dictionary. This will enable query optimizations, reduced shuffling, and easier integration with structured data formats.",
+            "dataframeEquivalent": "pred_row = spark.createDataFrame([['distance', year, quarter, month, day_of_month, day_of_week, crs_arr_time, crs_dep_time, crs_elapsed_time, airline, origin, dest, marketing_airline_network, operated_or_branded_code_share_partners, iata_code_marketing_airline, operating_airline, iata_code_operating_airline]], ['Distance', 'Year', 'Quarter', 'Month', 'DayofMonth', 'DayOfWeek', 'CRSArrTime', 'CRSDepTime', 'CRSElapsedTime', 'Airline', 'Origin', 'Dest', 'Marketing_Airline_Network', 'Operated_or_Branded_Code_Share_Partners', 'IATA_Code_Marketing_Airline', 'Operating_Airline', 'IATA_Code_Operating_Airline'])",
+            "benefits": "Query optimizations, reduced shuffling, and easier integration with structured data formats."
+        }
+    ],
+    "detected1": true,
+    "occurrences1": 1,
+    "response1": [
+        {
+            "operation": "pred_row = pred_row.repartition(1)",
+            "improvementExplanation": "The provided code uses `repartition()` to reduce the number of partitions. However, this operation requires a full shuffle, which can be avoided by using `coalesce()` instead. `coalesce()` will reduce the number of partitions without shuffling the data.",
+            "coalesceEquivalent": "pred_row = pred_row.coalesce(1)",
+            "benefits": "Reduced shuffling, improved resource usage, and faster job runtime."
+        }
+    ],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": true,
+    "occurrences3": 1,
+    "response3": [
+        {
+            "operation": "pd.read_csv('airport-data.csv')",
+            "improvementExplanation": "The provided code uses `pd.read_csv()` to read a CSV file. This can be replaced with a more optimized format like Parquet, ORC, or Avro. These formats provide faster reads/writes, compression, and query optimization through predicate pushdown.",
+            "optimizedEquivalent": "df = spark.read.parquet('airport-data.parquet')",
+            "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+        }
+    ],
+    "detected4": true,
+    "occurrences4": 1,
+    "response4": [
+        {
+            "operation": "pred_row = indexer.transform(pred_row)",
+            "improvementExplanation": "The provided code uses a UDF to transform the input values. This can be replaced with a Spark SQL function or a native DataFrame/Dataset operation. This will enable Catalyst optimizations, improve performance, and reduce serialization overhead.",
+            "alternativeEquivalent": "pred_row = indexer.transform(pred_row).select(file_contents)",
+            "benefits": "Catalyst optimizations, improved performance, and reduced serialization overhead."
+        }
+    ]
+}

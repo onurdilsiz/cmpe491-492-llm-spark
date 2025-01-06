@@ -1,0 +1,48 @@
+{
+    "detected": true,
+    "occurrences": 6,
+    "response": [
+        {
+            "operation": "extract_family_name(full_name: List[str])",
+            "location": "extract_family_name(full_name: List[str]):\n    full_name_splited = full_name.split(\" \")\n    return \" \".join(full_name_splited[1:]) if len(full_name_splited) > 1 else None",
+            "improvementExplanation": "The extract_family_name UDF can be replaced with the split function and indexing to extract the family name. This approach is more efficient and scalable than using a UDF.",
+            "alternativeEquivalent": "from pyspark.sql.functions import split\n\n# Replace the UDF with the split function and indexing\nfamily_name = split(full_name, ' ').getItem(1)\n",
+            "benefits": "Replacing the UDF with the split function and indexing enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "extract_given_name(full_name: List[str])",
+            "location": "extract_given_name(full_name: List[str]):\n    return full_name.split(\" \")[0]",
+            "improvementExplanation": "The extract_given_name UDF can be replaced with the getItem function to extract the given name. This approach is more efficient and scalable than using a UDF.",
+            "alternativeEquivalent": "from pyspark.sql.functions import split\n\n# Replace the UDF with the getItem function\ngiven_name = split(full_name, ' ').getItem(0)\n",
+            "benefits": "Replacing the UDF with the getItem function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "format_phone(phone: str)",
+            "location": "format_phone(phone: str):\n    pattern = r\"\\((\\d{2})\\)\\s(\\d{4}-\\d{4})\"\n    return re.sub(pattern, r\"+55 0\\1 \\2\", phone)",
+            "improvementExplanation": "The format_phone UDF can be replaced with the regexp_replace function to format the phone number. This approach is more efficient and scalable than using a UDF.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace\n\n# Replace the UDF with the regexp_replace function\nformatted_phone = regexp_replace(phone, r'\\((\\d{2})\\)\\s(\\d{4}-\\d{4})', '+55 0\\1 \\2')\n",
+            "benefits": "Replacing the UDF with the regexp_replace function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "clean_cpf(value: str)",
+            "location": "clean_cpf(value: str):\n    return re.sub(r\"\\D\", \"\", value)",
+            "improvementExplanation": "The clean_cpf UDF can be replaced with the regexp_replace function to clean the CPF. This approach is more efficient and scalable than using a UDF.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace\n\n# Replace the UDF with the regexp_replace function\ncleaned_cpf = regexp_replace(value, r'\\D', '')\n",
+            "benefits": "Replacing the UDF with the regexp_replace function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "format_gender(value: str)",
+            "location": "format_gender(value: str):\n    gender_clean = value.lower()\n\n    if gender_clean == \"masculino\":\n        return \"male\"\n\n    if gender_clean == \"feminino\":\n        return \"female\"\n\n    return \"unknown\"",
+            "improvementExplanation": "The format_gender UDF can be replaced with the when function and case statements to format the gender. This approach is more efficient and scalable than using a UDF.",
+            "alternativeEquivalent": "from pyspark.sql.functions import when\n\n# Replace the UDF with the when function and case statements\nformatted_gender = when(col('gender') == 'masculino', 'male').otherwise(when(col('gender') == 'feminino', 'female').otherwise('unknown'))\n",
+            "benefits": "Replacing the UDF with the when function and case statements enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "format_date(value: str)",
+            "location": "format_date(value: str):\n    value_date = datetime.strptime(value, \"%d/%m/%Y\")\n    return value_date.strftime(\"%Y-%m-%d\")",
+            "improvementExplanation": "The format_date UDF can be replaced with the to_date function to format the date. This approach is more efficient and scalable than using a UDF.",
+            "alternativeEquivalent": "from pyspark.sql.functions import to_date\n\n# Replace the UDF with the to_date function\nformatted_date = to_date(value, 'dd/MM/yyyy')\n",
+            "benefits": "Replacing the UDF with the to_date function enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        }
+    ]
+}

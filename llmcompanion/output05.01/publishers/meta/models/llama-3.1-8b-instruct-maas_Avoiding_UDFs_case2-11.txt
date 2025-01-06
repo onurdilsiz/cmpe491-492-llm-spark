@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "extract_title_udf = udf(extract_title, StringType())",
+      "improvementExplanation": "The UDF extract_title can be replaced with a built-in function using the BeautifulSoup library's find method to directly extract the title from the HTML content. This approach avoids the need for a UDF and enables Catalyst optimizations.",
+      "alternativeEquivalent": "from bs4 import BeautifulSoup\n\ndef extract_title(content):\n    try:\n        soup = BeautifulSoup(content, 'lxml')\n        return soup.find('title').string if soup.find('title') else ''\n    except Exception:\n        return ''",
+      "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "extract_title_content_udf = udf(extract_title_content, ArrayType(StringType()))",
+      "improvementExplanation": "The UDF extract_title_content can be replaced with a built-in function using the BeautifulSoup library's find_all method to directly extract the headings from the HTML content. This approach avoids the need for a UDF and enables Catalyst optimizations.",
+      "alternativeEquivalent": "from bs4 import BeautifulSoup\n\ndef extract_title_content(content):\n    try:\n        soup = BeautifulSoup(content, 'lxml')\n        return [para.get_text() for para in soup.find_all(re.compile('^h[1-6]$'))][:10]\n    except Exception:\n        return []",
+      "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "extract_body_content_udf = udf(extract_body_content, ArrayType(StringType()))",
+      "improvementExplanation": "The UDF extract_body_content can be replaced with a built-in function using the BeautifulSoup library's find_all method to directly extract the paragraphs from the HTML content. This approach avoids the need for a UDF and enables Catalyst optimizations.",
+      "alternativeEquivalent": "from bs4 import BeautifulSoup\n\ndef extract_body_content(content):\n    try:\n        soup = BeautifulSoup(content, 'lxml')\n        return [para.get_text() for para in soup.find_all('p')][:10]\n    except Exception:\n        return []",
+      "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}
+```

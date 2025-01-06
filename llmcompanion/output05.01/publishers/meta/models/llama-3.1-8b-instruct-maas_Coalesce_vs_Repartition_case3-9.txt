@@ -1,0 +1,12 @@
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "features_pd = features_pd.dropna()",
+      "improvementExplanation": "The operation requires a full shuffle, which can be avoided by using coalesce(). The current repartition() operation is used to remove rows with any null value, which can be done in-place without shuffling the data. By using coalesce(), we can reduce the number of partitions and improve resource usage.",
+      "coalesceEquivalent": "features_pd = features_pd.dropna(how='any')",
+      "benefits": "Reduced shuffling, improved resource usage, and faster runtime."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+    "detected": true,
+    "occurrences": 2,
+    "response": [
+        {
+            "rddOperation": "data.extract(feature)[feature_index_mapping[feature]]",
+            "improvementExplanation": "The usage of extract() method on an iris.Cube object can be replaced with a DataFrame/Dataset operation. This is because the extract() method returns a numpy masked array, which can be directly converted to a DataFrame/Dataset.",
+            "dataframeEquivalent": "data.select(feature).rdd.map(lambda x: x.data).toDF()",
+            "benefits": "Replacing this operation with a DataFrame/Dataset operation can improve performance by reducing the need for manual data manipulation and conversion. It can also improve scalability by allowing for more efficient data processing and storage."
+        },
+        {
+            "rddOperation": "for i, time in enumerate(times): time = utc_timestamp(time) for j, latitude in enumerate(latitudes): for k, longitude in enumerate(longitudes): try: rows.append([time, latitude.item(), longitude.item(), feature_data[i][j][k].item()]) except: pass",
+            "improvementExplanation": "The usage of nested for loops to iterate over the data can be replaced with a DataFrame/Dataset operation. This is because the nested loops can be replaced with a single operation that can process the data in parallel.",
+            "dataframeEquivalent": "df = spark.createDataFrame([(time, latitude, longitude, feature_data[i][j][k]) for i, time in enumerate(times) for j, latitude in enumerate(latitudes) for k, longitude in enumerate(longitudes)], ['time', 'latitude', 'longitude', 'feature'])",
+            "benefits": "Replacing this operation with a DataFrame/Dataset operation can improve performance by reducing the need for manual data manipulation and conversion. It can also improve scalability by allowing for more efficient data processing and storage."
+        }
+    ]
+}

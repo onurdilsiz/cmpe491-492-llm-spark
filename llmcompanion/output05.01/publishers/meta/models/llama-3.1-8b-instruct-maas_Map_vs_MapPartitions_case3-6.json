@@ -1,0 +1,16 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "customerDF.select(countDistinct(\"country\"))",
+            "improvementExplanation": "The map() transformation is used in the select() method to count distinct countries. This operation can be performed at the partition level, as it involves aggregating data within each partition. By using mapPartitions(), we can reduce the number of function calls and optimize I/O operations, leading to improved performance.",
+            "mapPartitionsEquivalent": "customerDF.mapPartitions(lambda x: [countDistinct(x[0]['country'])]).collect()[0]",
+            "benefits": [
+                "Reduced function call overhead",
+                "Optimized I/O operations",
+                "Improved performance for partition-level operations"
+            ]
+        }
+    ]
+}

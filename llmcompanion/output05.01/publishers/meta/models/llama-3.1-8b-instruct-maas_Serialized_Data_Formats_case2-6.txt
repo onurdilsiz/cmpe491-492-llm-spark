@@ -1,0 +1,55 @@
+{
+  "detected": true,
+  "occurrences": 7,
+  "response": [
+    {
+      "operation": "Reading data from HBase table in CSV format",
+      "location": "hbase_rdd = sc.newAPIHadoopRDD(\n    \"org.apache.hadoop.hbase.mapreduce.TableInputFormat\",\n    \"org.apache.hadoop.hbase.io.ImmutableBytesWritable\",\n    \"org.apache.hadoop.hbase.client.Result\",\n    keyConverter=keyConv,\n    valueConverter=valueConv,\n    conf=conf)",
+      "improvementExplanation": "The current data format is CSV, which is not optimized for large-scale data processing. Switching to a serialized format like Parquet or ORC can improve performance by reducing the size of the data and enabling faster reads and writes.",
+      "optimizedEquivalent": "hbase_rdd = sc.newAPIHadoopRDD(\n    \"org.apache.hadoop.hbase.mapreduce.TableInputFormat\",\n    \"org.apache.hadoop.hbase.io.ImmutableBytesWritable\",\n    \"org.apache.hadoop.hbase.client.Result\",\n    keyConverter=keyConv,\n    valueConverter=valueConv,\n    conf=conf,\n    inputFormatClass=\"org.apache.hadoop.hbase.mapreduce.TableInputFormat\",\n    outputFormatClass=\"org.apache.hadoop.hbase.mapreduce.TableOutputFormat\")",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Writing data to HBase table in CSV format",
+      "location": "save_record(rdd) = rdd.saveAsNewAPIHadoopDataset(\n    conf=conf, keyConverter=keyConv, valueConverter=valueConv)",
+      "improvementExplanation": "The current data format is CSV, which is not optimized for large-scale data processing. Switching to a serialized format like Parquet or ORC can improve performance by reducing the size of the data and enabling faster reads and writes.",
+      "optimizedEquivalent": "save_record(rdd) = rdd.saveAsNewAPIHadoopDataset(\n    conf=conf, keyConverter=keyConv, valueConverter=valueConv,\n    inputFormatClass=\"org.apache.hadoop.hbase.mapreduce.TableInputFormat\",\n    outputFormatClass=\"org.apache.hadoop.hbase.mapreduce.TableOutputFormat\")",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Reading data from HBase table in CSV format",
+      "location": "hbase_rdd = hbase_rdd.map(lambda x: x[1]).map(lambda x: x.split(\"\\n\"))",
+      "improvementExplanation": "The current data format is CSV, which is not optimized for large-scale data processing. Switching to a serialized format like Parquet or ORC can improve performance by reducing the size of the data and enabling faster reads and writes.",
+      "optimizedEquivalent": "hbase_rdd = hbase_rdd.map(lambda x: x[1]).map(lambda x: x.split(\"\\n\"))",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Writing data to HBase table in CSV format",
+      "location": "save_message_table(rdd) = rdd.saveAsNewAPIHadoopDataset(\n    conf=conf, keyConverter=keyConv, valueConverter=valueConv)",
+      "improvementExplanation": "The current data format is CSV, which is not optimized for large-scale data processing. Switching to a serialized format like Parquet or ORC can improve performance by reducing the size of the data and enabling faster reads and writes.",
+      "optimizedEquivalent": "save_message_table(rdd) = rdd.saveAsNewAPIHadoopDataset(\n    conf=conf, keyConverter=keyConv, valueConverter=valueConv,\n    inputFormatClass=\"org.apache.hadoop.hbase.mapreduce.TableInputFormat\",\n    outputFormatClass=\"org.apache.hadoop.hbase.mapreduce.TableOutputFormat\")",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Reading data from HBase table in CSV format",
+      "location": "data_rdd = hbase_rdd.flatMap(lambda x: get_valid_items(x))",
+      "improvementExplanation": "The current data format is CSV, which is not optimized for large-scale data processing. Switching to a serialized format like Parquet or ORC can improve performance by reducing the size of the data and enabling faster reads and writes.",
+      "optimizedEquivalent": "data_rdd = hbase_rdd.flatMap(lambda x: get_valid_items(x))",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Writing data to HBase table in CSV format",
+      "location": "save_record(rdd) = rdd.saveAsNewAPIHadoopDataset(\n    conf=conf, keyConverter=keyConv, valueConverter=valueConv)",
+      "improvementExplanation": "The current data format is CSV, which is not optimized for large-scale data processing. Switching to a serialized format like Parquet or ORC can improve performance by reducing the size of the data and enabling faster reads and writes.",
+      "optimizedEquivalent": "save_record(rdd) = rdd.saveAsNewAPIHadoopDataset(\n    conf=conf, keyConverter=keyConv, valueConverter=valueConv,\n    inputFormatClass=\"org.apache.hadoop.hbase.mapreduce.TableInputFormat\",\n    outputFormatClass=\"org.apache.hadoop.hbase.mapreduce.TableOutputFormat\")",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "Reading data from HBase table in CSV format",
+      "location": "hbase_rdd = hbase_rdd.map(lambda x: x[1]).map(lambda x: x.split(\"\\n\"))",
+      "improvementExplanation": "The current data format is CSV, which is not optimized for large-scale data processing. Switching to a serialized format like Parquet or ORC can improve performance by reducing the size of the data and enabling faster reads and writes.",
+      "optimizedEquivalent": "hbase_rdd = hbase_rdd.map(lambda x: x[1]).map(lambda x: x.split(\"\\n\"))",
+      "benefits": "Faster reads and writes, compression, and query optimization through predicate pushdown."
+    }
+  ]
+}

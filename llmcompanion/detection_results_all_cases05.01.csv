@@ -1,0 +1,331 @@
+Model,Case,File,Detection,Occurrences,Expected Detection,Expected Occurrences,Success
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-1.py,TRUE,7,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-1.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-1.py,TRUE,2,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-1.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-1.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-10.py,FALSE,0,TRUE,5,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-10.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-10.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-10.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-10.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-11.py,TRUE,7,TRUE,6,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-11.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-11.py,TRUE,4,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-11.py,TRUE,2,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-11.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-2.py,TRUE,6,TRUE,,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-2.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-2.py,TRUE,2,TRUE,7,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-2.py,TRUE,2,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-2.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-3.py,TRUE,1,TRUE,5,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-3.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-3.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-3.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-3.py,FALSE,0,FALSE,1,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-4.py,FALSE,0,TRUE,4,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-4.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-4.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-4.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-4.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-5.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-5.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-5.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-5.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-5.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-6.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-6.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-6.py,FALSE,0,TRUE,0,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-6.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-6.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-7.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-7.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-7.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-7.py,FALSE,0,TRUE,0,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-7.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-8.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-8.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-8.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-8.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-8.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-9.py,TRUE,6,TRUE,6,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-9.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-9.py,FALSE,0,TRUE,6,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-9.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-9.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case01.py,TRUE,2,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case01.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case01.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case01.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case01.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case012.py,TRUE,3,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case012.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case012.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case012.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case012.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0123.py,TRUE,3,TRUE,5,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0123.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0123.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0123.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0123.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case01234.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case01234.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case01234.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case01234.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case01234.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case013.py,TRUE,2,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case013.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case013.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case013.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case013.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case014.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case014.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case014.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case014.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case014.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case02.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case02.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case02.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case02.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case02.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case023.py,TRUE,3,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case023.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case023.py,TRUE,1,TRUE,6,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case023.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case023.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case03.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case03.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case03.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case03.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case03.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case04.py,TRUE,2,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case04.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case04.py,FALSE,0,TRUE,3,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case04.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case04.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-1.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-1.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-1.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-1.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-1.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-10.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-10.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-10.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-10.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-10.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-11.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-11.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-11.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-11.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-11.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-2.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-2.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-2.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-2.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-2.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-3.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-3.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-3.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-3.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-3.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-4.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-4.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-4.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-4.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-4.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-5.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-5.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-5.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-5.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-5.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-6.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-6.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-6.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-6.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-6.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-7.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-7.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-7.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-7.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-7.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-8.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-8.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-8.py,TRUE,1,FALSE,0,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-8.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-8.py,FALSE,0,FALSE,0,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-9.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-9.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-9.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-9.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-9.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case12.py,TRUE,2,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case12.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case12.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case12.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case12.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case13.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case13.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case13.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case13.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case13.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-1.py,TRUE,2,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-1.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-1.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-1.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-1.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-10.py,TRUE,7,TRUE,5,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-10.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-10.py,TRUE,7,TRUE,5,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-10.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-10.py,TRUE,7,TRUE,4,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-11.py,TRUE,2,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-11.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-11.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-11.py,TRUE,1,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-11.py,TRUE,3,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-12.py,TRUE,2,TRUE,6,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-12.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-12.py,TRUE,1,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-12.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-12.py,TRUE,1,TRUE,4,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-2.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-2.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-2.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-2.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-2.py,FALSE,0,TRUE,3,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-3.py,TRUE,7,TRUE,9,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-3.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-3.py,TRUE,2,TRUE,22,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-3.py,TRUE,2,TRUE,7,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-3.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-4.py,TRUE,2,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-4.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-4.py,TRUE,2,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-4.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-4.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-5.py,TRUE,2,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-5.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-5.py,TRUE,1,TRUE,6,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-5.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-5.py,TRUE,1,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-6.py,TRUE,2,TRUE,5,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-6.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-6.py,TRUE,1,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-6.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-6.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-7.py,TRUE,2,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-7.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-7.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-7.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-7.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-8.py,TRUE,2,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-8.py,TRUE,2,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-8.py,TRUE,2,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-8.py,TRUE,2,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-8.py,TRUE,2,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-9.py,TRUE,2,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-9.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-9.py,TRUE,2,TRUE,5,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-9.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-9.py,TRUE,1,TRUE,7,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-1.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-1.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-1.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-1.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-1.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-10.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-10.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-10.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-10.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-10.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-2.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-2.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-2.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-2.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-2.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-3.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-3.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-3.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-3.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-3.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-4.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-4.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-4.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-4.py,TRUE,1,TRUE,3,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-4.py,TRUE,1,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-5.py,FALSE,0,TRUE,4,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-5.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-5.py,FALSE,0,TRUE,13,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-5.py,FALSE,0,TRUE,2,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-5.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-6.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-6.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-6.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-6.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-6.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-7.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-7.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-7.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-7.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-7.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-8.py,FALSE,0,TRUE,3,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-8.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-8.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-8.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-8.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-9.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-9.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-9.py,FALSE,0,TRUE,3,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-9.py,FALSE,0,TRUE,1,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-9.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-1.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-1.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-1.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-1.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-1.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-10.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-10.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-10.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-10.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-10.py,TRUE,4,TRUE,2,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-2.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-2.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-2.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-2.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-2.py,TRUE,3,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-3.py,TRUE,0,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-3.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-3.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-3.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-3.py,TRUE,4,TRUE,4,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-4.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-4.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-4.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-4.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-4.py,TRUE,4,TRUE,5,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-5.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-5.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-5.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-5.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-5.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-6.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-6.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-6.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-6.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-6.py,TRUE,6,TRUE,6,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-7.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-7.py,TRUE,1,TRUE,1,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-7.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-7.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-7.py,TRUE,6,TRUE,8,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-8.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-8.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-8.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-8.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-8.py,TRUE,4,TRUE,5,TRUE
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-9.py,TRUE,1,FALSE,,FALSE
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-9.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-9.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-9.py,FALSE,0,FALSE,,TRUE
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-9.py,TRUE,1,TRUE,1,TRUE

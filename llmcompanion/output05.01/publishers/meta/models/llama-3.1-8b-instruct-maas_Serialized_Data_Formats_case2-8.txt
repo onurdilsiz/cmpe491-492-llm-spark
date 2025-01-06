@@ -1,0 +1,64 @@
+```json
+{
+  "detected": true,
+  "occurrences": 7,
+  "response": [
+    {
+      "operation": "urllib2.urlopen(request).read() in get_server_weights()",
+      "location": "get_server_weights() function, line 34",
+      "improvementExplanation": "The current data format is pickle, which is not optimized for large-scale data processing. Switching to Parquet or ORC can improve performance by reducing the overhead of serializing and deserializing data. Additionally, Parquet and ORC support columnar storage, which can improve query performance by allowing for more efficient data retrieval.",
+      "optimizedEquivalent": "Use Spark's built-in support for Parquet files to read and write data. For example, you can use the `spark.read.parquet()` method to read a Parquet file and the `spark.write.parquet()` method to write a DataFrame to a Parquet file.",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "pickle.dumps(delta, -1) in put_deltas_to_server()",
+      "location": "put_deltas_to_server() function, line 63",
+      "improvementExplanation": "The current data format is pickle, which is not optimized for large-scale data processing. Switching to Parquet or ORC can improve performance by reducing the overhead of serializing and deserializing data. Additionally, Parquet and ORC support columnar storage, which can improve query performance by allowing for more efficient data retrieval.",
+      "optimizedEquivalent": "Use Spark's built-in support for Parquet files to read and write data. For example, you can use the `spark.read.parquet()` method to read a Parquet file and the `spark.write.parquet()` method to write a DataFrame to a Parquet file.",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "pickle.loads(request.data) in update_parameters()",
+      "location": "update_parameters() function, line 81",
+      "improvementExplanation": "The current data format is pickle, which is not optimized for large-scale data processing. Switching to Parquet or ORC can improve performance by reducing the overhead of serializing and deserializing data. Additionally, Parquet and ORC support columnar storage, which can improve query performance by allowing for more efficient data retrieval.",
+      "optimizedEquivalent": "Use Spark's built-in support for Parquet files to read and write data. For example, you can use the `spark.read.parquet()` method to read a Parquet file and the `spark.write.parquet()` method to write a DataFrame to a Parquet file.",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "pickle.loads(urllib2.urlopen(request).read()) in get_server_weights()",
+      "location": "get_server_weights() function, line 34",
+      "improvementExplanation": "The current data format is pickle, which is not optimized for large-scale data processing. Switching to Parquet or ORC can improve performance by reducing the overhead of serializing and deserializing data. Additionally, Parquet and ORC support columnar storage, which can improve query performance by allowing for more efficient data retrieval.",
+      "optimizedEquivalent": "Use Spark's built-in support for Parquet files to read and write data. For example, you can use the `spark.read.parquet()` method to read a Parquet file and the `spark.write.parquet()` method to write a DataFrame to a Parquet file.",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "pickle.dumps(delta, -1) in put_deltas_to_server()",
+      "location": "put_deltas_to_server() function, line 63",
+      "improvementExplanation": "The current data format is pickle, which is not optimized for large-scale data processing. Switching to Parquet or ORC can improve performance by reducing the overhead of serializing and deserializing data. Additionally, Parquet and ORC support columnar storage, which can improve query performance by allowing for more efficient data retrieval.",
+      "optimizedEquivalent": "Use Spark's built-in support for Parquet files to read and write data. For example, you can use the `spark.read.parquet()` method to read a Parquet file and the `spark.write.parquet()` method to write a DataFrame to a Parquet file.",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "pickle.loads(request.data) in update_parameters()",
+      "location": "update_parameters() function, line 81",
+      "improvementExplanation": "The current data format is pickle, which is not optimized for large-scale data processing. Switching to Parquet or ORC can improve performance by reducing the overhead of serializing and deserializing data. Additionally, Parquet and ORC support columnar storage, which can improve query performance by allowing for more efficient data retrieval.",
+      "optimizedEquivalent": "Use Spark's built-in support for Parquet files to read and write data. For example, you can use the `spark.read.parquet()` method to read a Parquet file and the `spark.write.parquet()` method to write a DataFrame to a Parquet file.",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "pickle.loads(urllib2.urlopen(request).read()) in get_server_weights()",
+      "location": "get_server_weights() function, line 34",
+      "improvementExplanation": "The current data format is pickle, which is not optimized for large-scale data processing. Switching to Parquet or ORC can improve performance by reducing the overhead of serializing and deserializing data. Additionally, Parquet and ORC support columnar storage, which can improve query performance by allowing for more efficient data retrieval.",
+      "optimizedEquivalent": "Use Spark's built-in support for Parquet files to read and write data. For example, you can use the `spark.read.parquet()` method to read a Parquet file and the `spark.write.parquet()` method to write a DataFrame to a Parquet file.",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+    },
+    {
+      "operation": "pickle.dumps(delta, -1) in put_deltas_to_server()",
+      "location": "put_deltas_to_server() function, line 63",
+      "improvementExplanation": "The current data format is pickle, which is not optimized for large-scale data processing. Switching to Parquet or ORC can improve performance by reducing the overhead of serializing and deserializing data. Additionally, Parquet and ORC support columnar storage, which can improve query performance by allowing for more efficient data retrieval.",
+      "optimizedEquivalent": "Use Spark's built-in support for Parquet files to read and write data. For example, you can use the `spark.read.parquet()` method to read a Parquet file and the `spark.write.parquet()` method to write a DataFrame to a Parquet file.",
+      "benefits": "Faster reads/writes, compression, and query optimization through predicate pushdown."
+    }
+  ]
+}
+```

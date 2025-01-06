@@ -1,0 +1,12 @@
+{
+    "detected": true,
+    "occurrences": 1,
+    "response": [
+        {
+            "operation": "customerDF.withColumn('doublesalary',customerDF['salary']*2).show()",
+            "improvementExplanation": "The UDF operation is used to create a new column 'doublesalary' by multiplying the existing 'salary' column by 2. This can be replaced with a built-in function or native DataFrame/Dataset operation using the `withColumn` method and the `multiply` function.",
+            "alternativeEquivalent": "customerDF.withColumn('doublesalary', customerDF['salary'] * 2).show()",
+            "benefits": "Replacing UDFs with built-in functions or native DataFrame/Dataset operations enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        }
+    ]
+}

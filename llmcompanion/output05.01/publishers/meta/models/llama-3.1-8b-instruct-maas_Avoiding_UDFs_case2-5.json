@@ -1,0 +1,24 @@
+{
+    "detected": true,
+    "occurrences": 3,
+    "response": [
+        {
+            "operation": "lemmaMapper function in preprocessing() at line 24",
+            "improvementExplanation": "The lemmaMapper function uses the Stanford CoreNLP library to perform lemmatization. This can be replaced with Spark's built-in Tokenizer and Lemmatizer functions, which are more efficient and scalable.",
+            "alternativeEquivalent": "from pyspark.ml.feature import Tokenizer, Lemmatizer\n\ndef preprocessing(sampleSize, numTerms, sc):\n    ... \n    tokenizer = Tokenizer(inputCol='text', outputCol='words')\n    lemmatizer = Lemmatizer(inputCol='words', outputCol='lemmas')\n    lemmatized = tokenizer.transform(plainText).select('lemmas')\n    ...",
+            "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "topTermsInTopConcepts() function at line 44",
+            "improvementExplanation": "The topTermsInTopConcepts function uses a UDF to sort the term weights. This can be replaced with Spark's built-in sortBy function, which is more efficient and scalable.",
+            "alternativeEquivalent": "def topTermsInTopConcepts(svd, numConcepts, numTerms, termIds):\n    v = svd.V\n    topTerms = v.toArray().toDF().sort('value', ascending=False).collect()\n    ...",
+            "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        },
+        {
+            "operation": "topDocsInTopConcepts() function at line 63",
+            "improvementExplanation": "The topDocsInTopConcepts function uses a UDF to sort the document weights. This can be replaced with Spark's built-in sortBy function, which is more efficient and scalable.",
+            "alternativeEquivalent": "def topDocsInTopConcepts(svd, numConcepts, numDocs, docIds):\n    u = svd.U\n    topDocs = u.rows.map(lambda r: r[i]).zipWithUniqueId().sortBy('value', ascending=False).collect()\n    ...",
+            "benefits": "Replacing UDFs with built-in functions enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+        }
+    ]
+}
