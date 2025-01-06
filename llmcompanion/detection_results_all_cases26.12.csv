@@ -1,4 +1,4 @@
-Model,Case,File,Detection,Occurrences,Expected Detection ,Expected Occurrences,Success,Diff of Occurrences
+Model,Case,File,Detection,Occurrences,Expected Detection,Expected Occurrences,Success,Diff of Occurrences
 gemini-1.0-pro-002,RDD vs DataFrame,case0-1.py,TRUE,4,TRUE,2,TRUE,-2
 gemini-1.0-pro-002,Coalesce vs Repartition,case0-1.py,TRUE,1,TRUE,1,TRUE,0
 gemini-1.0-pro-002,Map vs MapPartitions,case0-1.py,TRUE,1,TRUE,1,TRUE,0
