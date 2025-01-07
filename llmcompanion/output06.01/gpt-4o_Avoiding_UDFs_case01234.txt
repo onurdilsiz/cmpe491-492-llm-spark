@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "def multiply_by_two(x): return x * 2\nmultiply_udf = udf(multiply_by_two, IntegerType())\nresult_with_udf = df.withColumn(\"doubled\", multiply_udf(col(\"numbers\")))",
+      "improvementExplanation": "The UDF 'multiply_by_two' is used to multiply a column value by 2. This can be replaced with Spark's built-in arithmetic operations, which are more efficient and allow Spark to optimize the execution plan.",
+      "alternativeEquivalent": "result_with_builtin = df.withColumn(\"doubled\", col(\"numbers\") * 2)",
+      "benefits": "Replacing the UDF with a built-in function allows Spark to apply Catalyst optimizations, which can improve query performance. It also reduces serialization overhead and leverages Spark's optimized execution engine for arithmetic operations."
+    }
+  ]
+}
+```

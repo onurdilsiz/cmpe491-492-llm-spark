@@ -47,8 +47,8 @@ def create_csv_from_jsons(json_dir, output_csv):
     print(f"CSV file created: {output_csv}")
 
 # Directory containing JSON files and output CSV path
-json_directory = "output05.01/publishers/meta/models"  # Replace with your JSON files directory
-output_csv_path = "detection_results_all_cases05.01.csv"
+json_directory = "output06.01"  # Replace with your JSON files directory
+output_csv_path = "detection_results_all_cases06.01_2.csv"
 
 # Generate CSV
 create_csv_from_jsons(json_directory, output_csv_path)

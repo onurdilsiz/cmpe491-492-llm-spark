@@ -1,0 +1,18 @@
+{
+    "detected": true,
+    "occurrences": 2,
+    "response": [
+        {
+            "operation": "read.text(\"hdfs://namenode/user/controller/ncdc-orig/2000-2018.txt\")",
+            "improvementExplanation": "The current operation reads data from a text file. Text files are not optimized for analytical queries as they do not support columnar storage or compression. Switching to a format like Parquet or ORC would allow for more efficient storage and faster query performance due to columnar storage and built-in compression.",
+            "optimizedEquivalent": "df1 = spark.read.parquet(\"hdfs://namenode/user/controller/ncdc-orig/2000-2018.parquet\")",
+            "benefits": "Using Parquet would provide benefits such as reduced storage space due to compression, faster read times due to columnar storage, and improved query performance through predicate pushdown."
+        },
+        {
+            "operation": "write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/50\")",
+            "improvementExplanation": "The current operation writes data to a CSV file with LZ4 compression. CSV is a row-based format and does not support efficient compression or query optimization. Switching to Parquet or ORC would allow for more efficient storage and faster query performance due to columnar storage and built-in compression.",
+            "optimizedEquivalent": "df_5years.repartition(50).write.format(\"parquet\").mode(\"overwrite\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/50\")",
+            "benefits": "Switching to Parquet would result in faster write times, reduced storage space due to better compression, and improved query performance through columnar storage and predicate pushdown."
+        }
+    ]
+}

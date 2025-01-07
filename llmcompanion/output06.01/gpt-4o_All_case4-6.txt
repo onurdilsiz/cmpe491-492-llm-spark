@@ -1,0 +1,56 @@
+```json
+{
+  "detected0": false,
+  "occurrences0": 0,
+  "response0": [],
+  "detected1": false,
+  "occurrences1": 0,
+  "response1": [],
+  "detected2": false,
+  "occurrences2": 0,
+  "response2": [],
+  "detected3": false,
+  "occurrences3": 0,
+  "response3": [],
+  "detected4": true,
+  "occurrences4": 6,
+  "response4": [
+    {
+      "operation": "extract_family_name UDF",
+      "improvementExplanation": "The UDF can be replaced with a native DataFrame operation using the split function.",
+      "alternativeEquivalent": "df.withColumn('family_name', split(col('full_name'), ' ').getItem(1))",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "extract_given_name UDF",
+      "improvementExplanation": "The UDF can be replaced with a native DataFrame operation using the split function.",
+      "alternativeEquivalent": "df.withColumn('given_name', split(col('full_name'), ' ').getItem(0))",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "format_phone UDF",
+      "improvementExplanation": "The UDF can be replaced with a native DataFrame operation using the regexp_replace function.",
+      "alternativeEquivalent": "df.withColumn('formatted_phone', regexp_replace(col('phone'), '\\\\((\\\\d{2})\\\\)\\\\s(\\\\d{4}-\\\\d{4})', '+55 0$1 $2'))",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "clean_cpf UDF",
+      "improvementExplanation": "The UDF can be replaced with a native DataFrame operation using the regexp_replace function.",
+      "alternativeEquivalent": "df.withColumn('cleaned_cpf', regexp_replace(col('cpf'), '\\\\D', ''))",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "format_gender UDF",
+      "improvementExplanation": "The UDF can be replaced with a native DataFrame operation using the when and otherwise functions.",
+      "alternativeEquivalent": "df.withColumn('formatted_gender', when(lower(col('gender')) == 'masculino', 'male').when(lower(col('gender')) == 'feminino', 'female').otherwise('unknown'))",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    },
+    {
+      "operation": "format_date UDF",
+      "improvementExplanation": "The UDF can be replaced with a native DataFrame operation using the to_date and date_format functions.",
+      "alternativeEquivalent": "df.withColumn('formatted_date', date_format(to_date(col('date'), 'dd/MM/yyyy'), 'yyyy-MM-dd'))",
+      "benefits": "Avoiding UDFs enables Catalyst optimizations, improves performance, and reduces serialization overhead."
+    }
+  ]
+}
+```

@@ -1,0 +1,36 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 3,
+    "response4": [
+        {
+            "operation": "five_udf = udf(five)",
+            "improvementExplanation": "The UDF 'five_udf' is used to return a constant value. This can be replaced with a literal value in Spark SQL.",
+            "alternativeEquivalent": "df.selectExpr('5 as five').show()",
+            "benefits": "Avoiding UDFs allows Spark to apply Catalyst optimizations, improving performance and reducing serialization overhead."
+        },
+        {
+            "operation": "@udf\ndef five(): return 5",
+            "improvementExplanation": "The UDF 'five' is used to return a constant value. This can be replaced with a literal value in Spark SQL.",
+            "alternativeEquivalent": "df.selectExpr('5 as five').show()",
+            "benefits": "Avoiding UDFs allows Spark to apply Catalyst optimizations, improving performance and reducing serialization overhead."
+        },
+        {
+            "operation": "@pandas_udf(returnType='int')\ndef identity(rows: pd.Series) -> pd.Series: return rows",
+            "improvementExplanation": "The Pandas UDF 'identity' is used to return the same column values. This can be replaced with a simple column selection.",
+            "alternativeEquivalent": "df.select('id').show()",
+            "benefits": "Avoiding UDFs allows Spark to apply Catalyst optimizations, improving performance and reducing serialization overhead."
+        }
+    ]
+}

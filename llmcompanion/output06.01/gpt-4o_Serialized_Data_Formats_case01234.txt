@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "CSV read operation at line: csv_df = spark.read.format(\"csv\").option(\"header\", \"true\").load(\"path/to/data.csv\")",
+      "improvementExplanation": "The current operation reads data from a CSV file. CSV is a text-based format that is not optimized for performance in Spark. Switching to a columnar format like Parquet or ORC can improve performance due to better compression, faster read/write operations, and support for predicate pushdown, which can optimize query execution.",
+      "optimizedEquivalent": "parquet_df = spark.read.format(\"parquet\").load(\"path/to/data.parquet\")",
+      "benefits": "Switching to Parquet provides faster read/write operations due to its columnar storage format, better compression, and support for predicate pushdown, which can significantly improve query performance by reducing the amount of data read."
+    }
+  ]
+}
+```

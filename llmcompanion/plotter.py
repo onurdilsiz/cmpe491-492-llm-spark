@@ -80,4 +80,139 @@ def modelplotter():
     plt.tight_layout()
     plt.show()
 
-modelplotter()
+# modelplotter()
+
+def latencyplotter():
+    file_path = "all_latency.csv"  # Replace with the correct file name
+    data = pd.read_csv(file_path)
+
+    # Ensure Latency is a numeric column
+    data['Latency'] = pd.to_numeric(data['Latency']/5, errors='coerce')
+
+    # Plot the latency for each model
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x='Model', y='Latency', data=data, palette="Blues", ci=None)
+
+    # Add labels and title
+    plt.title('Latency vs Model', fontsize=16)
+    plt.xlabel('Model', fontsize=12)
+    plt.ylabel('Latency (seconds)', fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# latencyplotter()
+
+def latencyplotter_grouped():
+    file_path = "specific_detection_results.csv"  # Replace with the correct file name
+    data = pd.read_csv(file_path)
+
+    # Ensure Latency is a numeric column
+    data['Latency'] = pd.to_numeric(data['Latency'], errors='coerce')
+
+    # Create the plot
+    plt.figure(figsize=(14, 8))
+    sns.barplot(x='Model', y='Latency', hue='Case', data=data, palette="Blues", ci=None)
+
+    # Add labels and title
+    plt.title('Latency by Model and Case', fontsize=16)
+    plt.xlabel('Model', fontsize=12)
+    plt.ylabel('Latency (seconds)', fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.legend(title='Case', fontsize=10, loc='upper left')
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# Call the function
+# latencyplotter_grouped()
+
+
+def tokens_plotter_with_input_output():
+    # Load the CSV file
+    file_path = "cumulative_token_data.csv"  # Replace with your actual file name
+    data = pd.read_csv(file_path)
+
+    # Ensure tokens columns are numeric
+    data['Input Tokens'] = pd.to_numeric(data['Input Tokens'], errors='coerce')
+    data['Output Tokens'] = pd.to_numeric(data['Output Tokens'], errors='coerce')
+
+    # Melt the data to create a long-form DataFrame for grouped plotting
+    melted_data = pd.melt(data, 
+                          id_vars=["Model"], 
+                          value_vars=["Input Tokens", "Output Tokens"], 
+                          var_name="Token Type", 
+                          value_name="Token Count")
+
+    # Create the plot
+    plt.figure(figsize=(12, 6))
+    sns.barplot(x="Model", y="Token Count", hue="Token Type", data=melted_data, palette="Blues", ci=None)
+
+    # Add labels and title
+    plt.title('Tokens vs Model', fontsize=16)
+    plt.xlabel('Model', fontsize=12)
+    plt.ylabel('Token Count', fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.legend(title="Token Type", fontsize=10)
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# Call the function
+# tokens_plotter_with_input_output()
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def total_tokens_plotter():
+    # Load the CSV file
+    file_path = "cumulative_token_data.csv"  # Replace with your actual file name
+    data = pd.read_csv(file_path)
+
+    # Ensure Total Tokens column is numeric
+    data['Total Tokens'] = pd.to_numeric(data['Total Tokens'], errors='coerce')
+
+    # Create the plot
+    plt.figure(figsize=(12, 6))
+    sns.barplot(x="Model", y="Total Tokens", data=data, palette="Blues", ci=None)
+
+    # Add labels and title
+    plt.title('Total Tokens vs Model', fontsize=16)
+    plt.xlabel('Model', fontsize=12)
+    plt.ylabel('Total Tokens', fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# Call the function
+# total_tokens_plotter()
+def output_tokens_plotter():
+    # Load the CSV file
+    file_path = "cumulative_token_data.csv"  # Replace with your actual file name
+    data = pd.read_csv(file_path)
+
+    # Ensure Total Tokens column is numeric
+    data['Output Tokens'] = pd.to_numeric(data['Output Tokens'], errors='coerce')
+
+    # Create the plot
+    plt.figure(figsize=(12, 6))
+    sns.barplot(x="Model", y="Output Tokens", data=data, palette="Blues", ci=None)
+
+    # Add labels and title
+    plt.title('Output Tokens vs Model', fontsize=16)
+    plt.xlabel('Model', fontsize=12)
+    plt.ylabel('Output Tokens', fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# Call the function
+# output_tokens_plotter()

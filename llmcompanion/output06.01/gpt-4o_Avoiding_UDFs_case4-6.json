@@ -1,0 +1,42 @@
+{
+    "detected": true,
+    "occurrences": 6,
+    "response": [
+        {
+            "operation": "extract_family_name",
+            "improvementExplanation": "The UDF splits a full name string and extracts the family name. This can be replaced with the `split` function and `expr` to access the desired part of the array.",
+            "alternativeEquivalent": "from pyspark.sql.functions import expr\n\ndf = df.withColumn('family_name', expr(\"split(full_name, ' ')[1]\")",
+            "benefits": "Replacing the UDF with built-in functions allows Spark to optimize the query execution plan using Catalyst, improves performance by avoiding Python serialization overhead, and leverages Spark's native execution engine."
+        },
+        {
+            "operation": "extract_given_name",
+            "improvementExplanation": "The UDF extracts the given name from a full name string. This can be replaced with the `split` function and `expr` to access the first element of the array.",
+            "alternativeEquivalent": "from pyspark.sql.functions import expr\n\ndf = df.withColumn('given_name', expr(\"split(full_name, ' ')[0]\")",
+            "benefits": "Using built-in functions instead of UDFs enables Spark to apply optimizations, reduces the need for Python execution, and improves overall query performance."
+        },
+        {
+            "operation": "format_phone",
+            "improvementExplanation": "The UDF formats a phone number using regex. This can be replaced with the `regexp_replace` function.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace\n\ndf = df.withColumn('formatted_phone', regexp_replace('phone', r'\\((\\d{2})\\)\\s(\\d{4}-\\d{4})', r'+55 0\\1 \\2'))",
+            "benefits": "Using `regexp_replace` allows Spark to optimize the operation natively, avoiding the overhead of Python UDFs and improving execution speed."
+        },
+        {
+            "operation": "clean_cpf",
+            "improvementExplanation": "The UDF removes non-digit characters from a string. This can be replaced with the `regexp_replace` function.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace\n\ndf = df.withColumn('cleaned_cpf', regexp_replace('cpf', r'\\D', ''))",
+            "benefits": "Replacing the UDF with `regexp_replace` allows for better performance and optimization by Spark's execution engine, reducing the need for Python processing."
+        },
+        {
+            "operation": "format_gender",
+            "improvementExplanation": "The UDF maps gender strings to 'male', 'female', or 'unknown'. This can be replaced with the `when` and `otherwise` functions.",
+            "alternativeEquivalent": "from pyspark.sql.functions import when\n\ndf = df.withColumn('formatted_gender', when(df.gender.lower() == 'masculino', 'male').when(df.gender.lower() == 'feminino', 'female').otherwise('unknown'))",
+            "benefits": "Using `when` and `otherwise` allows Spark to optimize the logic natively, improving performance and reducing the need for Python UDFs."
+        },
+        {
+            "operation": "format_date",
+            "improvementExplanation": "The UDF formats a date string. This can be replaced with the `to_date` and `date_format` functions.",
+            "alternativeEquivalent": "from pyspark.sql.functions import to_date, date_format\n\ndf = df.withColumn('formatted_date', date_format(to_date('date', 'dd/MM/yyyy'), 'yyyy-MM-dd'))",
+            "benefits": "Using `to_date` and `date_format` allows Spark to handle date transformations natively, improving performance and enabling query optimizations."
+        }
+    ]
+}

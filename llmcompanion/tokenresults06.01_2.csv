@@ -1,0 +1,25 @@
+Model,Case,File,Input Tokens,Output Tokens,Total Tokens,Latency
+gpt-4o,RDD vs DataFrame,case02.py,687,517,1204,10.831657648086548
+gpt-4o,Coalesce vs Repartition,case02.py,655,26,681,1.4668865203857422
+gpt-4o,Map vs MapPartitions,case02.py,638,336,974,7.631727933883667
+gpt-4o,Serialized Data Formats,case02.py,680,365,1045,11.166435241699219
+gpt-4o,Avoiding UDFs,case02.py,657,26,683,0.848604679107666
+gpt-4o,All,case02.py,1469,860,2329,28.037222385406494
+gpt-4o,RDD vs DataFrame,case023.py,780,405,1185,7.064245223999023
+gpt-4o,Coalesce vs Repartition,case023.py,748,26,774,1.6951475143432617
+gpt-4o,Map vs MapPartitions,case023.py,731,353,1084,6.749435663223267
+gpt-4o,Serialized Data Formats,case023.py,773,340,1113,4.62091851234436
+gpt-4o,Avoiding UDFs,case023.py,750,26,776,0.8556420803070068
+gpt-4o,All,case023.py,1562,813,2375,19.35475993156433
+gpt-4o,RDD vs DataFrame,case03.py,669,334,1003,7.86017370223999
+gpt-4o,Coalesce vs Repartition,case03.py,637,26,663,0.9215340614318848
+gpt-4o,Map vs MapPartitions,case03.py,620,391,1011,7.698866844177246
+gpt-4o,Serialized Data Formats,case03.py,662,321,983,5.669506788253784
+gpt-4o,Avoiding UDFs,case03.py,639,26,665,0.8222389221191406
+gpt-4o,All,case03.py,1451,759,2210,18.631558418273926
+gpt-4o,RDD vs DataFrame,case04.py,745,444,1189,8.592011451721191
+gpt-4o,Coalesce vs Repartition,case04.py,713,26,739,0.9958393573760986
+gpt-4o,Map vs MapPartitions,case04.py,696,220,916,4.216570138931274
+gpt-4o,Serialized Data Formats,case04.py,738,251,989,3.2214553356170654
+gpt-4o,Avoiding UDFs,case04.py,715,237,952,3.07068133354187
+gpt-4o,All,case04.py,1527,809,2336,26.84953022003174

@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "map(lambda x: Row(**f(x))) in to_df1()",
+      "improvementExplanation": "The function 'f' is used to convert a list to a dictionary, which is then converted to a Row object. This can be replaced by directly using the Row constructor with unpacking.",
+      "alternativeEquivalent": "df = sc.textFile(txt_file).map(lambda line: line.split(',')).map(lambda x: Row(name=x[0], age=x[1])).toDF()",
+      "benefits": "Avoiding the UDF allows Spark to optimize the transformation using Catalyst, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "map(lambda attr: 'name:' + attr['name'] + ', ' + 'age:' + attr['age']) in to_df2()",
+      "improvementExplanation": "This transformation is used to format the output as a string. It can be replaced with the 'selectExpr' method in Spark SQL.",
+      "alternativeEquivalent": "results.selectExpr(\"concat('name:', name, ', age:', age) as formatted_output\").show()",
+      "benefits": "Using built-in functions allows Spark to optimize the query plan, improving execution speed and reducing the need for Python serialization."
+    },
+    {
+      "operation": "flatMap(lambda e: topn(e[0][1], e[1])) in top3_1()",
+      "improvementExplanation": "The 'topn' function is used to sort and select the top 3 elements. This can be replaced with Spark's 'orderBy' and 'limit' functions.",
+      "alternativeEquivalent": "rdd.map(lambda line: line.split(' ')).filter(lambda e: len(e) == 2).map(lambda e: (e[0], int(e[1]))).groupByKey().flatMap(lambda e: sorted(e[1], reverse=True)[:3]).collect()",
+      "benefits": "Replacing UDFs with DataFrame operations allows Spark to leverage its Catalyst optimizer, resulting in better performance and reduced overhead."
+    }
+  ]
+}
+```

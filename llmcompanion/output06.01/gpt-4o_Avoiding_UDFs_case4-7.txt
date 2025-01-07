@@ -1,0 +1,56 @@
+```json
+{
+  "detected": true,
+  "occurrences": 8,
+  "response": [
+    {
+      "operation": "MAP_AN UDF",
+      "improvementExplanation": "The MAP_AN UDF maps specific string values to other string values. This can be replaced with the `when` and `otherwise` functions in Spark.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn('activity_name', when(col('unmapped.`category`') == 'Write', 'Create').when(col('unmapped.`category`') == 'Delete', 'Delete').otherwise('Unknown'))",
+      "benefits": "Replacing UDFs with built-in functions allows Spark to optimize the query plan using Catalyst, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "MAP_AI UDF",
+      "improvementExplanation": "The MAP_AI UDF maps specific string values to integers. This can be replaced with the `when` and `otherwise` functions in Spark.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn('activity_id', when(col('unmapped.`category`') == 'Write', 1).when(col('unmapped.`category`') == 'Delete', 4).otherwise(0).cast('integer'))",
+      "benefits": "Using built-in functions instead of UDFs enables Spark to apply optimizations, leading to better performance and less serialization overhead."
+    },
+    {
+      "operation": "MAP_TN UDF",
+      "improvementExplanation": "The MAP_TN UDF maps specific string values to other string values. This can be replaced with the `when` and `otherwise` functions in Spark.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn('type_name', when(col('unmapped.`category`') == 'Write', 'API Acitvity: API Activity: Create').when(col('unmapped.`category`') == 'Delete', 'API Acitvity: API Activity: Delete').otherwise('API Acitvity: API Activity: Unknown'))",
+      "benefits": "Replacing UDFs with built-in functions allows Spark to optimize the query plan using Catalyst, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "MAP_TI UDF",
+      "improvementExplanation": "The MAP_TI UDF maps specific string values to integers. This can be replaced with the `when` and `otherwise` functions in Spark.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn('type_uid', when(col('unmapped.`category`') == 'Write', 300501).when(col('unmapped.`category`') == 'Delete', 300504).otherwise(300500).cast('integer'))",
+      "benefits": "Using built-in functions instead of UDFs enables Spark to apply optimizations, leading to better performance and less serialization overhead."
+    },
+    {
+      "operation": "MAP_SEVID UDF",
+      "improvementExplanation": "The MAP_SEVID UDF maps specific string values to integers. This can be replaced with the `when` and `otherwise` functions in Spark.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn('severity_id', when(col('severity') == 'Information', 1).when(col('severity') == 'Informational', 1).when(col('severity') == 'Low', 2).when(col('severity') == 'Medium', 3).when(col('severity') == 'High', 4).when(col('severity') == 'Critical', 5).when(col('severity') == 'Fatial', 6).when(col('severity') == 'Unknown', 0).otherwise(99).cast('integer'))",
+      "benefits": "Replacing UDFs with built-in functions allows Spark to optimize the query plan using Catalyst, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "MAP_STATNAME UDF",
+      "improvementExplanation": "The MAP_STATNAME UDF maps specific string values to other string values. This can be replaced with the `when` and `otherwise` functions in Spark.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn('`status`', when(col('unmapped.`resultType`') == 'Unknown', 'Unknown').when(col('unmapped.`resultType`') == 'Success', 'Success').when(col('unmapped.`resultType`') == 'Failure', 'Failure').otherwise('Other'))",
+      "benefits": "Using built-in functions instead of UDFs enables Spark to apply optimizations, leading to better performance and less serialization overhead."
+    },
+    {
+      "operation": "MAP_STATID UDF",
+      "improvementExplanation": "The MAP_STATID UDF maps specific string values to integers. This can be replaced with the `when` and `otherwise` functions in Spark.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn('`status_id`', when(col('unmapped.`resultType`') == 'Unknown', 0).when(col('unmapped.`resultType`') == 'Success', 1).when(col('unmapped.`resultType`') == 'Failure', 2).otherwise(99).cast('integer'))",
+      "benefits": "Replacing UDFs with built-in functions allows Spark to optimize the query plan using Catalyst, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "MAP_TIME UDF",
+      "improvementExplanation": "The MAP_TIME UDF converts a string timestamp to an integer timestamp. This can be replaced with the `unix_timestamp` function in Spark.",
+      "alternativeEquivalent": "azureAuditLog_df = azureAuditLog_df.withColumn('time', unix_timestamp(col('time').substr(1, length(col('time')) - 2), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS').cast('integer'))",
+      "benefits": "Using built-in functions instead of UDFs enables Spark to apply optimizations, leading to better performance and less serialization overhead."
+    }
+  ]
+}
+```

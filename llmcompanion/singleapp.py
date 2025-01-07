@@ -171,7 +171,7 @@ def init_models(models):
     
     llms = {}
     for model in models:
-        if model.startswith("gemini") or model.startswith("chat-bison"):  
+        if model.startswith("gemini") :  
             try:        
                 llms[model] = ChatVertexAI(
                     model=model,
@@ -204,7 +204,7 @@ def init_models(models):
                     max_tokens=None,
                     max_retries=1,
                     stop=None,
-                    request_timeout=30,  # 30 seconds timeout
+                    request_timeout=180,  # 30 seconds timeout
                     api_key=OPENAI_API_KEY,
                 )
             except Exception as e:
@@ -213,17 +213,17 @@ def init_models(models):
     
 
 def main():
-    log_file = "analysis05.01.log"
+    log_file = "analysis06.01_2.log"
     setup_logging(log_file)
     # File paths for local input and output
     config = {
-        "models": ["publishers/meta/models/llama-3.1-8b-instruct-maas" ], #meta/llama-3.1-8b-instruct-maas, gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
+        "models": ["gpt-4o" ],#publishers/meta/models/llama-3.1-8b-instruct-maas,  meta/llama-3.1-8b-instruct-maas, gpt-3.5-turbo-0125, "gemini-1.0-pro-002""gemini-1.5-flash-002", "gemini-2.0-flash-exp"
         "cases": ["RDD vs DataFrame", "Coalesce vs Repartition", "Map vs MapPartitions", "Serialized Data Formats", "Avoiding UDFs","All"],
-        "dataset_dir": "dataset",  # Directory containing all the dataset files
+        "dataset_dir": "dataset2",  # Directory containing all the dataset files
         "prompts_dir": "prompts",  # Directory containing prompt files
-        "output_dir": "output05.01",   # Directory to save the analysis results
-        "csv_file": "tokenresults05.01.csv",
-        "csv_file2": "detectionresults05.01.csv"
+        "output_dir": "output06.01",   # Directory to save the analysis results
+        "csv_file": "tokenresults06.01_2.csv",
+        "csv_file2": "detectionresults06.01_2.csv"
     }
     
     # Initialize the models for analysis

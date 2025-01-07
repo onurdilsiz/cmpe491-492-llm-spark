@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "plainText.mapPartitions(lemmaMapper)",
+      "improvementExplanation": "The map() function is not used here; instead, mapPartitions() is already being used. This is the correct approach for the lemmaMapper function, which initializes a CoreNLP pipeline for each partition, reducing overhead compared to initializing it for each element.",
+      "mapPartitionsEquivalent": "No change needed as mapPartitions() is already used.",
+      "benefits": "Using mapPartitions() here reduces the overhead of initializing the CoreNLP pipeline for each element, leading to better performance and resource utilization."
+    },
+    {
+      "operation": "termSorted = sorted(termWeights, key=itemgetter(0), reverse=True); topTerms.append(map(lambda x: (termIds[x[0]], x[1]), termSorted[0:numTerms]))",
+      "improvementExplanation": "The map() function is used to transform a list of term weights into a list of term IDs and weights. Since this operation is performed on a local list, mapPartitions() is not applicable here.",
+      "mapPartitionsEquivalent": "Not applicable as this is a local operation.",
+      "benefits": "No benefits from mapPartitions() as this is a local list transformation."
+    },
+    {
+      "operation": "docWeights = u.rows.map(lambda r: r[i]).zipWithUniqueId()",
+      "improvementExplanation": "The map() function is used to extract the i-th element from each row of the matrix. This operation can be performed at the partition level by using mapPartitions() to process multiple rows at once, reducing the overhead of function calls.",
+      "mapPartitionsEquivalent": "docWeights = u.rows.mapPartitions(lambda rows: ((r[i], idx) for idx, r in enumerate(rows)))",
+      "benefits": "Switching to mapPartitions() reduces the overhead of function calls by processing multiple rows in a single function call, leading to improved performance."
+    }
+  ]
+}
+```

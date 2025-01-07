@@ -1,0 +1,68 @@
+```json
+{
+  "detected": true,
+  "occurrences": 10,
+  "response": [
+    {
+      "operation": "map(lambda word: (word, 1)) in word_count()",
+      "improvementExplanation": "The map operation is used to transform each word into a key-value pair. This transformation can be done at the partition level to reduce the overhead of function calls for each element.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: ((word, 1) for word in partition))",
+      "benefits": "Using mapPartitions reduces the function call overhead by processing elements in batches, which can lead to improved performance."
+    },
+    {
+      "operation": "map(json.loads) in load_json()",
+      "improvementExplanation": "The map operation is used to parse JSON strings into Python objects. This is an I/O-heavy operation that can benefit from being performed at the partition level.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: (json.loads(s) for s in partition))",
+      "benefits": "Switching to mapPartitions optimizes I/O operations by reducing the number of function calls and allowing for more efficient resource utilization."
+    },
+    {
+      "operation": "map(lambda line: line.split(',')) in to_df1()",
+      "improvementExplanation": "The map operation splits each line into a list of attributes. This can be done at the partition level to reduce the overhead of processing each line individually.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: (line.split(',') for line in partition))",
+      "benefits": "Using mapPartitions reduces the function call overhead and can improve performance by processing data in larger chunks."
+    },
+    {
+      "operation": "map(lambda x: Row(**f(x))) in to_df1()",
+      "improvementExplanation": "The map operation converts each list of attributes into a Row object. This transformation can be performed at the partition level to reduce overhead.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: (Row(**f(x)) for x in partition))",
+      "benefits": "Switching to mapPartitions reduces the function call overhead and can lead to better performance by processing data in batches."
+    },
+    {
+      "operation": "map(lambda line: line.split(',')) in to_df2()",
+      "improvementExplanation": "The map operation splits each line into a list of attributes. This can be done at the partition level to reduce the overhead of processing each line individually.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: (line.split(',') for line in partition))",
+      "benefits": "Using mapPartitions reduces the function call overhead and can improve performance by processing data in larger chunks."
+    },
+    {
+      "operation": "map(lambda attributes: Row(attributes[0], attributes[1])) in to_df2()",
+      "improvementExplanation": "The map operation converts each list of attributes into a Row object. This transformation can be performed at the partition level to reduce overhead.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: (Row(attributes[0], attributes[1]) for attributes in partition))",
+      "benefits": "Switching to mapPartitions reduces the function call overhead and can lead to better performance by processing data in batches."
+    },
+    {
+      "operation": "map(lambda x: (x, 1)) in d_streaming1()",
+      "improvementExplanation": "The map operation is used to transform each word into a key-value pair. This transformation can be done at the partition level to reduce the overhead of function calls for each element.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: ((x, 1) for x in partition))",
+      "benefits": "Using mapPartitions reduces the function call overhead by processing elements in batches, which can lead to improved performance."
+    },
+    {
+      "operation": "map(lambda x: (x, 1)) in d_streaming2()",
+      "improvementExplanation": "The map operation is used to transform each word into a key-value pair. This transformation can be done at the partition level to reduce the overhead of function calls for each element.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: ((x, 1) for x in partition))",
+      "benefits": "Using mapPartitions reduces the function call overhead by processing elements in batches, which can lead to improved performance."
+    },
+    {
+      "operation": "map(lambda x: (x % 10, 1)) in d_streaming3()",
+      "improvementExplanation": "The map operation is used to transform each number into a key-value pair based on its modulo 10 value. This transformation can be done at the partition level to reduce the overhead of function calls for each element.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: ((x % 10, 1) for x in partition))",
+      "benefits": "Using mapPartitions reduces the function call overhead by processing elements in batches, which can lead to improved performance."
+    },
+    {
+      "operation": "map(lambda line: line.split(' ')) in top3_1()",
+      "improvementExplanation": "The map operation splits each line into a list of words. This can be done at the partition level to reduce the overhead of processing each line individually.",
+      "mapPartitionsEquivalent": "mapPartitions(lambda partition: (line.split(' ') for line in partition))",
+      "benefits": "Using mapPartitions reduces the function call overhead and can improve performance by processing data in larger chunks."
+    }
+  ]
+}
+```

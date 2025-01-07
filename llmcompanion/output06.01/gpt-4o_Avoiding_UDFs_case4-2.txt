@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "total_salary = udf(lambda s, b: new_salary(s, b), DoubleType())",
+      "improvementExplanation": "The UDF 'total_salary' is used to calculate the sum of 'salary' and 'bonus'. This can be replaced with a native DataFrame operation using the '+' operator.",
+      "alternativeEquivalent": "df.withColumn('new_salary', df.salary + df.bonus)",
+      "benefits": "Replacing the UDF with a native operation allows Spark to optimize the query using Catalyst, improves performance by avoiding Python serialization overhead, and leverages Spark's built-in functions for better execution planning."
+    },
+    {
+      "operation": "@udf(returnType=DoubleType())\ndef new_salary(salary, bonus):\n  return salary  + bonus",
+      "improvementExplanation": "The UDF 'new_salary' is defined to add 'salary' and 'bonus'. This can be replaced with a native DataFrame operation using the '+' operator.",
+      "alternativeEquivalent": "df.select('*', (df.salary + df.bonus).alias('total_salary'))",
+      "benefits": "Using native DataFrame operations instead of UDFs enables Spark to apply optimizations, reduces the need for data serialization between the JVM and Python, and enhances execution speed."
+    },
+    {
+      "operation": "spark.udf.register(name='total_salary', f=new_salary)",
+      "improvementExplanation": "The UDF 'new_salary' is registered for use in Spark SQL to compute the sum of 'salary' and 'bonus'. This can be replaced with a simple SQL expression using the '+' operator.",
+      "alternativeEquivalent": "SELECT *, (salary + bonus) AS salary_total FROM emps",
+      "benefits": "Avoiding UDFs in Spark SQL allows the query planner to optimize the execution plan, reduces the overhead of invoking Python code, and improves query performance by leveraging Spark's native SQL capabilities."
+    }
+  ]
+}
+```

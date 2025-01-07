@@ -1,0 +1,36 @@
+{
+    "detected0": false,
+    "occurrences0": 0,
+    "response0": [],
+    "detected1": false,
+    "occurrences1": 0,
+    "response1": [],
+    "detected2": false,
+    "occurrences2": 0,
+    "response2": [],
+    "detected3": false,
+    "occurrences3": 0,
+    "response3": [],
+    "detected4": true,
+    "occurrences4": 3,
+    "response4": [
+        {
+            "operation": "convertUDF = udf(lambda z: convertCase(z))",
+            "improvementExplanation": "The UDF 'convertUDF' can be replaced with a native DataFrame operation using the 'initcap' function, which capitalizes the first letter of each word.",
+            "alternativeEquivalent": "df.select(col('Seqno'), initcap(col('Name')).alias('Name')).show(truncate=False)",
+            "benefits": "Avoiding UDFs allows Spark to apply Catalyst optimizations, improving performance and reducing serialization overhead."
+        },
+        {
+            "operation": "@udf(returnType=StringType()) def upperCase(str): return str.upper()",
+            "improvementExplanation": "The UDF 'upperCase' can be replaced with the native DataFrame function 'upper', which converts strings to uppercase.",
+            "alternativeEquivalent": "df.withColumn('Cureated Name', upper(col('Name'))).show(truncate=False)",
+            "benefits": "Using native functions enables Spark to optimize the query plan, leading to better performance and reduced overhead."
+        },
+        {
+            "operation": "spark.udf.register('_nullsafeUDF', lambda str: convertCase(str) if not str is None else '', StringType())",
+            "improvementExplanation": "The '_nullsafeUDF' can be replaced with a combination of 'when' and 'initcap' functions to handle null values and capitalize words.",
+            "alternativeEquivalent": "df2.withColumn('Name', when(col('Name').isNotNull(), initcap(col('Name'))).otherwise('')).show(truncate=False)",
+            "benefits": "Replacing UDFs with native functions allows for better optimization and performance, as well as easier maintenance."
+        }
+    ]
+}

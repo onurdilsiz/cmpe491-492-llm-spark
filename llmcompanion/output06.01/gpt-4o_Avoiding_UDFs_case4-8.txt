@@ -1,0 +1,32 @@
+```json
+{
+  "detected": true,
+  "occurrences": 4,
+  "response": [
+    {
+      "operation": "arrayMax",
+      "improvementExplanation": "The UDF 'arrayMax' calculates the maximum value in an array. This can be replaced with the built-in Spark SQL function 'array_max'.",
+      "alternativeEquivalent": "from pyspark.sql.functions import array_max\n\ndf.withColumn('max_value', array_max(df['arr']))",
+      "benefits": "Replacing the UDF with 'array_max' allows Spark to optimize the query using Catalyst, improving performance and reducing serialization overhead."
+    },
+    {
+      "operation": "arraySize",
+      "improvementExplanation": "The UDF 'arraySize' calculates the size of an array. This can be replaced with the built-in Spark SQL function 'size'.",
+      "alternativeEquivalent": "from pyspark.sql.functions import size\n\ndf.withColumn('array_size', size(df['arr']))",
+      "benefits": "Using the 'size' function enables Spark to apply optimizations, leading to better performance and less serialization overhead."
+    },
+    {
+      "operation": "isDate",
+      "improvementExplanation": "The UDF 'isDate' checks if a string can be parsed as a date. While there is no direct built-in function for this, using a combination of 'to_date' and 'isNotNull' can achieve similar functionality.",
+      "alternativeEquivalent": "from pyspark.sql.functions import to_date, col\n\ndf.withColumn('is_date', to_date(df['string']).isNotNull())",
+      "benefits": "Replacing the UDF with native functions allows Spark to optimize the execution plan, improving performance and reducing serialization costs."
+    },
+    {
+      "operation": "URLs2domain",
+      "improvementExplanation": "The UDF 'URLs2domain' extracts the root domain from a list of URLs. This operation involves external library usage and string manipulation, which is not directly replaceable with built-in functions. However, if the logic can be implemented using regex or string functions, it could be optimized.",
+      "alternativeEquivalent": "No direct alternative with built-in functions due to external library dependency.",
+      "benefits": "If the logic can be implemented with built-in functions, it would enable Spark optimizations and reduce the overhead associated with Python UDFs."
+    }
+  ]
+}
+```

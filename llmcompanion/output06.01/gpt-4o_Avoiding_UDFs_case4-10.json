@@ -1,0 +1,24 @@
+{
+    "detected": true,
+    "occurrences": 3,
+    "response": [
+        {
+            "operation": "convertUDF = udf(lambda z: convertCase(z))",
+            "improvementExplanation": "The UDF 'convertUDF' is used to capitalize the first letter of each word in a string. This can be replaced with the built-in 'initcap' function in Spark, which is designed to capitalize the first letter of each word in a string.",
+            "alternativeEquivalent": "df.select(col('Seqno'), initcap(col('Name')).alias('Name')).show(truncate=False)",
+            "benefits": "Replacing the UDF with 'initcap' allows Spark to apply Catalyst optimizations, improving query performance and reducing serialization overhead."
+        },
+        {
+            "operation": "@udf(returnType=StringType()) def upperCase(str): return str.upper()",
+            "improvementExplanation": "The UDF 'upperCase' is used to convert a string to uppercase. This can be replaced with the built-in 'upper' function in Spark, which directly converts a string to uppercase.",
+            "alternativeEquivalent": "df.withColumn('Cureated Name', upper(col('Name'))).show(truncate=False)",
+            "benefits": "Using the 'upper' function instead of a UDF allows Spark to optimize the query execution plan, leading to better performance and less serialization overhead."
+        },
+        {
+            "operation": "spark.udf.register('_nullsafeUDF', lambda str: convertCase(str) if not str is None else '', StringType())",
+            "improvementExplanation": "The '_nullsafeUDF' is used to apply 'convertCase' while handling null values. This can be replaced by using 'initcap' with 'when' and 'otherwise' to handle nulls safely.",
+            "alternativeEquivalent": "from pyspark.sql.functions import when, initcap\nspark.sql('select Seqno, when(Name.isNotNull(), initcap(Name)).otherwise('').alias('Name') from NAME_TABLE2').show(truncate=False)",
+            "benefits": "Replacing the UDF with built-in functions allows Spark to leverage its optimization engine, improving performance and reducing the need for Python serialization."
+        }
+    ]
+}

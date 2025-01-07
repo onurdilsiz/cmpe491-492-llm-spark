@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "five_udf = udf(five)",
+      "improvementExplanation": "The UDF 'five_udf' is used to return a constant value of 5. This can be replaced with Spark's built-in 'lit' function, which is designed to create a column with a constant value.",
+      "alternativeEquivalent": "from pyspark.sql.functions import lit\ndf.select(lit(5)).display()",
+      "benefits": "Replacing the UDF with 'lit' enables Catalyst optimizations, improves performance by avoiding Python serialization overhead, and simplifies the code."
+    },
+    {
+      "operation": "@udf\ndef five(): return 5",
+      "improvementExplanation": "This UDF is also used to return a constant value of 5. It can be replaced with the 'lit' function, similar to the previous case.",
+      "alternativeEquivalent": "from pyspark.sql.functions import lit\ndf.select(lit(5)).show()",
+      "benefits": "Using 'lit' instead of a UDF allows Spark to optimize the query plan, reduces the need for Python execution, and enhances performance."
+    },
+    {
+      "operation": "@pandas_udf(returnType='int')\ndef identity(rows: pd.Series) -> pd.Series: return rows",
+      "improvementExplanation": "The 'identity' UDF is used to return the input series as is. This can be replaced with a simple column selection, which is more efficient.",
+      "alternativeEquivalent": "df.select('id').display()",
+      "benefits": "Avoiding the Pandas UDF reduces serialization overhead, allows Spark to apply optimizations, and improves execution speed by leveraging native operations."
+    }
+  ]
+}
+```

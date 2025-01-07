@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "df_5years.repartition(1).write.format(\"csv\")",
+      "improvementExplanation": "The repartition(1) is used to reduce the number of partitions to 1 before writing the DataFrame to a CSV file. Since the goal is to reduce the number of partitions, coalesce() can be used instead of repartition() to avoid a full shuffle. Coalesce is more efficient for reducing the number of partitions as it minimizes data movement across the cluster.",
+      "coalesceEquivalent": "df_5years.coalesce(1).write.format(\"csv\").option(\"compression\",\"lz4\").mode(\"overwrite\").option(\"header\",\"true\").save(\"hdfs://namenode/output/itmd-521/drp/2000-2005/repartition/1\")",
+      "benefits": "Using coalesce() instead of repartition() reduces the amount of data shuffling across the cluster, leading to improved resource usage and faster job runtime. This is particularly beneficial when reducing the number of partitions, as coalesce() is optimized for this purpose."
+    }
+  ]
+}
+```

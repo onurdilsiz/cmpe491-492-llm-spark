@@ -1,0 +1,14 @@
+```json
+{
+  "detected": true,
+  "occurrences": 1,
+  "response": [
+    {
+      "operation": "filteredPaths.repartition(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+      "improvementExplanation": "The repartition(1) operation is used to reduce the number of partitions to 1 before writing the DataFrame to a table. This operation triggers a full shuffle of the data across the cluster, which can be inefficient. Since the goal is to reduce the number of partitions, coalesce(1) can be used instead to avoid a full shuffle, as it is more efficient for reducing the number of partitions.",
+      "coalesceEquivalent": "filteredPaths.coalesce(1).write.mode('append').format('parquet').saveAsTable(dbName+\".\"+tblName, partitionBy='extract_dt', compression= 'snappy')",
+      "benefits": "Switching to coalesce() reduces the amount of data shuffling across the cluster, leading to improved resource usage and faster job runtime. This is particularly beneficial when reducing the number of partitions, as coalesce() is optimized for this purpose."
+    }
+  ]
+}
+```

@@ -1,0 +1,24 @@
+{
+    "detected": true,
+    "occurrences": 3,
+    "response": [
+        {
+            "operation": "extract_title_udf = udf(extract_title, StringType())",
+            "improvementExplanation": "The UDF 'extract_title' is used to parse HTML content and extract the title. This can be replaced with Spark's built-in functions by using a combination of 'regexp_extract' to directly extract the title tag content from the HTML string.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_extract\n\ntitle_pattern = '<title>(.*?)</title>'\ndf = df.withColumn('title', regexp_extract(df['content'], title_pattern, 1))",
+            "benefits": "Replacing the UDF with 'regexp_extract' allows Spark to optimize the query using Catalyst, improving performance and reducing serialization overhead."
+        },
+        {
+            "operation": "extract_title_content_udf = udf(extract_title_content, ArrayType(StringType()))",
+            "improvementExplanation": "The UDF 'extract_title_content' extracts headings from HTML content. This can be replaced by using 'regexp_extract_all' if available, or by using 'regexp_replace' and 'split' to extract headings.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace, split\n\nheading_pattern = '<h[1-6]>(.*?)</h[1-6]>'\nheadings_extracted = regexp_replace(df['content'], heading_pattern, '$1')\ndf = df.withColumn('title_content', split(headings_extracted, ','))",
+            "benefits": "Using built-in functions like 'regexp_replace' and 'split' allows Spark to optimize the query execution plan, improving performance and reducing the need for Python serialization."
+        },
+        {
+            "operation": "extract_body_content_udf = udf(extract_body_content, ArrayType(StringType()))",
+            "improvementExplanation": "The UDF 'extract_body_content' extracts paragraph text from HTML content. This can be replaced by using 'regexp_extract_all' if available, or by using 'regexp_replace' and 'split' to extract paragraphs.",
+            "alternativeEquivalent": "from pyspark.sql.functions import regexp_replace, split\n\nparagraph_pattern = '<p>(.*?)</p>'\nparagraphs_extracted = regexp_replace(df['content'], paragraph_pattern, '$1')\ndf = df.withColumn('body_content', split(paragraphs_extracted, ','))",
+            "benefits": "Replacing the UDF with built-in functions allows Spark to leverage Catalyst optimizations, improving query performance and reducing the overhead associated with Python UDFs."
+        }
+    ]
+}

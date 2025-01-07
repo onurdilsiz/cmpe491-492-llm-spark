@@ -1,0 +1,26 @@
+```json
+{
+  "detected": true,
+  "occurrences": 3,
+  "response": [
+    {
+      "operation": "input_data = sc.textFile(self.args.input, minPartitions=self.args.num_input_partitions)",
+      "improvementExplanation": "The current operation reads input data using textFile, which is typically used for reading text files like CSV or JSON. Switching to a format like Parquet or ORC can improve performance due to their columnar storage, which is more efficient for analytical queries.",
+      "optimizedEquivalent": "input_data = sqlc.read.format('parquet').load(self.args.input)",
+      "benefits": "Using Parquet or ORC can lead to faster read times due to columnar storage, better compression, and support for predicate pushdown, which can optimize query performance."
+    },
+    {
+      "operation": "sqldf = session.read.format('csv').option('header', True).option('inferSchema', True).load(self.args.csv)",
+      "improvementExplanation": "The current operation reads a CSV file, which is row-based and can be inefficient for large-scale data processing. Switching to Parquet or ORC can improve performance due to their efficient storage and processing capabilities.",
+      "optimizedEquivalent": "sqldf = session.read.format('parquet').load(self.args.csv.replace('.csv', '.parquet'))",
+      "benefits": "Parquet and ORC provide better compression and faster read/write operations. They also support schema evolution and predicate pushdown, which can significantly enhance query performance."
+    },
+    {
+      "operation": "sqldf.write.format(self.args.output_format).saveAsTable(self.args.output)",
+      "improvementExplanation": "The current operation writes data using a specified format, which could be CSV, JSON, Parquet, or ORC. Ensuring the use of Parquet or ORC can optimize storage and query performance.",
+      "optimizedEquivalent": "sqldf.write.format('parquet').saveAsTable(self.args.output)",
+      "benefits": "Switching to Parquet or ORC for output can lead to reduced storage costs due to better compression, faster query execution times, and improved support for complex data types and schema evolution."
+    }
+  ]
+}
+```

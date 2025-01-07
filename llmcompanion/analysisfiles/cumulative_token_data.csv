@@ -1,0 +1,2376 @@
+﻿Model,Case,File,Input Tokens,Output Tokens,Total Tokens,Latency
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-1.py,1307,661,1968,7.359848499
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-1.py,1293,181,1474,2.022607803
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-1.py,1280,217,1497,2.411126852
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-1.py,1313,175,1488,2.070215225
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-1.py,1286,304,1590,3.162687778
+gpt-3.5-turbo-0125,All,case0-1.py,2116,584,2700,5.506003857
+gemini-1.0-pro-002,RDD vs DataFrame,case0-1.py,1412,754,2166,9.665435791
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-1.py,1390,338,1728,5.175234795
+gemini-1.0-pro-002,Map vs MapPartitions,case0-1.py,1379,541,1920,7.207646608
+gemini-1.0-pro-002,Serialized Data Formats,case0-1.py,1423,603,2026,6.697897911
+gemini-1.0-pro-002,Avoiding UDFs,case0-1.py,1389,335,1724,5.141541243
+gemini-1.0-pro-002,All,case0-1.py,2232,838,3070,8.104651213
+gemini-1.5-flash-002,RDD vs DataFrame,case0-1.py,1412,1155,2567,10.72176981
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-1.py,1390,31,1421,1.819625378
+gemini-1.5-flash-002,Map vs MapPartitions,case0-1.py,1379,691,2070,5.823359489
+gemini-1.5-flash-002,Serialized Data Formats,case0-1.py,1423,651,2074,4.8761096
+gemini-1.5-flash-002,Avoiding UDFs,case0-1.py,1389,928,2317,6.671311855
+gemini-1.5-flash-002,All,case0-1.py,2232,1895,4127,12.72585225
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-1.py,1412,1789,3201,16.42122364
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-1.py,1390,31,1421,1.981851578
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-1.py,1379,829,2208,7.734718323
+gemini-2.0-flash-exp,Serialized Data Formats,case0-1.py,1423,1023,2446,8.395631552
+gemini-2.0-flash-exp,Avoiding UDFs,case0-1.py,1389,741,2130,6.297208071
+gemini-2.0-flash-exp,All,case0-1.py,2232,3066,5298,23.68635106
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-10.py,775,653,1428,5.970361948
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-10.py,761,212,973,3.932984829
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-10.py,748,349,1097,3.432650089
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-10.py,781,297,1078,2.833296299
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-10.py,754,181,935,2.085062981
+gpt-3.5-turbo-0125,All,case0-10.py,1584,730,2314,8.39628768
+gemini-1.0-pro-002,RDD vs DataFrame,case0-10.py,868,619,1487,6.250986576
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-10.py,846,198,1044,3.754380465
+gemini-1.0-pro-002,Map vs MapPartitions,case0-10.py,835,343,1178,4.720583916
+gemini-1.0-pro-002,Serialized Data Formats,case0-10.py,879,212,1091,3.371222019
+gemini-1.0-pro-002,Avoiding UDFs,case0-10.py,845,210,1055,3.156031132
+gemini-1.0-pro-002,All,case0-10.py,1688,640,2328,6.553002119
+gemini-1.5-flash-002,RDD vs DataFrame,case0-10.py,868,746,1614,5.601504326
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-10.py,846,31,877,1.147821426
+gemini-1.5-flash-002,Map vs MapPartitions,case0-10.py,835,414,1249,3.437630415
+gemini-1.5-flash-002,Serialized Data Formats,case0-10.py,879,430,1309,3.656541109
+gemini-1.5-flash-002,Avoiding UDFs,case0-10.py,845,859,1704,6.422537804
+gemini-1.5-flash-002,All,case0-10.py,1688,1308,2996,8.95765686
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-10.py,868,989,1857,8.609265327
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-10.py,846,31,877,1.283692837
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-10.py,835,554,1389,5.170669079
+gemini-2.0-flash-exp,Serialized Data Formats,case0-10.py,879,31,910,1.208575249
+gemini-2.0-flash-exp,Avoiding UDFs,case0-10.py,845,912,1757,7.467701197
+gemini-2.0-flash-exp,All,case0-10.py,1688,1212,2900,10.70127678
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-11.py,1154,1334,2488,13.15257215
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-11.py,1140,194,1334,2.291743517
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-11.py,1127,581,1708,5.550276995
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-11.py,1160,281,1441,3.144037008
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-11.py,1133,352,1485,4.264988661
+gpt-3.5-turbo-0125,All,case0-11.py,1963,531,2494,4.90716958
+gemini-1.0-pro-002,RDD vs DataFrame,case0-11.py,1315,1437,2752,12.60430002
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-11.py,1293,186,1479,3.000675917
+gemini-1.0-pro-002,Map vs MapPartitions,case0-11.py,1282,777,2059,7.387217999
+gemini-1.0-pro-002,Serialized Data Formats,case0-11.py,1326,492,1818,5.501348734
+gemini-1.0-pro-002,Avoiding UDFs,case0-11.py,1292,30,1322,1.398509264
+gemini-1.0-pro-002,All,case0-11.py,2135,1260,3395,10.92016625
+gemini-1.5-flash-002,RDD vs DataFrame,case0-11.py,1315,1700,3015,11.71686673
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-11.py,1293,31,1324,1.150925875
+gemini-1.5-flash-002,Map vs MapPartitions,case0-11.py,1282,932,2214,6.741900682
+gemini-1.5-flash-002,Serialized Data Formats,case0-11.py,1326,427,1753,4.107654572
+gemini-1.5-flash-002,Avoiding UDFs,case0-11.py,1292,1241,2533,8.668574333
+gemini-1.5-flash-002,All,case0-11.py,2135,2809,4944,18.17824435
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-11.py,1315,2033,3348,16.04298258
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-11.py,1293,31,1324,1.935198784
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-11.py,1282,1056,2338,8.994441748
+gemini-2.0-flash-exp,Serialized Data Formats,case0-11.py,1326,559,1885,4.906266928
+gemini-2.0-flash-exp,Avoiding UDFs,case0-11.py,1292,31,1323,1.282313347
+gemini-2.0-flash-exp,All,case0-11.py,2135,2263,4398,17.39296579
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-2.py,817,702,1519,6.962455511
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-2.py,803,200,1003,2.00564003
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-2.py,790,425,1215,3.952738285
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-2.py,823,323,1146,3.385733128
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-2.py,796,356,1152,3.668337345
+gpt-3.5-turbo-0125,All,case0-2.py,1626,871,2497,7.279183865
+gemini-1.0-pro-002,RDD vs DataFrame,case0-2.py,917,683,1600,6.8845613
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-2.py,895,302,1197,3.937580824
+gemini-1.0-pro-002,Map vs MapPartitions,case0-2.py,884,442,1326,5.308488369
+gemini-1.0-pro-002,Serialized Data Formats,case0-2.py,928,433,1361,5.801567078
+gemini-1.0-pro-002,Avoiding UDFs,case0-2.py,894,214,1108,3.281058073
+gemini-1.0-pro-002,All,case0-2.py,1737,364,2101,4.32907486
+gemini-1.5-flash-002,RDD vs DataFrame,case0-2.py,917,1165,2082,8.200278521
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-2.py,895,31,926,1.136917353
+gemini-1.5-flash-002,Map vs MapPartitions,case0-2.py,884,583,1467,4.509734154
+gemini-1.5-flash-002,Serialized Data Formats,case0-2.py,928,420,1348,3.435202599
+gemini-1.5-flash-002,Avoiding UDFs,case0-2.py,894,660,1554,5.050814629
+gemini-1.5-flash-002,All,case0-2.py,1737,1785,3522,11.89770412
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-2.py,917,2851,3768,21.86666155
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-2.py,895,31,926,1.246012926
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-2.py,884,605,1489,5.468399525
+gemini-2.0-flash-exp,Serialized Data Formats,case0-2.py,928,553,1481,5.046622038
+gemini-2.0-flash-exp,Avoiding UDFs,case0-2.py,894,772,1666,6.678744078
+gemini-2.0-flash-exp,All,case0-2.py,1737,2567,4304,19.49374366
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-3.py,1212,2559,3771,24.31236744
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-3.py,1198,161,1359,1.917108297
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-3.py,1185,26,1211,0.658654928
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-3.py,1218,163,1381,2.061469793
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-3.py,1191,26,1217,0.641629457
+gpt-3.5-turbo-0125,All,case0-3.py,2021,441,2462,4.243337154
+gemini-1.0-pro-002,RDD vs DataFrame,case0-3.py,1326,2659,3985,19.97241378
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-3.py,1304,183,1487,2.829919338
+gemini-1.0-pro-002,Map vs MapPartitions,case0-3.py,1293,169,1462,2.881407738
+gemini-1.0-pro-002,Serialized Data Formats,case0-3.py,1337,30,1367,1.439667225
+gemini-1.0-pro-002,Avoiding UDFs,case0-3.py,1303,213,1516,3.134513855
+gemini-1.0-pro-002,All,case0-3.py,2146,247,2393,3.14266777
+gemini-1.5-flash-002,RDD vs DataFrame,case0-3.py,1326,2263,3589,14.74449706
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-3.py,1304,31,1335,1.231669664
+gemini-1.5-flash-002,Map vs MapPartitions,case0-3.py,1293,31,1324,1.139555454
+gemini-1.5-flash-002,Serialized Data Formats,case0-3.py,1337,31,1368,1.099891424
+gemini-1.5-flash-002,Avoiding UDFs,case0-3.py,1303,458,1761,3.695785761
+gemini-1.5-flash-002,All,case0-3.py,2146,761,2907,5.813252926
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-3.py,1326,2690,4016,20.39416361
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-3.py,1304,31,1335,1.243543386
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-3.py,1293,31,1324,2.076571465
+gemini-2.0-flash-exp,Serialized Data Formats,case0-3.py,1337,31,1368,1.723867655
+gemini-2.0-flash-exp,Avoiding UDFs,case0-3.py,1303,1114,2417,9.152234316
+gemini-2.0-flash-exp,All,case0-3.py,2146,3378,5524,25.41395092
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-4.py,588,190,778,2.118477345
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-4.py,574,163,737,1.794043064
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-4.py,561,215,776,2.479011297
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-4.py,594,26,620,0.688220739
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-4.py,567,189,756,2.459219694
+gpt-3.5-turbo-0125,All,case0-4.py,1397,224,1621,2.731711388
+gemini-1.0-pro-002,RDD vs DataFrame,case0-4.py,637,365,1002,4.531465054
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-4.py,615,93,708,2.22475338
+gemini-1.0-pro-002,Map vs MapPartitions,case0-4.py,604,349,953,4.713420391
+gemini-1.0-pro-002,Serialized Data Formats,case0-4.py,648,262,910,3.667368174
+gemini-1.0-pro-002,Avoiding UDFs,case0-4.py,614,210,824,3.165692329
+gemini-1.0-pro-002,All,case0-4.py,1457,444,1901,5.002510548
+gemini-1.5-flash-002,RDD vs DataFrame,case0-4.py,637,485,1122,4.009315252
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-4.py,615,31,646,1.088652134
+gemini-1.5-flash-002,Map vs MapPartitions,case0-4.py,604,325,929,2.938268423
+gemini-1.5-flash-002,Serialized Data Formats,case0-4.py,648,31,679,1.109162092
+gemini-1.5-flash-002,Avoiding UDFs,case0-4.py,614,506,1120,3.938036203
+gemini-1.5-flash-002,All,case0-4.py,1457,665,2122,4.944610834
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-4.py,637,453,1090,4.292138815
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-4.py,615,31,646,1.251606226
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-4.py,604,314,918,3.229083538
+gemini-2.0-flash-exp,Serialized Data Formats,case0-4.py,648,31,679,1.261156559
+gemini-2.0-flash-exp,Avoiding UDFs,case0-4.py,614,363,977,3.540793657
+gemini-2.0-flash-exp,All,case0-4.py,1457,886,2343,7.337532759
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-5.py,588,181,769,1.966328382
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-5.py,574,163,737,2.017128229
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-5.py,561,215,776,2.394009829
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-5.py,594,26,620,0.654407978
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-5.py,567,211,778,2.504499197
+gpt-3.5-turbo-0125,All,case0-5.py,1397,224,1621,2.423145771
+gemini-1.0-pro-002,RDD vs DataFrame,case0-5.py,637,396,1033,4.816136837
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-5.py,615,95,710,2.151001453
+gemini-1.0-pro-002,Map vs MapPartitions,case0-5.py,604,321,925,4.132143736
+gemini-1.0-pro-002,Serialized Data Formats,case0-5.py,648,277,925,3.782148123
+gemini-1.0-pro-002,Avoiding UDFs,case0-5.py,614,210,824,3.552899122
+gemini-1.0-pro-002,All,case0-5.py,1457,499,1956,6.625999689
+gemini-1.5-flash-002,RDD vs DataFrame,case0-5.py,637,499,1136,4.20042181
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-5.py,615,31,646,1.14688611
+gemini-1.5-flash-002,Map vs MapPartitions,case0-5.py,604,352,956,3.2129004
+gemini-1.5-flash-002,Serialized Data Formats,case0-5.py,648,31,679,1.126397133
+gemini-1.5-flash-002,Avoiding UDFs,case0-5.py,614,511,1125,4.111410856
+gemini-1.5-flash-002,All,case0-5.py,1457,868,2325,6.278692245
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-5.py,637,453,1090,4.180016518
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-5.py,615,31,646,1.571384907
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-5.py,604,314,918,4.025439501
+gemini-2.0-flash-exp,Serialized Data Formats,case0-5.py,648,31,679,2.320242882
+gemini-2.0-flash-exp,Avoiding UDFs,case0-5.py,614,363,977,3.446161747
+gemini-2.0-flash-exp,All,case0-5.py,1457,886,2343,9.139051437
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-6.py,535,153,688,2.187046528
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-6.py,521,166,687,1.87256217
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-6.py,508,203,711,2.708958864
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-6.py,541,156,697,1.903889656
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-6.py,514,160,674,1.834942341
+gpt-3.5-turbo-0125,All,case0-6.py,1344,420,1764,4.762152195
+gemini-1.0-pro-002,RDD vs DataFrame,case0-6.py,568,317,885,4.782553673
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-6.py,546,149,695,2.722440243
+gemini-1.0-pro-002,Map vs MapPartitions,case0-6.py,535,268,803,3.779031754
+gemini-1.0-pro-002,Serialized Data Formats,case0-6.py,579,103,682,2.130191326
+gemini-1.0-pro-002,Avoiding UDFs,case0-6.py,545,189,734,2.790174723
+gemini-1.0-pro-002,All,case0-6.py,1388,359,1747,4.108269691
+gemini-1.5-flash-002,RDD vs DataFrame,case0-6.py,568,359,927,3.22037673
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-6.py,546,31,577,1.132163286
+gemini-1.5-flash-002,Map vs MapPartitions,case0-6.py,535,31,566,1.149415493
+gemini-1.5-flash-002,Serialized Data Formats,case0-6.py,579,31,610,1.043543577
+gemini-1.5-flash-002,Avoiding UDFs,case0-6.py,545,411,956,3.336919308
+gemini-1.5-flash-002,All,case0-6.py,1388,790,2178,5.74032712
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-6.py,568,486,1054,4.558670044
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-6.py,546,31,577,1.253861189
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-6.py,535,31,566,1.17854619
+gemini-2.0-flash-exp,Serialized Data Formats,case0-6.py,579,31,610,1.133964539
+gemini-2.0-flash-exp,Avoiding UDFs,case0-6.py,545,312,857,3.115224361
+gemini-2.0-flash-exp,All,case0-6.py,1388,395,1783,3.715056658
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-7.py,805,676,1481,6.443519354
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-7.py,791,170,961,1.925421953
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-7.py,778,1024,1802,10.75466895
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-7.py,811,152,963,1.801051617
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-7.py,784,674,1458,6.982783079
+gpt-3.5-turbo-0125,All,case0-7.py,1614,821,2435,8.903123617
+gemini-1.0-pro-002,RDD vs DataFrame,case0-7.py,906,614,1520,5.773400545
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-7.py,884,322,1206,4.253291845
+gemini-1.0-pro-002,Map vs MapPartitions,case0-7.py,873,751,1624,7.192758083
+gemini-1.0-pro-002,Serialized Data Formats,case0-7.py,917,505,1422,5.556525469
+gemini-1.0-pro-002,Avoiding UDFs,case0-7.py,883,413,1296,13.3207438
+gemini-1.0-pro-002,All,case0-7.py,1726,649,2375,5.894193172
+gemini-1.5-flash-002,RDD vs DataFrame,case0-7.py,906,1266,2172,8.810348034
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-7.py,884,31,915,1.120441198
+gemini-1.5-flash-002,Map vs MapPartitions,case0-7.py,873,998,1871,7.280254602
+gemini-1.5-flash-002,Serialized Data Formats,case0-7.py,917,527,1444,4.264202118
+gemini-1.5-flash-002,Avoiding UDFs,case0-7.py,883,516,1399,4.096562624
+gemini-1.5-flash-002,All,case0-7.py,1726,2247,3973,14.9512074
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-7.py,906,1720,2626,13.65116549
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-7.py,884,31,915,1.27665019
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-7.py,873,1425,2298,11.56749535
+gemini-2.0-flash-exp,Serialized Data Formats,case0-7.py,917,312,1229,3.295097113
+gemini-2.0-flash-exp,Avoiding UDFs,case0-7.py,883,1064,1947,8.684888124
+gemini-2.0-flash-exp,All,case0-7.py,1726,2915,4641,22.23168778
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-8.py,579,190,769,2.337268353
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-8.py,565,211,776,2.334984303
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-8.py,552,197,749,5.589921951
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-8.py,585,26,611,0.623211145
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-8.py,558,26,584,0.663732052
+gpt-3.5-turbo-0125,All,case0-8.py,1388,217,1605,2.554272413
+gemini-1.0-pro-002,RDD vs DataFrame,case0-8.py,615,288,903,4.104133129
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-8.py,593,221,814,4.18900919
+gemini-1.0-pro-002,Map vs MapPartitions,case0-8.py,582,216,798,3.34382844
+gemini-1.0-pro-002,Serialized Data Formats,case0-8.py,626,117,743,2.359110832
+gemini-1.0-pro-002,Avoiding UDFs,case0-8.py,592,229,821,3.38705945
+gemini-1.0-pro-002,All,case0-8.py,1435,221,1656,2.935169935
+gemini-1.5-flash-002,RDD vs DataFrame,case0-8.py,615,386,1001,3.20977354
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-8.py,593,31,624,1.108186245
+gemini-1.5-flash-002,Map vs MapPartitions,case0-8.py,582,31,613,1.117728233
+gemini-1.5-flash-002,Serialized Data Formats,case0-8.py,626,31,657,1.064198256
+gemini-1.5-flash-002,Avoiding UDFs,case0-8.py,592,268,860,2.534495115
+gemini-1.5-flash-002,All,case0-8.py,1435,591,2026,4.466004372
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-8.py,615,389,1004,4.6109972
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-8.py,593,31,624,1.663515568
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-8.py,582,31,613,1.652211905
+gemini-2.0-flash-exp,Serialized Data Formats,case0-8.py,626,31,657,1.580658913
+gemini-2.0-flash-exp,Avoiding UDFs,case0-8.py,592,273,865,3.357070208
+gemini-2.0-flash-exp,All,case0-8.py,1435,364,1799,3.52889061
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0-9.py,648,629,1277,5.208095551
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0-9.py,634,212,846,2.136199236
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0-9.py,621,324,945,3.472338915
+gpt-3.5-turbo-0125,Serialized Data Formats,case0-9.py,654,176,830,1.866551161
+gpt-3.5-turbo-0125,Avoiding UDFs,case0-9.py,627,156,783,2.063418865
+gpt-3.5-turbo-0125,All,case0-9.py,1457,879,2336,8.513153791
+gemini-1.0-pro-002,RDD vs DataFrame,case0-9.py,711,558,1269,5.934831381
+gemini-1.0-pro-002,Coalesce vs Repartition,case0-9.py,689,123,812,2.374744892
+gemini-1.0-pro-002,Map vs MapPartitions,case0-9.py,678,346,1024,4.663837433
+gemini-1.0-pro-002,Serialized Data Formats,case0-9.py,722,273,995,3.781326771
+gemini-1.0-pro-002,Avoiding UDFs,case0-9.py,688,204,892,2.946288109
+gemini-1.0-pro-002,All,case0-9.py,1531,251,1782,3.099584818
+gemini-1.5-flash-002,RDD vs DataFrame,case0-9.py,711,818,1529,5.999374151
+gemini-1.5-flash-002,Coalesce vs Repartition,case0-9.py,689,31,720,1.115093231
+gemini-1.5-flash-002,Map vs MapPartitions,case0-9.py,678,427,1105,3.700270414
+gemini-1.5-flash-002,Serialized Data Formats,case0-9.py,722,375,1097,3.213203669
+gemini-1.5-flash-002,Avoiding UDFs,case0-9.py,688,842,1530,6.335582018
+gemini-1.5-flash-002,All,case0-9.py,1531,1257,2788,8.754450083
+gemini-2.0-flash-exp,RDD vs DataFrame,case0-9.py,711,1166,1877,9.449600935
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0-9.py,689,31,720,1.178825378
+gemini-2.0-flash-exp,Map vs MapPartitions,case0-9.py,678,451,1129,4.362100363
+gemini-2.0-flash-exp,Serialized Data Formats,case0-9.py,722,720,1442,6.039201498
+gemini-2.0-flash-exp,Avoiding UDFs,case0-9.py,688,890,1578,7.431720018
+gemini-2.0-flash-exp,All,case0-9.py,1531,1373,2904,11.05025697
+gpt-3.5-turbo-0125,RDD vs DataFrame,case01.py,691,300,991,3.76136446
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case01.py,677,183,860,1.857201576
+gpt-3.5-turbo-0125,Map vs MapPartitions,case01.py,664,174,838,2.372821331
+gpt-3.5-turbo-0125,Serialized Data Formats,case01.py,697,303,1000,3.052519083
+gpt-3.5-turbo-0125,Avoiding UDFs,case01.py,670,288,958,2.421981573
+gpt-3.5-turbo-0125,All,case01.py,1500,340,1840,3.240504742
+gemini-1.0-pro-002,RDD vs DataFrame,case01.py,739,349,1088,4.695488214
+gemini-1.0-pro-002,Coalesce vs Repartition,case01.py,717,256,973,3.472178936
+gemini-1.0-pro-002,Map vs MapPartitions,case01.py,706,269,975,3.685836554
+gemini-1.0-pro-002,Serialized Data Formats,case01.py,750,364,1114,4.458306551
+gemini-1.0-pro-002,Avoiding UDFs,case01.py,716,334,1050,4.213302851
+gemini-1.0-pro-002,All,case01.py,1559,433,1992,5.298444271
+gemini-1.5-flash-002,RDD vs DataFrame,case01.py,739,519,1258,4.258043766
+gemini-1.5-flash-002,Coalesce vs Repartition,case01.py,717,326,1043,2.868845463
+gemini-1.5-flash-002,Map vs MapPartitions,case01.py,706,234,940,2.314669132
+gemini-1.5-flash-002,Serialized Data Formats,case01.py,750,437,1187,3.610074997
+gemini-1.5-flash-002,Avoiding UDFs,case01.py,716,31,747,1.068683624
+gemini-1.5-flash-002,All,case01.py,1559,943,2502,6.636916161
+gemini-2.0-flash-exp,RDD vs DataFrame,case01.py,739,571,1310,5.166846991
+gemini-2.0-flash-exp,Coalesce vs Repartition,case01.py,717,285,1002,3.121174574
+gemini-2.0-flash-exp,Map vs MapPartitions,case01.py,706,289,995,3.138592958
+gemini-2.0-flash-exp,Serialized Data Formats,case01.py,750,657,1407,5.719473124
+gemini-2.0-flash-exp,Avoiding UDFs,case01.py,716,407,1123,3.759661198
+gemini-2.0-flash-exp,All,case01.py,1559,885,2444,7.217466593
+gpt-3.5-turbo-0125,RDD vs DataFrame,case012.py,759,376,1135,4.609302521
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case012.py,745,182,927,2.007738829
+gpt-3.5-turbo-0125,Map vs MapPartitions,case012.py,732,219,951,2.839479923
+gpt-3.5-turbo-0125,Serialized Data Formats,case012.py,765,168,933,2.227810144
+gpt-3.5-turbo-0125,Avoiding UDFs,case012.py,738,394,1132,4.184573412
+gpt-3.5-turbo-0125,All,case012.py,1568,458,2026,3.678286552
+gemini-1.0-pro-002,RDD vs DataFrame,case012.py,806,515,1321,5.461943865
+gemini-1.0-pro-002,Coalesce vs Repartition,case012.py,784,211,995,2.92877388
+gemini-1.0-pro-002,Map vs MapPartitions,case012.py,773,350,1123,3.902571917
+gemini-1.0-pro-002,Serialized Data Formats,case012.py,817,425,1242,4.753924608
+gemini-1.0-pro-002,Avoiding UDFs,case012.py,783,344,1127,4.457036018
+gemini-1.0-pro-002,All,case012.py,1626,638,2264,6.894891977
+gemini-1.5-flash-002,RDD vs DataFrame,case012.py,806,682,1488,5.106796503
+gemini-1.5-flash-002,Coalesce vs Repartition,case012.py,784,337,1121,3.014115334
+gemini-1.5-flash-002,Map vs MapPartitions,case012.py,773,370,1143,3.146782875
+gemini-1.5-flash-002,Serialized Data Formats,case012.py,817,464,1281,3.825076103
+gemini-1.5-flash-002,Avoiding UDFs,case012.py,783,31,814,1.083135366
+gemini-1.5-flash-002,All,case012.py,1626,1109,2735,7.673743963
+gemini-2.0-flash-exp,RDD vs DataFrame,case012.py,806,771,1577,6.404042959
+gemini-2.0-flash-exp,Coalesce vs Repartition,case012.py,784,287,1071,3.060833931
+gemini-2.0-flash-exp,Map vs MapPartitions,case012.py,773,420,1193,4.083810329
+gemini-2.0-flash-exp,Serialized Data Formats,case012.py,817,648,1465,5.682481527
+gemini-2.0-flash-exp,Avoiding UDFs,case012.py,783,31,814,1.193160772
+gemini-2.0-flash-exp,All,case012.py,1626,1133,2759,9.206265688
+gpt-3.5-turbo-0125,RDD vs DataFrame,case0123.py,784,461,1245,4.510124445
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case0123.py,770,172,942,1.848834038
+gpt-3.5-turbo-0125,Map vs MapPartitions,case0123.py,757,193,950,2.232706547
+gpt-3.5-turbo-0125,Serialized Data Formats,case0123.py,790,180,970,2.599287271
+gpt-3.5-turbo-0125,Avoiding UDFs,case0123.py,763,281,1044,3.144968271
+gpt-3.5-turbo-0125,All,case0123.py,1593,543,2136,5.950698376
+gemini-1.0-pro-002,RDD vs DataFrame,case0123.py,847,628,1475,6.269056082
+gemini-1.0-pro-002,Coalesce vs Repartition,case0123.py,825,214,1039,3.027956247
+gemini-1.0-pro-002,Map vs MapPartitions,case0123.py,814,300,1114,3.508288145
+gemini-1.0-pro-002,Serialized Data Formats,case0123.py,858,569,1427,6.098843098
+gemini-1.0-pro-002,Avoiding UDFs,case0123.py,824,560,1384,6.659324169
+gemini-1.0-pro-002,All,case0123.py,1667,908,2575,8.998086452
+gemini-1.5-flash-002,RDD vs DataFrame,case0123.py,847,773,1620,5.673777103
+gemini-1.5-flash-002,Coalesce vs Repartition,case0123.py,825,314,1139,2.77238512
+gemini-1.5-flash-002,Map vs MapPartitions,case0123.py,814,357,1171,3.198554516
+gemini-1.5-flash-002,Serialized Data Formats,case0123.py,858,470,1328,3.805484772
+gemini-1.5-flash-002,Avoiding UDFs,case0123.py,824,31,855,1.055112839
+gemini-1.5-flash-002,All,case0123.py,1667,1160,2827,8.195021152
+gemini-2.0-flash-exp,RDD vs DataFrame,case0123.py,847,784,1631,6.680421114
+gemini-2.0-flash-exp,Coalesce vs Repartition,case0123.py,825,8192,9017,59.80021977
+gemini-2.0-flash-exp,Map vs MapPartitions,case0123.py,814,389,1203,3.948559999
+gemini-2.0-flash-exp,Serialized Data Formats,case0123.py,858,482,1340,4.416266918
+gemini-2.0-flash-exp,Avoiding UDFs,case0123.py,824,31,855,1.392868519
+gemini-2.0-flash-exp,All,case0123.py,1667,1264,2931,10.4256947
+gpt-3.5-turbo-0125,RDD vs DataFrame,case01234.py,790,446,1236,5.497108698
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case01234.py,776,146,922,1.653596878
+gpt-3.5-turbo-0125,Map vs MapPartitions,case01234.py,763,196,959,2.590335846
+gpt-3.5-turbo-0125,Serialized Data Formats,case01234.py,796,199,995,2.967841148
+gpt-3.5-turbo-0125,Avoiding UDFs,case01234.py,769,161,930,2.0730865
+gpt-3.5-turbo-0125,All,case01234.py,1599,681,2280,9.19990325
+gemini-1.0-pro-002,RDD vs DataFrame,case01234.py,852,974,1826,10.18809986
+gemini-1.0-pro-002,Coalesce vs Repartition,case01234.py,830,180,1010,2.841055393
+gemini-1.0-pro-002,Map vs MapPartitions,case01234.py,819,395,1214,4.260944843
+gemini-1.0-pro-002,Serialized Data Formats,case01234.py,863,294,1157,4.037950993
+gemini-1.0-pro-002,Avoiding UDFs,case01234.py,829,272,1101,3.686182499
+gemini-1.0-pro-002,All,case01234.py,1672,771,2443,7.296895504
+gemini-1.5-flash-002,RDD vs DataFrame,case01234.py,852,542,1394,4.177686214
+gemini-1.5-flash-002,Coalesce vs Repartition,case01234.py,830,329,1159,2.868122578
+gemini-1.5-flash-002,Map vs MapPartitions,case01234.py,819,417,1236,3.493097782
+gemini-1.5-flash-002,Serialized Data Formats,case01234.py,863,278,1141,2.590834618
+gemini-1.5-flash-002,Avoiding UDFs,case01234.py,829,257,1086,2.44683218
+gemini-1.5-flash-002,All,case01234.py,1672,948,2620,6.582511663
+gemini-2.0-flash-exp,RDD vs DataFrame,case01234.py,852,845,1697,7.043312788
+gemini-2.0-flash-exp,Coalesce vs Repartition,case01234.py,830,303,1133,3.76185751
+gemini-2.0-flash-exp,Map vs MapPartitions,case01234.py,819,585,1404,6.461789608
+gemini-2.0-flash-exp,Serialized Data Formats,case01234.py,863,437,1300,4.118169069
+gemini-2.0-flash-exp,Avoiding UDFs,case01234.py,829,252,1081,2.832253695
+gemini-2.0-flash-exp,All,case01234.py,1672,1202,2874,10.02137446
+gpt-3.5-turbo-0125,RDD vs DataFrame,case013.py,747,306,1053,3.140851736
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case013.py,733,168,901,2.268614531
+gpt-3.5-turbo-0125,Map vs MapPartitions,case013.py,720,189,909,2.077766418
+gpt-3.5-turbo-0125,Serialized Data Formats,case013.py,753,203,956,2.167919397
+gpt-3.5-turbo-0125,Avoiding UDFs,case013.py,726,267,993,2.894088745
+gpt-3.5-turbo-0125,All,case013.py,1556,458,2014,5.020496845
+gemini-1.0-pro-002,RDD vs DataFrame,case013.py,800,397,1197,4.73515892
+gemini-1.0-pro-002,Coalesce vs Repartition,case013.py,778,260,1038,3.652433395
+gemini-1.0-pro-002,Map vs MapPartitions,case013.py,767,280,1047,3.726366282
+gemini-1.0-pro-002,Serialized Data Formats,case013.py,811,443,1254,5.759413719
+gemini-1.0-pro-002,Avoiding UDFs,case013.py,777,185,962,2.849948406
+gemini-1.0-pro-002,All,case013.py,1620,630,2250,6.207721233
+gemini-1.5-flash-002,RDD vs DataFrame,case013.py,800,456,1256,3.92150569
+gemini-1.5-flash-002,Coalesce vs Repartition,case013.py,778,350,1128,3.199732304
+gemini-1.5-flash-002,Map vs MapPartitions,case013.py,767,232,999,2.338244677
+gemini-1.5-flash-002,Serialized Data Formats,case013.py,811,469,1280,3.761440754
+gemini-1.5-flash-002,Avoiding UDFs,case013.py,777,31,808,1.076624393
+gemini-1.5-flash-002,All,case013.py,1620,752,2372,5.67198205
+gemini-2.0-flash-exp,RDD vs DataFrame,case013.py,800,756,1556,6.370494604
+gemini-2.0-flash-exp,Coalesce vs Repartition,case013.py,778,263,1041,2.934249878
+gemini-2.0-flash-exp,Map vs MapPartitions,case013.py,767,275,1042,3.064583302
+gemini-2.0-flash-exp,Serialized Data Formats,case013.py,811,433,1244,4.099117279
+gemini-2.0-flash-exp,Avoiding UDFs,case013.py,777,31,808,1.220490932
+gemini-2.0-flash-exp,All,case013.py,1620,1032,2652,8.45904851
+gpt-3.5-turbo-0125,RDD vs DataFrame,case014.py,815,318,1133,3.606264353
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case014.py,801,183,984,2.233478785
+gpt-3.5-turbo-0125,Map vs MapPartitions,case014.py,788,200,988,2.396661043
+gpt-3.5-turbo-0125,Serialized Data Formats,case014.py,821,173,994,1.945991516
+gpt-3.5-turbo-0125,Avoiding UDFs,case014.py,794,188,982,4.616344213
+gpt-3.5-turbo-0125,All,case014.py,1624,567,2191,5.65068531
+gemini-1.0-pro-002,RDD vs DataFrame,case014.py,881,438,1319,4.776753426
+gemini-1.0-pro-002,Coalesce vs Repartition,case014.py,859,201,1060,3.13106823
+gemini-1.0-pro-002,Map vs MapPartitions,case014.py,848,304,1152,3.915682793
+gemini-1.0-pro-002,Serialized Data Formats,case014.py,892,320,1212,4.026814461
+gemini-1.0-pro-002,Avoiding UDFs,case014.py,858,240,1098,3.604636908
+gemini-1.0-pro-002,All,case014.py,1701,613,2314,11.98845434
+gemini-1.5-flash-002,RDD vs DataFrame,case014.py,881,472,1353,3.806692839
+gemini-1.5-flash-002,Coalesce vs Repartition,case014.py,859,322,1181,2.838829756
+gemini-1.5-flash-002,Map vs MapPartitions,case014.py,848,205,1053,2.185607195
+gemini-1.5-flash-002,Serialized Data Formats,case014.py,892,407,1299,3.457452774
+gemini-1.5-flash-002,Avoiding UDFs,case014.py,858,372,1230,3.30847621
+gemini-1.5-flash-002,All,case014.py,1701,923,2624,6.526511192
+gemini-2.0-flash-exp,RDD vs DataFrame,case014.py,881,560,1441,5.150584698
+gemini-2.0-flash-exp,Coalesce vs Repartition,case014.py,859,216,1075,2.588052988
+gemini-2.0-flash-exp,Map vs MapPartitions,case014.py,848,290,1138,3.195521355
+gemini-2.0-flash-exp,Serialized Data Formats,case014.py,892,545,1437,4.880160809
+gemini-2.0-flash-exp,Avoiding UDFs,case014.py,858,342,1200,3.500503778
+gemini-2.0-flash-exp,All,case014.py,1701,1090,2791,8.849326372
+gpt-3.5-turbo-0125,RDD vs DataFrame,case02.py,672,422,1094,4.139615059
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case02.py,658,188,846,2.417325258
+gpt-3.5-turbo-0125,Map vs MapPartitions,case02.py,645,218,863,2.585671902
+gpt-3.5-turbo-0125,Serialized Data Formats,case02.py,678,179,857,4.522748947
+gpt-3.5-turbo-0125,Avoiding UDFs,case02.py,651,280,931,2.75498724
+gpt-3.5-turbo-0125,All,case02.py,1481,651,2132,4.739557981
+gemini-1.0-pro-002,RDD vs DataFrame,case02.py,724,550,1274,6.113699913
+gemini-1.0-pro-002,Coalesce vs Repartition,case02.py,702,91,793,2.09577632
+gemini-1.0-pro-002,Map vs MapPartitions,case02.py,691,394,1085,4.301349401
+gemini-1.0-pro-002,Serialized Data Formats,case02.py,735,256,991,3.520979881
+gemini-1.0-pro-002,Avoiding UDFs,case02.py,701,234,935,3.439630985
+gemini-1.0-pro-002,All,case02.py,1544,570,2114,5.654527903
+gemini-1.5-flash-002,RDD vs DataFrame,case02.py,724,612,1336,4.682115316
+gemini-1.5-flash-002,Coalesce vs Repartition,case02.py,702,31,733,1.121608496
+gemini-1.5-flash-002,Map vs MapPartitions,case02.py,691,404,1095,3.340186834
+gemini-1.5-flash-002,Serialized Data Formats,case02.py,735,494,1229,3.859949112
+gemini-1.5-flash-002,Avoiding UDFs,case02.py,701,538,1239,4.339352846
+gemini-1.5-flash-002,All,case02.py,1544,979,2523,6.926761627
+gemini-2.0-flash-exp,RDD vs DataFrame,case02.py,724,591,1315,5.347984552
+gemini-2.0-flash-exp,Coalesce vs Repartition,case02.py,702,31,733,1.180113316
+gemini-2.0-flash-exp,Map vs MapPartitions,case02.py,691,452,1143,4.435037613
+gemini-2.0-flash-exp,Serialized Data Formats,case02.py,735,573,1308,5.121589899
+gemini-2.0-flash-exp,Avoiding UDFs,case02.py,701,31,732,1.111348152
+gemini-2.0-flash-exp,All,case02.py,1544,997,2541,8.185026884
+gpt-3.5-turbo-0125,RDD vs DataFrame,case023.py,763,417,1180,3.955385208
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case023.py,749,188,937,2.243569613
+gpt-3.5-turbo-0125,Map vs MapPartitions,case023.py,736,391,1127,3.838387728
+gpt-3.5-turbo-0125,Serialized Data Formats,case023.py,769,176,945,2.276870251
+gpt-3.5-turbo-0125,Avoiding UDFs,case023.py,742,296,1038,3.013130665
+gpt-3.5-turbo-0125,All,case023.py,1572,877,2449,8.893334627
+gemini-1.0-pro-002,RDD vs DataFrame,case023.py,830,585,1415,6.402853489
+gemini-1.0-pro-002,Coalesce vs Repartition,case023.py,808,338,1146,4.340142488
+gemini-1.0-pro-002,Map vs MapPartitions,case023.py,797,579,1376,6.460601091
+gemini-1.0-pro-002,Serialized Data Formats,case023.py,841,378,1219,4.60158658
+gemini-1.0-pro-002,Avoiding UDFs,case023.py,807,395,1202,5.123365402
+gemini-1.0-pro-002,All,case023.py,1650,789,2439,7.302769423
+gemini-1.5-flash-002,RDD vs DataFrame,case023.py,830,581,1411,4.464799643
+gemini-1.5-flash-002,Coalesce vs Repartition,case023.py,808,31,839,1.152454138
+gemini-1.5-flash-002,Map vs MapPartitions,case023.py,797,404,1201,3.430380821
+gemini-1.5-flash-002,Serialized Data Formats,case023.py,841,570,1411,4.463631153
+gemini-1.5-flash-002,Avoiding UDFs,case023.py,807,31,838,1.066806793
+gemini-1.5-flash-002,All,case023.py,1650,843,2493,6.266219616
+gemini-2.0-flash-exp,RDD vs DataFrame,case023.py,830,580,1410,5.219644308
+gemini-2.0-flash-exp,Coalesce vs Repartition,case023.py,808,31,839,1.256837606
+gemini-2.0-flash-exp,Map vs MapPartitions,case023.py,797,492,1289,4.543754578
+gemini-2.0-flash-exp,Serialized Data Formats,case023.py,841,495,1336,4.491514444
+gemini-2.0-flash-exp,Avoiding UDFs,case023.py,807,31,838,1.202225208
+gemini-2.0-flash-exp,All,case023.py,1650,1054,2704,8.676669598
+gpt-3.5-turbo-0125,RDD vs DataFrame,case03.py,651,338,989,2.856267691
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case03.py,637,200,837,2.376094103
+gpt-3.5-turbo-0125,Map vs MapPartitions,case03.py,624,329,953,4.036128998
+gpt-3.5-turbo-0125,Serialized Data Formats,case03.py,657,185,842,2.141489744
+gpt-3.5-turbo-0125,Avoiding UDFs,case03.py,630,281,911,2.807198286
+gpt-3.5-turbo-0125,All,case03.py,1460,829,2289,6.554889917
+gemini-1.0-pro-002,RDD vs DataFrame,case03.py,703,449,1152,5.206363678
+gemini-1.0-pro-002,Coalesce vs Repartition,case03.py,681,245,926,3.539690971
+gemini-1.0-pro-002,Map vs MapPartitions,case03.py,670,343,1013,4.296590328
+gemini-1.0-pro-002,Serialized Data Formats,case03.py,714,315,1029,4.802267551
+gemini-1.0-pro-002,Avoiding UDFs,case03.py,680,310,990,4.282640934
+gemini-1.0-pro-002,All,case03.py,1523,531,2054,5.377785921
+gemini-1.5-flash-002,RDD vs DataFrame,case03.py,703,677,1380,5.255973101
+gemini-1.5-flash-002,Coalesce vs Repartition,case03.py,681,31,712,1.110654831
+gemini-1.5-flash-002,Map vs MapPartitions,case03.py,670,356,1026,3.095512152
+gemini-1.5-flash-002,Serialized Data Formats,case03.py,714,448,1162,3.73433423
+gemini-1.5-flash-002,Avoiding UDFs,case03.py,680,31,711,1.069318295
+gemini-1.5-flash-002,All,case03.py,1523,973,2496,6.838872194
+gemini-2.0-flash-exp,RDD vs DataFrame,case03.py,703,614,1317,5.529021263
+gemini-2.0-flash-exp,Coalesce vs Repartition,case03.py,681,31,712,1.281237602
+gemini-2.0-flash-exp,Map vs MapPartitions,case03.py,670,469,1139,4.326627254
+gemini-2.0-flash-exp,Serialized Data Formats,case03.py,714,466,1180,4.210330725
+gemini-2.0-flash-exp,Avoiding UDFs,case03.py,680,31,711,1.122433901
+gemini-2.0-flash-exp,All,case03.py,1523,773,2296,6.633935452
+gpt-3.5-turbo-0125,RDD vs DataFrame,case04.py,727,298,1025,3.276588917
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case04.py,713,214,927,2.302993774
+gpt-3.5-turbo-0125,Map vs MapPartitions,case04.py,700,200,900,2.179030895
+gpt-3.5-turbo-0125,Serialized Data Formats,case04.py,733,171,904,2.49480772
+gpt-3.5-turbo-0125,Avoiding UDFs,case04.py,706,191,897,2.397308111
+gpt-3.5-turbo-0125,All,case04.py,1536,378,1914,3.868975401
+gemini-1.0-pro-002,RDD vs DataFrame,case04.py,784,321,1105,3.908588886
+gemini-1.0-pro-002,Coalesce vs Repartition,case04.py,762,100,862,2.153405905
+gemini-1.0-pro-002,Map vs MapPartitions,case04.py,751,263,1014,3.529543877
+gemini-1.0-pro-002,Serialized Data Formats,case04.py,795,330,1125,3.761459351
+gemini-1.0-pro-002,Avoiding UDFs,case04.py,761,261,1022,3.759908438
+gemini-1.0-pro-002,All,case04.py,1604,502,2106,5.255340815
+gemini-1.5-flash-002,RDD vs DataFrame,case04.py,784,437,1221,3.581213474
+gemini-1.5-flash-002,Coalesce vs Repartition,case04.py,762,31,793,1.094621658
+gemini-1.5-flash-002,Map vs MapPartitions,case04.py,751,248,999,2.482721329
+gemini-1.5-flash-002,Serialized Data Formats,case04.py,795,396,1191,3.324235439
+gemini-1.5-flash-002,Avoiding UDFs,case04.py,761,234,995,2.271486521
+gemini-1.5-flash-002,All,case04.py,1604,1043,2647,7.081464052
+gemini-2.0-flash-exp,RDD vs DataFrame,case04.py,784,584,1368,5.27788949
+gemini-2.0-flash-exp,Coalesce vs Repartition,case04.py,762,31,793,1.250327349
+gemini-2.0-flash-exp,Map vs MapPartitions,case04.py,751,255,1006,2.889991522
+gemini-2.0-flash-exp,Serialized Data Formats,case04.py,795,566,1361,4.983808279
+gemini-2.0-flash-exp,Avoiding UDFs,case04.py,761,265,1026,2.875757933
+gemini-2.0-flash-exp,All,case04.py,1604,914,2518,7.629926205
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-1.py,1108,26,1134,1.174183369
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-1.py,1094,262,1356,3.155448437
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-1.py,1081,429,1510,3.853227854
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-1.py,1114,349,1463,3.461318493
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-1.py,1087,160,1247,1.92066884
+gpt-3.5-turbo-0125,All,case1-1.py,1917,379,2296,3.098735094
+gemini-1.0-pro-002,RDD vs DataFrame,case1-1.py,1241,169,1410,2.772668123
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-1.py,1219,378,1597,4.228559017
+gemini-1.0-pro-002,Map vs MapPartitions,case1-1.py,1208,703,1911,6.606997967
+gemini-1.0-pro-002,Serialized Data Formats,case1-1.py,1252,352,1604,4.44707799
+gemini-1.0-pro-002,Avoiding UDFs,case1-1.py,1218,202,1420,3.76129961
+gemini-1.0-pro-002,All,case1-1.py,2061,313,2374,3.750141144
+gemini-1.5-flash-002,RDD vs DataFrame,case1-1.py,1241,31,1272,1.13552022
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-1.py,1219,400,1619,3.38263011
+gemini-1.5-flash-002,Map vs MapPartitions,case1-1.py,1208,31,1239,1.081897736
+gemini-1.5-flash-002,Serialized Data Formats,case1-1.py,1252,696,1948,5.06589365
+gemini-1.5-flash-002,Avoiding UDFs,case1-1.py,1218,31,1249,1.095294476
+gemini-1.5-flash-002,All,case1-1.py,2061,655,2716,4.913521528
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-1.py,1241,31,1272,1.201635599
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-1.py,1219,568,1787,4.959553242
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-1.py,1208,31,1239,1.266680717
+gemini-2.0-flash-exp,Serialized Data Formats,case1-1.py,1252,715,1967,6.117825508
+gemini-2.0-flash-exp,Avoiding UDFs,case1-1.py,1218,31,1249,1.176922083
+gemini-2.0-flash-exp,All,case1-1.py,2061,878,2939,7.404897451
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-10.py,730,298,1028,2.977284908
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-10.py,716,254,970,2.789988995
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-10.py,703,247,950,3.264549971
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-10.py,736,219,955,2.907557011
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-10.py,709,328,1037,3.48119235
+gpt-3.5-turbo-0125,All,case1-10.py,1539,441,1980,4.54530549
+gemini-1.0-pro-002,RDD vs DataFrame,case1-10.py,809,179,988,7.28192997
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-10.py,787,422,1209,5.188632011
+gemini-1.0-pro-002,Map vs MapPartitions,case1-10.py,776,325,1101,4.141237497
+gemini-1.0-pro-002,Serialized Data Formats,case1-10.py,820,506,1326,5.802844048
+gemini-1.0-pro-002,Avoiding UDFs,case1-10.py,786,173,959,3.027823687
+gemini-1.0-pro-002,All,case1-10.py,1629,288,1917,3.411535501
+gemini-1.5-flash-002,RDD vs DataFrame,case1-10.py,809,441,1250,3.547883272
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-10.py,787,425,1212,3.442626715
+gemini-1.5-flash-002,Map vs MapPartitions,case1-10.py,776,31,807,1.124433994
+gemini-1.5-flash-002,Serialized Data Formats,case1-10.py,820,796,1616,5.923366547
+gemini-1.5-flash-002,Avoiding UDFs,case1-10.py,786,529,1315,4.067900419
+gemini-1.5-flash-002,All,case1-10.py,1629,891,2520,6.387425423
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-10.py,809,812,1621,6.721647263
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-10.py,787,406,1193,3.973333597
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-10.py,776,31,807,1.161986351
+gemini-2.0-flash-exp,Serialized Data Formats,case1-10.py,820,853,1673,7.019470215
+gemini-2.0-flash-exp,Avoiding UDFs,case1-10.py,786,638,1424,5.579746723
+gemini-2.0-flash-exp,All,case1-10.py,1629,623,2252,5.500388861
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-11.py,2054,350,2404,3.668223858
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-11.py,2040,179,2219,2.539318085
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-11.py,2027,189,2216,2.056018829
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-11.py,2060,180,2240,2.334991455
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-11.py,2033,132,2165,1.786060333
+gpt-3.5-turbo-0125,All,case1-11.py,2863,468,3331,5.394181013
+gemini-1.0-pro-002,RDD vs DataFrame,case1-11.py,2380,326,2706,3.994805336
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-11.py,2358,206,2564,3.20426178
+gemini-1.0-pro-002,Map vs MapPartitions,case1-11.py,2347,288,2635,3.883231401
+gemini-1.0-pro-002,Serialized Data Formats,case1-11.py,2391,404,2795,5.334138393
+gemini-1.0-pro-002,Avoiding UDFs,case1-11.py,2357,505,2862,5.522438288
+gemini-1.0-pro-002,All,case1-11.py,3200,431,3631,4.893943548
+gemini-1.5-flash-002,RDD vs DataFrame,case1-11.py,2380,31,2411,1.254844904
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-11.py,2358,386,2744,3.56914258
+gemini-1.5-flash-002,Map vs MapPartitions,case1-11.py,2347,31,2378,1.191659927
+gemini-1.5-flash-002,Serialized Data Formats,case1-11.py,2391,504,2895,4.142342806
+gemini-1.5-flash-002,Avoiding UDFs,case1-11.py,2357,591,2948,4.669235706
+gemini-1.5-flash-002,All,case1-11.py,3200,649,3849,4.86730957
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-11.py,2380,31,2411,1.348016739
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-11.py,2358,425,2783,4.235091925
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-11.py,2347,31,2378,1.34279871
+gemini-2.0-flash-exp,Serialized Data Formats,case1-11.py,2391,913,3304,7.60209918
+gemini-2.0-flash-exp,Avoiding UDFs,case1-11.py,2357,321,2678,3.355846167
+gemini-2.0-flash-exp,All,case1-11.py,3200,790,3990,6.762257338
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-2.py,1107,26,1133,3.140440702
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-2.py,1093,239,1332,2.727546692
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-2.py,1080,348,1428,3.984912872
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-2.py,1113,350,1463,3.538009167
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-2.py,1086,161,1247,1.866232634
+gpt-3.5-turbo-0125,All,case1-2.py,1916,373,2289,3.96170783
+gemini-1.0-pro-002,RDD vs DataFrame,case1-2.py,1238,292,1530,4.127720594
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-2.py,1216,310,1526,3.65804553
+gemini-1.0-pro-002,Map vs MapPartitions,case1-2.py,1205,224,1429,3.226449013
+gemini-1.0-pro-002,Serialized Data Formats,case1-2.py,1249,643,1892,6.316488504
+gemini-1.0-pro-002,Avoiding UDFs,case1-2.py,1215,30,1245,1.407495975
+gemini-1.0-pro-002,All,case1-2.py,2058,562,2620,5.925080538
+gemini-1.5-flash-002,RDD vs DataFrame,case1-2.py,1238,31,1269,1.149943352
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-2.py,1216,372,1588,3.281741858
+gemini-1.5-flash-002,Map vs MapPartitions,case1-2.py,1205,31,1236,1.105825186
+gemini-1.5-flash-002,Serialized Data Formats,case1-2.py,1249,438,1687,3.501398802
+gemini-1.5-flash-002,Avoiding UDFs,case1-2.py,1215,31,1246,1.076134443
+gemini-1.5-flash-002,All,case1-2.py,2058,580,2638,4.586020947
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-2.py,1238,31,1269,1.300284863
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-2.py,1216,374,1590,3.652973652
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-2.py,1205,31,1236,1.170549393
+gemini-2.0-flash-exp,Serialized Data Formats,case1-2.py,1249,548,1797,4.934341669
+gemini-2.0-flash-exp,Avoiding UDFs,case1-2.py,1215,31,1246,1.20409441
+gemini-2.0-flash-exp,All,case1-2.py,2058,653,2711,5.83118844
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-3.py,1107,26,1133,0.682182312
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-3.py,1093,257,1350,2.691381216
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-3.py,1080,369,1449,3.332894564
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-3.py,1113,408,1521,4.421031475
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-3.py,1086,160,1246,2.265946627
+gpt-3.5-turbo-0125,All,case1-3.py,1916,374,2290,4.079415798
+gemini-1.0-pro-002,RDD vs DataFrame,case1-3.py,1242,189,1431,3.221340418
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-3.py,1220,409,1629,4.635875463
+gemini-1.0-pro-002,Map vs MapPartitions,case1-3.py,1209,305,1514,4.147423983
+gemini-1.0-pro-002,Serialized Data Formats,case1-3.py,1253,383,1636,4.537343979
+gemini-1.0-pro-002,Avoiding UDFs,case1-3.py,1219,202,1421,2.988971949
+gemini-1.0-pro-002,All,case1-3.py,2062,316,2378,3.732599258
+gemini-1.5-flash-002,RDD vs DataFrame,case1-3.py,1242,31,1273,1.10748148
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-3.py,1220,601,1821,4.624464989
+gemini-1.5-flash-002,Map vs MapPartitions,case1-3.py,1209,31,1240,1.092064381
+gemini-1.5-flash-002,Serialized Data Formats,case1-3.py,1253,503,1756,4.207481146
+gemini-1.5-flash-002,Avoiding UDFs,case1-3.py,1219,31,1250,1.075424194
+gemini-1.5-flash-002,All,case1-3.py,2062,671,2733,5.176036358
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-3.py,1242,31,1273,1.343045712
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-3.py,1220,8189,9409,59.3704164
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-3.py,1209,31,1240,1.28634119
+gemini-2.0-flash-exp,Serialized Data Formats,case1-3.py,1253,614,1867,6.356597662
+gemini-2.0-flash-exp,Avoiding UDFs,case1-3.py,1219,31,1250,1.613995314
+gemini-2.0-flash-exp,All,case1-3.py,2062,835,2897,7.4185853
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-4.py,1137,190,1327,1.780854464
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-4.py,1123,294,1417,3.003944159
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-4.py,1110,318,1428,3.68215847
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-4.py,1143,187,1330,2.23759532
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-4.py,1116,165,1281,4.32362318
+gpt-3.5-turbo-0125,All,case1-4.py,1946,443,2389,3.955774307
+gemini-1.0-pro-002,RDD vs DataFrame,case1-4.py,1286,217,1503,2.981568813
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-4.py,1264,253,1517,3.482894182
+gemini-1.0-pro-002,Map vs MapPartitions,case1-4.py,1253,883,2136,8.319137573
+gemini-1.0-pro-002,Serialized Data Formats,case1-4.py,1297,333,1630,4.080537796
+gemini-1.0-pro-002,Avoiding UDFs,case1-4.py,1263,184,1447,6.547308683
+gemini-1.0-pro-002,All,case1-4.py,2106,327,2433,5.474102259
+gemini-1.5-flash-002,RDD vs DataFrame,case1-4.py,1286,31,1317,1.136295319
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-4.py,1264,416,1680,3.390934467
+gemini-1.5-flash-002,Map vs MapPartitions,case1-4.py,1253,31,1284,1.121700764
+gemini-1.5-flash-002,Serialized Data Formats,case1-4.py,1297,517,1814,4.093794584
+gemini-1.5-flash-002,Avoiding UDFs,case1-4.py,1263,31,1294,1.103730679
+gemini-1.5-flash-002,All,case1-4.py,2106,829,2935,6.188038349
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-4.py,1286,31,1317,1.317660332
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-4.py,1264,242,1506,2.782357216
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-4.py,1253,31,1284,1.191321373
+gemini-2.0-flash-exp,Serialized Data Formats,case1-4.py,1297,692,1989,5.859012365
+gemini-2.0-flash-exp,Avoiding UDFs,case1-4.py,1263,31,1294,1.148233175
+gemini-2.0-flash-exp,All,case1-4.py,2106,751,2857,6.377648354
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-5.py,1136,190,1326,2.001028061
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-5.py,1122,270,1392,2.928536654
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-5.py,1109,176,1285,2.449622631
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-5.py,1142,193,1335,2.118908167
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-5.py,1115,171,1286,2.14097476
+gpt-3.5-turbo-0125,All,case1-5.py,1945,625,2570,7.049921989
+gemini-1.0-pro-002,RDD vs DataFrame,case1-5.py,1282,30,1312,1.430516481
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-5.py,1260,408,1668,4.553383112
+gemini-1.0-pro-002,Map vs MapPartitions,case1-5.py,1249,310,1559,4.066953659
+gemini-1.0-pro-002,Serialized Data Formats,case1-5.py,1293,444,1737,4.970021009
+gemini-1.0-pro-002,Avoiding UDFs,case1-5.py,1259,207,1466,3.183201551
+gemini-1.0-pro-002,All,case1-5.py,2102,278,2380,3.476372004
+gemini-1.5-flash-002,RDD vs DataFrame,case1-5.py,1282,31,1313,1.091174841
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-5.py,1260,379,1639,3.254228115
+gemini-1.5-flash-002,Map vs MapPartitions,case1-5.py,1249,31,1280,1.1597085
+gemini-1.5-flash-002,Serialized Data Formats,case1-5.py,1293,519,1812,4.05170536
+gemini-1.5-flash-002,Avoiding UDFs,case1-5.py,1259,31,1290,1.108811378
+gemini-1.5-flash-002,All,case1-5.py,2102,793,2895,5.663808346
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-5.py,1282,31,1313,1.308523417
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-5.py,1260,400,1660,3.980407715
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-5.py,1249,31,1280,1.359095097
+gemini-2.0-flash-exp,Serialized Data Formats,case1-5.py,1293,607,1900,5.385040998
+gemini-2.0-flash-exp,Avoiding UDFs,case1-5.py,1259,31,1290,1.220074177
+gemini-2.0-flash-exp,All,case1-5.py,2102,690,2792,6.122057915
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-6.py,1135,190,1325,2.340598106
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-6.py,1121,268,1389,2.96935606
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-6.py,1108,177,1285,1.941421986
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-6.py,1141,182,1323,5.070760012
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-6.py,1114,170,1284,1.946971416
+gpt-3.5-turbo-0125,All,case1-6.py,1944,442,2386,4.861884832
+gemini-1.0-pro-002,RDD vs DataFrame,case1-6.py,1284,323,1607,4.36715889
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-6.py,1262,449,1711,4.983821869
+gemini-1.0-pro-002,Map vs MapPartitions,case1-6.py,1251,733,1984,7.008005381
+gemini-1.0-pro-002,Serialized Data Formats,case1-6.py,1295,479,1774,5.519653082
+gemini-1.0-pro-002,Avoiding UDFs,case1-6.py,1261,207,1468,3.10408473
+gemini-1.0-pro-002,All,case1-6.py,2104,330,2434,3.8097229
+gemini-1.5-flash-002,RDD vs DataFrame,case1-6.py,1284,31,1315,1.288285971
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-6.py,1262,487,1749,4.061179638
+gemini-1.5-flash-002,Map vs MapPartitions,case1-6.py,1251,31,1282,1.141726494
+gemini-1.5-flash-002,Serialized Data Formats,case1-6.py,1295,509,1804,4.065533876
+gemini-1.5-flash-002,Avoiding UDFs,case1-6.py,1261,31,1292,1.117475033
+gemini-1.5-flash-002,All,case1-6.py,2104,846,2950,5.957146168
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-6.py,1284,31,1315,1.375091076
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-6.py,1262,454,1716,4.256366253
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-6.py,1251,31,1282,1.313722372
+gemini-2.0-flash-exp,Serialized Data Formats,case1-6.py,1295,688,1983,5.926281929
+gemini-2.0-flash-exp,Avoiding UDFs,case1-6.py,1261,31,1292,1.2663486
+gemini-2.0-flash-exp,All,case1-6.py,2104,786,2890,6.718847036
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-7.py,1000,182,1182,2.859013796
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-7.py,986,184,1170,2.156274796
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-7.py,973,179,1152,2.302825928
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-7.py,1006,170,1176,2.161522388
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-7.py,979,165,1144,2.888171911
+gpt-3.5-turbo-0125,All,case1-7.py,1809,329,2138,3.290747881
+gemini-1.0-pro-002,RDD vs DataFrame,case1-7.py,1132,336,1468,4.61751461
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-7.py,1110,225,1335,3.326290846
+gemini-1.0-pro-002,Map vs MapPartitions,case1-7.py,1099,200,1299,3.310721636
+gemini-1.0-pro-002,Serialized Data Formats,case1-7.py,1143,119,1262,2.408975124
+gemini-1.0-pro-002,Avoiding UDFs,case1-7.py,1109,509,1618,5.587743282
+gemini-1.0-pro-002,All,case1-7.py,1952,307,2259,3.829212904
+gemini-1.5-flash-002,RDD vs DataFrame,case1-7.py,1132,31,1163,1.097968817
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-7.py,1110,267,1377,2.551796436
+gemini-1.5-flash-002,Map vs MapPartitions,case1-7.py,1099,31,1130,1.157752275
+gemini-1.5-flash-002,Serialized Data Formats,case1-7.py,1143,31,1174,1.094264984
+gemini-1.5-flash-002,Avoiding UDFs,case1-7.py,1109,31,1140,1.230273247
+gemini-1.5-flash-002,All,case1-7.py,1952,562,2514,4.223195076
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-7.py,1132,264,1396,2.933438778
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-7.py,1110,334,1444,3.306592941
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-7.py,1099,347,1446,3.559717894
+gemini-2.0-flash-exp,Serialized Data Formats,case1-7.py,1143,31,1174,1.186364651
+gemini-2.0-flash-exp,Avoiding UDFs,case1-7.py,1109,31,1140,1.236157656
+gemini-2.0-flash-exp,All,case1-7.py,1952,480,2432,4.440593719
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-8.py,2337,206,2543,2.241635084
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-8.py,2323,231,2554,2.982394218
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-8.py,2310,231,2541,3.041875362
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-8.py,2343,170,2513,2.032924652
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-8.py,2316,150,2466,1.744194508
+gpt-3.5-turbo-0125,All,case1-8.py,3146,662,3808,7.59193778
+gemini-1.0-pro-002,RDD vs DataFrame,case1-8.py,2678,276,2954,3.566747665
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-8.py,2656,405,3061,4.954896688
+gemini-1.0-pro-002,Map vs MapPartitions,case1-8.py,2645,397,3042,4.796324968
+gemini-1.0-pro-002,Serialized Data Formats,case1-8.py,2689,534,3223,6.028706312
+gemini-1.0-pro-002,Avoiding UDFs,case1-8.py,2655,271,2926,3.720119953
+gemini-1.0-pro-002,All,case1-8.py,3498,134,3632,2.190450668
+gemini-1.5-flash-002,RDD vs DataFrame,case1-8.py,2678,31,2709,1.22247076
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-8.py,2656,453,3109,3.830184698
+gemini-1.5-flash-002,Map vs MapPartitions,case1-8.py,2645,31,2676,1.160073519
+gemini-1.5-flash-002,Serialized Data Formats,case1-8.py,2689,597,3286,4.534016371
+gemini-1.5-flash-002,Avoiding UDFs,case1-8.py,2655,31,2686,1.139113903
+gemini-1.5-flash-002,All,case1-8.py,3498,677,4175,5.220861673
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-8.py,2678,31,2709,1.386985064
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-8.py,2656,490,3146,4.582734585
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-8.py,2645,31,2676,1.236814976
+gemini-2.0-flash-exp,Serialized Data Formats,case1-8.py,2689,272,2961,3.041013718
+gemini-2.0-flash-exp,Avoiding UDFs,case1-8.py,2655,209,2864,2.570431948
+gemini-2.0-flash-exp,All,case1-8.py,3498,302,3800,3.251861572
+gpt-3.5-turbo-0125,RDD vs DataFrame,case1-9.py,901,314,1215,6.042401552
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case1-9.py,887,223,1110,2.506158352
+gpt-3.5-turbo-0125,Map vs MapPartitions,case1-9.py,874,210,1084,2.514324188
+gpt-3.5-turbo-0125,Serialized Data Formats,case1-9.py,907,192,1099,2.287605524
+gpt-3.5-turbo-0125,Avoiding UDFs,case1-9.py,880,163,1043,1.735988855
+gpt-3.5-turbo-0125,All,case1-9.py,1710,506,2216,4.607645988
+gemini-1.0-pro-002,RDD vs DataFrame,case1-9.py,986,359,1345,4.499873161
+gemini-1.0-pro-002,Coalesce vs Repartition,case1-9.py,964,304,1268,3.9074471
+gemini-1.0-pro-002,Map vs MapPartitions,case1-9.py,953,394,1347,4.738624811
+gemini-1.0-pro-002,Serialized Data Formats,case1-9.py,997,535,1532,6.170398951
+gemini-1.0-pro-002,Avoiding UDFs,case1-9.py,963,267,1230,3.456511497
+gemini-1.0-pro-002,All,case1-9.py,1806,459,2265,4.854328156
+gemini-1.5-flash-002,RDD vs DataFrame,case1-9.py,986,31,1017,1.095223665
+gemini-1.5-flash-002,Coalesce vs Repartition,case1-9.py,964,305,1269,2.76078105
+gemini-1.5-flash-002,Map vs MapPartitions,case1-9.py,953,31,984,1.139829874
+gemini-1.5-flash-002,Serialized Data Formats,case1-9.py,997,446,1443,3.544006586
+gemini-1.5-flash-002,Avoiding UDFs,case1-9.py,963,278,1241,2.78939414
+gemini-1.5-flash-002,All,case1-9.py,1806,897,2703,6.640214443
+gemini-2.0-flash-exp,RDD vs DataFrame,case1-9.py,986,31,1017,1.281594992
+gemini-2.0-flash-exp,Coalesce vs Repartition,case1-9.py,964,329,1293,3.387896299
+gemini-2.0-flash-exp,Map vs MapPartitions,case1-9.py,953,31,984,1.339102507
+gemini-2.0-flash-exp,Serialized Data Formats,case1-9.py,997,423,1420,4.015149593
+gemini-2.0-flash-exp,Avoiding UDFs,case1-9.py,963,381,1344,3.693479538
+gemini-2.0-flash-exp,All,case1-9.py,1806,609,2415,5.254703045
+gpt-3.5-turbo-0125,RDD vs DataFrame,case12.py,725,306,1031,2.808952332
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case12.py,711,153,864,1.616507769
+gpt-3.5-turbo-0125,Map vs MapPartitions,case12.py,698,225,923,2.473601341
+gpt-3.5-turbo-0125,Serialized Data Formats,case12.py,731,26,757,0.636620283
+gpt-3.5-turbo-0125,Avoiding UDFs,case12.py,704,191,895,2.017795324
+gpt-3.5-turbo-0125,All,case12.py,1534,455,1989,4.832678318
+gemini-1.0-pro-002,RDD vs DataFrame,case12.py,770,364,1134,4.306400299
+gemini-1.0-pro-002,Coalesce vs Repartition,case12.py,748,260,1008,4.070628405
+gemini-1.0-pro-002,Map vs MapPartitions,case12.py,737,308,1045,3.90694809
+gemini-1.0-pro-002,Serialized Data Formats,case12.py,781,174,955,4.124661207
+gemini-1.0-pro-002,Avoiding UDFs,case12.py,747,352,1099,4.625620127
+gemini-1.0-pro-002,All,case12.py,1590,511,2101,6.913167953
+gemini-1.5-flash-002,RDD vs DataFrame,case12.py,770,297,1067,2.728666306
+gemini-1.5-flash-002,Coalesce vs Repartition,case12.py,748,380,1128,3.145508289
+gemini-1.5-flash-002,Map vs MapPartitions,case12.py,737,263,1000,2.478409767
+gemini-1.5-flash-002,Serialized Data Formats,case12.py,781,31,812,1.076275349
+gemini-1.5-flash-002,Avoiding UDFs,case12.py,747,278,1025,2.602844715
+gemini-1.5-flash-002,All,case12.py,1590,932,2522,6.632237673
+gemini-2.0-flash-exp,RDD vs DataFrame,case12.py,770,457,1227,4.353212118
+gemini-2.0-flash-exp,Coalesce vs Repartition,case12.py,748,357,1105,3.568165779
+gemini-2.0-flash-exp,Map vs MapPartitions,case12.py,737,314,1051,3.361758471
+gemini-2.0-flash-exp,Serialized Data Formats,case12.py,781,31,812,1.219989061
+gemini-2.0-flash-exp,Avoiding UDFs,case12.py,747,299,1046,3.143703222
+gemini-2.0-flash-exp,All,case12.py,1590,802,2392,6.826355457
+gpt-3.5-turbo-0125,RDD vs DataFrame,case13.py,726,254,980,2.862042665
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case13.py,712,168,880,1.981631994
+gpt-3.5-turbo-0125,Map vs MapPartitions,case13.py,699,185,884,1.646395206
+gpt-3.5-turbo-0125,Serialized Data Formats,case13.py,732,187,919,2.200106144
+gpt-3.5-turbo-0125,Avoiding UDFs,case13.py,705,157,862,1.619223118
+gpt-3.5-turbo-0125,All,case13.py,1535,339,1874,3.337574244
+gemini-1.0-pro-002,RDD vs DataFrame,case13.py,771,332,1103,14.12452674
+gemini-1.0-pro-002,Coalesce vs Repartition,case13.py,749,320,1069,4.05151248
+gemini-1.0-pro-002,Map vs MapPartitions,case13.py,738,300,1038,3.940373182
+gemini-1.0-pro-002,Serialized Data Formats,case13.py,782,176,958,2.769154072
+gemini-1.0-pro-002,Avoiding UDFs,case13.py,748,341,1089,4.346040964
+gemini-1.0-pro-002,All,case13.py,1591,470,2061,5.231859207
+gemini-1.5-flash-002,RDD vs DataFrame,case13.py,771,452,1223,3.96173501
+gemini-1.5-flash-002,Coalesce vs Repartition,case13.py,749,287,1036,2.680431366
+gemini-1.5-flash-002,Map vs MapPartitions,case13.py,738,31,769,1.101379156
+gemini-1.5-flash-002,Serialized Data Formats,case13.py,782,311,1093,2.784595966
+gemini-1.5-flash-002,Avoiding UDFs,case13.py,748,31,779,1.075728655
+gemini-1.5-flash-002,All,case13.py,1591,661,2252,5.233046055
+gemini-2.0-flash-exp,RDD vs DataFrame,case13.py,771,837,1608,7.518432617
+gemini-2.0-flash-exp,Coalesce vs Repartition,case13.py,749,306,1055,3.182648897
+gemini-2.0-flash-exp,Map vs MapPartitions,case13.py,738,31,769,1.204041004
+gemini-2.0-flash-exp,Serialized Data Formats,case13.py,782,374,1156,3.543386459
+gemini-2.0-flash-exp,Avoiding UDFs,case13.py,748,31,779,1.592185259
+gemini-2.0-flash-exp,All,case13.py,1591,742,2333,6.671327829
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-1.py,776,253,1029,2.775131464
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-1.py,762,160,922,1.844432116
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-1.py,749,202,951,1.868051052
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-1.py,782,166,948,8.49083662
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-1.py,755,201,956,3.495643139
+gpt-3.5-turbo-0125,All,case2-1.py,1585,406,1991,4.534637928
+gemini-1.0-pro-002,RDD vs DataFrame,case2-1.py,842,638,1480,7.077819824
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-1.py,820,105,925,2.15013361
+gemini-1.0-pro-002,Map vs MapPartitions,case2-1.py,809,269,1078,3.863655806
+gemini-1.0-pro-002,Serialized Data Formats,case2-1.py,853,436,1289,5.199978113
+gemini-1.0-pro-002,Avoiding UDFs,case2-1.py,819,652,1471,7.10179472
+gemini-1.0-pro-002,All,case2-1.py,1662,653,2315,6.475325584
+gemini-1.5-flash-002,RDD vs DataFrame,case2-1.py,842,636,1478,4.994688511
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-1.py,820,31,851,1.138289452
+gemini-1.5-flash-002,Map vs MapPartitions,case2-1.py,809,31,840,1.113866329
+gemini-1.5-flash-002,Serialized Data Formats,case2-1.py,853,458,1311,3.641428709
+gemini-1.5-flash-002,Avoiding UDFs,case2-1.py,819,540,1359,4.36379981
+gemini-1.5-flash-002,All,case2-1.py,1662,936,2598,6.650403738
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-1.py,842,1118,1960,9.049664736
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-1.py,820,31,851,1.234282494
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-1.py,809,31,840,1.336436987
+gemini-2.0-flash-exp,Serialized Data Formats,case2-1.py,853,750,1603,6.362304211
+gemini-2.0-flash-exp,Avoiding UDFs,case2-1.py,819,787,1606,6.580327272
+gemini-2.0-flash-exp,All,case2-1.py,1662,1100,2762,8.939898968
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-10.py,1949,1289,3238,12.35237718
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-10.py,1935,300,2235,3.188425064
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-10.py,1922,2004,3926,19.46767092
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-10.py,1955,168,2123,4.895508289
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-10.py,1928,197,2125,2.212381363
+gpt-3.5-turbo-0125,All,case2-10.py,2758,714,3472,7.10851264
+gemini-1.0-pro-002,RDD vs DataFrame,case2-10.py,2290,1341,3631,12.83931732
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-10.py,2268,358,2626,4.468695402
+gemini-1.0-pro-002,Map vs MapPartitions,case2-10.py,2257,551,2808,6.580754042
+gemini-1.0-pro-002,Serialized Data Formats,case2-10.py,2301,449,2750,5.682928801
+gemini-1.0-pro-002,Avoiding UDFs,case2-10.py,2267,640,2907,7.12100482
+gemini-1.0-pro-002,All,case2-10.py,3110,1257,4367,11.74182773
+gemini-1.5-flash-002,RDD vs DataFrame,case2-10.py,2290,2330,4620,16.44857574
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-10.py,2268,31,2299,1.682237625
+gemini-1.5-flash-002,Map vs MapPartitions,case2-10.py,2257,1235,3492,9.280560493
+gemini-1.5-flash-002,Serialized Data Formats,case2-10.py,2301,841,3142,6.338642836
+gemini-1.5-flash-002,Avoiding UDFs,case2-10.py,2267,708,2975,5.272779942
+gemini-1.5-flash-002,All,case2-10.py,3110,2299,5409,15.28504395
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-10.py,2290,3792,6082,30.31946659
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-10.py,2268,31,2299,1.717326641
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-10.py,2257,1129,3386,10.81784844
+gemini-2.0-flash-exp,Serialized Data Formats,case2-10.py,2301,1173,3474,10.13737559
+gemini-2.0-flash-exp,Avoiding UDFs,case2-10.py,2267,1184,3451,9.765850067
+gemini-2.0-flash-exp,All,case2-10.py,3110,4155,7265,31.56751895
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-11.py,1868,237,2105,2.964301586
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-11.py,1854,189,2043,2.591430426
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-11.py,1841,220,2061,2.223637104
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-11.py,1874,151,2025,1.709169865
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-11.py,1847,492,2339,5.198733568
+gpt-3.5-turbo-0125,All,case2-11.py,2677,937,3614,9.94307971
+gemini-1.0-pro-002,RDD vs DataFrame,case2-11.py,2207,478,2685,6.32509017
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-11.py,2185,236,2421,3.641601324
+gemini-1.0-pro-002,Map vs MapPartitions,case2-11.py,2174,255,2429,3.897171974
+gemini-1.0-pro-002,Serialized Data Formats,case2-11.py,2218,332,2550,4.30352211
+gemini-1.0-pro-002,Avoiding UDFs,case2-11.py,2184,564,2748,5.893523455
+gemini-1.0-pro-002,All,case2-11.py,3027,642,3669,6.292443275
+gemini-1.5-flash-002,RDD vs DataFrame,case2-11.py,2207,604,2811,5.41739893
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-11.py,2185,31,2216,1.192499161
+gemini-1.5-flash-002,Map vs MapPartitions,case2-11.py,2174,273,2447,2.66392827
+gemini-1.5-flash-002,Serialized Data Formats,case2-11.py,2218,336,2554,3.102513075
+gemini-1.5-flash-002,Avoiding UDFs,case2-11.py,2184,774,2958,5.737782478
+gemini-1.5-flash-002,All,case2-11.py,3027,1388,4415,9.290521622
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-11.py,2207,1292,3499,10.67583704
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-11.py,2185,31,2216,1.310476303
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-11.py,2174,267,2441,3.085442781
+gemini-2.0-flash-exp,Serialized Data Formats,case2-11.py,2218,1190,3408,9.549108982
+gemini-2.0-flash-exp,Avoiding UDFs,case2-11.py,2184,876,3060,7.377656698
+gemini-2.0-flash-exp,All,case2-11.py,3027,1645,4672,12.88266349
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-12.py,3731,258,3989,2.972856045
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-12.py,3717,314,4031,2.823020697
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-12.py,3704,333,4037,4.284439802
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-12.py,3737,332,4069,3.455279827
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-12.py,3710,150,3860,1.77477932
+gpt-3.5-turbo-0125,All,case2-12.py,4540,1037,5577,8.607529163
+gemini-1.0-pro-002,RDD vs DataFrame,case2-12.py,4633,475,5108,5.573121309
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-12.py,4611,179,4790,3.589138269
+gemini-1.0-pro-002,Map vs MapPartitions,case2-12.py,4600,297,4897,4.6518507
+gemini-1.0-pro-002,Serialized Data Formats,case2-12.py,4644,471,5115,6.331768274
+gemini-1.0-pro-002,Avoiding UDFs,case2-12.py,4610,229,4839,3.550583124
+gemini-1.0-pro-002,All,case2-12.py,5453,416,5869,6.550020456
+gemini-1.5-flash-002,RDD vs DataFrame,case2-12.py,4633,1007,5640,7.316984653
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-12.py,4611,314,4925,3.078745365
+gemini-1.5-flash-002,Map vs MapPartitions,case2-12.py,4600,252,4852,2.625946283
+gemini-1.5-flash-002,Serialized Data Formats,case2-12.py,4644,463,5107,3.994729042
+gemini-1.5-flash-002,Avoiding UDFs,case2-12.py,4610,484,5094,4.032538891
+gemini-1.5-flash-002,All,case2-12.py,5453,938,6391,6.681694746
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-12.py,4633,643,5276,5.854363441
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-12.py,4611,296,4907,3.35193634
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-12.py,4600,402,5002,4.110336781
+gemini-2.0-flash-exp,Serialized Data Formats,case2-12.py,4644,1605,6249,12.48533106
+gemini-2.0-flash-exp,Avoiding UDFs,case2-12.py,4610,452,5062,4.338095665
+gemini-2.0-flash-exp,All,case2-12.py,5453,1418,6871,12.06796789
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-2.py,13136,573,13709,7.733649969
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-2.py,13122,171,13293,2.799598694
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-2.py,13109,686,13795,7.098024845
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-2.py,13142,524,13666,5.809790611
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-2.py,13115,141,13256,2.168559313
+gpt-3.5-turbo-0125,All,case2-2.py,13945,406,14351,5.843792677
+gemini-1.0-pro-002,RDD vs DataFrame,case2-2.py,14578,1595,16173,15.06823277
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-2.py,14556,173,14729,3.624411821
+gemini-1.0-pro-002,Map vs MapPartitions,case2-2.py,14545,324,14869,5.386564255
+gemini-1.0-pro-002,Serialized Data Formats,case2-2.py,14589,328,14917,5.22258687
+gemini-1.0-pro-002,Avoiding UDFs,case2-2.py,14555,274,14829,4.711753368
+gemini-1.0-pro-002,All,case2-2.py,15398,918,16316,11.89422417
+gemini-1.5-flash-002,RDD vs DataFrame,case2-2.py,14578,1095,15673,8.914313316
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-2.py,14556,31,14587,1.780499935
+gemini-1.5-flash-002,Map vs MapPartitions,case2-2.py,14545,512,15057,5.231366634
+gemini-1.5-flash-002,Serialized Data Formats,case2-2.py,14589,572,15161,5.77473402
+gemini-1.5-flash-002,Avoiding UDFs,case2-2.py,14555,1049,15604,8.206121922
+gemini-1.5-flash-002,All,case2-2.py,15398,2919,18317,19.9696238
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-2.py,14578,8198,22776,59.65167356
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-2.py,14556,31,14587,1.79634738
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-2.py,14545,251,14796,3.378138065
+gemini-2.0-flash-exp,Serialized Data Formats,case2-2.py,14589,1010,15599,8.670130968
+gemini-2.0-flash-exp,Avoiding UDFs,case2-2.py,14555,1422,15977,11.40232682
+gemini-2.0-flash-exp,All,case2-2.py,15398,6738,22136,49.45206928
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-3.py,2519,781,3300,8.084248781
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-3.py,2505,221,2726,2.143666744
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-3.py,2492,517,3009,4.725662231
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-3.py,2525,384,2909,4.365311623
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-3.py,2498,461,2959,4.452421665
+gpt-3.5-turbo-0125,All,case2-3.py,3328,806,4134,7.634293079
+gemini-1.0-pro-002,RDD vs DataFrame,case2-3.py,3013,1341,4354,10.6808784
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-3.py,2991,335,3326,4.005143881
+gemini-1.0-pro-002,Map vs MapPartitions,case2-3.py,2980,169,3149,2.833025694
+gemini-1.0-pro-002,Serialized Data Formats,case2-3.py,3024,2143,5167,16.24934435
+gemini-1.0-pro-002,Avoiding UDFs,case2-3.py,2990,791,3781,7.369707346
+gemini-1.0-pro-002,All,case2-3.py,3833,731,4564,6.887725592
+gemini-1.5-flash-002,RDD vs DataFrame,case2-3.py,3013,1726,4739,11.97494674
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-3.py,2991,31,3022,1.203729868
+gemini-1.5-flash-002,Map vs MapPartitions,case2-3.py,2980,1647,4627,11.3359282
+gemini-1.5-flash-002,Serialized Data Formats,case2-3.py,3024,1089,4113,7.800413132
+gemini-1.5-flash-002,Avoiding UDFs,case2-3.py,2990,902,3892,6.425456762
+gemini-1.5-flash-002,All,case2-3.py,3833,3037,6870,19.68382716
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-3.py,3013,6841,9854,49.81113863
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-3.py,2991,31,3022,1.29844451
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-3.py,2980,1805,4785,13.89938283
+gemini-2.0-flash-exp,Serialized Data Formats,case2-3.py,3024,3466,6490,25.80936074
+gemini-2.0-flash-exp,Avoiding UDFs,case2-3.py,2990,1638,4628,12.67372417
+gemini-2.0-flash-exp,All,case2-3.py,3833,4456,8289,33.1690166
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-4.py,563,276,839,2.876857519
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-4.py,549,168,717,2.033596754
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-4.py,536,218,754,2.062749863
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-4.py,569,154,723,1.706759453
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-4.py,542,188,730,2.040489912
+gpt-3.5-turbo-0125,All,case2-4.py,1372,454,1826,4.375104666
+gemini-1.0-pro-002,RDD vs DataFrame,case2-4.py,608,396,1004,5.098909616
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-4.py,586,235,821,3.497377396
+gemini-1.0-pro-002,Map vs MapPartitions,case2-4.py,575,301,876,3.702687263
+gemini-1.0-pro-002,Serialized Data Formats,case2-4.py,619,522,1141,5.970035315
+gemini-1.0-pro-002,Avoiding UDFs,case2-4.py,585,329,914,4.501509428
+gemini-1.0-pro-002,All,case2-4.py,1428,347,1775,3.891951799
+gemini-1.5-flash-002,RDD vs DataFrame,case2-4.py,608,577,1185,4.287849903
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-4.py,586,31,617,1.116126299
+gemini-1.5-flash-002,Map vs MapPartitions,case2-4.py,575,349,924,3.029679298
+gemini-1.5-flash-002,Serialized Data Formats,case2-4.py,619,535,1154,4.116935015
+gemini-1.5-flash-002,Avoiding UDFs,case2-4.py,585,308,893,2.693191051
+gemini-1.5-flash-002,All,case2-4.py,1428,892,2320,6.481004
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-4.py,608,914,1522,7.574292898
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-4.py,586,31,617,1.246464014
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-4.py,575,299,874,3.158056021
+gemini-2.0-flash-exp,Serialized Data Formats,case2-4.py,619,585,1204,5.185590982
+gemini-2.0-flash-exp,Avoiding UDFs,case2-4.py,585,358,943,3.586802244
+gemini-2.0-flash-exp,All,case2-4.py,1428,1292,2720,10.24054408
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-5.py,1167,363,1530,4.602826834
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-5.py,1153,157,1310,1.890657902
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-5.py,1140,182,1322,2.064689398
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-5.py,1173,210,1383,2.712333202
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-5.py,1146,171,1317,1.901180267
+gpt-3.5-turbo-0125,All,case2-5.py,1976,438,2414,3.790972948
+gemini-1.0-pro-002,RDD vs DataFrame,case2-5.py,1275,940,2215,8.423451662
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-5.py,1253,208,1461,3.254261255
+gemini-1.0-pro-002,Map vs MapPartitions,case2-5.py,1242,389,1631,4.671368122
+gemini-1.0-pro-002,Serialized Data Formats,case2-5.py,1286,1507,2793,12.20821238
+gemini-1.0-pro-002,Avoiding UDFs,case2-5.py,1252,391,1643,4.645754576
+gemini-1.0-pro-002,All,case2-5.py,2095,667,2762,6.704021454
+gemini-1.5-flash-002,RDD vs DataFrame,case2-5.py,1275,1209,2484,8.465037584
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-5.py,1253,31,1284,1.132756948
+gemini-1.5-flash-002,Map vs MapPartitions,case2-5.py,1242,456,1698,3.757073641
+gemini-1.5-flash-002,Serialized Data Formats,case2-5.py,1286,429,1715,3.425840855
+gemini-1.5-flash-002,Avoiding UDFs,case2-5.py,1252,965,2217,6.787423372
+gemini-1.5-flash-002,All,case2-5.py,2095,1764,3859,11.79916048
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-5.py,1275,1369,2644,10.84971142
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-5.py,1253,31,1284,1.26039958
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-5.py,1242,616,1858,5.45714879
+gemini-2.0-flash-exp,Serialized Data Formats,case2-5.py,1286,596,1882,5.202556133
+gemini-2.0-flash-exp,Avoiding UDFs,case2-5.py,1252,8187,9439,59.58352804
+gemini-2.0-flash-exp,All,case2-5.py,2095,1736,3831,13.52983546
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-6.py,6418,414,6832,4.584879398
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-6.py,6404,186,6590,2.341541529
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-6.py,6391,187,6578,2.237766504
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-6.py,6424,266,6690,2.962705612
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-6.py,6397,169,6566,2.035433054
+gpt-3.5-turbo-0125,All,case2-6.py,7227,612,7839,6.316283703
+gemini-1.0-pro-002,RDD vs DataFrame,case2-6.py,7870,1045,8915,9.24805069
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-6.py,7848,199,8047,3.351639032
+gemini-1.0-pro-002,Map vs MapPartitions,case2-6.py,7837,328,8165,4.097593307
+gemini-1.0-pro-002,Serialized Data Formats,case2-6.py,7881,409,8290,5.456865311
+gemini-1.0-pro-002,Avoiding UDFs,case2-6.py,7847,645,8492,7.876041889
+gemini-1.0-pro-002,All,case2-6.py,8690,405,9095,5.316825867
+gemini-1.5-flash-002,RDD vs DataFrame,case2-6.py,7870,1203,9073,8.604855061
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-6.py,7848,31,7879,1.321056843
+gemini-1.5-flash-002,Map vs MapPartitions,case2-6.py,7837,475,8312,4.368776083
+gemini-1.5-flash-002,Serialized Data Formats,case2-6.py,7881,532,8413,4.288290977
+gemini-1.5-flash-002,Avoiding UDFs,case2-6.py,7847,1437,9284,10.25286794
+gemini-1.5-flash-002,All,case2-6.py,8690,2206,10896,14.70856762
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-6.py,7870,2807,10677,21.74630451
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-6.py,7848,31,7879,1.392522812
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-6.py,7837,450,8287,4.47987771
+gemini-2.0-flash-exp,Serialized Data Formats,case2-6.py,7881,1924,9805,14.71222925
+gemini-2.0-flash-exp,Avoiding UDFs,case2-6.py,7847,2599,10446,19.32917166
+gemini-2.0-flash-exp,All,case2-6.py,8690,5654,14344,42.77943993
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-7.py,832,281,1113,2.448097706
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-7.py,818,187,1005,2.000308514
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-7.py,805,338,1143,3.45102191
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-7.py,838,165,1003,1.895117521
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-7.py,811,161,972,1.713153601
+gpt-3.5-turbo-0125,All,case2-7.py,1641,421,2062,3.806621075
+gemini-1.0-pro-002,RDD vs DataFrame,case2-7.py,940,774,1714,8.00508523
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-7.py,918,277,1195,3.786218643
+gemini-1.0-pro-002,Map vs MapPartitions,case2-7.py,907,360,1267,4.859161615
+gemini-1.0-pro-002,Serialized Data Formats,case2-7.py,951,299,1250,4.152552605
+gemini-1.0-pro-002,Avoiding UDFs,case2-7.py,917,30,947,1.368054628
+gemini-1.0-pro-002,All,case2-7.py,1760,391,2151,4.621728182
+gemini-1.5-flash-002,RDD vs DataFrame,case2-7.py,940,745,1685,5.499206305
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-7.py,918,31,949,1.10039854
+gemini-1.5-flash-002,Map vs MapPartitions,case2-7.py,907,429,1336,3.68159771
+gemini-1.5-flash-002,Serialized Data Formats,case2-7.py,951,540,1491,4.103938818
+gemini-1.5-flash-002,Avoiding UDFs,case2-7.py,917,537,1454,4.068701029
+gemini-1.5-flash-002,All,case2-7.py,1760,802,2562,5.71348691
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-7.py,940,8181,9121,57.71961212
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-7.py,918,31,949,1.154657125
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-7.py,907,496,1403,4.759754419
+gemini-2.0-flash-exp,Serialized Data Formats,case2-7.py,951,378,1329,3.738932133
+gemini-2.0-flash-exp,Avoiding UDFs,case2-7.py,917,795,1712,6.697403908
+gemini-2.0-flash-exp,All,case2-7.py,1760,1310,3070,10.35313249
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-8.py,2525,241,2766,2.608161926
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-8.py,2511,153,2664,2.570209503
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-8.py,2498,287,2785,2.864248514
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-8.py,2531,286,2817,3.8022089
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-8.py,2504,155,2659,1.786597013
+gpt-3.5-turbo-0125,All,case2-8.py,3334,782,4116,6.774804831
+gemini-1.0-pro-002,RDD vs DataFrame,case2-8.py,3275,499,3774,6.204172373
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-8.py,3253,187,3440,2.949412823
+gemini-1.0-pro-002,Map vs MapPartitions,case2-8.py,3242,1619,4861,12.44828343
+gemini-1.0-pro-002,Serialized Data Formats,case2-8.py,3286,555,3841,5.747722864
+gemini-1.0-pro-002,Avoiding UDFs,case2-8.py,3252,30,3282,1.417613506
+gemini-1.0-pro-002,All,case2-8.py,4095,458,4553,5.17592144
+gemini-1.5-flash-002,RDD vs DataFrame,case2-8.py,3275,582,3857,4.47710371
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-8.py,3253,427,3680,3.693419456
+gemini-1.5-flash-002,Map vs MapPartitions,case2-8.py,3242,342,3584,3.050147772
+gemini-1.5-flash-002,Serialized Data Formats,case2-8.py,3286,488,3774,3.948378801
+gemini-1.5-flash-002,Avoiding UDFs,case2-8.py,3252,561,3813,4.341151953
+gemini-1.5-flash-002,All,case2-8.py,4095,1295,5390,9.131821632
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-8.py,3275,1011,4286,8.467031002
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-8.py,3253,476,3729,4.492557526
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-8.py,3242,272,3514,3.075135469
+gemini-2.0-flash-exp,Serialized Data Formats,case2-8.py,3286,1558,4844,12.23209214
+gemini-2.0-flash-exp,Avoiding UDFs,case2-8.py,3252,760,4012,6.337509155
+gemini-2.0-flash-exp,All,case2-8.py,4095,1722,5817,13.50209022
+gpt-3.5-turbo-0125,RDD vs DataFrame,case2-9.py,1730,702,2432,6.090975285
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case2-9.py,1716,208,1924,3.905777693
+gpt-3.5-turbo-0125,Map vs MapPartitions,case2-9.py,1703,374,2077,3.482642651
+gpt-3.5-turbo-0125,Serialized Data Formats,case2-9.py,1736,183,1919,1.958038807
+gpt-3.5-turbo-0125,Avoiding UDFs,case2-9.py,1709,347,2056,3.142914534
+gpt-3.5-turbo-0125,All,case2-9.py,2539,581,3120,4.619616985
+gemini-1.0-pro-002,RDD vs DataFrame,case2-9.py,2038,860,2898,8.126325846
+gemini-1.0-pro-002,Coalesce vs Repartition,case2-9.py,2016,217,2233,3.355585098
+gemini-1.0-pro-002,Map vs MapPartitions,case2-9.py,2005,392,2397,4.546760798
+gemini-1.0-pro-002,Serialized Data Formats,case2-9.py,2049,294,2343,4.112961769
+gemini-1.0-pro-002,Avoiding UDFs,case2-9.py,2015,577,2592,6.209914684
+gemini-1.0-pro-002,All,case2-9.py,2858,693,3551,7.052531958
+gemini-1.5-flash-002,RDD vs DataFrame,case2-9.py,2038,1189,3227,9.013788939
+gemini-1.5-flash-002,Coalesce vs Repartition,case2-9.py,2016,279,2295,2.602492094
+gemini-1.5-flash-002,Map vs MapPartitions,case2-9.py,2005,685,2690,5.06709528
+gemini-1.5-flash-002,Serialized Data Formats,case2-9.py,2049,408,2457,3.496307611
+gemini-1.5-flash-002,Avoiding UDFs,case2-9.py,2015,587,2602,4.560329437
+gemini-1.5-flash-002,All,case2-9.py,2858,1732,4590,11.6077261
+gemini-2.0-flash-exp,RDD vs DataFrame,case2-9.py,2038,3586,5624,27.72403145
+gemini-2.0-flash-exp,Coalesce vs Repartition,case2-9.py,2016,364,2380,3.586716175
+gemini-2.0-flash-exp,Map vs MapPartitions,case2-9.py,2005,609,2614,5.768751144
+gemini-2.0-flash-exp,Serialized Data Formats,case2-9.py,2049,447,2496,4.821373701
+gemini-2.0-flash-exp,Avoiding UDFs,case2-9.py,2015,957,2972,8.190293789
+gemini-2.0-flash-exp,All,case2-9.py,2858,3096,5954,23.25415349
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-1.py,1662,284,1946,2.778909683
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-1.py,1648,179,1827,3.353635073
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-1.py,1635,187,1822,2.048354864
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-1.py,1668,276,1944,2.830248117
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-1.py,1641,169,1810,2.315409899
+gpt-3.5-turbo-0125,All,case3-1.py,2471,438,2909,4.061548471
+gemini-1.0-pro-002,RDD vs DataFrame,case3-1.py,2020,242,2262,4.328207493
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-1.py,1998,184,2182,3.137536049
+gemini-1.0-pro-002,Map vs MapPartitions,case3-1.py,1987,1289,3276,10.49799109
+gemini-1.0-pro-002,Serialized Data Formats,case3-1.py,2031,290,2321,3.604884624
+gemini-1.0-pro-002,Avoiding UDFs,case3-1.py,1997,1643,3640,12.61775613
+gemini-1.0-pro-002,All,case3-1.py,2840,133,2973,2.08566618
+gemini-1.5-flash-002,RDD vs DataFrame,case3-1.py,2020,31,2051,1.110400915
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-1.py,1998,31,2029,1.138571739
+gemini-1.5-flash-002,Map vs MapPartitions,case3-1.py,1987,31,2018,1.123846292
+gemini-1.5-flash-002,Serialized Data Formats,case3-1.py,2031,365,2396,3.12142992
+gemini-1.5-flash-002,Avoiding UDFs,case3-1.py,1997,1908,3905,12.81323791
+gemini-1.5-flash-002,All,case3-1.py,2840,1053,3893,7.262610674
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-1.py,2020,31,2051,1.30121398
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-1.py,1998,31,2029,1.261610985
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-1.py,1987,31,2018,1.254851103
+gemini-2.0-flash-exp,Serialized Data Formats,case3-1.py,2031,797,2828,6.718091011
+gemini-2.0-flash-exp,Avoiding UDFs,case3-1.py,1997,1185,3182,9.445812941
+gemini-2.0-flash-exp,All,case3-1.py,2840,683,3523,5.920230865
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-10.py,1463,292,1755,2.98636651
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-10.py,1449,26,1475,3.296784639
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-10.py,1436,190,1626,2.015072584
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-10.py,1469,177,1646,2.182709932
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-10.py,1442,129,1571,1.352286816
+gpt-3.5-turbo-0125,All,case3-10.py,2272,225,2497,5.896715879
+gemini-1.0-pro-002,RDD vs DataFrame,case3-10.py,1630,253,1883,3.84100461
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-10.py,1608,30,1638,1.353476524
+gemini-1.0-pro-002,Map vs MapPartitions,case3-10.py,1597,270,1867,3.779882431
+gemini-1.0-pro-002,Serialized Data Formats,case3-10.py,1641,399,2040,4.839990377
+gemini-1.0-pro-002,Avoiding UDFs,case3-10.py,1607,30,1637,1.728566885
+gemini-1.0-pro-002,All,case3-10.py,2450,133,2583,2.144791603
+gemini-1.5-flash-002,RDD vs DataFrame,case3-10.py,1630,31,1661,1.111559153
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-10.py,1608,31,1639,1.47924161
+gemini-1.5-flash-002,Map vs MapPartitions,case3-10.py,1597,31,1628,1.801886559
+gemini-1.5-flash-002,Serialized Data Formats,case3-10.py,1641,513,2154,4.738110542
+gemini-1.5-flash-002,Avoiding UDFs,case3-10.py,1607,31,1638,1.08844161
+gemini-1.5-flash-002,All,case3-10.py,2450,326,2776,2.975892782
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-10.py,1630,31,1661,1.239097357
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-10.py,1608,31,1639,1.304580927
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-10.py,1597,31,1628,1.255874157
+gemini-2.0-flash-exp,Serialized Data Formats,case3-10.py,1641,873,2514,7.198703051
+gemini-2.0-flash-exp,Avoiding UDFs,case3-10.py,1607,31,1638,1.199450493
+gemini-2.0-flash-exp,All,case3-10.py,2450,348,2798,3.434720516
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-2.py,1424,1629,3053,11.95822072
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-2.py,1410,186,1596,1.999498606
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-2.py,1397,177,1574,2.009987593
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-2.py,1430,161,1591,1.622923136
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-2.py,1403,426,1829,4.281913996
+gpt-3.5-turbo-0125,All,case3-2.py,2233,761,2994,7.612290859
+gemini-1.0-pro-002,RDD vs DataFrame,case3-2.py,1661,1620,3281,12.37133837
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-2.py,1639,345,1984,4.555374622
+gemini-1.0-pro-002,Map vs MapPartitions,case3-2.py,1628,256,1884,3.405863523
+gemini-1.0-pro-002,Serialized Data Formats,case3-2.py,1672,346,2018,4.402358294
+gemini-1.0-pro-002,Avoiding UDFs,case3-2.py,1638,745,2383,6.45148921
+gemini-1.0-pro-002,All,case3-2.py,2481,1859,4340,16.12971902
+gemini-1.5-flash-002,RDD vs DataFrame,case3-2.py,1661,2146,3807,14.07070899
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-2.py,1639,31,1670,1.126604795
+gemini-1.5-flash-002,Map vs MapPartitions,case3-2.py,1628,31,1659,1.08949995
+gemini-1.5-flash-002,Serialized Data Formats,case3-2.py,1672,619,2291,4.721400023
+gemini-1.5-flash-002,Avoiding UDFs,case3-2.py,1638,705,2343,5.136495352
+gemini-1.5-flash-002,All,case3-2.py,2481,908,3389,6.521086216
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-2.py,1661,279,1940,3.053548813
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-2.py,1639,31,1670,1.313408852
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-2.py,1628,289,1917,3.155931473
+gemini-2.0-flash-exp,Serialized Data Formats,case3-2.py,1672,578,2250,5.022745371
+gemini-2.0-flash-exp,Avoiding UDFs,case3-2.py,1638,31,1669,1.140482903
+gemini-2.0-flash-exp,All,case3-2.py,2481,618,3099,5.455379725
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-3.py,744,26,770,0.626228809
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-3.py,730,186,916,1.802290678
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-3.py,717,182,899,1.893860579
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-3.py,750,173,923,1.85337472
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-3.py,723,148,871,1.557339668
+gpt-3.5-turbo-0125,All,case3-3.py,1553,354,1907,4.436080933
+gemini-1.0-pro-002,RDD vs DataFrame,case3-3.py,807,257,1064,3.734392166
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-3.py,785,152,937,2.657921076
+gemini-1.0-pro-002,Map vs MapPartitions,case3-3.py,774,308,1082,4.144194126
+gemini-1.0-pro-002,Serialized Data Formats,case3-3.py,818,256,1074,3.464510918
+gemini-1.0-pro-002,Avoiding UDFs,case3-3.py,784,30,814,1.381149054
+gemini-1.0-pro-002,All,case3-3.py,1627,133,1760,1.965150118
+gemini-1.5-flash-002,RDD vs DataFrame,case3-3.py,807,31,838,1.102960825
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-3.py,785,31,816,1.085971355
+gemini-1.5-flash-002,Map vs MapPartitions,case3-3.py,774,31,805,1.087268829
+gemini-1.5-flash-002,Serialized Data Formats,case3-3.py,818,320,1138,3.000548124
+gemini-1.5-flash-002,Avoiding UDFs,case3-3.py,784,31,815,1.112806082
+gemini-1.5-flash-002,All,case3-3.py,1627,308,1935,2.790874958
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-3.py,807,31,838,1.205644846
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-3.py,785,31,816,1.217850924
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-3.py,774,31,805,1.206710577
+gemini-2.0-flash-exp,Serialized Data Formats,case3-3.py,818,371,1189,3.713768244
+gemini-2.0-flash-exp,Avoiding UDFs,case3-3.py,784,31,815,1.214631796
+gemini-2.0-flash-exp,All,case3-3.py,1627,346,1973,3.382069349
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-4.py,3329,286,3615,2.884374619
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-4.py,3315,211,3526,2.251865864
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-4.py,3302,190,3492,2.097916126
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-4.py,3335,673,4008,6.291941166
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-4.py,3308,387,3695,3.9636724
+gpt-3.5-turbo-0125,All,case3-4.py,4138,1531,5669,15.09931087
+gemini-1.0-pro-002,RDD vs DataFrame,case3-4.py,4029,183,4212,3.138492584
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-4.py,4007,417,4424,4.843610525
+gemini-1.0-pro-002,Map vs MapPartitions,case3-4.py,3996,570,4566,5.893497944
+gemini-1.0-pro-002,Serialized Data Formats,case3-4.py,4040,987,5027,9.276329517
+gemini-1.0-pro-002,Avoiding UDFs,case3-4.py,4006,359,4365,4.443371534
+gemini-1.0-pro-002,All,case3-4.py,4849,885,5734,9.114805937
+gemini-1.5-flash-002,RDD vs DataFrame,case3-4.py,4029,31,4060,1.142574072
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-4.py,4007,31,4038,1.16399312
+gemini-1.5-flash-002,Map vs MapPartitions,case3-4.py,3996,31,4027,1.246589422
+gemini-1.5-flash-002,Serialized Data Formats,case3-4.py,4040,715,4755,5.23219347
+gemini-1.5-flash-002,Avoiding UDFs,case3-4.py,4006,509,4515,4.154981375
+gemini-1.5-flash-002,All,case3-4.py,4849,1527,6376,10.24505281
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-4.py,4029,31,4060,1.333390474
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-4.py,4007,31,4038,1.338177681
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-4.py,3996,31,4027,1.304715872
+gemini-2.0-flash-exp,Serialized Data Formats,case3-4.py,4040,1227,5267,9.802321196
+gemini-2.0-flash-exp,Avoiding UDFs,case3-4.py,4006,576,4582,5.1375916
+gemini-2.0-flash-exp,All,case3-4.py,4849,1090,5939,8.891507387
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-5.py,2383,926,3309,7.710003853
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-5.py,2369,286,2655,2.477371693
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-5.py,2356,839,3195,7.140240908
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-5.py,2389,306,2695,2.968335867
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-5.py,2362,746,3108,6.785440445
+gpt-3.5-turbo-0125,All,case3-5.py,3192,653,3845,5.921759367
+gemini-1.0-pro-002,RDD vs DataFrame,case3-5.py,2831,1798,4629,14.70633364
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-5.py,2809,210,3019,3.178528309
+gemini-1.0-pro-002,Map vs MapPartitions,case3-5.py,2798,1599,4397,12.93938017
+gemini-1.0-pro-002,Serialized Data Formats,case3-5.py,2842,297,3139,3.909969807
+gemini-1.0-pro-002,Avoiding UDFs,case3-5.py,2808,672,3480,6.553850889
+gemini-1.0-pro-002,All,case3-5.py,3651,606,4257,11.60977316
+gemini-1.5-flash-002,RDD vs DataFrame,case3-5.py,2831,1443,4274,9.82239604
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-5.py,2809,31,2840,1.145986319
+gemini-1.5-flash-002,Map vs MapPartitions,case3-5.py,2798,2488,5286,16.43248463
+gemini-1.5-flash-002,Serialized Data Formats,case3-5.py,2842,422,3264,3.74043417
+gemini-1.5-flash-002,Avoiding UDFs,case3-5.py,2808,681,3489,5.199201584
+gemini-1.5-flash-002,All,case3-5.py,3651,4526,8177,29.34136629
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-5.py,2831,2960,5791,22.34146023
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-5.py,2809,31,2840,1.292978048
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-5.py,2798,2001,4799,15.4985404
+gemini-2.0-flash-exp,Serialized Data Formats,case3-5.py,2842,718,3560,6.035914898
+gemini-2.0-flash-exp,Avoiding UDFs,case3-5.py,2808,2405,5213,18.5432117
+gemini-2.0-flash-exp,All,case3-5.py,3651,5735,9386,42.72484565
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-6.py,1563,168,1731,1.793610811
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-6.py,1549,161,1710,1.608455181
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-6.py,1536,220,1756,2.351810932
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-6.py,1569,186,1755,2.065532923
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-6.py,1542,26,1568,0.719311714
+gpt-3.5-turbo-0125,All,case3-6.py,2372,477,2849,7.534407616
+gemini-1.0-pro-002,RDD vs DataFrame,case3-6.py,1779,30,1809,1.426867723
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-6.py,1757,199,1956,2.981947422
+gemini-1.0-pro-002,Map vs MapPartitions,case3-6.py,1746,377,2123,4.365033865
+gemini-1.0-pro-002,Serialized Data Formats,case3-6.py,1790,368,2158,4.737796783
+gemini-1.0-pro-002,Avoiding UDFs,case3-6.py,1756,284,2040,3.724270821
+gemini-1.0-pro-002,All,case3-6.py,2599,133,2732,2.137268782
+gemini-1.5-flash-002,RDD vs DataFrame,case3-6.py,1779,31,1810,1.090775967
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-6.py,1757,31,1788,1.098434448
+gemini-1.5-flash-002,Map vs MapPartitions,case3-6.py,1746,31,1777,1.090800047
+gemini-1.5-flash-002,Serialized Data Formats,case3-6.py,1790,389,2179,3.260320187
+gemini-1.5-flash-002,Avoiding UDFs,case3-6.py,1756,31,1787,1.104934454
+gemini-1.5-flash-002,All,case3-6.py,2599,302,2901,2.841812134
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-6.py,1779,31,1810,1.2342875
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-6.py,1757,31,1788,1.258103609
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-6.py,1746,31,1777,1.260807514
+gemini-2.0-flash-exp,Serialized Data Formats,case3-6.py,1790,379,2169,3.702486277
+gemini-2.0-flash-exp,Avoiding UDFs,case3-6.py,1756,31,1787,1.281820774
+gemini-2.0-flash-exp,All,case3-6.py,2599,355,2954,3.521258593
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-7.py,1097,133,1230,1.643603086
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-7.py,1083,172,1255,1.966803312
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-7.py,1070,26,1096,0.875611782
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-7.py,1103,161,1264,1.959586143
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-7.py,1076,175,1251,1.663023233
+gpt-3.5-turbo-0125,All,case3-7.py,1906,350,2256,5.669264793
+gemini-1.0-pro-002,RDD vs DataFrame,case3-7.py,1237,275,1512,3.954939365
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-7.py,1215,89,1304,2.003409386
+gemini-1.0-pro-002,Map vs MapPartitions,case3-7.py,1204,176,1380,2.8481071
+gemini-1.0-pro-002,Serialized Data Formats,case3-7.py,1248,306,1554,4.018918753
+gemini-1.0-pro-002,Avoiding UDFs,case3-7.py,1214,246,1460,3.387317181
+gemini-1.0-pro-002,All,case3-7.py,2057,133,2190,2.079959869
+gemini-1.5-flash-002,RDD vs DataFrame,case3-7.py,1237,31,1268,1.101447105
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-7.py,1215,31,1246,1.248281002
+gemini-1.5-flash-002,Map vs MapPartitions,case3-7.py,1204,31,1235,1.070608139
+gemini-1.5-flash-002,Serialized Data Formats,case3-7.py,1248,448,1696,3.680655956
+gemini-1.5-flash-002,Avoiding UDFs,case3-7.py,1214,31,1245,1.065207005
+gemini-1.5-flash-002,All,case3-7.py,2057,323,2380,2.967514038
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-7.py,1237,31,1268,1.146816969
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-7.py,1215,31,1246,1.205736399
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-7.py,1204,31,1235,1.159985304
+gemini-2.0-flash-exp,Serialized Data Formats,case3-7.py,1248,543,1791,4.828277588
+gemini-2.0-flash-exp,Avoiding UDFs,case3-7.py,1214,31,1245,1.144440174
+gemini-2.0-flash-exp,All,case3-7.py,2057,336,2393,3.445886374
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-8.py,15589,223,15812,3.507375956
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-8.py,15575,178,15753,2.926242113
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-8.py,15562,309,15871,3.651161432
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-8.py,15595,150,15745,2.522457123
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-8.py,15568,163,15731,2.42198658
+gemini-1.0-pro-002,RDD vs DataFrame,case3-8.py,31393,372,31765,7.694496632
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-8.py,31371,242,31613,5.953876972
+gemini-1.0-pro-002,Map vs MapPartitions,case3-8.py,31360,291,31651,6.37199235
+gemini-1.0-pro-002,Serialized Data Formats,case3-8.py,31404,457,31861,7.321906805
+gemini-1.0-pro-002,Avoiding UDFs,case3-8.py,31370,606,31976,10.5342927
+gemini-1.0-pro-002,All,case3-8.py,32213,248,32461,4.709660769
+gemini-1.5-flash-002,RDD vs DataFrame,case3-8.py,31393,1128,32521,8.799975872
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-8.py,31371,1215,32586,9.587861776
+gemini-1.5-flash-002,Map vs MapPartitions,case3-8.py,31360,421,31781,4.38389039
+gemini-1.5-flash-002,Serialized Data Formats,case3-8.py,31404,442,31846,4.459648132
+gemini-1.5-flash-002,Avoiding UDFs,case3-8.py,31370,406,31776,4.34583497
+gemini-1.5-flash-002,All,case3-8.py,32213,2226,34439,16.4850533
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-8.py,31393,2210,33603,17.15723586
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-8.py,31371,31,31402,1.720998287
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-8.py,31360,322,31682,3.849378586
+gemini-2.0-flash-exp,Serialized Data Formats,case3-8.py,31404,373,31777,4.090898991
+gemini-2.0-flash-exp,Avoiding UDFs,case3-8.py,31370,31,31401,1.563308001
+gemini-2.0-flash-exp,All,case3-8.py,32213,1992,34205,15.95847249
+gpt-3.5-turbo-0125,RDD vs DataFrame,case3-9.py,2049,179,2228,1.922206402
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case3-9.py,2035,198,2233,2.380435944
+gpt-3.5-turbo-0125,Map vs MapPartitions,case3-9.py,2022,470,2492,3.661589384
+gpt-3.5-turbo-0125,Serialized Data Formats,case3-9.py,2055,166,2221,2.264764309
+gpt-3.5-turbo-0125,Avoiding UDFs,case3-9.py,2028,571,2599,6.272050381
+gpt-3.5-turbo-0125,All,case3-9.py,2858,463,3321,5.059401274
+gemini-1.0-pro-002,RDD vs DataFrame,case3-9.py,2418,30,2448,1.432711601
+gemini-1.0-pro-002,Coalesce vs Repartition,case3-9.py,2396,184,2580,2.932343245
+gemini-1.0-pro-002,Map vs MapPartitions,case3-9.py,2385,225,2610,14.50476217
+gemini-1.0-pro-002,Serialized Data Formats,case3-9.py,2429,325,2754,4.181531429
+gemini-1.0-pro-002,Avoiding UDFs,case3-9.py,2395,332,2727,3.805517673
+gemini-1.0-pro-002,All,case3-9.py,3238,133,3371,2.253317595
+gemini-1.5-flash-002,RDD vs DataFrame,case3-9.py,2418,31,2449,1.20694685
+gemini-1.5-flash-002,Coalesce vs Repartition,case3-9.py,2396,31,2427,1.134509802
+gemini-1.5-flash-002,Map vs MapPartitions,case3-9.py,2385,395,2780,3.524534464
+gemini-1.5-flash-002,Serialized Data Formats,case3-9.py,2429,347,2776,3.192069292
+gemini-1.5-flash-002,Avoiding UDFs,case3-9.py,2395,640,3035,4.765542746
+gemini-1.5-flash-002,All,case3-9.py,3238,807,4045,5.837715864
+gemini-2.0-flash-exp,RDD vs DataFrame,case3-9.py,2418,31,2449,1.280078411
+gemini-2.0-flash-exp,Coalesce vs Repartition,case3-9.py,2396,31,2427,1.288024187
+gemini-2.0-flash-exp,Map vs MapPartitions,case3-9.py,2385,878,3263,7.440043926
+gemini-2.0-flash-exp,Serialized Data Formats,case3-9.py,2429,502,2931,4.517075062
+gemini-2.0-flash-exp,Avoiding UDFs,case3-9.py,2395,1124,3519,9.244301796
+gemini-2.0-flash-exp,All,case3-9.py,3238,921,4159,7.590221643
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-1.py,954,168,1122,1.923688889
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-1.py,940,191,1131,1.979479074
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-1.py,927,196,1123,1.989594221
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-1.py,960,179,1139,2.017603636
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-1.py,933,189,1122,1.924074173
+gpt-3.5-turbo-0125,All,case4-1.py,1763,398,2161,4.010514736
+gemini-1.0-pro-002,RDD vs DataFrame,case4-1.py,1055,254,1309,3.516473293
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-1.py,1033,178,1211,2.985497713
+gemini-1.0-pro-002,Map vs MapPartitions,case4-1.py,1022,319,1341,3.946083784
+gemini-1.0-pro-002,Serialized Data Formats,case4-1.py,1066,289,1355,3.968993664
+gemini-1.0-pro-002,Avoiding UDFs,case4-1.py,1032,281,1313,3.879060745
+gemini-1.0-pro-002,All,case4-1.py,1875,339,2214,3.934521198
+gemini-1.5-flash-002,RDD vs DataFrame,case4-1.py,1055,31,1086,1.099031925
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-1.py,1033,31,1064,1.100923538
+gemini-1.5-flash-002,Map vs MapPartitions,case4-1.py,1022,31,1053,1.114662886
+gemini-1.5-flash-002,Serialized Data Formats,case4-1.py,1066,521,1587,3.971627474
+gemini-1.5-flash-002,Avoiding UDFs,case4-1.py,1032,457,1489,3.626627207
+gemini-1.5-flash-002,All,case4-1.py,1875,1063,2938,7.271279335
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-1.py,1055,31,1086,1.26897788
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-1.py,1033,31,1064,1.26939106
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-1.py,1022,31,1053,1.328829288
+gemini-2.0-flash-exp,Serialized Data Formats,case4-1.py,1066,957,2023,8.114352942
+gemini-2.0-flash-exp,Avoiding UDFs,case4-1.py,1032,758,1790,6.422429085
+gemini-2.0-flash-exp,All,case4-1.py,1875,795,2670,6.791968346
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-10.py,968,608,1576,5.907375097
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-10.py,954,153,1107,1.559889317
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-10.py,941,228,1169,2.42262435
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-10.py,974,146,1120,2.02678299
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-10.py,947,552,1499,5.702251911
+gpt-3.5-turbo-0125,All,case4-10.py,1777,347,2124,3.806154013
+gemini-1.0-pro-002,RDD vs DataFrame,case4-10.py,1087,253,1340,3.912991524
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-10.py,1065,250,1315,4.12293148
+gemini-1.0-pro-002,Map vs MapPartitions,case4-10.py,1054,442,1496,4.753576756
+gemini-1.0-pro-002,Serialized Data Formats,case4-10.py,1098,282,1380,4.946423054
+gemini-1.0-pro-002,Avoiding UDFs,case4-10.py,1064,578,1642,5.600712776
+gemini-1.0-pro-002,All,case4-10.py,1907,574,2481,5.584252357
+gemini-1.5-flash-002,RDD vs DataFrame,case4-10.py,1087,31,1118,1.079121828
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-10.py,1065,31,1096,1.078358889
+gemini-1.5-flash-002,Map vs MapPartitions,case4-10.py,1054,31,1085,1.10921216
+gemini-1.5-flash-002,Serialized Data Formats,case4-10.py,1098,608,1706,4.850600481
+gemini-1.5-flash-002,Avoiding UDFs,case4-10.py,1064,739,1803,5.404998064
+gemini-1.5-flash-002,All,case4-10.py,1907,692,2599,5.346832991
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-10.py,1087,31,1118,1.351693153
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-10.py,1065,31,1096,1.245027542
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-10.py,1054,31,1085,1.372681379
+gemini-2.0-flash-exp,Serialized Data Formats,case4-10.py,1098,31,1129,1.226304531
+gemini-2.0-flash-exp,Avoiding UDFs,case4-10.py,1064,951,2015,7.824920177
+gemini-2.0-flash-exp,All,case4-10.py,1907,980,2887,7.999532461
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-2.py,735,180,915,2.485564709
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-2.py,721,140,861,1.480882406
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-2.py,708,372,1080,3.524653435
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-2.py,741,143,884,1.771427155
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-2.py,714,278,992,2.94817996
+gpt-3.5-turbo-0125,All,case4-2.py,1544,302,1846,6.908773661
+gemini-1.0-pro-002,RDD vs DataFrame,case4-2.py,802,255,1057,3.577248573
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-2.py,780,178,958,2.555026293
+gemini-1.0-pro-002,Map vs MapPartitions,case4-2.py,769,353,1122,4.935104847
+gemini-1.0-pro-002,Serialized Data Formats,case4-2.py,813,271,1084,3.403382301
+gemini-1.0-pro-002,Avoiding UDFs,case4-2.py,779,468,1247,5.245488644
+gemini-1.0-pro-002,All,case4-2.py,1622,364,1986,3.778025627
+gemini-1.5-flash-002,RDD vs DataFrame,case4-2.py,802,31,833,1.212389708
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-2.py,780,31,811,1.062447548
+gemini-1.5-flash-002,Map vs MapPartitions,case4-2.py,769,31,800,1.101031065
+gemini-1.5-flash-002,Serialized Data Formats,case4-2.py,813,31,844,1.033369541
+gemini-1.5-flash-002,Avoiding UDFs,case4-2.py,779,396,1175,3.382874966
+gemini-1.5-flash-002,All,case4-2.py,1622,638,2260,5.061297178
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-2.py,802,31,833,1.415217638
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-2.py,780,31,811,1.242137909
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-2.py,769,31,800,1.248066664
+gemini-2.0-flash-exp,Serialized Data Formats,case4-2.py,813,645,1458,5.629370928
+gemini-2.0-flash-exp,Avoiding UDFs,case4-2.py,779,572,1351,5.044546843
+gemini-2.0-flash-exp,All,case4-2.py,1622,542,2164,4.90776825
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-3.py,714,123,837,1.810068846
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-3.py,700,154,854,1.670091867
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-3.py,687,315,1002,3.474442005
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-3.py,720,570,1290,5.267401457
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-3.py,693,486,1179,4.351119518
+gpt-3.5-turbo-0125,All,case4-3.py,1523,700,2223,6.207664251
+gemini-1.0-pro-002,RDD vs DataFrame,case4-3.py,794,339,1133,4.30101347
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-3.py,772,244,1016,3.825965405
+gemini-1.0-pro-002,Map vs MapPartitions,case4-3.py,761,478,1239,5.441495895
+gemini-1.0-pro-002,Serialized Data Formats,case4-3.py,805,253,1058,3.250062466
+gemini-1.0-pro-002,Avoiding UDFs,case4-3.py,771,932,1703,8.983846426
+gemini-1.0-pro-002,All,case4-3.py,1614,487,2101,4.885166407
+gemini-1.5-flash-002,RDD vs DataFrame,case4-3.py,794,31,825,1.083489418
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-3.py,772,31,803,1.096889496
+gemini-1.5-flash-002,Map vs MapPartitions,case4-3.py,761,31,792,1.24977684
+gemini-1.5-flash-002,Serialized Data Formats,case4-3.py,805,31,836,1.024558544
+gemini-1.5-flash-002,Avoiding UDFs,case4-3.py,771,420,1191,3.380519629
+gemini-1.5-flash-002,All,case4-3.py,1614,638,2252,4.959949493
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-3.py,794,31,825,1.238083839
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-3.py,772,31,803,1.245699644
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-3.py,761,31,792,1.263468266
+gemini-2.0-flash-exp,Serialized Data Formats,case4-3.py,805,371,1176,3.651609659
+gemini-2.0-flash-exp,Avoiding UDFs,case4-3.py,771,962,1733,7.922631264
+gemini-2.0-flash-exp,All,case4-3.py,1614,731,2345,6.249243975
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-4.py,820,276,1096,5.01742506
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-4.py,806,135,941,1.492279291
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-4.py,793,599,1392,6.720600128
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-4.py,826,155,981,6.513711929
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-4.py,799,579,1378,6.119243622
+gpt-3.5-turbo-0125,All,case4-4.py,1629,574,2203,5.525862455
+gemini-1.0-pro-002,RDD vs DataFrame,case4-4.py,896,291,1187,3.485088825
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-4.py,874,159,1033,2.825268984
+gemini-1.0-pro-002,Map vs MapPartitions,case4-4.py,863,340,1203,3.893595219
+gemini-1.0-pro-002,Serialized Data Formats,case4-4.py,907,215,1122,3.459292889
+gemini-1.0-pro-002,Avoiding UDFs,case4-4.py,873,472,1345,4.829320908
+gemini-1.0-pro-002,All,case4-4.py,1716,351,2067,3.785751343
+gemini-1.5-flash-002,RDD vs DataFrame,case4-4.py,896,31,927,1.099602222
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-4.py,874,31,905,1.085863113
+gemini-1.5-flash-002,Map vs MapPartitions,case4-4.py,863,31,894,1.097733974
+gemini-1.5-flash-002,Serialized Data Formats,case4-4.py,907,31,938,1.068193913
+gemini-1.5-flash-002,Avoiding UDFs,case4-4.py,873,637,1510,4.738876581
+gemini-1.5-flash-002,All,case4-4.py,1716,770,2486,5.689096689
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-4.py,896,31,927,1.213888168
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-4.py,874,31,905,1.254583359
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-4.py,863,31,894,1.217370987
+gemini-2.0-flash-exp,Serialized Data Formats,case4-4.py,907,650,1557,5.552191973
+gemini-2.0-flash-exp,Avoiding UDFs,case4-4.py,873,856,1729,7.17557478
+gemini-2.0-flash-exp,All,case4-4.py,1716,645,2361,5.74647975
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-5.py,2965,282,3247,3.34737587
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-5.py,2951,161,3112,1.97584343
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-5.py,2938,225,3163,2.355335236
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-5.py,2971,250,3221,2.374820471
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-5.py,2944,206,3150,2.26625967
+gpt-3.5-turbo-0125,All,case4-5.py,3774,592,4366,5.553603172
+gemini-1.0-pro-002,RDD vs DataFrame,case4-5.py,3558,292,3850,4.212602854
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-5.py,3536,213,3749,3.324527979
+gemini-1.0-pro-002,Map vs MapPartitions,case4-5.py,3525,402,3927,4.968780041
+gemini-1.0-pro-002,Serialized Data Formats,case4-5.py,3569,435,4004,5.077936411
+gemini-1.0-pro-002,Avoiding UDFs,case4-5.py,3535,497,4032,6.124437571
+gemini-1.0-pro-002,All,case4-5.py,4378,529,4907,5.853610277
+gemini-1.5-flash-002,RDD vs DataFrame,case4-5.py,3558,321,3879,3.054290533
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-5.py,3536,31,3567,1.17599678
+gemini-1.5-flash-002,Map vs MapPartitions,case4-5.py,3525,31,3556,1.170628548
+gemini-1.5-flash-002,Serialized Data Formats,case4-5.py,3569,1088,4657,7.944392443
+gemini-1.5-flash-002,Avoiding UDFs,case4-5.py,3535,506,4041,3.962449312
+gemini-1.5-flash-002,All,case4-5.py,4378,1027,5405,7.631951332
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-5.py,3558,330,3888,3.459097385
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-5.py,3536,31,3567,1.276962996
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-5.py,3525,740,4265,6.373258352
+gemini-2.0-flash-exp,Serialized Data Formats,case4-5.py,3569,1899,5468,14.52647948
+gemini-2.0-flash-exp,Avoiding UDFs,case4-5.py,3535,2124,5659,16.26295638
+gemini-2.0-flash-exp,All,case4-5.py,4378,3499,7877,26.04250503
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-6.py,705,687,1392,5.749055624
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-6.py,691,152,843,6.052853107
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-6.py,678,894,1572,8.277852058
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-6.py,711,26,737,0.722165108
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-6.py,684,757,1441,8.219479322
+gpt-3.5-turbo-0125,All,case4-6.py,1514,1177,2691,11.60790181
+gemini-1.0-pro-002,RDD vs DataFrame,case4-6.py,772,142,914,3.497071505
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-6.py,750,298,1048,4.838362932
+gemini-1.0-pro-002,Map vs MapPartitions,case4-6.py,739,1149,1888,11.10348177
+gemini-1.0-pro-002,Serialized Data Formats,case4-6.py,783,232,1015,3.929028749
+gemini-1.0-pro-002,Avoiding UDFs,case4-6.py,749,1258,2007,12.05638957
+gemini-1.0-pro-002,All,case4-6.py,1592,772,2364,7.675427437
+gemini-1.5-flash-002,RDD vs DataFrame,case4-6.py,772,31,803,2.135140181
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-6.py,750,31,781,1.512729406
+gemini-1.5-flash-002,Map vs MapPartitions,case4-6.py,739,31,770,1.844568014
+gemini-1.5-flash-002,Serialized Data Formats,case4-6.py,783,31,814,1.444773197
+gemini-1.5-flash-002,Avoiding UDFs,case4-6.py,749,920,1669,7.487748623
+gemini-1.5-flash-002,All,case4-6.py,1592,1187,2779,8.810367584
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-6.py,772,31,803,1.270053625
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-6.py,750,31,781,1.243643045
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-6.py,739,31,770,1.240024328
+gemini-2.0-flash-exp,Serialized Data Formats,case4-6.py,783,31,814,1.23996377
+gemini-2.0-flash-exp,Avoiding UDFs,case4-6.py,749,1514,2263,11.64790702
+gemini-2.0-flash-exp,All,case4-6.py,1592,1394,2986,10.8891418
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-7.py,3569,180,3749,2.178138256
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-7.py,3555,181,3736,2.684579134
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-7.py,3542,1198,4740,9.875487566
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-7.py,3575,199,3774,2.029185057
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-7.py,3548,1209,4757,11.38824558
+gpt-3.5-turbo-0125,All,case4-7.py,4378,546,4924,5.584211349
+gemini-1.0-pro-002,RDD vs DataFrame,case4-7.py,4233,349,4582,4.679909706
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-7.py,4211,287,4498,4.084500313
+gemini-1.0-pro-002,Map vs MapPartitions,case4-7.py,4200,3250,7450,25.00990295
+gemini-1.0-pro-002,Serialized Data Formats,case4-7.py,4244,490,4734,5.941479683
+gemini-1.0-pro-002,Avoiding UDFs,case4-7.py,4210,1373,5583,11.47032332
+gemini-1.0-pro-002,All,case4-7.py,5053,133,5186,2.357305527
+gemini-1.5-flash-002,RDD vs DataFrame,case4-7.py,4233,31,4264,1.290536642
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-7.py,4211,310,4521,2.914821625
+gemini-1.5-flash-002,Map vs MapPartitions,case4-7.py,4200,31,4231,1.968376637
+gemini-1.5-flash-002,Serialized Data Formats,case4-7.py,4244,715,4959,5.496678829
+gemini-1.5-flash-002,Avoiding UDFs,case4-7.py,4210,1464,5674,10.17619348
+gemini-1.5-flash-002,All,case4-7.py,5053,1839,6892,12.56778526
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-7.py,4233,31,4264,2.930903196
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-7.py,4211,288,4499,3.599325895
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-7.py,4200,2608,6808,21.197402
+gemini-2.0-flash-exp,Serialized Data Formats,case4-7.py,4244,398,4642,4.364622116
+gemini-2.0-flash-exp,Avoiding UDFs,case4-7.py,4210,2081,6291,16.65533185
+gemini-2.0-flash-exp,All,case4-7.py,5053,2475,7528,19.21612072
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-8.py,788,329,1117,3.631433487
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-8.py,774,26,800,0.826257706
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-8.py,761,253,1014,2.883953571
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-8.py,794,26,820,0.668025494
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-8.py,767,476,1243,4.895309448
+gpt-3.5-turbo-0125,All,case4-8.py,1597,778,2375,6.844085693
+gemini-1.0-pro-002,RDD vs DataFrame,case4-8.py,865,290,1155,4.153851271
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-8.py,843,300,1143,4.964446306
+gemini-1.0-pro-002,Map vs MapPartitions,case4-8.py,832,591,1423,5.920717478
+gemini-1.0-pro-002,Serialized Data Formats,case4-8.py,876,163,1039,2.886114597
+gemini-1.0-pro-002,Avoiding UDFs,case4-8.py,842,830,1672,7.83920455
+gemini-1.0-pro-002,All,case4-8.py,1685,543,2228,5.64816165
+gemini-1.5-flash-002,RDD vs DataFrame,case4-8.py,865,31,896,2.037373781
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-8.py,843,31,874,1.855571032
+gemini-1.5-flash-002,Map vs MapPartitions,case4-8.py,832,404,1236,4.164126873
+gemini-1.5-flash-002,Serialized Data Formats,case4-8.py,876,31,907,1.136015654
+gemini-1.5-flash-002,Avoiding UDFs,case4-8.py,842,985,1827,7.434754133
+gemini-1.5-flash-002,All,case4-8.py,1685,835,2520,6.171944141
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-8.py,865,31,896,1.266596317
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-8.py,843,31,874,1.24242115
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-8.py,832,31,863,1.270214558
+gemini-2.0-flash-exp,Serialized Data Formats,case4-8.py,876,31,907,1.660398483
+gemini-2.0-flash-exp,Avoiding UDFs,case4-8.py,842,1148,1990,9.598217487
+gemini-2.0-flash-exp,All,case4-8.py,1685,894,2579,7.253906488
+gpt-3.5-turbo-0125,RDD vs DataFrame,case4-9.py,833,132,965,1.594463348
+gpt-3.5-turbo-0125,Coalesce vs Repartition,case4-9.py,819,143,962,1.665590525
+gpt-3.5-turbo-0125,Map vs MapPartitions,case4-9.py,806,190,996,2.115608692
+gpt-3.5-turbo-0125,Serialized Data Formats,case4-9.py,839,287,1126,2.912661552
+gpt-3.5-turbo-0125,Avoiding UDFs,case4-9.py,812,174,986,1.998027325
+gpt-3.5-turbo-0125,All,case4-9.py,1642,482,2124,4.66671443
+gemini-1.0-pro-002,RDD vs DataFrame,case4-9.py,939,316,1255,4.406274557
+gemini-1.0-pro-002,Coalesce vs Repartition,case4-9.py,917,97,1014,2.13151598
+gemini-1.0-pro-002,Map vs MapPartitions,case4-9.py,906,408,1314,11.15764689
+gemini-1.0-pro-002,Serialized Data Formats,case4-9.py,950,307,1257,4.045007706
+gemini-1.0-pro-002,Avoiding UDFs,case4-9.py,916,315,1231,4.243407726
+gemini-1.0-pro-002,All,case4-9.py,1759,467,2226,5.442226887
+gemini-1.5-flash-002,RDD vs DataFrame,case4-9.py,939,31,970,1.091593981
+gemini-1.5-flash-002,Coalesce vs Repartition,case4-9.py,917,31,948,1.10320735
+gemini-1.5-flash-002,Map vs MapPartitions,case4-9.py,906,31,937,1.080555677
+gemini-1.5-flash-002,Serialized Data Formats,case4-9.py,950,31,981,1.047263384
+gemini-1.5-flash-002,Avoiding UDFs,case4-9.py,916,391,1307,3.31460762
+gemini-1.5-flash-002,All,case4-9.py,1759,464,2223,3.800086021
+gemini-2.0-flash-exp,RDD vs DataFrame,case4-9.py,939,31,970,1.279598475
+gemini-2.0-flash-exp,Coalesce vs Repartition,case4-9.py,917,31,948,1.284057856
+gemini-2.0-flash-exp,Map vs MapPartitions,case4-9.py,906,31,937,1.284505367
+gemini-2.0-flash-exp,Serialized Data Formats,case4-9.py,950,31,981,1.31719327
+gemini-2.0-flash-exp,Avoiding UDFs,case4-9.py,916,424,1340,3.914634943
+gemini-2.0-flash-exp,All,case4-9.py,1759,457,2216,4.293980598
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-1.py,1300,1440,2740,16.05883288
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-1.py,1286,189,1475,2.963385344
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-1.py,1273,995,2268,9.342731953
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-1.py,1306,340,1646,4.408693075
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-1.py,1279,591,1870,6.167518616
+llama-3.1-8b-instruct-maas,All,case0-1.py,2109,2168,4277,18.89792013
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-10.py,768,986,1754,8.943666458
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-10.py,754,110,864,1.845990181
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-10.py,741,401,1142,4.166959524
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-10.py,774,8178,8952,70.11271954
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-10.py,747,288,1035,3.393771887
+llama-3.1-8b-instruct-maas,All,case0-10.py,1577,1326,2903,12.09684181
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-11.py,1147,2038,3185,17.62477255
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-11.py,1133,291,1424,3.363480806
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-11.py,1120,1059,2179,9.617589951
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-11.py,1153,297,1450,3.408497334
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-11.py,1126,629,1755,6.073611498
+llama-3.1-8b-instruct-maas,All,case0-11.py,1956,1705,3661,15.04474282
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-2.py,810,1655,2465,14.71599555
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-2.py,796,187,983,2.47102952
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-2.py,783,805,1588,7.482250214
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-2.py,816,494,1310,4.95070076
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-2.py,789,190,979,2.449891329
+llama-3.1-8b-instruct-maas,All,case0-2.py,1619,1761,3380,15.46803999
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-3.py,1205,2772,3977,23.6234026
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-3.py,1191,22,1213,1.165226936
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-3.py,1178,65,1243,1.515538692
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-3.py,1211,243,1454,2.897628546
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-3.py,1184,144,1328,2.093286991
+llama-3.1-8b-instruct-maas,All,case0-3.py,2014,241,2255,3.028474331
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-4.py,581,236,817,3.24111557
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-4.py,567,22,589,1.136260986
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-4.py,554,254,808,2.912096739
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-4.py,587,428,1015,4.355637312
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-4.py,560,308,868,3.402774096
+llama-3.1-8b-instruct-maas,All,case0-4.py,1390,439,1829,4.558353901
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-5.py,581,236,817,2.773011446
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-5.py,567,22,589,1.096514225
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-5.py,554,254,808,2.927177191
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-5.py,587,428,1015,4.322383881
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-5.py,560,308,868,3.421685457
+llama-3.1-8b-instruct-maas,All,case0-5.py,1390,439,1829,4.533818483
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-6.py,528,272,800,3.134766579
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-6.py,514,22,536,1.068897486
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-6.py,501,90,591,1.63505125
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-6.py,534,574,1108,5.506261587
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-6.py,507,22,529,1.046383142
+llama-3.1-8b-instruct-maas,All,case0-6.py,1337,328,1665,3.677710295
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-7.py,798,908,1706,8.318369627
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-7.py,784,984,1768,8.919979572
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-7.py,771,847,1618,7.803436518
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-7.py,804,640,1444,6.153199911
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-7.py,777,547,1324,5.365882635
+llama-3.1-8b-instruct-maas,All,case0-7.py,1607,6555,8162,55.5764339
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-8.py,572,388,960,4.113596678
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-8.py,558,22,580,1.130892754
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-8.py,545,22,567,1.151135921
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-8.py,578,287,865,3.296623707
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-8.py,551,22,573,1.30633831
+llama-3.1-8b-instruct-maas,All,case0-8.py,1381,336,1717,3.654502153
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-9.py,641,1095,1736,9.863056898
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-9.py,627,91,718,1.683445215
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-9.py,614,347,961,3.732471704
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-9.py,647,219,866,2.706479549
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-9.py,620,606,1226,5.824585438
+llama-3.1-8b-instruct-maas,All,case0-9.py,1450,796,2246,7.430735826
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case01.py,684,382,1066,3.959633112
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case01.py,670,184,854,2.379900217
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case01.py,657,232,889,2.808779478
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case01.py,690,637,1327,6.0235672
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case01.py,663,220,883,2.938459873
+llama-3.1-8b-instruct-maas,All,case01.py,1493,737,2230,6.925325155
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case012.py,752,400,1152,4.180813313
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case012.py,738,172,910,2.256213665
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case012.py,725,358,1083,3.834861517
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case012.py,758,571,1329,5.529429913
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case012.py,731,462,1193,4.696896553
+llama-3.1-8b-instruct-maas,All,case012.py,1561,852,2413,7.935288429
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0123.py,777,572,1349,5.612906456
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0123.py,763,171,934,2.3123281
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0123.py,750,329,1079,3.586183786
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0123.py,783,508,1291,5.012389898
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0123.py,756,445,1201,4.545853138
+llama-3.1-8b-instruct-maas,All,case0123.py,1586,862,2448,8.063342571
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case01234.py,783,548,1331,5.416775227
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case01234.py,769,183,952,2.436674118
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case01234.py,756,369,1125,3.897974491
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case01234.py,789,668,1457,6.385565519
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case01234.py,762,205,967,2.625418425
+llama-3.1-8b-instruct-maas,All,case01234.py,1592,716,2308,6.824624062
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case013.py,740,473,1213,4.793018341
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case013.py,726,226,952,2.773644924
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case013.py,713,184,897,2.402898073
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case013.py,746,499,1245,4.951742172
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case013.py,719,158,877,2.205542803
+llama-3.1-8b-instruct-maas,All,case013.py,1549,726,2275,6.870536089
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case014.py,808,443,1251,4.512350321
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case014.py,794,216,1010,2.664018869
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case014.py,781,377,1158,3.938639164
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case014.py,814,562,1376,5.497580528
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case014.py,787,245,1032,2.916329384
+llama-3.1-8b-instruct-maas,All,case014.py,1617,915,2532,8.456232309
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case02.py,665,534,1199,5.227080345
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case02.py,651,106,757,1.759063959
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case02.py,638,383,1021,4.01620841
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case02.py,671,578,1249,5.582903624
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case02.py,644,299,943,3.30633378
+llama-3.1-8b-instruct-maas,All,case02.py,1474,808,2282,7.49496913
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case023.py,756,871,1627,7.999003172
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case023.py,742,66,808,1.411017656
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case023.py,729,380,1109,3.994689703
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case023.py,762,384,1146,4.026910782
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case023.py,735,422,1157,4.312587738
+llama-3.1-8b-instruct-maas,All,case023.py,1565,831,2396,7.790544748
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case03.py,644,501,1145,4.931800127
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case03.py,630,66,696,1.414935589
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case03.py,617,380,997,3.978127956
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case03.py,650,421,1071,4.28946209
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case03.py,623,318,941,3.474737644
+llama-3.1-8b-instruct-maas,All,case03.py,1453,537,1990,5.375120878
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case04.py,720,550,1270,5.398109674
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case04.py,706,66,772,1.427626371
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case04.py,693,409,1102,4.238757849
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case04.py,726,559,1285,5.439328432
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case04.py,699,176,875,2.330698013
+llama-3.1-8b-instruct-maas,All,case04.py,1529,513,2042,5.190206528
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-1.py,1098,687,1785,6.480614901
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-1.py,1084,281,1365,3.196885586
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-1.py,1071,179,1250,2.372290373
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-1.py,1104,416,1520,4.315684557
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-1.py,1077,205,1282,2.646579266
+llama-3.1-8b-instruct-maas,All,case1-1.py,1907,471,2378,4.848892689
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-10.py,723,451,1174,4.587498426
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-10.py,709,249,958,2.8996737
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-10.py,696,331,1027,3.568644285
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-10.py,729,526,1255,5.148326874
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-10.py,702,323,1025,3.521215439
+llama-3.1-8b-instruct-maas,All,case1-10.py,1532,850,2382,7.965028763
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-11.py,2047,399,2446,4.32387805
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-11.py,2033,375,2408,4.071531534
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-11.py,2020,290,2310,3.44106102
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-11.py,2053,394,2447,4.23386693
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-11.py,2026,445,2471,4.671021461
+llama-3.1-8b-instruct-maas,All,case1-11.py,2856,636,3492,6.364574909
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-2.py,1097,687,1784,6.554933548
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-2.py,1083,237,1320,2.874731064
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-2.py,1070,175,1245,2.374940157
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-2.py,1103,428,1531,4.431102514
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-2.py,1076,197,1273,2.55079174
+llama-3.1-8b-instruct-maas,All,case1-2.py,1906,550,2456,5.586763144
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-3.py,1097,687,1784,6.524090767
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-3.py,1083,244,1327,2.921044827
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-3.py,1070,179,1249,2.386169195
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-3.py,1103,416,1519,4.583157778
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-3.py,1076,186,1262,2.446984291
+llama-3.1-8b-instruct-maas,All,case1-3.py,1906,472,2378,4.803201675
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-4.py,1128,232,1360,2.815001726
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-4.py,1114,309,1423,3.461381197
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-4.py,1101,1025,2126,9.326560497
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-4.py,1134,343,1477,3.737104893
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-4.py,1107,195,1302,2.539328098
+llama-3.1-8b-instruct-maas,All,case1-4.py,1937,614,2551,6.033935547
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-5.py,1127,213,1340,2.627585173
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-5.py,1113,261,1374,3.069476366
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-5.py,1100,1355,2455,11.99695516
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-5.py,1133,353,1486,3.800403118
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-5.py,1106,205,1311,2.62628603
+llama-3.1-8b-instruct-maas,All,case1-5.py,1936,712,2648,6.797052383
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-6.py,1126,239,1365,2.844046831
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-6.py,1112,272,1384,3.105484009
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-6.py,1099,988,2087,9.004967928
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-6.py,1132,400,1532,4.182533026
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-6.py,1105,205,1310,2.607699156
+llama-3.1-8b-instruct-maas,All,case1-6.py,1935,607,2542,5.951242924
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-7.py,993,184,1177,2.402283669
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-7.py,979,197,1176,2.506344318
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-7.py,966,254,1220,2.972351313
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-7.py,999,457,1456,4.652728796
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-7.py,972,365,1337,3.876238585
+llama-3.1-8b-instruct-maas,All,case1-7.py,1802,715,2517,6.820427179
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-8.py,2330,304,2634,3.552138805
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-8.py,2316,182,2498,2.524307251
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-8.py,2303,313,2616,3.671060801
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-8.py,2336,216,2552,2.853013039
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-8.py,2309,206,2515,2.722058296
+llama-3.1-8b-instruct-maas,All,case1-8.py,3139,836,3975,8.010217428
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-9.py,894,636,1530,6.085496664
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-9.py,880,225,1105,2.79808569
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-9.py,867,239,1106,2.88353157
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-9.py,900,585,1485,5.685245514
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-9.py,873,201,1074,2.51311326
+llama-3.1-8b-instruct-maas,All,case1-9.py,1703,760,2463,7.161000967
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case12.py,718,355,1073,3.777251482
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case12.py,704,212,916,2.593601942
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case12.py,691,229,920,2.759669304
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case12.py,724,255,979,3.180809021
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case12.py,697,305,1002,3.356832981
+llama-3.1-8b-instruct-maas,All,case12.py,1527,608,2135,5.937754631
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case13.py,719,368,1087,3.855532169
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case13.py,705,201,906,2.57357955
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case13.py,692,86,778,1.616069317
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case13.py,725,429,1154,4.359598875
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case13.py,698,509,1207,5.067244291
+llama-3.1-8b-instruct-maas,All,case13.py,1528,602,2130,5.907485962
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-1.py,769,521,1290,5.168839216
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-1.py,755,116,871,1.833341122
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-1.py,742,230,972,2.753878117
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-1.py,775,924,1699,8.475168705
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-1.py,748,387,1135,4.053851604
+llama-3.1-8b-instruct-maas,All,case2-1.py,1578,758,2336,7.166155815
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-10.py,1942,2233,4175,19.36602736
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-10.py,1928,548,2476,5.538624763
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-10.py,1915,1870,3785,16.34498072
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-10.py,1948,1562,3510,13.90114498
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-10.py,1921,685,2606,6.699896336
+llama-3.1-8b-instruct-maas,All,case2-10.py,2751,3242,5993,28.04821086
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-11.py,1861,538,2399,5.451013803
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-11.py,1847,209,2056,2.783114672
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-11.py,1834,399,2233,4.34587431
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-11.py,1867,467,2334,4.898808479
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-11.py,1840,544,2384,5.452702999
+llama-3.1-8b-instruct-maas,All,case2-11.py,2670,1274,3944,11.55123091
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-12.py,3724,560,4284,5.89505744
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-12.py,3710,367,4077,4.26999259
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-12.py,3697,395,4092,4.46513319
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-12.py,3730,1193,4923,11.11224365
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-12.py,3703,674,4377,6.808506489
+llama-3.1-8b-instruct-maas,All,case2-12.py,4533,917,5450,9.003944874
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-2.py,13129,208,13337,5.064064741
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-2.py,13115,1036,14151,11.51824522
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-2.py,13102,779,13881,10.01584911
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-2.py,13135,8192,21327,73.6781714
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-2.py,13108,3759,16867,35.94965339
+llama-3.1-8b-instruct-maas,All,case2-2.py,13938,8192,22130,75.62996864
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-3.py,2512,8192,10704,69.69919372
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-3.py,2498,402,2900,4.405908346
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-3.py,2485,2387,4872,20.77080107
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-3.py,2518,2269,4787,19.77434039
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-3.py,2491,1043,3534,9.670548916
+llama-3.1-8b-instruct-maas,All,case2-3.py,3321,1523,4844,13.71708131
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-4.py,556,454,1010,4.555212975
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-4.py,542,22,564,1.041489601
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-4.py,529,342,871,3.66843915
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-4.py,562,635,1197,6.060081005
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-4.py,535,188,723,2.419842958
+llama-3.1-8b-instruct-maas,All,case2-4.py,1365,977,2342,8.902349949
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-5.py,1160,921,2081,8.444925547
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-5.py,1146,360,1506,3.836052895
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-5.py,1133,797,1930,7.413985014
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-5.py,1166,414,1580,4.280403376
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-5.py,1139,523,1662,10.04560566
+llama-3.1-8b-instruct-maas,All,case2-5.py,1969,815,2784,7.614679098
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-6.py,6411,1464,7875,14.73331833
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-6.py,6397,194,6591,3.08149147
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-6.py,6384,344,6728,4.373367786
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-6.py,6417,1392,7809,13.10473204
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-6.py,6390,1086,7476,10.4861908
+llama-3.1-8b-instruct-maas,All,case2-6.py,7220,888,8108,9.985741615
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-7.py,824,666,1490,6.258737087
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-7.py,810,166,976,2.27511692
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-7.py,797,352,1149,3.732293606
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-7.py,830,374,1204,3.912840843
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-7.py,803,336,1139,3.709125519
+llama-3.1-8b-instruct-maas,All,case2-7.py,1633,708,2341,6.865323544
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-8.py,2518,1392,3910,12.46935153
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-8.py,2504,315,2819,3.603548288
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-8.py,2491,632,3123,6.423511982
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-8.py,2524,1591,4115,14.36828399
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-8.py,2497,397,2894,4.309518576
+llama-3.1-8b-instruct-maas,All,case2-8.py,3327,1413,4740,12.79671288
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-9.py,1723,1134,2857,10.32889915
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-9.py,1709,157,1866,2.290045977
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-9.py,1696,1384,3080,12.21787
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-9.py,1729,676,2405,6.490400553
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-9.py,1702,759,2461,7.203302622
+llama-3.1-8b-instruct-maas,All,case2-9.py,2532,1072,3604,9.876946926
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-1.py,1655,427,2082,4.389560461
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-1.py,1641,162,1803,2.271775246
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-1.py,1628,266,1894,3.099512577
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-1.py,1661,322,1983,3.571252584
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-1.py,1634,493,2127,4.996001005
+llama-3.1-8b-instruct-maas,All,case3-1.py,2464,758,3222,7.259736061
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-10.py,1456,411,1867,4.275990963
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-10.py,1442,219,1661,2.687064171
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-10.py,1429,184,1613,2.437585592
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-10.py,1462,419,1881,4.440644503
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-10.py,1435,198,1633,2.533057451
+llama-3.1-8b-instruct-maas,All,case3-10.py,2265,755,3020,7.213211536
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-2.py,1417,2101,3518,18.43228292
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-2.py,1403,199,1602,2.530681133
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-2.py,1390,198,1588,2.550192833
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-2.py,1423,298,1721,3.798863888
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-2.py,1396,1401,2797,12.28511
+llama-3.1-8b-instruct-maas,All,case3-2.py,2226,721,2947,6.947469234
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-3.py,737,85,822,1.570086956
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-3.py,723,156,879,2.163316965
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-3.py,710,196,906,2.479158401
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-3.py,743,194,937,2.423843384
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-3.py,716,264,980,2.985871077
+llama-3.1-8b-instruct-maas,All,case3-3.py,1546,559,2105,5.516976595
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-4.py,3322,1040,4362,9.734546185
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-4.py,3308,202,3510,2.745416164
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-4.py,3295,873,4168,8.285636902
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-4.py,3328,1095,4423,10.10801268
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-4.py,3301,456,3757,4.864449024
+llama-3.1-8b-instruct-maas,All,case3-4.py,4131,611,4742,6.321628332
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-5.py,2376,2308,4684,19.97688031
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-5.py,2362,287,2649,3.35333395
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-5.py,2349,1315,3664,11.75046635
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-5.py,2382,298,2680,3.509162664
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-5.py,2355,875,3230,8.247769833
+llama-3.1-8b-instruct-maas,All,case3-5.py,3185,3368,6553,28.96373272
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-6.py,1556,168,1724,2.406164646
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-6.py,1542,182,1724,2.483535051
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-6.py,1529,175,1704,2.432941437
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-6.py,1562,1085,2647,10.0781436
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-6.py,1535,176,1711,2.439670563
+llama-3.1-8b-instruct-maas,All,case3-6.py,2365,557,2922,5.57823348
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-7.py,1089,167,1256,2.261042833
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-7.py,1075,168,1243,2.265189171
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-7.py,1062,130,1192,2.004136086
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-7.py,1095,286,1381,3.258272171
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-7.py,1068,403,1471,4.139638901
+llama-3.1-8b-instruct-maas,All,case3-7.py,1898,335,2233,3.742372751
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-8.py,15582,8192,23774,75.60864639
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-8.py,15568,555,16123,8.11447072
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-8.py,15555,53,15608,3.861849546
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-8.py,15588,8192,23780,75.68401217
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-8.py,15561,8192,23753,74.49658918
+llama-3.1-8b-instruct-maas,All,case3-8.py,16391,8192,24583,75.3561337
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-9.py,2042,212,2254,2.830861092
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-9.py,2028,151,2179,2.307343245
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-9.py,2015,279,2294,3.300557613
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-9.py,2048,367,2415,4.093639612
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-9.py,2021,335,2356,3.76830101
+llama-3.1-8b-instruct-maas,All,case3-9.py,2851,678,3529,6.738522291
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-1.py,947,224,1171,2.678573847
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-1.py,933,293,1226,3.258284569
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-1.py,920,194,1114,2.477946997
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-1.py,953,369,1322,3.90444088
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-1.py,926,910,1836,8.264745474
+llama-3.1-8b-instruct-maas,All,case4-1.py,1756,479,2235,4.894087076
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-10.py,961,272,1233,3.121632814
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-10.py,947,382,1329,4.045460701
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-10.py,934,225,1159,2.730798244
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-10.py,967,624,1591,6.031571627
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-10.py,940,851,1791,8.030008554
+llama-3.1-8b-instruct-maas,All,case4-10.py,1770,970,2740,8.87275815
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-2.py,728,84,812,1.569005013
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-2.py,714,22,736,1.033671379
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-2.py,701,309,1010,3.476486206
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-2.py,734,234,968,2.783811808
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-2.py,707,470,1177,4.937562466
+llama-3.1-8b-instruct-maas,All,case4-2.py,1537,407,1944,4.311989784
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-3.py,707,86,793,1.618920803
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-3.py,693,22,715,1.052792549
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-3.py,680,198,878,2.45944047
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-3.py,713,832,1545,7.683972597
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-3.py,686,707,1393,6.58932066
+llama-3.1-8b-instruct-maas,All,case4-3.py,1516,855,2371,7.937206984
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-4.py,813,201,1014,2.513276339
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-4.py,799,66,865,1.445753098
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-4.py,786,369,1155,3.889354229
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-4.py,819,605,1424,5.819296837
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-4.py,792,737,1529,6.962551594
+llama-3.1-8b-instruct-maas,All,case4-4.py,1622,569,2191,5.618477345
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-5.py,2958,250,3208,3.158070803
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-5.py,2944,201,3145,2.724298239
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-5.py,2931,465,3396,4.907352924
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-5.py,2964,597,3561,5.977190733
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-5.py,2937,197,3134,2.744423389
+llama-3.1-8b-instruct-maas,All,case4-5.py,3767,794,4561,7.721668482
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-6.py,698,1155,1853,10.31944132
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-6.py,684,22,706,1.05128336
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-6.py,671,170,841,2.250329018
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-6.py,704,147,851,2.054954529
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-6.py,677,1117,1794,9.956512451
+llama-3.1-8b-instruct-maas,All,case4-6.py,1507,931,2438,8.589911938
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-7.py,3556,191,3747,2.688666344
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-7.py,3542,209,3751,2.823744297
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-7.py,3529,223,3752,2.926815748
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-7.py,3562,352,3914,4.055030346
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-7.py,3535,941,4476,8.870961189
+llama-3.1-8b-instruct-maas,All,case4-7.py,4365,2180,6545,19.47610641
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-8.py,781,238,1019,2.790914774
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-8.py,767,26,793,1.135677338
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-8.py,754,227,981,2.765501261
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-8.py,787,136,923,1.954585552
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-8.py,760,988,1748,8.867378473
+llama-3.1-8b-instruct-maas,All,case4-8.py,1590,651,2241,6.256402493
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-9.py,826,363,1189,3.824560881
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-9.py,812,66,878,1.458126545
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-9.py,799,289,1088,3.224677324
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-9.py,832,237,1069,2.836026192
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-9.py,805,246,1051,2.895913601
+llama-3.1-8b-instruct-maas,All,case4-9.py,1635,420,2055,4.379347086
+gpt-4o,RDD vs DataFrame,case0-1.py,1320,990,2310,10.17300415
+gpt-4o,Coalesce vs Repartition,case0-1.py,1288,26,1314,0.891605854
+gpt-4o,Map vs MapPartitions,case0-1.py,1271,538,1809,9.287314653
+gpt-4o,Serialized Data Formats,case0-1.py,1313,351,1664,4.369044065
+gpt-4o,Avoiding UDFs,case0-1.py,1290,26,1316,1.396309614
+gpt-4o,All,case0-1.py,2102,1411,3513,46.52065921
+gpt-4o,RDD vs DataFrame,case0-10.py,792,585,1377,5.268098116
+gpt-4o,Coalesce vs Repartition,case0-10.py,760,26,786,2.190680742
+gpt-4o,Map vs MapPartitions,case0-10.py,743,337,1080,6.203044653
+gpt-4o,Serialized Data Formats,case0-10.py,785,26,811,1.208247662
+gpt-4o,Avoiding UDFs,case0-10.py,762,26,788,1.660253763
+gpt-4o,All,case0-10.py,1574,932,2506,19.1867013
+gpt-4o,RDD vs DataFrame,case0-11.py,1182,1499,2681,12.5797081
+gpt-4o,Coalesce vs Repartition,case0-11.py,1150,26,1176,1.338964939
+gpt-4o,Map vs MapPartitions,case0-11.py,1133,961,2094,13.80550432
+gpt-4o,Serialized Data Formats,case0-11.py,1175,456,1631,6.772723675
+gpt-4o,Avoiding UDFs,case0-11.py,1152,26,1178,0.825509548
+gpt-4o,All,case0-11.py,1964,2070,4034,51.59685874
+gpt-4o,RDD vs DataFrame,case0-2.py,832,882,1714,8.640376329
+gpt-4o,Coalesce vs Repartition,case0-2.py,800,26,826,1.15546751
+gpt-4o,Map vs MapPartitions,case0-2.py,783,447,1230,7.601442337
+gpt-4o,Serialized Data Formats,case0-2.py,825,312,1137,5.306166172
+gpt-4o,Avoiding UDFs,case0-2.py,802,26,828,0.817617893
+gpt-4o,All,case0-2.py,1614,1478,3092,40.34116459
+gpt-4o,RDD vs DataFrame,case0-3.py,1210,2061,3271,18.06973028
+gpt-4o,Coalesce vs Repartition,case0-3.py,1178,26,1204,0.843893766
+gpt-4o,Map vs MapPartitions,case0-3.py,1161,26,1187,0.854907036
+gpt-4o,Serialized Data Formats,case0-3.py,1203,26,1229,0.97450304
+gpt-4o,Avoiding UDFs,case0-3.py,1180,26,1206,0.887126923
+gpt-4o,All,case0-3.py,1992,368,2360,9.916085243
+gpt-4o,RDD vs DataFrame,case0-4.py,602,263,865,2.560075283
+gpt-4o,Coalesce vs Repartition,case0-4.py,570,26,596,1.079922676
+gpt-4o,Map vs MapPartitions,case0-4.py,553,255,808,6.020828485
+gpt-4o,Serialized Data Formats,case0-4.py,595,26,621,3.367529154
+gpt-4o,Avoiding UDFs,case0-4.py,572,305,877,4.025598288
+gpt-4o,All,case0-4.py,1384,569,1953,18.42332458
+gpt-4o,RDD vs DataFrame,case0-5.py,602,263,865,3.060386181
+gpt-4o,Coalesce vs Repartition,case0-5.py,570,26,596,1.244153976
+gpt-4o,Map vs MapPartitions,case0-5.py,553,293,846,5.641364574
+gpt-4o,Serialized Data Formats,case0-5.py,595,26,621,1.010358572
+gpt-4o,Avoiding UDFs,case0-5.py,572,326,898,6.086270571
+gpt-4o,All,case0-5.py,1384,404,1788,22.29430151
+gpt-4o,RDD vs DataFrame,case0-6.py,547,295,842,3.289775848
+gpt-4o,Coalesce vs Repartition,case0-6.py,515,26,541,1.438875914
+gpt-4o,Map vs MapPartitions,case0-6.py,498,26,524,0.886915922
+gpt-4o,Serialized Data Formats,case0-6.py,540,26,566,1.16486764
+gpt-4o,Avoiding UDFs,case0-6.py,517,26,543,1.072341442
+gpt-4o,All,case0-6.py,1329,334,1663,8.185159683
+gpt-4o,RDD vs DataFrame,case0-7.py,823,721,1544,5.866976976
+gpt-4o,Coalesce vs Repartition,case0-7.py,791,26,817,0.91390872
+gpt-4o,Map vs MapPartitions,case0-7.py,774,791,1565,10.88499999
+gpt-4o,Serialized Data Formats,case0-7.py,816,26,842,0.870141745
+gpt-4o,Avoiding UDFs,case0-7.py,793,239,1032,5.344733238
+gpt-4o,All,case0-7.py,1605,1305,2910,25.65030861
+gpt-4o,RDD vs DataFrame,case0-8.py,593,221,814,2.418061733
+gpt-4o,Coalesce vs Repartition,case0-8.py,561,26,587,1.829912186
+gpt-4o,Map vs MapPartitions,case0-8.py,544,26,570,0.847774267
+gpt-4o,Serialized Data Formats,case0-8.py,586,26,612,1.075264215
+gpt-4o,Avoiding UDFs,case0-8.py,563,26,589,1.016718626
+gpt-4o,All,case0-8.py,1375,317,1692,6.039700747
+gpt-4o,RDD vs DataFrame,case0-9.py,664,660,1324,6.936434746
+gpt-4o,Coalesce vs Repartition,case0-9.py,632,26,658,1.365804195
+gpt-4o,Map vs MapPartitions,case0-9.py,615,377,992,7.044079542
+gpt-4o,Serialized Data Formats,case0-9.py,657,275,932,4.365598679
+gpt-4o,Avoiding UDFs,case0-9.py,634,26,660,1.05501318
+gpt-4o,All,case0-9.py,1446,1147,2593,26.31454277
+gpt-4o,RDD vs DataFrame,case01.py,706,396,1102,3.983123302
+gpt-4o,Coalesce vs Repartition,case01.py,674,207,881,5.452985525
+gpt-4o,Map vs MapPartitions,case01.py,657,204,861,6.053249359
+gpt-4o,Serialized Data Formats,case01.py,699,262,961,5.68570137
+gpt-4o,Avoiding UDFs,case01.py,676,26,702,1.099655628
+gpt-4o,All,case01.py,1488,811,2299,24.6403234
+gpt-4o,RDD vs DataFrame,case012.py,764,519,1283,4.614663839
+gpt-4o,Coalesce vs Repartition,case012.py,732,207,939,6.166787863
+gpt-4o,Map vs MapPartitions,case012.py,715,321,1036,4.725918531
+gpt-4o,Serialized Data Formats,case012.py,757,249,1006,4.609623671
+gpt-4o,Avoiding UDFs,case012.py,734,26,760,1.717592955
+gpt-4o,All,case012.py,1546,812,2358,24.79016161
+gpt-4o,RDD vs DataFrame,case0123.py,798,396,1194,3.959624052
+gpt-4o,Coalesce vs Repartition,case0123.py,766,214,980,4.600133181
+gpt-4o,Map vs MapPartitions,case0123.py,749,318,1067,5.198696613
+gpt-4o,Serialized Data Formats,case0123.py,791,331,1122,7.037817717
+gpt-4o,Avoiding UDFs,case0123.py,768,26,794,1.137452364
+gpt-4o,All,case0123.py,1580,787,2367,29.53262091
+gpt-4o,RDD vs DataFrame,case01234.py,799,402,1201,4.05167985
+gpt-4o,Coalesce vs Repartition,case01234.py,767,184,951,3.27062583
+gpt-4o,Map vs MapPartitions,case01234.py,750,372,1122,6.018356562
+gpt-4o,Serialized Data Formats,case01234.py,792,214,1006,5.28145504
+gpt-4o,Avoiding UDFs,case01234.py,769,209,978,5.60881114
+gpt-4o,All,case01234.py,1581,942,2523,17.96000934
+gpt-4o,RDD vs DataFrame,case013.py,762,335,1097,3.356425762
+gpt-4o,Coalesce vs Repartition,case013.py,730,198,928,4.00374794
+gpt-4o,Map vs MapPartitions,case013.py,713,215,928,3.970154047
+gpt-4o,Serialized Data Formats,case013.py,755,344,1099,6.64756918
+gpt-4o,Avoiding UDFs,case013.py,732,26,758,1.004748583
+gpt-4o,All,case013.py,1544,851,2395,22.60445952
+gpt-4o,RDD vs DataFrame,case014.py,826,346,1172,3.447839975
+gpt-4o,Coalesce vs Repartition,case014.py,794,191,985,3.786094904
+gpt-4o,Map vs MapPartitions,case014.py,777,216,993,3.957291365
+gpt-4o,Serialized Data Formats,case014.py,819,243,1062,5.725157499
+gpt-4o,Avoiding UDFs,case014.py,796,259,1055,4.398539543
+gpt-4o,All,case014.py,1608,943,2551,23.7751348
+gpt-4o,RDD vs DataFrame,case02.py,687,515,1202,6.088013411
+gpt-4o,Coalesce vs Repartition,case02.py,655,26,681,1.546181917
+gpt-4o,Map vs MapPartitions,case02.py,638,338,976,7.783283949
+gpt-4o,Serialized Data Formats,case02.py,680,315,995,5.251240015
+gpt-4o,Avoiding UDFs,case02.py,657,26,683,1.540578365
+gpt-4o,All,case02.py,1469,848,2317,14.53364515
+gpt-4o,RDD vs DataFrame,case023.py,780,416,1196,5.339815378
+gpt-4o,Coalesce vs Repartition,case023.py,748,26,774,1.013489246
+gpt-4o,Map vs MapPartitions,case023.py,731,371,1102,8.217781782
+gpt-4o,Serialized Data Formats,case023.py,773,348,1121,5.055900097
+gpt-4o,Avoiding UDFs,case023.py,750,26,776,0.966601133
+gpt-4o,All,case023.py,1562,813,2375,19.35475993
+gpt-4o,RDD vs DataFrame,case03.py,669,334,1003,7.860173702
+gpt-4o,Coalesce vs Repartition,case03.py,637,26,663,0.921534061
+gpt-4o,Map vs MapPartitions,case03.py,620,391,1011,7.698866844
+gpt-4o,Serialized Data Formats,case03.py,662,321,983,5.669506788
+gpt-4o,Avoiding UDFs,case03.py,639,26,665,0.822238922
+gpt-4o,All,case03.py,1451,759,2210,18.63155842
+gpt-4o,RDD vs DataFrame,case04.py,745,444,1189,8.592011452
+gpt-4o,Coalesce vs Repartition,case04.py,713,26,739,0.995839357
+gpt-4o,Map vs MapPartitions,case04.py,696,220,916,4.216570139
+gpt-4o,Serialized Data Formats,case04.py,738,251,989,3.221455336
+gpt-4o,Avoiding UDFs,case04.py,715,237,952,3.070681334
+gpt-4o,All,case04.py,1527,809,2336,26.84953022
+gpt-4o,RDD vs DataFrame,case1-1.py,1115,26,1141,1.726261377
+gpt-4o,Coalesce vs Repartition,case1-1.py,1083,265,1348,5.080604315
+gpt-4o,Map vs MapPartitions,case1-1.py,1066,26,1092,0.933922768
+gpt-4o,Serialized Data Formats,case1-1.py,1108,403,1511,9.399546862
+gpt-4o,Avoiding UDFs,case1-1.py,1085,26,1111,1.206055403
+gpt-4o,All,case1-1.py,1897,443,2340,10.02067089
+gpt-4o,RDD vs DataFrame,case1-10.py,745,220,965,2.38888526
+gpt-4o,Coalesce vs Repartition,case1-10.py,713,247,960,3.681485176
+gpt-4o,Map vs MapPartitions,case1-10.py,696,26,722,0.79231143
+gpt-4o,Serialized Data Formats,case1-10.py,738,365,1103,6.127591848
+gpt-4o,Avoiding UDFs,case1-10.py,715,26,741,1.160131454
+gpt-4o,All,case1-10.py,1527,364,1891,7.40847683
+gpt-4o,RDD vs DataFrame,case1-11.py,2075,26,2101,0.921122789
+gpt-4o,Coalesce vs Repartition,case1-11.py,2043,325,2368,6.765030146
+gpt-4o,Map vs MapPartitions,case1-11.py,2026,26,2052,0.944430351
+gpt-4o,Serialized Data Formats,case1-11.py,2068,309,2377,7.29154253
+gpt-4o,Avoiding UDFs,case1-11.py,2045,267,2312,5.759366035
+gpt-4o,All,case1-11.py,2857,235,3092,7.189221144
+gpt-4o,RDD vs DataFrame,case1-2.py,1114,26,1140,1.58758378
+gpt-4o,Coalesce vs Repartition,case1-2.py,1082,297,1379,5.124344349
+gpt-4o,Map vs MapPartitions,case1-2.py,1065,26,1091,1.045881748
+gpt-4o,Serialized Data Formats,case1-2.py,1107,399,1506,7.269955397
+gpt-4o,Avoiding UDFs,case1-2.py,1084,26,1110,1.013621807
+gpt-4o,All,case1-2.py,1896,447,2343,27.67161584
+gpt-4o,RDD vs DataFrame,case1-3.py,1114,26,1140,0.788012981
+gpt-4o,Coalesce vs Repartition,case1-3.py,1082,303,1385,4.790383577
+gpt-4o,Map vs MapPartitions,case1-3.py,1065,26,1091,0.875146866
+gpt-4o,Serialized Data Formats,case1-3.py,1107,407,1514,5.782863379
+gpt-4o,Avoiding UDFs,case1-3.py,1084,26,1110,0.93886447
+gpt-4o,All,case1-3.py,1896,443,2339,10.38520312
+gpt-4o,RDD vs DataFrame,case1-4.py,1143,26,1169,2.938424349
+gpt-4o,Coalesce vs Repartition,case1-4.py,1111,305,1416,8.301329374
+gpt-4o,Map vs MapPartitions,case1-4.py,1094,26,1120,3.854440451
+gpt-4o,Serialized Data Formats,case1-4.py,1136,420,1556,6.672618628
+gpt-4o,Avoiding UDFs,case1-4.py,1113,26,1139,0.979604244
+gpt-4o,All,case1-4.py,1925,411,2336,8.890369892
+gpt-4o,RDD vs DataFrame,case1-5.py,1144,26,1170,0.73123908
+gpt-4o,Coalesce vs Repartition,case1-5.py,1112,260,1372,3.639268637
+gpt-4o,Map vs MapPartitions,case1-5.py,1095,26,1121,1.365679979
+gpt-4o,Serialized Data Formats,case1-5.py,1137,417,1554,5.048289776
+gpt-4o,Avoiding UDFs,case1-5.py,1114,26,1140,1.015748739
+gpt-4o,All,case1-5.py,1926,367,2293,9.62761426
+gpt-4o,RDD vs DataFrame,case1-6.py,1143,26,1169,0.7450459
+gpt-4o,Coalesce vs Repartition,case1-6.py,1111,328,1439,5.631868362
+gpt-4o,Map vs MapPartitions,case1-6.py,1094,26,1120,0.740219593
+gpt-4o,Serialized Data Formats,case1-6.py,1136,418,1554,5.955020428
+gpt-4o,Avoiding UDFs,case1-6.py,1113,26,1139,0.945342779
+gpt-4o,All,case1-6.py,1925,419,2344,10.06236076
+gpt-4o,RDD vs DataFrame,case1-7.py,1002,26,1028,0.867799044
+gpt-4o,Coalesce vs Repartition,case1-7.py,970,228,1198,4.414591074
+gpt-4o,Map vs MapPartitions,case1-7.py,953,26,979,1.136880159
+gpt-4o,Serialized Data Formats,case1-7.py,995,26,1021,0.836233616
+gpt-4o,Avoiding UDFs,case1-7.py,972,26,998,0.841359615
+gpt-4o,All,case1-7.py,1784,253,2037,8.466666222
+gpt-4o,RDD vs DataFrame,case1-8.py,2343,26,2369,0.787725925
+gpt-4o,Coalesce vs Repartition,case1-8.py,2311,250,2561,7.311585665
+gpt-4o,Map vs MapPartitions,case1-8.py,2294,26,2320,0.868833542
+gpt-4o,Serialized Data Formats,case1-8.py,2336,236,2572,3.070935011
+gpt-4o,Avoiding UDFs,case1-8.py,2313,26,2339,0.866613388
+gpt-4o,All,case1-8.py,3125,308,3433,6.768421888
+gpt-4o,RDD vs DataFrame,case1-9.py,913,26,939,0.8073771
+gpt-4o,Coalesce vs Repartition,case1-9.py,881,272,1153,3.937046289
+gpt-4o,Map vs MapPartitions,case1-9.py,864,26,890,0.841837168
+gpt-4o,Serialized Data Formats,case1-9.py,906,244,1150,3.694229603
+gpt-4o,Avoiding UDFs,case1-9.py,883,361,1244,4.574874878
+gpt-4o,All,case1-9.py,1695,554,2249,13.66435218
+gpt-4o,RDD vs DataFrame,case12.py,732,216,948,2.462258577
+gpt-4o,Coalesce vs Repartition,case12.py,700,185,885,3.799897909
+gpt-4o,Map vs MapPartitions,case12.py,683,256,939,3.889912128
+gpt-4o,Serialized Data Formats,case12.py,725,26,751,0.827387094
+gpt-4o,Avoiding UDFs,case12.py,702,26,728,0.875921249
+gpt-4o,All,case12.py,1514,516,2030,11.3200891
+gpt-4o,RDD vs DataFrame,case13.py,734,26,760,0.755248547
+gpt-4o,Coalesce vs Repartition,case13.py,702,212,914,4.341663122
+gpt-4o,Map vs MapPartitions,case13.py,685,26,711,0.784681797
+gpt-4o,Serialized Data Formats,case13.py,727,231,958,3.014802456
+gpt-4o,Avoiding UDFs,case13.py,704,26,730,0.859538078
+gpt-4o,All,case13.py,1516,404,1920,7.927943707
+gpt-4o,RDD vs DataFrame,case2-1.py,788,682,1470,9.420473099
+gpt-4o,Coalesce vs Repartition,case2-1.py,756,26,782,2.147523403
+gpt-4o,Map vs MapPartitions,case2-1.py,739,26,765,0.960322857
+gpt-4o,Serialized Data Formats,case2-1.py,781,217,998,3.91446209
+gpt-4o,Avoiding UDFs,case2-1.py,758,26,784,0.812721968
+gpt-4o,All,case2-1.py,1570,784,2354,18.25756216
+gpt-4o,RDD vs DataFrame,case2-10.py,1968,1097,3065,9.965454102
+gpt-4o,Coalesce vs Repartition,case2-10.py,1936,26,1962,0.932141781
+gpt-4o,Map vs MapPartitions,case2-10.py,1919,781,2700,11.27911115
+gpt-4o,Serialized Data Formats,case2-10.py,1961,311,2272,4.637542963
+gpt-4o,Avoiding UDFs,case2-10.py,1938,26,1964,0.899597406
+gpt-4o,All,case2-10.py,2750,1109,3859,23.56826067
+gpt-4o,RDD vs DataFrame,case2-11.py,1905,457,2362,4.492647886
+gpt-4o,Coalesce vs Repartition,case2-11.py,1873,26,1899,1.557101011
+gpt-4o,Map vs MapPartitions,case2-11.py,1856,214,2070,3.704841614
+gpt-4o,Serialized Data Formats,case2-11.py,1898,376,2274,5.25498271
+gpt-4o,Avoiding UDFs,case2-11.py,1875,562,2437,7.727292061
+gpt-4o,All,case2-11.py,2687,799,3486,16.82316494
+gpt-4o,RDD vs DataFrame,case2-12.py,3776,629,4405,8.263730526
+gpt-4o,Coalesce vs Repartition,case2-12.py,3744,321,4065,5.637363434
+gpt-4o,Map vs MapPartitions,case2-12.py,3727,26,3753,1.058777332
+gpt-4o,Serialized Data Formats,case2-12.py,3769,467,4236,10.80214787
+gpt-4o,Avoiding UDFs,case2-12.py,3746,26,3772,1.135885
+gpt-4o,All,case2-12.py,4558,796,5354,17.58097386
+gpt-4o,RDD vs DataFrame,case2-2.py,13146,1218,14364,12.9259398
+gpt-4o,Coalesce vs Repartition,case2-2.py,13114,26,13140,1.660144567
+gpt-4o,Map vs MapPartitions,case2-2.py,13097,540,13637,29.15154934
+gpt-4o,Serialized Data Formats,case2-2.py,13139,468,13607,30.25967145
+gpt-4o,Avoiding UDFs,case2-2.py,13116,26,13142,16.56077504
+gpt-4o,All,case2-2.py,13928,568,14496,35.2665925
+gpt-4o,RDD vs DataFrame,case2-3.py,2559,1232,3791,12.53302383
+gpt-4o,Coalesce vs Repartition,case2-3.py,2527,26,2553,0.894025803
+gpt-4o,Map vs MapPartitions,case2-3.py,2510,1177,3687,19.64634395
+gpt-4o,Serialized Data Formats,case2-3.py,2552,643,3195,9.5289433
+gpt-4o,Avoiding UDFs,case2-3.py,2529,467,2996,6.035169363
+gpt-4o,All,case2-3.py,3341,1695,5036,34.21235085
+gpt-4o,RDD vs DataFrame,case2-4.py,573,455,1028,5.457987785
+gpt-4o,Coalesce vs Repartition,case2-4.py,541,26,567,1.419359207
+gpt-4o,Map vs MapPartitions,case2-4.py,524,218,742,5.942897081
+gpt-4o,Serialized Data Formats,case2-4.py,566,318,884,4.405970335
+gpt-4o,Avoiding UDFs,case2-4.py,543,310,853,4.816832781
+gpt-4o,All,case2-4.py,1355,627,1982,13.88318968
+gpt-4o,RDD vs DataFrame,case2-5.py,1182,503,1685,6.278852701
+gpt-4o,Coalesce vs Repartition,case2-5.py,1150,26,1176,1.244543076
+gpt-4o,Map vs MapPartitions,case2-5.py,1133,434,1567,5.175637245
+gpt-4o,Serialized Data Formats,case2-5.py,1175,233,1408,3.239884377
+gpt-4o,Avoiding UDFs,case2-5.py,1152,26,1178,4.341340303
+gpt-4o,All,case2-5.py,1964,704,2668,12.98895574
+gpt-4o,RDD vs DataFrame,case2-6.py,6475,955,7430,10.96478152
+gpt-4o,Coalesce vs Repartition,case2-6.py,6443,26,6469,1.592192173
+gpt-4o,Map vs MapPartitions,case2-6.py,6426,447,6873,7.035529613
+gpt-4o,Serialized Data Formats,case2-6.py,6468,472,6940,6.131789446
+gpt-4o,Avoiding UDFs,case2-6.py,6445,708,7153,8.589874983
+gpt-4o,All,case2-6.py,7257,650,7907,14.5157311
+gpt-4o,RDD vs DataFrame,case2-7.py,845,522,1367,6.339034319
+gpt-4o,Coalesce vs Repartition,case2-7.py,813,26,839,1.241775036
+gpt-4o,Map vs MapPartitions,case2-7.py,796,329,1125,7.09304142
+gpt-4o,Serialized Data Formats,case2-7.py,838,325,1163,5.32698226
+gpt-4o,Avoiding UDFs,case2-7.py,815,26,841,0.833217382
+gpt-4o,All,case2-7.py,1627,822,2449,22.74988818
+gpt-4o,RDD vs DataFrame,case2-8.py,2548,326,2874,4.122466087
+gpt-4o,Coalesce vs Repartition,case2-8.py,2516,312,2828,5.396573067
+gpt-4o,Map vs MapPartitions,case2-8.py,2499,26,2525,1.068246603
+gpt-4o,Serialized Data Formats,case2-8.py,2541,367,2908,6.356299162
+gpt-4o,Avoiding UDFs,case2-8.py,2518,26,2544,1.247585058
+gpt-4o,All,case2-8.py,3330,614,3944,11.79710269
+gpt-4o,RDD vs DataFrame,case2-9.py,1765,1749,3514,19.5720191
+gpt-4o,Coalesce vs Repartition,case2-9.py,1733,186,1919,4.562487602
+gpt-4o,Map vs MapPartitions,case2-9.py,1716,543,2259,9.577746868
+gpt-4o,Serialized Data Formats,case2-9.py,1758,237,1995,7.570217133
+gpt-4o,Avoiding UDFs,case2-9.py,1735,532,2267,8.963711023
+gpt-4o,All,case2-9.py,2547,765,3312,18.90004158
+gpt-4o,RDD vs DataFrame,case3-1.py,1687,26,1713,0.785719395
+gpt-4o,Coalesce vs Repartition,case3-1.py,1655,26,1681,2.160068512
+gpt-4o,Map vs MapPartitions,case3-1.py,1638,26,1664,1.457966328
+gpt-4o,Serialized Data Formats,case3-1.py,1680,360,2040,10.33507848
+gpt-4o,Avoiding UDFs,case3-1.py,1657,26,1683,1.009891272
+gpt-4o,All,case3-1.py,2469,245,2714,5.51284337
+gpt-4o,RDD vs DataFrame,case3-10.py,1475,26,1501,0.87907815
+gpt-4o,Coalesce vs Repartition,case3-10.py,1443,26,1469,1.544913054
+gpt-4o,Map vs MapPartitions,case3-10.py,1426,26,1452,0.894997597
+gpt-4o,Serialized Data Formats,case3-10.py,1468,239,1707,3.369916916
+gpt-4o,Avoiding UDFs,case3-10.py,1445,26,1471,0.807612896
+gpt-4o,All,case3-10.py,2257,241,2498,5.849495888
+gpt-4o,RDD vs DataFrame,case3-2.py,1450,26,1476,1.213517189
+gpt-4o,Coalesce vs Repartition,case3-2.py,1418,26,1444,1.530049562
+gpt-4o,Map vs MapPartitions,case3-2.py,1401,26,1427,0.93198514
+gpt-4o,Serialized Data Formats,case3-2.py,1443,327,1770,5.467465401
+gpt-4o,Avoiding UDFs,case3-2.py,1420,26,1446,0.904599667
+gpt-4o,All,case3-2.py,2232,1020,3252,21.54998446
+gpt-4o,RDD vs DataFrame,case3-3.py,750,26,776,0.937885523
+gpt-4o,Coalesce vs Repartition,case3-3.py,718,26,744,1.474746466
+gpt-4o,Map vs MapPartitions,case3-3.py,701,26,727,0.940002203
+gpt-4o,Serialized Data Formats,case3-3.py,743,204,947,5.09728384
+gpt-4o,Avoiding UDFs,case3-3.py,720,26,746,0.975525618
+gpt-4o,All,case3-3.py,1532,245,1777,6.630389452
+gpt-4o,RDD vs DataFrame,case3-4.py,3329,26,3355,0.884734154
+gpt-4o,Coalesce vs Repartition,case3-4.py,3297,26,3323,1.732351303
+gpt-4o,Map vs MapPartitions,case3-4.py,3280,26,3306,1.080319643
+gpt-4o,Serialized Data Formats,case3-4.py,3322,403,3725,5.889503479
+gpt-4o,Avoiding UDFs,case3-4.py,3299,413,3712,5.620387077
+gpt-4o,All,case3-4.py,4111,641,4752,13.22132516
+gpt-4o,RDD vs DataFrame,case3-5.py,2399,1506,3905,15.08220744
+gpt-4o,Coalesce vs Repartition,case3-5.py,2367,26,2393,1.512175798
+gpt-4o,Map vs MapPartitions,case3-5.py,2350,1186,3536,18.85863352
+gpt-4o,Serialized Data Formats,case3-5.py,2392,426,2818,5.963867426
+gpt-4o,Avoiding UDFs,case3-5.py,2369,602,2971,8.881760597
+gpt-4o,All,case3-5.py,3181,1816,4997,30.7328608
+gpt-4o,RDD vs DataFrame,case3-6.py,1574,26,1600,0.748537302
+gpt-4o,Coalesce vs Repartition,case3-6.py,1542,26,1568,0.946581602
+gpt-4o,Map vs MapPartitions,case3-6.py,1525,26,1551,1.024461508
+gpt-4o,Serialized Data Formats,case3-6.py,1567,233,1800,5.715012074
+gpt-4o,Avoiding UDFs,case3-6.py,1544,26,1570,0.850597143
+gpt-4o,All,case3-6.py,2356,267,2623,5.522306919
+gpt-4o,RDD vs DataFrame,case3-7.py,1101,26,1127,0.908704996
+gpt-4o,Coalesce vs Repartition,case3-7.py,1069,26,1095,1.675318241
+gpt-4o,Map vs MapPartitions,case3-7.py,1052,26,1078,1.0202775
+gpt-4o,Serialized Data Formats,case3-7.py,1094,263,1357,3.821493387
+gpt-4o,Avoiding UDFs,case3-7.py,1071,26,1097,0.890235186
+gpt-4o,All,case3-7.py,1883,250,2133,4.791211605
+gpt-4o,RDD vs DataFrame,case3-8.py,15622,1062,16684,12.89210343
+gpt-4o,Coalesce vs Repartition,case3-8.py,15590,26,15616,1.62314105
+gpt-4o,Map vs MapPartitions,case3-8.py,15573,227,15800,14.01986718
+gpt-4o,Serialized Data Formats,case3-8.py,15615,214,15829,17.22199845
+gpt-4o,Avoiding UDFs,case3-8.py,15592,26,15618,16.75574255
+gpt-4o,All,case3-8.py,16404,916,17320,37.17465568
+gpt-4o,RDD vs DataFrame,case3-9.py,2084,26,2110,0.855152369
+gpt-4o,Coalesce vs Repartition,case3-9.py,2052,26,2078,4.262056828
+gpt-4o,Map vs MapPartitions,case3-9.py,2035,26,2061,4.064381361
+gpt-4o,Serialized Data Formats,case3-9.py,2077,281,2358,11.70522571
+gpt-4o,Avoiding UDFs,case3-9.py,2054,26,2080,1.075191975
+gpt-4o,All,case3-9.py,2866,243,3109,6.111002922
+gpt-4o,RDD vs DataFrame,case4-1.py,967,26,993,0.92100668
+gpt-4o,Coalesce vs Repartition,case4-1.py,935,26,961,0.954802513
+gpt-4o,Map vs MapPartitions,case4-1.py,918,26,944,1.419858456
+gpt-4o,Serialized Data Formats,case4-1.py,960,255,1215,7.900636435
+gpt-4o,Avoiding UDFs,case4-1.py,937,317,1254,5.271058798
+gpt-4o,All,case4-1.py,1749,332,2081,6.907777309
+gpt-4o,RDD vs DataFrame,case4-10.py,985,26,1011,0.795553207
+gpt-4o,Coalesce vs Repartition,case4-10.py,953,26,979,1.036294699
+gpt-4o,Map vs MapPartitions,case4-10.py,936,26,962,1.129543066
+gpt-4o,Serialized Data Formats,case4-10.py,978,26,1004,0.91886282
+gpt-4o,Avoiding UDFs,case4-10.py,955,473,1428,8.674351215
+gpt-4o,All,case4-10.py,1767,489,2256,12.18771291
+gpt-4o,RDD vs DataFrame,case4-2.py,742,26,768,0.852262497
+gpt-4o,Coalesce vs Repartition,case4-2.py,710,26,736,1.344809771
+gpt-4o,Map vs MapPartitions,case4-2.py,693,26,719,1.043133736
+gpt-4o,Serialized Data Formats,case4-2.py,735,26,761,1.065322399
+gpt-4o,Avoiding UDFs,case4-2.py,712,435,1147,7.348357439
+gpt-4o,All,case4-2.py,1524,429,1953,7.689190388
+gpt-4o,RDD vs DataFrame,case4-3.py,723,26,749,0.85905385
+gpt-4o,Coalesce vs Repartition,case4-3.py,691,26,717,1.050748587
+gpt-4o,Map vs MapPartitions,case4-3.py,674,26,700,1.047661543
+gpt-4o,Serialized Data Formats,case4-3.py,716,232,948,3.127738714
+gpt-4o,Avoiding UDFs,case4-3.py,693,389,1082,5.986143112
+gpt-4o,All,case4-3.py,1505,420,1925,8.107629538
+gpt-4o,RDD vs DataFrame,case4-4.py,830,26,856,0.896020412
+gpt-4o,Coalesce vs Repartition,case4-4.py,798,26,824,0.812992096
+gpt-4o,Map vs MapPartitions,case4-4.py,781,26,807,0.924253464
+gpt-4o,Serialized Data Formats,case4-4.py,823,26,849,0.853741884
+gpt-4o,Avoiding UDFs,case4-4.py,800,602,1402,8.054713726
+gpt-4o,All,case4-4.py,1612,574,2186,11.81254125
+gpt-4o,RDD vs DataFrame,case4-5.py,3016,403,3419,5.075564146
+gpt-4o,Coalesce vs Repartition,case4-5.py,2984,26,3010,1.364622593
+gpt-4o,Map vs MapPartitions,case4-5.py,2967,26,2993,1.036412716
+gpt-4o,Serialized Data Formats,case4-5.py,3009,389,3398,7.108571768
+gpt-4o,Avoiding UDFs,case4-5.py,2986,306,3292,5.501333475
+gpt-4o,All,case4-5.py,3798,482,4280,13.5647738
+gpt-4o,RDD vs DataFrame,case4-6.py,718,26,744,0.773492336
+gpt-4o,Coalesce vs Repartition,case4-6.py,686,26,712,0.83300209
+gpt-4o,Map vs MapPartitions,case4-6.py,669,26,695,1.068576574
+gpt-4o,Serialized Data Formats,case4-6.py,711,26,737,4.249079943
+gpt-4o,Avoiding UDFs,case4-6.py,688,819,1507,11.59376121
+gpt-4o,All,case4-6.py,1500,721,2221,14.1879375
+gpt-4o,RDD vs DataFrame,case4-7.py,3590,26,3616,0.954968929
+gpt-4o,Coalesce vs Repartition,case4-7.py,3558,238,3796,3.828431129
+gpt-4o,Map vs MapPartitions,case4-7.py,3541,26,3567,1.197749615
+gpt-4o,Serialized Data Formats,case4-7.py,3583,344,3927,8.642400265
+gpt-4o,Avoiding UDFs,case4-7.py,3560,1305,4865,24.37724781
+gpt-4o,All,case4-7.py,4372,1497,5869,28.57468033
+gpt-4o,RDD vs DataFrame,case4-8.py,805,26,831,0.86272645
+gpt-4o,Coalesce vs Repartition,case4-8.py,773,26,799,1.479531527
+gpt-4o,Map vs MapPartitions,case4-8.py,756,26,782,0.954266548
+gpt-4o,Serialized Data Formats,case4-8.py,798,26,824,0.918319702
+gpt-4o,Avoiding UDFs,case4-8.py,775,508,1283,8.23558259
+gpt-4o,All,case4-8.py,1587,521,2108,12.88569164
+gpt-4o,RDD vs DataFrame,case4-9.py,848,26,874,0.846828461
+gpt-4o,Coalesce vs Repartition,case4-9.py,816,26,842,1.855419874
+gpt-4o,Map vs MapPartitions,case4-9.py,799,26,825,1.075359583
+gpt-4o,Serialized Data Formats,case4-9.py,841,26,867,0.798483849
+gpt-4o,Avoiding UDFs,case4-9.py,818,271,1089,4.719538212
+gpt-4o,All,case4-9.py,1630,290,1920,7.281549215

@@ -1,0 +1,20 @@
+```json
+{
+  "detected": true,
+  "occurrences": 2,
+  "response": [
+    {
+      "operation": "Reading binary files from HDFS (line 1085): rows = sc.binaryFiles(inputDir, numExec)",
+      "improvementExplanation": "The current operation reads binary files directly from HDFS. If the data is stored in a format like Parquet, it can be read more efficiently due to Parquet's columnar storage and built-in compression.",
+      "optimizedEquivalent": "tensorRDD = spark.read.parquet(inputDir).rdd.map(lambda row: (row['filename'], row['content']))",
+      "benefits": "Using Parquet can lead to faster read times due to its columnar format, which allows for efficient data skipping and compression. It also supports predicate pushdown, which can further optimize query performance."
+    },
+    {
+      "operation": "Writing numpy arrays to local files and moving to HDFS (lines 222-224): np.save(filename, Ci); subprocess.call(['hadoop fs -moveFromLocal ' + './*.npy ' + outputDir], shell=True)",
+      "improvementExplanation": "The current operation saves numpy arrays as .npy files locally and then moves them to HDFS. This can be optimized by writing directly to a Parquet file, which avoids the need for local storage and provides better compression and read performance.",
+      "optimizedEquivalent": "import pyspark.sql.functions as F\nfrom pyspark.sql import Row\n\n# Convert numpy array to DataFrame and write to Parquet\ndef saveToParquet(partition):\n    for row in partition:\n        label = row[0]\n        Ci = row[1]\n        df = spark.createDataFrame([Row(label=label, Ci=Ci.tolist())])\n        df.write.mode('append').parquet(outputDir)\n\n# Use this function in place of the current save operation\ntensorRDD.foreachPartition(saveToParquet)",
+      "benefits": "Writing directly to Parquet provides better compression and avoids the overhead of local file operations. Parquet's columnar format also allows for efficient data retrieval and storage, reducing the overall I/O operations."
+    }
+  ]
+}
+```

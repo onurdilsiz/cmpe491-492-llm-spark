@@ -1,397 +1,397 @@
 Model,Case,File,Input Tokens,Output Tokens,Total Tokens,Latency
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-1.py,1300,1440,2740,16.05883288383484
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-1.py,1286,189,1475,2.9633853435516357
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-1.py,1273,995,2268,9.342731952667236
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-1.py,1306,340,1646,4.408693075180054
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-1.py,1279,591,1870,6.167518615722656
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-1.py,2109,2168,4277,18.89792013168335
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-10.py,768,986,1754,8.943666458129883
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-10.py,754,110,864,1.8459901809692383
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-10.py,741,401,1142,4.166959524154663
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-10.py,774,8178,8952,70.11271953582764
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-10.py,747,288,1035,3.3937718868255615
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-10.py,1577,1326,2903,12.096841812133789
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-11.py,1147,2038,3185,17.624772548675537
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-11.py,1133,291,1424,3.363480806350708
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-11.py,1120,1059,2179,9.617589950561523
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-11.py,1153,297,1450,3.4084973335266113
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-11.py,1126,629,1755,6.073611497879028
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-11.py,1956,1705,3661,15.044742822647095
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-2.py,810,1655,2465,14.71599555015564
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-2.py,796,187,983,2.47102952003479
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-2.py,783,805,1588,7.482250213623047
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-2.py,816,494,1310,4.950700759887695
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-2.py,789,190,979,2.4498913288116455
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-2.py,1619,1761,3380,15.468039989471436
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-3.py,1205,2772,3977,23.62340259552002
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-3.py,1191,22,1213,1.165226936340332
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-3.py,1178,65,1243,1.5155386924743652
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-3.py,1211,243,1454,2.8976285457611084
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-3.py,1184,144,1328,2.0932869911193848
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-3.py,2014,241,2255,3.0284743309020996
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-4.py,581,236,817,3.2411155700683594
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-4.py,567,22,589,1.136260986328125
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-4.py,554,254,808,2.9120967388153076
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-4.py,587,428,1015,4.355637311935425
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-4.py,560,308,868,3.4027740955352783
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-4.py,1390,439,1829,4.558353900909424
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-5.py,581,236,817,2.7730114459991455
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-5.py,567,22,589,1.0965142250061035
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-5.py,554,254,808,2.9271771907806396
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-5.py,587,428,1015,4.322383880615234
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-5.py,560,308,868,3.4216854572296143
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-5.py,1390,439,1829,4.533818483352661
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-6.py,528,272,800,3.1347665786743164
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-6.py,514,22,536,1.0688974857330322
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-6.py,501,90,591,1.6350512504577637
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-6.py,534,574,1108,5.506261587142944
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-6.py,507,22,529,1.0463831424713135
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-6.py,1337,328,1665,3.6777102947235107
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-7.py,798,908,1706,8.318369626998901
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-7.py,784,984,1768,8.919979572296143
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-7.py,771,847,1618,7.803436517715454
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-7.py,804,640,1444,6.153199911117554
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-7.py,777,547,1324,5.365882635116577
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-7.py,1607,6555,8162,55.57643389701843
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-8.py,572,388,960,4.113596677780151
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-8.py,558,22,580,1.1308927536010742
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-8.py,545,22,567,1.1511359214782715
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-8.py,578,287,865,3.296623706817627
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-8.py,551,22,573,1.3063383102416992
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-8.py,1381,336,1717,3.6545021533966064
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-9.py,641,1095,1736,9.863056898117065
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-9.py,627,91,718,1.6834452152252197
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-9.py,614,347,961,3.7324717044830322
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-9.py,647,219,866,2.706479549407959
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-9.py,620,606,1226,5.824585437774658
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0-9.py,1450,796,2246,7.43073582649231
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case01.py,684,382,1066,3.9596331119537354
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case01.py,670,184,854,2.3799002170562744
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case01.py,657,232,889,2.80877947807312
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case01.py,690,637,1327,6.023567199707031
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case01.py,663,220,883,2.938459873199463
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case01.py,1493,737,2230,6.925325155258179
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case012.py,752,400,1152,4.180813312530518
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case012.py,738,172,910,2.256213665008545
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case012.py,725,358,1083,3.8348615169525146
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case012.py,758,571,1329,5.529429912567139
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case012.py,731,462,1193,4.696896553039551
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case012.py,1561,852,2413,7.935288429260254
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0123.py,777,572,1349,5.612906455993652
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0123.py,763,171,934,2.3123281002044678
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0123.py,750,329,1079,3.586183786392212
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case0123.py,783,508,1291,5.012389898300171
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case0123.py,756,445,1201,4.545853137969971
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case0123.py,1586,862,2448,8.063342571258545
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case01234.py,783,548,1331,5.416775226593018
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case01234.py,769,183,952,2.436674118041992
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case01234.py,756,369,1125,3.8979744911193848
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case01234.py,789,668,1457,6.385565519332886
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case01234.py,762,205,967,2.6254184246063232
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case01234.py,1592,716,2308,6.824624061584473
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case013.py,740,473,1213,4.793018341064453
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case013.py,726,226,952,2.7736449241638184
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case013.py,713,184,897,2.402898073196411
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case013.py,746,499,1245,4.951742172241211
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case013.py,719,158,877,2.205542802810669
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case013.py,1549,726,2275,6.8705360889434814
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case014.py,808,443,1251,4.51235032081604
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case014.py,794,216,1010,2.6640188694000244
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case014.py,781,377,1158,3.9386391639709473
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case014.py,814,562,1376,5.497580528259277
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case014.py,787,245,1032,2.9163293838500977
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case014.py,1617,915,2532,8.45623230934143
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case02.py,665,534,1199,5.227080345153809
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case02.py,651,106,757,1.759063959121704
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case02.py,638,383,1021,4.0162084102630615
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case02.py,671,578,1249,5.582903623580933
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case02.py,644,299,943,3.3063337802886963
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case02.py,1474,808,2282,7.494969129562378
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case023.py,756,871,1627,7.999003171920776
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case023.py,742,66,808,1.411017656326294
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case023.py,729,380,1109,3.994689702987671
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case023.py,762,384,1146,4.026910781860352
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case023.py,735,422,1157,4.312587738037109
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case023.py,1565,831,2396,7.790544748306274
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case03.py,644,501,1145,4.931800127029419
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case03.py,630,66,696,1.41493558883667
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case03.py,617,380,997,3.978127956390381
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case03.py,650,421,1071,4.289462089538574
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case03.py,623,318,941,3.4747376441955566
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case03.py,1453,537,1990,5.3751208782196045
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case04.py,720,550,1270,5.398109674453735
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case04.py,706,66,772,1.427626371383667
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case04.py,693,409,1102,4.238757848739624
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case04.py,726,559,1285,5.43932843208313
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case04.py,699,176,875,2.330698013305664
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case04.py,1529,513,2042,5.190206527709961
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-1.py,1098,687,1785,6.480614900588989
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-1.py,1084,281,1365,3.196885585784912
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-1.py,1071,179,1250,2.3722903728485107
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-1.py,1104,416,1520,4.31568455696106
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-1.py,1077,205,1282,2.6465792655944824
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-1.py,1907,471,2378,4.848892688751221
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-10.py,723,451,1174,4.587498426437378
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-10.py,709,249,958,2.8996737003326416
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-10.py,696,331,1027,3.5686442852020264
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-10.py,729,526,1255,5.148326873779297
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-10.py,702,323,1025,3.5212154388427734
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-10.py,1532,850,2382,7.965028762817383
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-11.py,2047,399,2446,4.323878049850464
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-11.py,2033,375,2408,4.071531534194946
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-11.py,2020,290,2310,3.441061019897461
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-11.py,2053,394,2447,4.233866930007935
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-11.py,2026,445,2471,4.671021461486816
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-11.py,2856,636,3492,6.364574909210205
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-2.py,1097,687,1784,6.554933547973633
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-2.py,1083,237,1320,2.8747310638427734
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-2.py,1070,175,1245,2.3749401569366455
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-2.py,1103,428,1531,4.431102514266968
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-2.py,1076,197,1273,2.5507917404174805
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-2.py,1906,550,2456,5.586763143539429
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-3.py,1097,687,1784,6.524090766906738
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-3.py,1083,244,1327,2.9210448265075684
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-3.py,1070,179,1249,2.386169195175171
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-3.py,1103,416,1519,4.583157777786255
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-3.py,1076,186,1262,2.44698429107666
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-3.py,1906,472,2378,4.803201675415039
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-4.py,1128,232,1360,2.8150017261505127
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-4.py,1114,309,1423,3.461381196975708
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-4.py,1101,1025,2126,9.326560497283936
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-4.py,1134,343,1477,3.737104892730713
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-4.py,1107,195,1302,2.539328098297119
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-4.py,1937,614,2551,6.033935546875
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-5.py,1127,213,1340,2.6275851726531982
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-5.py,1113,261,1374,3.069476366043091
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-5.py,1100,1355,2455,11.996955156326294
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-5.py,1133,353,1486,3.800403118133545
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-5.py,1106,205,1311,2.626286029815674
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-5.py,1936,712,2648,6.797052383422852
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-6.py,1126,239,1365,2.8440468311309814
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-6.py,1112,272,1384,3.1054840087890625
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-6.py,1099,988,2087,9.00496792793274
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-6.py,1132,400,1532,4.182533025741577
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-6.py,1105,205,1310,2.607699155807495
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-6.py,1935,607,2542,5.951242923736572
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-7.py,993,184,1177,2.4022836685180664
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-7.py,979,197,1176,2.5063443183898926
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-7.py,966,254,1220,2.972351312637329
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-7.py,999,457,1456,4.652728796005249
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-7.py,972,365,1337,3.8762385845184326
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-7.py,1802,715,2517,6.820427179336548
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-8.py,2330,304,2634,3.5521388053894043
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-8.py,2316,182,2498,2.5243072509765625
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-8.py,2303,313,2616,3.671060800552368
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-8.py,2336,216,2552,2.853013038635254
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-8.py,2309,206,2515,2.7220582962036133
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-8.py,3139,836,3975,8.010217428207397
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-9.py,894,636,1530,6.085496664047241
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-9.py,880,225,1105,2.7980856895446777
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-9.py,867,239,1106,2.8835315704345703
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-9.py,900,585,1485,5.685245513916016
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-9.py,873,201,1074,2.513113260269165
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case1-9.py,1703,760,2463,7.161000967025757
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case12.py,718,355,1073,3.7772514820098877
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case12.py,704,212,916,2.593601942062378
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case12.py,691,229,920,2.759669303894043
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case12.py,724,255,979,3.1808090209960938
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case12.py,697,305,1002,3.356832981109619
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case12.py,1527,608,2135,5.9377546310424805
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case13.py,719,368,1087,3.855532169342041
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case13.py,705,201,906,2.5735795497894287
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case13.py,692,86,778,1.6160693168640137
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case13.py,725,429,1154,4.359598875045776
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case13.py,698,509,1207,5.067244291305542
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case13.py,1528,602,2130,5.9074859619140625
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-1.py,769,521,1290,5.1688392162323
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-1.py,755,116,871,1.833341121673584
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-1.py,742,230,972,2.753878116607666
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-1.py,775,924,1699,8.475168704986572
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-1.py,748,387,1135,4.05385160446167
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-1.py,1578,758,2336,7.166155815124512
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-10.py,1942,2233,4175,19.366027355194092
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-10.py,1928,548,2476,5.5386247634887695
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-10.py,1915,1870,3785,16.344980716705322
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-10.py,1948,1562,3510,13.901144981384277
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-10.py,1921,685,2606,6.699896335601807
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-10.py,2751,3242,5993,28.048210859298706
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-11.py,1861,538,2399,5.451013803482056
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-11.py,1847,209,2056,2.7831146717071533
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-11.py,1834,399,2233,4.345874309539795
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-11.py,1867,467,2334,4.898808479309082
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-11.py,1840,544,2384,5.45270299911499
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-11.py,2670,1274,3944,11.551230907440186
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-12.py,3724,560,4284,5.895057439804077
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-12.py,3710,367,4077,4.2699925899505615
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-12.py,3697,395,4092,4.465133190155029
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-12.py,3730,1193,4923,11.11224365234375
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-12.py,3703,674,4377,6.808506488800049
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-12.py,4533,917,5450,9.003944873809814
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-2.py,13129,208,13337,5.0640647411346436
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-2.py,13115,1036,14151,11.518245220184326
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-2.py,13102,779,13881,10.015849113464355
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-2.py,13135,8192,21327,73.6781713962555
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-2.py,13108,3759,16867,35.9496533870697
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-2.py,13938,8192,22130,75.62996864318848
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-3.py,2512,8192,10704,69.6991937160492
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-3.py,2498,402,2900,4.4059083461761475
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-3.py,2485,2387,4872,20.770801067352295
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-3.py,2518,2269,4787,19.774340391159058
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-3.py,2491,1043,3534,9.670548915863037
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-3.py,3321,1523,4844,13.717081308364868
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-4.py,556,454,1010,4.55521297454834
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-4.py,542,22,564,1.041489601135254
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-4.py,529,342,871,3.6684391498565674
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-4.py,562,635,1197,6.0600810050964355
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-4.py,535,188,723,2.4198429584503174
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-4.py,1365,977,2342,8.902349948883057
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-5.py,1160,921,2081,8.444925546646118
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-5.py,1146,360,1506,3.836052894592285
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-5.py,1133,797,1930,7.413985013961792
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-5.py,1166,414,1580,4.28040337562561
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-5.py,1139,523,1662,10.045605659484863
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-5.py,1969,815,2784,7.6146790981292725
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-6.py,6411,1464,7875,14.733318328857422
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-6.py,6397,194,6591,3.081491470336914
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-6.py,6384,344,6728,4.373367786407471
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-6.py,6417,1392,7809,13.104732036590576
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-6.py,6390,1086,7476,10.486190795898438
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-6.py,7220,888,8108,9.98574161529541
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-7.py,824,666,1490,6.258737087249756
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-7.py,810,166,976,2.2751169204711914
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-7.py,797,352,1149,3.7322936058044434
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-7.py,830,374,1204,3.9128408432006836
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-7.py,803,336,1139,3.709125518798828
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-7.py,1633,708,2341,6.865323543548584
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-8.py,2518,1392,3910,12.469351530075073
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-8.py,2504,315,2819,3.603548288345337
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-8.py,2491,632,3123,6.423511981964111
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-8.py,2524,1591,4115,14.368283987045288
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-8.py,2497,397,2894,4.309518575668335
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-8.py,3327,1413,4740,12.796712875366211
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-9.py,1723,1134,2857,10.328899145126343
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-9.py,1709,157,1866,2.290045976638794
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-9.py,1696,1384,3080,12.217869997024536
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-9.py,1729,676,2405,6.490400552749634
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-9.py,1702,759,2461,7.203302621841431
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case2-9.py,2532,1072,3604,9.876946926116943
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-1.py,1655,427,2082,4.3895604610443115
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-1.py,1641,162,1803,2.271775245666504
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-1.py,1628,266,1894,3.0995125770568848
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-1.py,1661,322,1983,3.5712525844573975
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-1.py,1634,493,2127,4.9960010051727295
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-1.py,2464,758,3222,7.259736061096191
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-10.py,1456,411,1867,4.275990962982178
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-10.py,1442,219,1661,2.6870641708374023
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-10.py,1429,184,1613,2.4375855922698975
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-10.py,1462,419,1881,4.4406445026397705
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-10.py,1435,198,1633,2.533057451248169
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-10.py,2265,755,3020,7.213211536407471
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-2.py,1417,2101,3518,18.4322829246521
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-2.py,1403,199,1602,2.5306811332702637
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-2.py,1390,198,1588,2.5501928329467773
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-2.py,1423,298,1721,3.7988638877868652
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-2.py,1396,1401,2797,12.285109996795654
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-2.py,2226,721,2947,6.947469234466553
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-3.py,737,85,822,1.57008695602417
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-3.py,723,156,879,2.1633169651031494
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-3.py,710,196,906,2.479158401489258
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-3.py,743,194,937,2.4238433837890625
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-3.py,716,264,980,2.9858710765838623
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-3.py,1546,559,2105,5.516976594924927
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-4.py,3322,1040,4362,9.734546184539795
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-4.py,3308,202,3510,2.7454161643981934
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-4.py,3295,873,4168,8.285636901855469
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-4.py,3328,1095,4423,10.108012676239014
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-4.py,3301,456,3757,4.8644490242004395
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-4.py,4131,611,4742,6.3216283321380615
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-5.py,2376,2308,4684,19.976880311965942
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-5.py,2362,287,2649,3.3533339500427246
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-5.py,2349,1315,3664,11.750466346740723
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-5.py,2382,298,2680,3.509162664413452
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-5.py,2355,875,3230,8.247769832611084
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-5.py,3185,3368,6553,28.963732719421387
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-6.py,1556,168,1724,2.4061646461486816
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-6.py,1542,182,1724,2.483535051345825
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-6.py,1529,175,1704,2.432941436767578
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-6.py,1562,1085,2647,10.07814359664917
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-6.py,1535,176,1711,2.4396705627441406
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-6.py,2365,557,2922,5.578233480453491
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-7.py,1089,167,1256,2.261042833328247
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-7.py,1075,168,1243,2.2651891708374023
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-7.py,1062,130,1192,2.004136085510254
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-7.py,1095,286,1381,3.258272171020508
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-7.py,1068,403,1471,4.139638900756836
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-7.py,1898,335,2233,3.742372751235962
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-8.py,15582,8192,23774,75.60864639282227
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-8.py,15568,555,16123,8.114470720291138
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-8.py,15555,53,15608,3.861849546432495
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-8.py,15588,8192,23780,75.68401217460632
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-8.py,15561,8192,23753,74.49658918380737
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-8.py,16391,8192,24583,75.35613369941711
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-9.py,2042,212,2254,2.8308610916137695
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-9.py,2028,151,2179,2.3073432445526123
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-9.py,2015,279,2294,3.3005576133728027
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-9.py,2048,367,2415,4.093639612197876
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-9.py,2021,335,2356,3.768301010131836
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case3-9.py,2851,678,3529,6.738522291183472
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-1.py,947,224,1171,2.6785738468170166
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-1.py,933,293,1226,3.258284568786621
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-1.py,920,194,1114,2.4779469966888428
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-1.py,953,369,1322,3.9044408798217773
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-1.py,926,910,1836,8.264745473861694
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-1.py,1756,479,2235,4.894087076187134
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-10.py,961,272,1233,3.1216328144073486
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-10.py,947,382,1329,4.0454607009887695
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-10.py,934,225,1159,2.7307982444763184
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-10.py,967,624,1591,6.031571626663208
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-10.py,940,851,1791,8.030008554458618
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-10.py,1770,970,2740,8.872758150100708
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-2.py,728,84,812,1.569005012512207
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-2.py,714,22,736,1.0336713790893555
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-2.py,701,309,1010,3.4764862060546875
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-2.py,734,234,968,2.7838118076324463
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-2.py,707,470,1177,4.937562465667725
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-2.py,1537,407,1944,4.311989784240723
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-3.py,707,86,793,1.6189208030700684
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-3.py,693,22,715,1.0527925491333008
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-3.py,680,198,878,2.4594404697418213
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-3.py,713,832,1545,7.683972597122192
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-3.py,686,707,1393,6.589320659637451
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-3.py,1516,855,2371,7.937206983566284
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-4.py,813,201,1014,2.5132763385772705
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-4.py,799,66,865,1.4457530975341797
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-4.py,786,369,1155,3.8893542289733887
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-4.py,819,605,1424,5.819296836853027
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-4.py,792,737,1529,6.962551593780518
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-4.py,1622,569,2191,5.6184773445129395
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-5.py,2958,250,3208,3.1580708026885986
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-5.py,2944,201,3145,2.7242982387542725
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-5.py,2931,465,3396,4.907352924346924
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-5.py,2964,597,3561,5.977190732955933
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-5.py,2937,197,3134,2.7444233894348145
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-5.py,3767,794,4561,7.721668481826782
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-6.py,698,1155,1853,10.319441318511963
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-6.py,684,22,706,1.051283359527588
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-6.py,671,170,841,2.25032901763916
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-6.py,704,147,851,2.0549545288085938
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-6.py,677,1117,1794,9.956512451171875
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-6.py,1507,931,2438,8.589911937713623
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-7.py,3556,191,3747,2.688666343688965
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-7.py,3542,209,3751,2.823744297027588
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-7.py,3529,223,3752,2.9268157482147217
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-7.py,3562,352,3914,4.055030345916748
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-7.py,3535,941,4476,8.87096118927002
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-7.py,4365,2180,6545,19.47610640525818
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-8.py,781,238,1019,2.79091477394104
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-8.py,767,26,793,1.1356773376464844
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-8.py,754,227,981,2.7655012607574463
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-8.py,787,136,923,1.9545855522155762
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-8.py,760,988,1748,8.86737847328186
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-8.py,1590,651,2241,6.256402492523193
-publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-9.py,826,363,1189,3.8245608806610107
-publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-9.py,812,66,878,1.4581265449523926
-publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-9.py,799,289,1088,3.224677324295044
-publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-9.py,832,237,1069,2.836026191711426
-publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-9.py,805,246,1051,2.895913600921631
-publishers/meta/models/llama-3.1-8b-instruct-maas,All,case4-9.py,1635,420,2055,4.379347085952759
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-1.py,1300,1440,2740,16.05883288
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-1.py,1286,189,1475,2.963385344
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-1.py,1273,995,2268,9.342731953
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-1.py,1306,340,1646,4.408693075
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-1.py,1279,591,1870,6.167518616
+llama-3.1-8b-instruct-maas,All,case0-1.py,2109,2168,4277,18.89792013
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-10.py,768,986,1754,8.943666458
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-10.py,754,110,864,1.845990181
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-10.py,741,401,1142,4.166959524
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-10.py,774,8178,8952,70.11271954
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-10.py,747,288,1035,3.393771887
+llama-3.1-8b-instruct-maas,All,case0-10.py,1577,1326,2903,12.09684181
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-11.py,1147,2038,3185,17.62477255
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-11.py,1133,291,1424,3.363480806
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-11.py,1120,1059,2179,9.617589951
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-11.py,1153,297,1450,3.408497334
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-11.py,1126,629,1755,6.073611498
+llama-3.1-8b-instruct-maas,All,case0-11.py,1956,1705,3661,15.04474282
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-2.py,810,1655,2465,14.71599555
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-2.py,796,187,983,2.47102952
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-2.py,783,805,1588,7.482250214
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-2.py,816,494,1310,4.95070076
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-2.py,789,190,979,2.449891329
+llama-3.1-8b-instruct-maas,All,case0-2.py,1619,1761,3380,15.46803999
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-3.py,1205,2772,3977,23.6234026
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-3.py,1191,22,1213,1.165226936
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-3.py,1178,65,1243,1.515538692
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-3.py,1211,243,1454,2.897628546
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-3.py,1184,144,1328,2.093286991
+llama-3.1-8b-instruct-maas,All,case0-3.py,2014,241,2255,3.028474331
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-4.py,581,236,817,3.24111557
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-4.py,567,22,589,1.136260986
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-4.py,554,254,808,2.912096739
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-4.py,587,428,1015,4.355637312
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-4.py,560,308,868,3.402774096
+llama-3.1-8b-instruct-maas,All,case0-4.py,1390,439,1829,4.558353901
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-5.py,581,236,817,2.773011446
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-5.py,567,22,589,1.096514225
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-5.py,554,254,808,2.927177191
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-5.py,587,428,1015,4.322383881
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-5.py,560,308,868,3.421685457
+llama-3.1-8b-instruct-maas,All,case0-5.py,1390,439,1829,4.533818483
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-6.py,528,272,800,3.134766579
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-6.py,514,22,536,1.068897486
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-6.py,501,90,591,1.63505125
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-6.py,534,574,1108,5.506261587
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-6.py,507,22,529,1.046383142
+llama-3.1-8b-instruct-maas,All,case0-6.py,1337,328,1665,3.677710295
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-7.py,798,908,1706,8.318369627
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-7.py,784,984,1768,8.919979572
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-7.py,771,847,1618,7.803436518
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-7.py,804,640,1444,6.153199911
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-7.py,777,547,1324,5.365882635
+llama-3.1-8b-instruct-maas,All,case0-7.py,1607,6555,8162,55.5764339
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-8.py,572,388,960,4.113596678
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-8.py,558,22,580,1.130892754
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-8.py,545,22,567,1.151135921
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-8.py,578,287,865,3.296623707
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-8.py,551,22,573,1.30633831
+llama-3.1-8b-instruct-maas,All,case0-8.py,1381,336,1717,3.654502153
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0-9.py,641,1095,1736,9.863056898
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0-9.py,627,91,718,1.683445215
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0-9.py,614,347,961,3.732471704
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0-9.py,647,219,866,2.706479549
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0-9.py,620,606,1226,5.824585438
+llama-3.1-8b-instruct-maas,All,case0-9.py,1450,796,2246,7.430735826
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case01.py,684,382,1066,3.959633112
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case01.py,670,184,854,2.379900217
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case01.py,657,232,889,2.808779478
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case01.py,690,637,1327,6.0235672
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case01.py,663,220,883,2.938459873
+llama-3.1-8b-instruct-maas,All,case01.py,1493,737,2230,6.925325155
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case012.py,752,400,1152,4.180813313
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case012.py,738,172,910,2.256213665
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case012.py,725,358,1083,3.834861517
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case012.py,758,571,1329,5.529429913
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case012.py,731,462,1193,4.696896553
+llama-3.1-8b-instruct-maas,All,case012.py,1561,852,2413,7.935288429
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case0123.py,777,572,1349,5.612906456
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case0123.py,763,171,934,2.3123281
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case0123.py,750,329,1079,3.586183786
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case0123.py,783,508,1291,5.012389898
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case0123.py,756,445,1201,4.545853138
+llama-3.1-8b-instruct-maas,All,case0123.py,1586,862,2448,8.063342571
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case01234.py,783,548,1331,5.416775227
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case01234.py,769,183,952,2.436674118
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case01234.py,756,369,1125,3.897974491
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case01234.py,789,668,1457,6.385565519
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case01234.py,762,205,967,2.625418425
+llama-3.1-8b-instruct-maas,All,case01234.py,1592,716,2308,6.824624062
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case013.py,740,473,1213,4.793018341
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case013.py,726,226,952,2.773644924
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case013.py,713,184,897,2.402898073
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case013.py,746,499,1245,4.951742172
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case013.py,719,158,877,2.205542803
+llama-3.1-8b-instruct-maas,All,case013.py,1549,726,2275,6.870536089
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case014.py,808,443,1251,4.512350321
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case014.py,794,216,1010,2.664018869
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case014.py,781,377,1158,3.938639164
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case014.py,814,562,1376,5.497580528
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case014.py,787,245,1032,2.916329384
+llama-3.1-8b-instruct-maas,All,case014.py,1617,915,2532,8.456232309
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case02.py,665,534,1199,5.227080345
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case02.py,651,106,757,1.759063959
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case02.py,638,383,1021,4.01620841
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case02.py,671,578,1249,5.582903624
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case02.py,644,299,943,3.30633378
+llama-3.1-8b-instruct-maas,All,case02.py,1474,808,2282,7.49496913
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case023.py,756,871,1627,7.999003172
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case023.py,742,66,808,1.411017656
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case023.py,729,380,1109,3.994689703
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case023.py,762,384,1146,4.026910782
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case023.py,735,422,1157,4.312587738
+llama-3.1-8b-instruct-maas,All,case023.py,1565,831,2396,7.790544748
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case03.py,644,501,1145,4.931800127
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case03.py,630,66,696,1.414935589
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case03.py,617,380,997,3.978127956
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case03.py,650,421,1071,4.28946209
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case03.py,623,318,941,3.474737644
+llama-3.1-8b-instruct-maas,All,case03.py,1453,537,1990,5.375120878
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case04.py,720,550,1270,5.398109674
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case04.py,706,66,772,1.427626371
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case04.py,693,409,1102,4.238757849
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case04.py,726,559,1285,5.439328432
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case04.py,699,176,875,2.330698013
+llama-3.1-8b-instruct-maas,All,case04.py,1529,513,2042,5.190206528
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-1.py,1098,687,1785,6.480614901
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-1.py,1084,281,1365,3.196885586
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-1.py,1071,179,1250,2.372290373
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-1.py,1104,416,1520,4.315684557
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-1.py,1077,205,1282,2.646579266
+llama-3.1-8b-instruct-maas,All,case1-1.py,1907,471,2378,4.848892689
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-10.py,723,451,1174,4.587498426
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-10.py,709,249,958,2.8996737
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-10.py,696,331,1027,3.568644285
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-10.py,729,526,1255,5.148326874
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-10.py,702,323,1025,3.521215439
+llama-3.1-8b-instruct-maas,All,case1-10.py,1532,850,2382,7.965028763
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-11.py,2047,399,2446,4.32387805
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-11.py,2033,375,2408,4.071531534
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-11.py,2020,290,2310,3.44106102
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-11.py,2053,394,2447,4.23386693
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-11.py,2026,445,2471,4.671021461
+llama-3.1-8b-instruct-maas,All,case1-11.py,2856,636,3492,6.364574909
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-2.py,1097,687,1784,6.554933548
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-2.py,1083,237,1320,2.874731064
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-2.py,1070,175,1245,2.374940157
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-2.py,1103,428,1531,4.431102514
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-2.py,1076,197,1273,2.55079174
+llama-3.1-8b-instruct-maas,All,case1-2.py,1906,550,2456,5.586763144
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-3.py,1097,687,1784,6.524090767
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-3.py,1083,244,1327,2.921044827
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-3.py,1070,179,1249,2.386169195
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-3.py,1103,416,1519,4.583157778
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-3.py,1076,186,1262,2.446984291
+llama-3.1-8b-instruct-maas,All,case1-3.py,1906,472,2378,4.803201675
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-4.py,1128,232,1360,2.815001726
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-4.py,1114,309,1423,3.461381197
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-4.py,1101,1025,2126,9.326560497
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-4.py,1134,343,1477,3.737104893
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-4.py,1107,195,1302,2.539328098
+llama-3.1-8b-instruct-maas,All,case1-4.py,1937,614,2551,6.033935547
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-5.py,1127,213,1340,2.627585173
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-5.py,1113,261,1374,3.069476366
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-5.py,1100,1355,2455,11.99695516
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-5.py,1133,353,1486,3.800403118
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-5.py,1106,205,1311,2.62628603
+llama-3.1-8b-instruct-maas,All,case1-5.py,1936,712,2648,6.797052383
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-6.py,1126,239,1365,2.844046831
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-6.py,1112,272,1384,3.105484009
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-6.py,1099,988,2087,9.004967928
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-6.py,1132,400,1532,4.182533026
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-6.py,1105,205,1310,2.607699156
+llama-3.1-8b-instruct-maas,All,case1-6.py,1935,607,2542,5.951242924
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-7.py,993,184,1177,2.402283669
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-7.py,979,197,1176,2.506344318
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-7.py,966,254,1220,2.972351313
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-7.py,999,457,1456,4.652728796
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-7.py,972,365,1337,3.876238585
+llama-3.1-8b-instruct-maas,All,case1-7.py,1802,715,2517,6.820427179
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-8.py,2330,304,2634,3.552138805
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-8.py,2316,182,2498,2.524307251
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-8.py,2303,313,2616,3.671060801
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-8.py,2336,216,2552,2.853013039
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-8.py,2309,206,2515,2.722058296
+llama-3.1-8b-instruct-maas,All,case1-8.py,3139,836,3975,8.010217428
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case1-9.py,894,636,1530,6.085496664
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case1-9.py,880,225,1105,2.79808569
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case1-9.py,867,239,1106,2.88353157
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case1-9.py,900,585,1485,5.685245514
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case1-9.py,873,201,1074,2.51311326
+llama-3.1-8b-instruct-maas,All,case1-9.py,1703,760,2463,7.161000967
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case12.py,718,355,1073,3.777251482
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case12.py,704,212,916,2.593601942
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case12.py,691,229,920,2.759669304
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case12.py,724,255,979,3.180809021
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case12.py,697,305,1002,3.356832981
+llama-3.1-8b-instruct-maas,All,case12.py,1527,608,2135,5.937754631
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case13.py,719,368,1087,3.855532169
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case13.py,705,201,906,2.57357955
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case13.py,692,86,778,1.616069317
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case13.py,725,429,1154,4.359598875
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case13.py,698,509,1207,5.067244291
+llama-3.1-8b-instruct-maas,All,case13.py,1528,602,2130,5.907485962
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-1.py,769,521,1290,5.168839216
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-1.py,755,116,871,1.833341122
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-1.py,742,230,972,2.753878117
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-1.py,775,924,1699,8.475168705
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-1.py,748,387,1135,4.053851604
+llama-3.1-8b-instruct-maas,All,case2-1.py,1578,758,2336,7.166155815
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-10.py,1942,2233,4175,19.36602736
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-10.py,1928,548,2476,5.538624763
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-10.py,1915,1870,3785,16.34498072
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-10.py,1948,1562,3510,13.90114498
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-10.py,1921,685,2606,6.699896336
+llama-3.1-8b-instruct-maas,All,case2-10.py,2751,3242,5993,28.04821086
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-11.py,1861,538,2399,5.451013803
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-11.py,1847,209,2056,2.783114672
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-11.py,1834,399,2233,4.34587431
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-11.py,1867,467,2334,4.898808479
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-11.py,1840,544,2384,5.452702999
+llama-3.1-8b-instruct-maas,All,case2-11.py,2670,1274,3944,11.55123091
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-12.py,3724,560,4284,5.89505744
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-12.py,3710,367,4077,4.26999259
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-12.py,3697,395,4092,4.46513319
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-12.py,3730,1193,4923,11.11224365
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-12.py,3703,674,4377,6.808506489
+llama-3.1-8b-instruct-maas,All,case2-12.py,4533,917,5450,9.003944874
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-2.py,13129,208,13337,5.064064741
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-2.py,13115,1036,14151,11.51824522
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-2.py,13102,779,13881,10.01584911
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-2.py,13135,8192,21327,73.6781714
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-2.py,13108,3759,16867,35.94965339
+llama-3.1-8b-instruct-maas,All,case2-2.py,13938,8192,22130,75.62996864
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-3.py,2512,8192,10704,69.69919372
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-3.py,2498,402,2900,4.405908346
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-3.py,2485,2387,4872,20.77080107
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-3.py,2518,2269,4787,19.77434039
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-3.py,2491,1043,3534,9.670548916
+llama-3.1-8b-instruct-maas,All,case2-3.py,3321,1523,4844,13.71708131
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-4.py,556,454,1010,4.555212975
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-4.py,542,22,564,1.041489601
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-4.py,529,342,871,3.66843915
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-4.py,562,635,1197,6.060081005
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-4.py,535,188,723,2.419842958
+llama-3.1-8b-instruct-maas,All,case2-4.py,1365,977,2342,8.902349949
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-5.py,1160,921,2081,8.444925547
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-5.py,1146,360,1506,3.836052895
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-5.py,1133,797,1930,7.413985014
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-5.py,1166,414,1580,4.280403376
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-5.py,1139,523,1662,10.04560566
+llama-3.1-8b-instruct-maas,All,case2-5.py,1969,815,2784,7.614679098
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-6.py,6411,1464,7875,14.73331833
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-6.py,6397,194,6591,3.08149147
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-6.py,6384,344,6728,4.373367786
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-6.py,6417,1392,7809,13.10473204
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-6.py,6390,1086,7476,10.4861908
+llama-3.1-8b-instruct-maas,All,case2-6.py,7220,888,8108,9.985741615
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-7.py,824,666,1490,6.258737087
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-7.py,810,166,976,2.27511692
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-7.py,797,352,1149,3.732293606
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-7.py,830,374,1204,3.912840843
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-7.py,803,336,1139,3.709125519
+llama-3.1-8b-instruct-maas,All,case2-7.py,1633,708,2341,6.865323544
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-8.py,2518,1392,3910,12.46935153
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-8.py,2504,315,2819,3.603548288
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-8.py,2491,632,3123,6.423511982
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-8.py,2524,1591,4115,14.36828399
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-8.py,2497,397,2894,4.309518576
+llama-3.1-8b-instruct-maas,All,case2-8.py,3327,1413,4740,12.79671288
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case2-9.py,1723,1134,2857,10.32889915
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case2-9.py,1709,157,1866,2.290045977
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case2-9.py,1696,1384,3080,12.21787
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case2-9.py,1729,676,2405,6.490400553
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case2-9.py,1702,759,2461,7.203302622
+llama-3.1-8b-instruct-maas,All,case2-9.py,2532,1072,3604,9.876946926
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-1.py,1655,427,2082,4.389560461
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-1.py,1641,162,1803,2.271775246
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-1.py,1628,266,1894,3.099512577
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-1.py,1661,322,1983,3.571252584
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-1.py,1634,493,2127,4.996001005
+llama-3.1-8b-instruct-maas,All,case3-1.py,2464,758,3222,7.259736061
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-10.py,1456,411,1867,4.275990963
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-10.py,1442,219,1661,2.687064171
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-10.py,1429,184,1613,2.437585592
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-10.py,1462,419,1881,4.440644503
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-10.py,1435,198,1633,2.533057451
+llama-3.1-8b-instruct-maas,All,case3-10.py,2265,755,3020,7.213211536
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-2.py,1417,2101,3518,18.43228292
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-2.py,1403,199,1602,2.530681133
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-2.py,1390,198,1588,2.550192833
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-2.py,1423,298,1721,3.798863888
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-2.py,1396,1401,2797,12.28511
+llama-3.1-8b-instruct-maas,All,case3-2.py,2226,721,2947,6.947469234
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-3.py,737,85,822,1.570086956
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-3.py,723,156,879,2.163316965
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-3.py,710,196,906,2.479158401
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-3.py,743,194,937,2.423843384
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-3.py,716,264,980,2.985871077
+llama-3.1-8b-instruct-maas,All,case3-3.py,1546,559,2105,5.516976595
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-4.py,3322,1040,4362,9.734546185
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-4.py,3308,202,3510,2.745416164
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-4.py,3295,873,4168,8.285636902
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-4.py,3328,1095,4423,10.10801268
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-4.py,3301,456,3757,4.864449024
+llama-3.1-8b-instruct-maas,All,case3-4.py,4131,611,4742,6.321628332
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-5.py,2376,2308,4684,19.97688031
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-5.py,2362,287,2649,3.35333395
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-5.py,2349,1315,3664,11.75046635
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-5.py,2382,298,2680,3.509162664
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-5.py,2355,875,3230,8.247769833
+llama-3.1-8b-instruct-maas,All,case3-5.py,3185,3368,6553,28.96373272
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-6.py,1556,168,1724,2.406164646
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-6.py,1542,182,1724,2.483535051
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-6.py,1529,175,1704,2.432941437
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-6.py,1562,1085,2647,10.0781436
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-6.py,1535,176,1711,2.439670563
+llama-3.1-8b-instruct-maas,All,case3-6.py,2365,557,2922,5.57823348
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-7.py,1089,167,1256,2.261042833
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-7.py,1075,168,1243,2.265189171
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-7.py,1062,130,1192,2.004136086
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-7.py,1095,286,1381,3.258272171
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-7.py,1068,403,1471,4.139638901
+llama-3.1-8b-instruct-maas,All,case3-7.py,1898,335,2233,3.742372751
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-8.py,15582,8192,23774,75.60864639
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-8.py,15568,555,16123,8.11447072
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-8.py,15555,53,15608,3.861849546
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-8.py,15588,8192,23780,75.68401217
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-8.py,15561,8192,23753,74.49658918
+llama-3.1-8b-instruct-maas,All,case3-8.py,16391,8192,24583,75.3561337
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case3-9.py,2042,212,2254,2.830861092
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case3-9.py,2028,151,2179,2.307343245
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case3-9.py,2015,279,2294,3.300557613
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case3-9.py,2048,367,2415,4.093639612
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case3-9.py,2021,335,2356,3.76830101
+llama-3.1-8b-instruct-maas,All,case3-9.py,2851,678,3529,6.738522291
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-1.py,947,224,1171,2.678573847
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-1.py,933,293,1226,3.258284569
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-1.py,920,194,1114,2.477946997
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-1.py,953,369,1322,3.90444088
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-1.py,926,910,1836,8.264745474
+llama-3.1-8b-instruct-maas,All,case4-1.py,1756,479,2235,4.894087076
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-10.py,961,272,1233,3.121632814
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-10.py,947,382,1329,4.045460701
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-10.py,934,225,1159,2.730798244
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-10.py,967,624,1591,6.031571627
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-10.py,940,851,1791,8.030008554
+llama-3.1-8b-instruct-maas,All,case4-10.py,1770,970,2740,8.87275815
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-2.py,728,84,812,1.569005013
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-2.py,714,22,736,1.033671379
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-2.py,701,309,1010,3.476486206
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-2.py,734,234,968,2.783811808
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-2.py,707,470,1177,4.937562466
+llama-3.1-8b-instruct-maas,All,case4-2.py,1537,407,1944,4.311989784
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-3.py,707,86,793,1.618920803
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-3.py,693,22,715,1.052792549
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-3.py,680,198,878,2.45944047
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-3.py,713,832,1545,7.683972597
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-3.py,686,707,1393,6.58932066
+llama-3.1-8b-instruct-maas,All,case4-3.py,1516,855,2371,7.937206984
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-4.py,813,201,1014,2.513276339
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-4.py,799,66,865,1.445753098
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-4.py,786,369,1155,3.889354229
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-4.py,819,605,1424,5.819296837
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-4.py,792,737,1529,6.962551594
+llama-3.1-8b-instruct-maas,All,case4-4.py,1622,569,2191,5.618477345
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-5.py,2958,250,3208,3.158070803
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-5.py,2944,201,3145,2.724298239
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-5.py,2931,465,3396,4.907352924
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-5.py,2964,597,3561,5.977190733
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-5.py,2937,197,3134,2.744423389
+llama-3.1-8b-instruct-maas,All,case4-5.py,3767,794,4561,7.721668482
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-6.py,698,1155,1853,10.31944132
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-6.py,684,22,706,1.05128336
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-6.py,671,170,841,2.250329018
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-6.py,704,147,851,2.054954529
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-6.py,677,1117,1794,9.956512451
+llama-3.1-8b-instruct-maas,All,case4-6.py,1507,931,2438,8.589911938
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-7.py,3556,191,3747,2.688666344
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-7.py,3542,209,3751,2.823744297
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-7.py,3529,223,3752,2.926815748
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-7.py,3562,352,3914,4.055030346
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-7.py,3535,941,4476,8.870961189
+llama-3.1-8b-instruct-maas,All,case4-7.py,4365,2180,6545,19.47610641
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-8.py,781,238,1019,2.790914774
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-8.py,767,26,793,1.135677338
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-8.py,754,227,981,2.765501261
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-8.py,787,136,923,1.954585552
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-8.py,760,988,1748,8.867378473
+llama-3.1-8b-instruct-maas,All,case4-8.py,1590,651,2241,6.256402493
+llama-3.1-8b-instruct-maas,RDD vs DataFrame,case4-9.py,826,363,1189,3.824560881
+llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case4-9.py,812,66,878,1.458126545
+llama-3.1-8b-instruct-maas,Map vs MapPartitions,case4-9.py,799,289,1088,3.224677324
+llama-3.1-8b-instruct-maas,Serialized Data Formats,case4-9.py,832,237,1069,2.836026192
+llama-3.1-8b-instruct-maas,Avoiding UDFs,case4-9.py,805,246,1051,2.895913601
+llama-3.1-8b-instruct-maas,All,case4-9.py,1635,420,2055,4.379347086
