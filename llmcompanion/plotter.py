@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-csv_file_path = "all_model_case_success_26.12.csv"
+# csv_file_path = "all_model_case_success_26.12.csv"
 
 
 
 # Read the CSV file into a DataFrame
-data = pd.read_csv(csv_file_path)
+# data = pd.read_csv(csv_file_path)
 
 
 def case_modelplotter(data):
@@ -164,9 +164,7 @@ def tokens_plotter_with_input_output():
 
 # Call the function
 # tokens_plotter_with_input_output()
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 def total_tokens_plotter():
     # Load the CSV file
@@ -216,3 +214,223 @@ def output_tokens_plotter():
 
 # Call the function
 # output_tokens_plotter()
+
+
+
+
+
+def calculate_average_tokens(input_file, output_file):
+    # Load the CSV file
+    data = pd.read_csv(input_file)
+
+    # Ensure Input Tokens and Output Tokens columns are numeric
+    data['Input Tokens'] = pd.to_numeric(data['Input Tokens'], errors='coerce')
+    data['Output Tokens'] = pd.to_numeric(data['Output Tokens'], errors='coerce')
+
+    # Group by 'Model' and calculate the average input and output tokens
+    avg_tokens = data.groupby('Model').agg({
+        'Input Tokens': 'mean',
+        'Output Tokens': 'mean'
+    }).reset_index()
+
+    # Rename the columns for clarity
+    avg_tokens.rename(columns={
+        'Input Tokens': 'Average Input Tokens',
+        'Output Tokens': 'Average Output Tokens'
+    }, inplace=True)
+
+    # Write the results to a new CSV file
+    avg_tokens.to_csv(output_file, index=False)
+
+    print(f"Average tokens written to {output_file}")
+
+# Example usage
+input_file = "cumulative_token_data.csv"  # Replace with your input CSV file name
+output_file = "average_tokens_per_model.csv"  # Replace with your desired output CSV file name
+
+# calculate_average_tokens(input_file, output_file)
+
+
+
+
+
+
+def calculate_case_specific_averages(input_file, output_file):
+    # Load the CSV file
+    data = pd.read_csv(input_file)
+
+    # Ensure Input Tokens and Output Tokens columns are numeric
+    data['Input Tokens'] = pd.to_numeric(data['Input Tokens'], errors='coerce')
+    data['Output Tokens'] = pd.to_numeric(data['Output Tokens'], errors='coerce')
+
+    # Filter for the "All" case and calculate average tokens
+    all_case_data = data[data['Case'] == 'All']
+    avg_all_case_tokens = all_case_data.groupby('Model').agg({
+        'Input Tokens': 'mean',
+        'Output Tokens': 'mean'
+    }).reset_index()
+    avg_all_case_tokens.rename(columns={
+        'Input Tokens': 'Avg Input Tokens (All Case)',
+        'Output Tokens': 'Avg Output Tokens (All Case)'
+    }, inplace=True)
+
+    # Filter for the rest of the cases (excluding "All") and calculate average tokens
+    other_cases_data = data[data['Case'] != 'All']
+    avg_other_cases_tokens = other_cases_data.groupby('Model').agg({
+        'Input Tokens': 'mean',
+        'Output Tokens': 'mean'
+    }).reset_index()
+    avg_other_cases_tokens.rename(columns={
+        'Input Tokens': 'Avg Input Tokens (Other Cases)',
+        'Output Tokens': 'Avg Output Tokens (Other Cases)'
+    }, inplace=True)
+
+    # Merge the results for "All" and "Other" cases
+    combined_averages = pd.merge(avg_all_case_tokens, avg_other_cases_tokens, on='Model', how='outer')
+
+    # Write the results to a new CSV file
+    combined_averages.to_csv(output_file, index=False)
+
+    print(f"Average tokens per model for 'All' and other cases written to {output_file}")
+
+# Example usage
+input_file = "cumulative_token_data.csv"  # Replace with your input CSV file name
+output_file = "average_tokens_all_vs_others.csv"  # Replace with your desir
+
+# calculate_case_specific_averages(input_file, output_file)
+
+
+def plot_average_tokens(input_file):
+    # Load the computed averages from the CSV file
+    combined_averages = pd.read_csv(input_file)
+
+    # Set up the bar plot
+    models = combined_averages['Model']
+    avg_input_all = combined_averages['Avg Input Tokens (All Case)']
+    avg_output_all = combined_averages['Avg Output Tokens (All Case)']
+    avg_input_other = combined_averages['Avg Input Tokens (Other Cases)']
+    avg_output_other = combined_averages['Avg Output Tokens (Other Cases)']
+
+    # Define the width of the bars
+    bar_width = 0.2
+    x = np.arange(len(models))  # Label locations
+
+    # Create the plot
+    plt.figure(figsize=(12, 6))
+
+    # Plot bars for "All Case"
+    plt.bar(x - bar_width, avg_input_all, width=bar_width, label='Avg Input Tokens (All Case)', color='lightblue')
+    plt.bar(x, avg_output_all, width=bar_width, label='Avg Output Tokens (All Case)', color='blue')
+
+    # Plot bars for "Other Cases"
+    plt.bar(x + bar_width, avg_input_other, width=bar_width, label='Avg Input Tokens (Other Cases)', color='pink')
+    plt.bar(x + 2 * bar_width, avg_output_other, width=bar_width, label='Avg Output Tokens (Other Cases)', color='red')
+
+    # Add labels, title, and legend
+    plt.title('Average Token Counts per Model (All Case vs Other Cases)', fontsize=16)
+    plt.xlabel('Model', fontsize=12)
+    plt.ylabel('Average Token Count', fontsize=12)
+    plt.xticks(x + bar_width / 2, models, rotation=45, fontsize=10)
+    plt.legend(title="Token Type", fontsize=10)
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# Example usage
+input_file = "average_tokens_all_vs_others.csv"  # Replace with the generated CSV file
+# plot_average_tokens(input_file)
+
+
+def calculate_costs_from_averages(token_avg_file, pricing_file, output_file):
+    # Load the average token data and pricing data
+    token_avg_data = pd.read_csv(token_avg_file)
+    pricing_data = pd.read_csv(pricing_file)
+    
+    # Merge the datasets on the 'Model' column
+    merged_data = pd.merge(token_avg_data, pricing_data, on='Model', how='inner')
+    
+    # Calculate costs for "All Case"
+    merged_data['All Case Input Cost'] = (merged_data['Avg Input Tokens (All Case)'] / 1_000_000) * merged_data['Cost Per 1M Token (Input)']
+    merged_data['All Case Output Cost'] = (merged_data['Avg Output Tokens (All Case)'] / 1_000_000) * merged_data['Cost Per 1M Token (Output)']
+    merged_data['All Case Total Cost'] = merged_data['All Case Input Cost'] + merged_data['All Case Output Cost']
+    
+    # Calculate costs for "Other Cases"
+    merged_data['Other Cases Input Cost'] = (merged_data['Avg Input Tokens (Other Cases)'] / 1_000_000) * merged_data['Cost Per 1M Token (Input)']
+    merged_data['Other Cases Output Cost'] = (merged_data['Avg Output Tokens (Other Cases)'] / 1_000_000) * merged_data['Cost Per 1M Token (Output)']
+    merged_data['Other Cases Total Cost'] = merged_data['Other Cases Input Cost'] + merged_data['Other Cases Output Cost']
+    
+    # Save the results to a new CSV file
+    merged_data.to_csv(output_file, index=False)
+    print(f"Costs calculated and saved to {output_file}")
+
+# Example usage
+token_avg_file = "average_tokens_all_vs_others.csv"  # Replace with your token averages file
+pricing_file = "model_pricings.csv"  # Replace with your pricing data file
+output_file = "calculated_costs.csv"  # Replace with the desired output file name
+
+calculate_costs_from_averages(token_avg_file, pricing_file, output_file)
+
+def plot_costs(cost_file):
+    # Load the calculated cost data
+    cost_data = pd.read_csv(cost_file)
+
+    
+    # Melt the data for grouped plotting
+    melted_data = pd.melt(
+        cost_data, 
+        id_vars=["Model"], 
+        value_vars=["All Case Total Cost", "Other Cases Total Cost"], 
+        var_name="Case Type", 
+        value_name="Average Cost"
+    )
+    
+    # Plot total costs
+    plt.figure(figsize=(12, 6))
+    sns.barplot(x="Model", y="Average Cost", hue="Case Type", data=melted_data, palette="Blues")
+    plt.title('Average Costs Per Model for All Case and Separate Cases', fontsize=16)
+    plt.xlabel('Model', fontsize=12)
+    plt.ylabel('Average Cost ($)', fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.legend(title="Case Type")
+    plt.tight_layout()
+    plt.show()
+
+# Example usage
+# plot_costs(output_file)
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def plot_accuracy_cost_ratio(accuracy_file, cost_file):
+    # Load accuracy and cost data
+    accuracy_data = pd.read_csv(accuracy_file)
+    cost_data = pd.read_csv(cost_file)
+
+    # Ensure column names match, and select the relevant cost column (Other Cases Total Cost)
+    cost_data.rename(columns={"Other Cases Total Cost": "Total Cost (Other)"}, inplace=True)
+    
+    # Merge the accuracy and cost data on the "Model" column
+    merged_data = pd.merge(accuracy_data, cost_data[["Model", "Total Cost (Other)"]], on="Model")
+    
+    # Calculate Accuracy/Cost ratio
+    merged_data["Accuracy/Cost"] = merged_data["Accuracy"] / merged_data["Total Cost (Other)"]
+    
+    # Plot Accuracy/Cost vs Model
+    plt.figure(figsize=(10, 6))
+    sns.barplot(data=merged_data, x="Model", y="Accuracy/Cost", palette="Blues")
+    plt.title("Accuracy/Cost Ratio vs Model", fontsize=16)
+    plt.xlabel("Model", fontsize=12)
+    plt.ylabel("Accuracy/Cost Ratio", fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.tight_layout()
+    plt.show()
+
+# Example usage
+accuracy_file = "specific_metrics_per_model.csv"  # Replace with your accuracy file
+cost_file = "calculated_costs.csv"  # Replace with your cost file
+
+plot_accuracy_cost_ratio(accuracy_file, cost_file)
