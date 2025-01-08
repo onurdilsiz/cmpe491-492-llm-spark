@@ -1,0 +1,12 @@
+Model,Case,File,Latency,Detection Result
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case02.py,2.530231237411499,True,0
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case02.py,6.057272911071777,True,2
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case023.py,2.1982133388519287,True,0
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case023.py,4.349149465560913,True,2
+publishers/meta/models/llama-3.1-8b-instruct-maas,All,case023.py,8.03777003288269,False,0
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case03.py,1.7105391025543213,True,0
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case03.py,4.495912313461304,True,2
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case04.py,2.155400276184082,True,0
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case04.py,6.19551682472229,True,2
+publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case04.py,2.8014087677001953,True,1
+publishers/meta/models/llama-3.1-8b-instruct-maas,All,case04.py,5.4035866260528564,False,0

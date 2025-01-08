@@ -1,0 +1,96 @@
+2025-01-09 01:55:16,169 - INFO - Logging initialized.
+2025-01-09 01:55:58,945 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:01,963 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:02,511 - INFO - Loading faiss with AVX2 support.
+2025-01-09 01:56:02,625 - INFO - Successfully loaded faiss with AVX2 support.
+2025-01-09 01:56:04,992 - INFO - Processing file: case02.py
+2025-01-09 01:56:04,993 - INFO - Analyzing case: RDD vs DataFrame with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt0.txt
+2025-01-09 01:56:05,465 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:14,108 - INFO - Analysis completed in 9.11 seconds
+2025-01-09 01:56:14,108 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 93 (char 156)
+2025-01-09 01:56:14,108 - INFO - Analyzing case: Coalesce vs Repartition with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt1.txt
+2025-01-09 01:56:14,401 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:16,638 - INFO - Analysis completed in 2.53 seconds
+2025-01-09 01:56:16,644 - INFO - Analyzing case: Map vs MapPartitions with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt2.txt
+2025-01-09 01:56:16,919 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:21,486 - INFO - Analysis completed in 4.84 seconds
+2025-01-09 01:56:21,486 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 90 (char 153)
+2025-01-09 01:56:21,486 - INFO - Analyzing case: Serialized Data Formats with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt3.txt
+2025-01-09 01:56:21,925 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:27,545 - INFO - Analysis completed in 6.06 seconds
+2025-01-09 01:56:27,546 - INFO - Analyzing case: Avoiding UDFs with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt4.txt
+2025-01-09 01:56:28,170 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:31,538 - INFO - Analysis completed in 3.99 seconds
+2025-01-09 01:56:31,538 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 90 (char 153)
+2025-01-09 01:56:31,538 - INFO - Analyzing case: All with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt5.txt
+2025-01-09 01:56:32,052 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:40,542 - INFO - Analysis completed in 9.00 seconds
+2025-01-09 01:56:40,543 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 90 (char 156)
+2025-01-09 01:56:40,543 - INFO - Processing file: case023.py
+2025-01-09 01:56:40,548 - INFO - Analyzing case: RDD vs DataFrame with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt0.txt
+2025-01-09 01:56:41,343 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:49,839 - INFO - Analysis completed in 9.29 seconds
+2025-01-09 01:56:49,840 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 89 (char 152)
+2025-01-09 01:56:49,840 - INFO - Analyzing case: Coalesce vs Repartition with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt1.txt
+2025-01-09 01:56:50,089 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:52,038 - INFO - Analysis completed in 2.20 seconds
+2025-01-09 01:56:52,040 - INFO - Analyzing case: Map vs MapPartitions with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt2.txt
+2025-01-09 01:56:52,395 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:56:56,470 - INFO - Analysis completed in 4.43 seconds
+2025-01-09 01:56:56,471 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 86 (char 149)
+2025-01-09 01:56:56,471 - INFO - Analyzing case: Serialized Data Formats with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt3.txt
+2025-01-09 01:56:56,689 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:00,820 - INFO - Analysis completed in 4.35 seconds
+2025-01-09 01:57:00,821 - INFO - Analyzing case: Avoiding UDFs with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt4.txt
+2025-01-09 01:57:01,563 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:05,975 - INFO - Analysis completed in 5.15 seconds
+2025-01-09 01:57:05,975 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 86 (char 149)
+2025-01-09 01:57:05,975 - INFO - Analyzing case: All with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt5.txt
+2025-01-09 01:57:06,212 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:14,012 - INFO - Analysis completed in 8.04 seconds
+2025-01-09 01:57:14,018 - INFO - Processing file: case03.py
+2025-01-09 01:57:14,019 - INFO - Analyzing case: RDD vs DataFrame with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt0.txt
+2025-01-09 01:57:14,624 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:19,617 - INFO - Analysis completed in 5.60 seconds
+2025-01-09 01:57:19,617 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 93 (char 156)
+2025-01-09 01:57:19,617 - INFO - Analyzing case: Coalesce vs Repartition with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt1.txt
+2025-01-09 01:57:19,892 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:21,329 - INFO - Analysis completed in 1.71 seconds
+2025-01-09 01:57:21,335 - INFO - Analyzing case: Map vs MapPartitions with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt2.txt
+2025-01-09 01:57:21,585 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:25,628 - INFO - Analysis completed in 4.29 seconds
+2025-01-09 01:57:25,629 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 90 (char 153)
+2025-01-09 01:57:25,629 - INFO - Analyzing case: Serialized Data Formats with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt3.txt
+2025-01-09 01:57:25,832 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:30,125 - INFO - Analysis completed in 4.50 seconds
+2025-01-09 01:57:30,127 - INFO - Analyzing case: Avoiding UDFs with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt4.txt
+2025-01-09 01:57:30,427 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:33,991 - INFO - Analysis completed in 3.86 seconds
+2025-01-09 01:57:33,992 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 90 (char 153)
+2025-01-09 01:57:33,992 - INFO - Analyzing case: All with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt5.txt
+2025-01-09 01:57:35,413 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:40,753 - INFO - Analysis completed in 6.76 seconds
+2025-01-09 01:57:40,753 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 90 (char 156)
+2025-01-09 01:57:40,753 - INFO - Processing file: case04.py
+2025-01-09 01:57:40,754 - INFO - Analyzing case: RDD vs DataFrame with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt0.txt
+2025-01-09 01:57:41,128 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:46,496 - INFO - Analysis completed in 5.74 seconds
+2025-01-09 01:57:46,496 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 93 (char 156)
+2025-01-09 01:57:46,496 - INFO - Analyzing case: Coalesce vs Repartition with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt1.txt
+2025-01-09 01:57:47,233 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:48,652 - INFO - Analysis completed in 2.16 seconds
+2025-01-09 01:57:48,654 - INFO - Analyzing case: Map vs MapPartitions with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt2.txt
+2025-01-09 01:57:48,871 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:53,083 - INFO - Analysis completed in 4.43 seconds
+2025-01-09 01:57:53,084 - ERROR - Error decoding JSON: Expecting ':' delimiter: line 6 column 90 (char 153)
+2025-01-09 01:57:53,084 - INFO - Analyzing case: Serialized Data Formats with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt3.txt
+2025-01-09 01:57:53,764 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:57:59,279 - INFO - Analysis completed in 6.20 seconds
+2025-01-09 01:57:59,280 - INFO - Analyzing case: Avoiding UDFs with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt4.txt
+2025-01-09 01:57:59,724 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:58:02,082 - INFO - Analysis completed in 2.80 seconds
+2025-01-09 01:58:02,083 - INFO - Analyzing case: All with model: publishers/meta/models/llama-3.1-8b-instruct-maas using prompt: prompts\prompt5.txt
+2025-01-09 01:58:02,357 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:58:07,487 - INFO - Analysis completed in 5.40 seconds
+2025-01-09 01:58:07,494 - INFO - All results logged to CSV: tokenresults_with_rag.csv
+2025-01-09 01:58:07,495 - INFO - All results logged to CSV: <_io.TextIOWrapper name='detectionresults_with_rag.csv' mode='w' encoding='utf-8'>

@@ -1,0 +1,25 @@
+Model,Case,File,Input Tokens,Output Tokens,Total Tokens,Latency
+publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case02.py,665,534,1199,9.110076189041138
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case02.py,651,106,757,2.530231237411499
+publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case02.py,638,383,1021,4.841546058654785
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case02.py,671,578,1249,6.057272911071777
+publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case02.py,644,299,943,3.991579055786133
+publishers/meta/models/llama-3.1-8b-instruct-maas,All,case02.py,1474,808,2282,9.004103422164917
+publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case023.py,756,871,1627,9.290706157684326
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case023.py,742,66,808,2.1982133388519287
+publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case023.py,729,380,1109,4.429966449737549
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case023.py,762,384,1146,4.349149465560913
+publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case023.py,735,422,1157,5.153743743896484
+publishers/meta/models/llama-3.1-8b-instruct-maas,All,case023.py,1565,831,2396,8.03777003288269
+publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case03.py,644,501,1145,5.598730802536011
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case03.py,630,66,696,1.7105391025543213
+publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case03.py,617,380,997,4.292431116104126
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case03.py,650,421,1071,4.495912313461304
+publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case03.py,623,318,941,3.8640666007995605
+publishers/meta/models/llama-3.1-8b-instruct-maas,All,case03.py,1453,537,1990,6.760576248168945
+publishers/meta/models/llama-3.1-8b-instruct-maas,RDD vs DataFrame,case04.py,720,550,1270,5.742516040802002
+publishers/meta/models/llama-3.1-8b-instruct-maas,Coalesce vs Repartition,case04.py,706,66,772,2.155400276184082
+publishers/meta/models/llama-3.1-8b-instruct-maas,Map vs MapPartitions,case04.py,693,409,1102,4.429081439971924
+publishers/meta/models/llama-3.1-8b-instruct-maas,Serialized Data Formats,case04.py,726,559,1285,6.19551682472229
+publishers/meta/models/llama-3.1-8b-instruct-maas,Avoiding UDFs,case04.py,699,176,875,2.8014087677001953
+publishers/meta/models/llama-3.1-8b-instruct-maas,All,case04.py,1529,513,2042,5.4035866260528564
