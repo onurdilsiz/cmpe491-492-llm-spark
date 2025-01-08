@@ -401,9 +401,6 @@ def plot_costs(cost_file):
 
 
 
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 def plot_accuracy_cost_ratio(accuracy_file, cost_file):
     # Load accuracy and cost data
@@ -433,4 +430,118 @@ def plot_accuracy_cost_ratio(accuracy_file, cost_file):
 accuracy_file = "specific_metrics_per_model.csv"  # Replace with your accuracy file
 cost_file = "calculated_costs.csv"  # Replace with your cost file
 
-plot_accuracy_cost_ratio(accuracy_file, cost_file)
+# plot_accuracy_cost_ratio(accuracy_file, cost_file)
+
+
+
+
+
+def plot_accuracy(file_path):
+    # Load the specific metrics CSV file
+    metrics_data = pd.read_csv(file_path)
+
+    # Ensure the Accuracy column is numeric
+    metrics_data['Accuracy'] = pd.to_numeric(metrics_data['Accuracy'], errors='coerce')
+
+    # Plot Accuracy vs Model
+    plt.figure(figsize=(10, 6))
+    sns.barplot(data=metrics_data, x="Model", y="Accuracy", palette="Blues")
+    plt.title("Accuracy vs Model", fontsize=16)
+    plt.xlabel("Model", fontsize=12)
+    plt.ylabel("Accuracy", fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# Example usage
+file_path = "analysisfiles/specific_metrics_per_model.csv"  # Replace with your file name
+# plot_accuracy(file_path)
+
+
+def plot_accuracy_grouped_by_case(file_path):
+    # Load the CSV file
+    data = pd.read_csv(file_path)
+
+    # Filter the data to include only the Accuracy column
+    accuracy_data = data[["Case", "Model", "Accuracy"]]
+
+    # Sort the data alphabetically by Case and Model
+    accuracy_data = accuracy_data.sort_values(by=["Case", "Model"], ascending=[True, True])
+
+    # Create the grouped bar plot
+    plt.figure(figsize=(14, 8))
+    sns.barplot(
+        data=accuracy_data,
+        x="Case",
+        y="Accuracy",
+        hue="Model",
+        ci=None,
+        palette="Blues"
+    )
+
+    # Customize the plot
+    plt.title("Accuracy Grouped by Case and Model", fontsize=16)
+    plt.xlabel("Case", fontsize=12)
+    plt.ylabel("Accuracy", fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.legend(title="Model", fontsize=10, loc="upper left", bbox_to_anchor=(1, 1))
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# Example usage
+file_path = "specific_metrics_per_case_model.csv"  # Replace with your actual file name
+# plot_accuracy_grouped_by_case(file_path)
+
+
+
+
+def plot_accuracy_with_scenarios(file1, file2, scenario1_name, scenario2_name):
+    """
+    Plot accuracy with two scenarios from two files.
+
+    :param file1: Path to the first file for Scenario 1
+    :param file2: Path to the second file for Scenario 2
+    :param scenario1_name: Name for the first scenario
+    :param scenario2_name: Name for the second scenario
+    """
+    # Load the CSV files
+    metrics_data_1 = pd.read_csv(file1)
+    metrics_data_2 = pd.read_csv(file2)
+
+    # Ensure the Accuracy column is numeric
+    metrics_data_1['Accuracy'] = pd.to_numeric(metrics_data_1['Accuracy'], errors='coerce')
+    metrics_data_2['Accuracy'] = pd.to_numeric(metrics_data_2['Accuracy'], errors='coerce')
+
+    # Add a column to indicate the scenario
+    metrics_data_1['Scenario'] = scenario1_name
+    metrics_data_2['Scenario'] = scenario2_name
+
+    # Combine the two dataframes
+    combined_data = pd.concat([metrics_data_1, metrics_data_2])
+
+    # Plot Accuracy vs Model grouped by Scenario
+    plt.figure(figsize=(14, 8))
+    sns.barplot(data=combined_data, x="Model", y="Accuracy", hue="Scenario", palette="Blues", ci=None)
+    
+    # Customize the plot
+    plt.title("Accuracy vs Model Across Scenarios", fontsize=16)
+    plt.xlabel("Model", fontsize=12)
+    plt.ylabel("Accuracy", fontsize=12)
+    plt.xticks(rotation=45, fontsize=10)
+    plt.legend(title="Scenario", fontsize=10, loc="upper left")
+    plt.tight_layout()
+
+    # Show the plot
+    plt.show()
+
+# Example usage
+file1 = "analysisfiles/whole_metrics_per_model.csv"  # Replace with the path to the first file
+file2 = "analysisfiles/specific_metrics_per_model.csv"  # Replace with the path to the second file
+scenario1_name = "All"  # Replace with the name of the first scenario
+scenario2_name = "Separate"  # Replace with the name of the second scenario
+
+plot_accuracy_with_scenarios(file1, file2, scenario1_name, scenario2_name)
