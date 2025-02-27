@@ -83,11 +83,13 @@ def modelplotter():
 # modelplotter()
 
 def latencyplotter():
-    file_path = "all_latency.csv"  # Replace with the correct file name
+    file_path = "specific_detection_results.csv"  # Replace with the correct file name
     data = pd.read_csv(file_path)
 
     # Ensure Latency is a numeric column
-    data['Latency'] = pd.to_numeric(data['Latency']/5, errors='coerce')
+    data['Latency'] = pd.to_numeric(data['Latency'], errors='coerce')
+    data = data.sort_values(by='Model')
+
 
     # Plot the latency for each model
     plt.figure(figsize=(10, 6))
@@ -103,7 +105,7 @@ def latencyplotter():
     # Show the plot
     plt.show()
 
-# latencyplotter()
+latencyplotter()
 
 def latencyplotter_grouped():
     file_path = "specific_detection_results.csv"  # Replace with the correct file name
@@ -387,7 +389,7 @@ def plot_costs(cost_file):
     
     # Plot total costs
     plt.figure(figsize=(12, 6))
-    sns.barplot(x="Model", y="Average Cost", hue="Case Type", data=melted_data, palette="Blues")
+    sns.barplot(x="Model", y="Average Cost", hue="Case Type", data=melted_data, palette="Purples")
     plt.title('Average Costs Per Model for All Case and Separate Cases', fontsize=16)
     plt.xlabel('Model', fontsize=12)
     plt.ylabel('Average Cost ($)', fontsize=12)
@@ -544,4 +546,4 @@ file2 = "analysisfiles/specific_metrics_per_model.csv"  # Replace with the path 
 scenario1_name = "All"  # Replace with the name of the first scenario
 scenario2_name = "Separate"  # Replace with the name of the second scenario
 
-plot_accuracy_with_scenarios(file1, file2, scenario1_name, scenario2_name)
+# plot_accuracy_with_scenarios(file1, file2, scenario1_name, scenario2_name)

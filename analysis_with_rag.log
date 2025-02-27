@@ -1,0 +1,15 @@
+2025-01-09 01:28:27,155 - INFO - Logging initialized.
+2025-01-09 01:29:16,083 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:29:19,231 - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2025-01-09 01:29:20,965 - INFO - Loading faiss with AVX2 support.
+2025-01-09 01:29:21,364 - INFO - Successfully loaded faiss with AVX2 support.
+2025-01-09 01:29:25,815 - ERROR - Fatal error occurred: [WinError 3] The system cannot find the path specified: 'dataset2'
+Traceback (most recent call last):
+  File "c:\Users\onurd\Desktop\CMPE491\llmcompanion\ragtrial.py", line 206, in <module>
+    main_with_rag()
+  File "c:\Users\onurd\Desktop\CMPE491\llmcompanion\ragtrial.py", line 202, in main_with_rag
+    analyze_directory(config["dataset_dir"], config["cases"], llms, config["prompts_dir"], config["output_dir"], config["csv_file"], config["csv_file2"], retriever)
+  File "c:\Users\onurd\Desktop\CMPE491\llmcompanion\ragtrial.py", line 95, in analyze_directory
+    for file_name in os.listdir(dataset_dir):
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 3] The system cannot find the path specified: 'dataset2'
