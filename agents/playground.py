@@ -3,6 +3,9 @@ from agno.models.openai import OpenAIChat
 from agno.playground import Playground, serve_playground_app
 from agno.storage.agent.sqlite import SqliteAgentStorage
 from agno.tools.duckduckgo import DuckDuckGoTools
+from agno.tools.firecrawl import FirecrawlTools
+
+
 
 PROMPT ="""    Analyze the provided Spark code and detect opportunities to improve performance, resource utilization, and maintainability by addressing the following best practices. For each detected case:
 
@@ -124,6 +127,7 @@ web_agent = Agent(
 code_quality_agent = Agent(
     name="Code Quality Agent",
     model=OpenAIChat(id="gpt-4o"),
+    tools=[DuckDuckGoTools()],
     instructions=[
         "If any code is provided, analyze it according to the following instruction, and if not given and not found in the context , please ask for the code.",
         PROMPT
@@ -135,9 +139,26 @@ code_quality_agent = Agent(
     markdown=True,
 )
 
+crawler_agent = Agent(
+    name="Crawler Agent",
+    model=OpenAIChat(id="gpt-4o"),
+    instructions=[
+        "If any link is provided crawl the link and provide the information according to the following instruction, and if not given and not found in the context , please ask for the link.",
+        ],
+    tools=[FirecrawlTools(scrape=False, crawl=True,
+        timeout=30)],
+    show_tool_calls=True,  
+    storage=SqliteAgentStorage(table_name="crawler_agent", db_file=agent_storage),
+    add_datetime_to_instructions=True,
+    add_history_to_messages=True,
+    num_history_responses=5,
+    markdown=True,
+)
 
 
-app = Playground(agents=[web_agent, code_quality_agent]).get_app()
+
+
+app = Playground(agents=[web_agent, code_quality_agent, crawler_agent]).get_app()
 
 @app.get("/")
 async def root():
