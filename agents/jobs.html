@@ -1,0 +1,3096 @@
+<!DOCTYPE html><html>
+      <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/gateway/default/sparkhistory/static/bootstrap.min.css" type="text/css"/><link rel="stylesheet" href="/gateway/default/sparkhistory/static/vis-timeline-graph2d.min.css" type="text/css"/><link rel="stylesheet" href="/gateway/default/sparkhistory/static/webui.css" type="text/css"/><link rel="stylesheet" href="/gateway/default/sparkhistory/static/timeline-view.css" type="text/css"/><script src="/gateway/default/sparkhistory/static/sorttable.js"></script><script src="/gateway/default/sparkhistory/static/jquery-3.5.1.min.js"></script><script src="/gateway/default/sparkhistory/static/vis-timeline-graph2d.min.js"></script><script src="/gateway/default/sparkhistory/static/bootstrap.bundle.min.js"></script><script src="/gateway/default/sparkhistory/static/initialize-tooltips.js"></script><script src="/gateway/default/sparkhistory/static/table.js"></script><script src="/gateway/default/sparkhistory/static/timeline-view.js"></script><script src="/gateway/default/sparkhistory/static/log-view.js"></script><script src="/gateway/default/sparkhistory/static/webui.js"></script><script>setUIRoot('/gateway/default/sparkhistory')</script>
+        <script>setAppBasePath('/history/app-20250219140302-0000')</script>
+        
+        
+        <link rel="shortcut icon" href="/gateway/default/sparkhistory/static/spark-logo-77x50px-hd.png"></link>
+        <title>digital-clickstream-parser - Spark Jobs</title>
+      </head>
+      <body>
+        <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+          <div class="navbar-header">
+            <div class="navbar-brand">
+              <a href="/gateway/default/sparkhistory/">
+                <img src="/gateway/default/sparkhistory/static/spark-logo-77x50px-hd.png"/>
+                <span class="version">3.5.1</span>
+              </a>
+            </div>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto"><li class="nav-item active">
+        <a class="nav-link" href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/">Jobs</a>
+      </li><li class="nav-item">
+        <a class="nav-link" href="/gateway/default/sparkhistory/history/app-20250219140302-0000/stages/">Stages</a>
+      </li><li class="nav-item">
+        <a class="nav-link" href="/gateway/default/sparkhistory/history/app-20250219140302-0000/storage/">Storage</a>
+      </li><li class="nav-item">
+        <a class="nav-link" href="/gateway/default/sparkhistory/history/app-20250219140302-0000/environment/">Environment</a>
+      </li><li class="nav-item">
+        <a class="nav-link" href="/gateway/default/sparkhistory/history/app-20250219140302-0000/executors/">Executors</a>
+      </li><li class="nav-item">
+        <a class="nav-link" href="/gateway/default/sparkhistory/history/app-20250219140302-0000/SQL/">SQL / DataFrame</a>
+      </li></ul>
+            <span class="navbar-text navbar-right d-none d-md-block">
+              <strong title="digital-clickstream-parser" class="text-nowrap">digital-clickstream-parser</strong>
+              <span class="text-nowrap">application UI</span>
+            </span>
+          </div>
+        </nav>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <h3 style="vertical-align: bottom; white-space: nowrap; overflow: hidden;
+                text-overflow: ellipsis;">
+                Spark Jobs
+                <sup>
+      (<a data-toggle="tooltip" data-placement="top" title="A job is triggered by an action, like count() or saveAsTextFile(). Click on a job to see information about the stages of tasks inside it.">?</a>)
+    </sup>
+              </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div>
+        <ul class="list-unstyled">
+          <li>
+
+            <strong>User:</strong>
+            spark
+          </li>
+          <li>
+            <strong>Total Uptime:</strong>
+            1.3 h
+          </li>
+          <li>
+            <strong>Scheduling Mode: </strong>
+            FIFO
+          </li>
+          
+          <li id="completed-summary">
+                <a href="#completed"><strong>Completed Jobs:</strong></a>
+                32
+              </li>
+          
+        </ul>
+      </div><span class="expand-application-timeline">
+      <span class="expand-application-timeline-arrow arrow-closed"></span>
+      <a data-toggle="tooltip" title="Shows when jobs started and ended and when executors joined or left. Drag to scroll.
+       Click Enable Zooming and use mouse wheel to zoom in/out." data-placement="top">
+        Event Timeline
+      </a>
+    </span><div id="application-timeline" class="collapsed">
+      
+      
+      <div class="control-panel">
+        <div id="application-timeline-zoom-lock">
+          <input type="checkbox"></input>
+          <span>Enable zooming</span>
+        </div>
+      </div>
+    </div><script type="text/javascript">
+      drawApplicationTimeline(
+[
+  {
+    'id': 'executors',
+    'content': '<div>Executors</div><div class="legend-area"><svg width="150px" height="55px">      <rect class="executor-added-legend" x="5px" y="5px" width="20px" height="15px" rx="2px" ry="2px"></rect>      <text x="35px" y="17px">Added</text>      <rect class="executor-removed-legend" x="5px" y="30px" width="20px" height="15px" rx="2px" ry="2px"></rect>      <text x="35px" y="42px">Removed</text>    </svg></div>',
+  },
+  {
+    'id': 'jobs',
+    'content': '<div>Jobs</div><div class="legend-area"><svg width="150px" height="85px">      <rect class="succeeded-job-legend" x="5px" y="5px" width="20px" height="15px" rx="2px" ry="2px"></rect>      <text x="35px" y="17px">Succeeded</text>      <rect class="failed-job-legend" x="5px" y="30px" width="20px" height="15px" rx="2px" ry="2px"></rect>      <text x="35px" y="42px">Failed</text>      <rect class="running-job-legend" x="5px" y="55px" width="20px" height="15px" rx="2px" ry="2px"></rect>      <text x="35px" y="67px">Running</text>    </svg></div>',
+  }
+]
+        ,[
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973792799),
+  'end': new Date(1739973796066),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 0)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:12' +
+     '<br>Completed: 2025/02/19 14:03:16">' +
+    'csv at FTAASFileReader.scala:42 (Job 0)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973796893),
+  'end': new Date(1739973800172),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 1)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:16' +
+     '<br>Completed: 2025/02/19 14:03:20">' +
+    'csv at FTAASFileReader.scala:42 (Job 1)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973800706),
+  'end': new Date(1739973804839),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 2)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:20' +
+     '<br>Completed: 2025/02/19 14:03:24">' +
+    'csv at FTAASFileReader.scala:42 (Job 2)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973805243),
+  'end': new Date(1739973809015),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 3)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:25' +
+     '<br>Completed: 2025/02/19 14:03:29">' +
+    'csv at FTAASFileReader.scala:42 (Job 3)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973809473),
+  'end': new Date(1739973812789),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 4)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:29' +
+     '<br>Completed: 2025/02/19 14:03:32">' +
+    'csv at FTAASFileReader.scala:42 (Job 4)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973813183),
+  'end': new Date(1739973817066),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 5)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:33' +
+     '<br>Completed: 2025/02/19 14:03:37">' +
+    'csv at FTAASFileReader.scala:42 (Job 5)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973817483),
+  'end': new Date(1739973820717),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 6)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:37' +
+     '<br>Completed: 2025/02/19 14:03:40">' +
+    'csv at FTAASFileReader.scala:42 (Job 6)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973821106),
+  'end': new Date(1739973825567),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 7)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:41' +
+     '<br>Completed: 2025/02/19 14:03:45">' +
+    'csv at FTAASFileReader.scala:42 (Job 7)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973825938),
+  'end': new Date(1739973830343),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 8)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:45' +
+     '<br>Completed: 2025/02/19 14:03:50">' +
+    'csv at FTAASFileReader.scala:42 (Job 8)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973830725),
+  'end': new Date(1739973835649),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 9)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:50' +
+     '<br>Completed: 2025/02/19 14:03:55">' +
+    'csv at FTAASFileReader.scala:42 (Job 9)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973836026),
+  'end': new Date(1739973838913),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 10)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:56' +
+     '<br>Completed: 2025/02/19 14:03:58">' +
+    'csv at FTAASFileReader.scala:42 (Job 10)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973839239),
+  'end': new Date(1739973843644),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:42 (Job 11)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:03:59' +
+     '<br>Completed: 2025/02/19 14:04:03">' +
+    'csv at FTAASFileReader.scala:42 (Job 11)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973844101),
+  'end': new Date(1739973848777),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="Listing leaf files and directories for 419 paths:gs:\/\/daci-secure-activity-lz-prd\/clickstream\/hourly\/success\/2022-11-12\/compressed\/data\/01-lowesgrsprod_2022-11-12.tsv.gz, ... (Job 12)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:04' +
+     '<br>Completed: 2025/02/19 14:04:08">' +
+    'Listing leaf files and directories for 419 paths:gs:\/\/daci-secure-activity-lz-prd\/clickstream\/hourly\/success\/2022-11-12\/compressed\/data\/01-lowesgrsprod_2022-11-12.tsv.gz, ... (Job 12)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973848936),
+  'end': new Date(1739973850030),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:117 (Job 13)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:08' +
+     '<br>Completed: 2025/02/19 14:04:10">' +
+    'csv at FTAASFileReader.scala:117 (Job 13)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973850415),
+  'end': new Date(1739973851432),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:137 (Job 14)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:10' +
+     '<br>Completed: 2025/02/19 14:04:11">' +
+    'csv at FTAASFileReader.scala:137 (Job 14)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973852768),
+  'end': new Date(1739973853140),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="Listing leaf files and directories for 419 paths:gs:\/\/daci-secure-activity-lz-prd\/clickstream\/hourly\/success\/2022-11-12\/compressed\/data\/01-lowesgrsprod_2022-11-12.tsv.gz, ... (Job 15)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:12' +
+     '<br>Completed: 2025/02/19 14:04:13">' +
+    'Listing leaf files and directories for 419 paths:gs:\/\/daci-secure-activity-lz-prd\/clickstream\/hourly\/success\/2022-11-12\/compressed\/data\/01-lowesgrsprod_2022-11-12.tsv.gz, ... (Job 15)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973853254),
+  'end': new Date(1739973854973),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:117 (Job 16)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:13' +
+     '<br>Completed: 2025/02/19 14:04:14">' +
+    'csv at FTAASFileReader.scala:117 (Job 16)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973855249),
+  'end': new Date(1739973856429),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="csv at FTAASFileReader.scala:137 (Job 17)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:15' +
+     '<br>Completed: 2025/02/19 14:04:16">' +
+    'csv at FTAASFileReader.scala:137 (Job 17)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973861664),
+  'end': new Date(1739973960993),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 20)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:21' +
+     '<br>Completed: 2025/02/19 14:06:00">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 20)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973861038),
+  'end': new Date(1739974023466),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 19)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:21' +
+     '<br>Completed: 2025/02/19 14:07:03">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 19)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739973860790),
+  'end': new Date(1739974196782),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 18)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:04:20' +
+     '<br>Completed: 2025/02/19 14:09:56">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 18)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739974196816),
+  'end': new Date(1739974968264),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 22)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:09:56' +
+     '<br>Completed: 2025/02/19 14:22:48">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 22)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739974023731),
+  'end': new Date(1739975682134),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 21)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:07:03' +
+     '<br>Completed: 2025/02/19 14:34:42">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 21)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739975682187),
+  'end': new Date(1739975937595),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 23)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:34:42' +
+     '<br>Completed: 2025/02/19 14:38:57">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 23)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739975937694),
+  'end': new Date(1739975949606),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 24)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:38:57' +
+     '<br>Completed: 2025/02/19 14:39:09">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 24)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739975949644),
+  'end': new Date(1739975952369),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 25)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:39:09' +
+     '<br>Completed: 2025/02/19 14:39:12">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 25)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739975952480),
+  'end': new Date(1739976765942),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 26)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:39:12' +
+     '<br>Completed: 2025/02/19 14:52:45">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 26)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739976766143),
+  'end': new Date(1739976805964),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 27)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:52:46' +
+     '<br>Completed: 2025/02/19 14:53:25">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 27)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739976806166),
+  'end': new Date(1739976806747),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 28)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:53:26' +
+     '<br>Completed: 2025/02/19 14:53:26">' +
+    'collect at DigitalClickStreamParserExecutionEngine.scala:232 (Job 28)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739976810473),
+  'end': new Date(1739976818097),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="Listing leaf files and directories for 771 paths:gs:\/\/daci-secure-activity-bronze-prd\/clickstream-silver\/clickstream-grs\/feed_date=2022-04-10, ... (Job 29)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:53:30' +
+     '<br>Completed: 2025/02/19 14:53:38">' +
+    'Listing leaf files and directories for 771 paths:gs:\/\/daci-secure-activity-bronze-prd\/clickstream-silver\/clickstream-grs\/feed_date=2022-04-10, ... (Job 29)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739976841470),
+  'end': new Date(1739977577062),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="orc at GCPExecutionEngine.scala:61 (Job 30)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 14:54:01' +
+     '<br>Completed: 2025/02/19 15:06:17">' +
+    'orc at GCPExecutionEngine.scala:61 (Job 30)</div>'
+}
+         ,
+{
+  'className': 'job application-timeline-object succeeded',
+  'group': 'jobs',
+  'start': new Date(1739977577417),
+  'end': new Date(1739978602219),
+  'content': '<div class="application-timeline-content"' +
+     'data-html="true" data-placement="top" data-toggle="tooltip"' +
+     'data-title="orc at GCPExecutionEngine.scala:61 (Job 31)<br>' +
+     'Status: SUCCEEDED<br>' +
+     'Submitted: 2025/02/19 15:06:17' +
+     '<br>Completed: 2025/02/19 15:23:22">' +
+    'orc at GCPExecutionEngine.scala:61 (Job 31)</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973782947),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor driver<br>' +
+    'Added at 2025/02/19 14:03:02"' +
+    'data-html="true">Executor driver added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973789541),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 59<br>' +
+    'Added at 2025/02/19 14:03:09"' +
+    'data-html="true">Executor 59 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973789604),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 56<br>' +
+    'Added at 2025/02/19 14:03:09"' +
+    'data-html="true">Executor 56 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973789929),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 13<br>' +
+    'Added at 2025/02/19 14:03:09"' +
+    'data-html="true">Executor 13 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973789982),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 40<br>' +
+    'Added at 2025/02/19 14:03:09"' +
+    'data-html="true">Executor 40 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790025),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 0<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 0 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790026),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 3<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 3 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790030),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 48<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 48 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790046),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 37<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 37 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790051),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 2<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 2 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790053),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 63<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 63 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790054),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 7<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 7 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790055),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 4<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 4 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790068),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 39<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 39 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790113),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 61<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 61 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790130),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 69<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 69 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790173),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 8<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 8 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790174),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 50<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 50 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790181),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 20<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 20 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790219),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 46<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 46 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790245),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 17<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 17 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790282),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 42<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 42 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790290),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 53<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 53 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790298),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 31<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 31 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790321),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 24<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 24 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790335),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 57<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 57 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790348),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 71<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 71 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790429),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 60<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 60 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790459),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 52<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 52 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790494),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 14<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 14 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973790981),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 30<br>' +
+    'Added at 2025/02/19 14:03:10"' +
+    'data-html="true">Executor 30 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791157),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 23<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 23 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791191),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 1<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 1 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791222),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 49<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 49 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791225),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 27<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 27 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791253),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 35<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 35 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791328),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 41<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 41 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791357),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 43<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 43 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791380),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 21<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 21 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791393),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 28<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 28 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791443),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 54<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 54 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791477),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 34<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 34 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791487),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 5<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 5 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791537),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 25<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 25 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791601),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 6<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 6 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791627),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 62<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 62 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791830),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 64<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 64 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973791938),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 58<br>' +
+    'Added at 2025/02/19 14:03:11"' +
+    'data-html="true">Executor 58 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792000),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 9<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 9 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792031),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 10<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 10 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792075),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 47<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 47 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792101),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 38<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 38 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792166),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 12<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 12 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792175),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 36<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 36 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792229),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 51<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 51 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792257),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 15<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 15 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792296),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 55<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 55 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792297),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 66<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 66 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792373),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 67<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 67 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792394),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 32<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 32 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792422),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 18<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 18 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792426),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 29<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 29 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792488),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 72<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 72 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792660),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 73<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 73 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792704),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 11<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 11 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792846),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 44<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 44 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792892),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 26<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 26 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973792951),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 16<br>' +
+    'Added at 2025/02/19 14:03:12"' +
+    'data-html="true">Executor 16 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973793018),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 68<br>' +
+    'Added at 2025/02/19 14:03:13"' +
+    'data-html="true">Executor 68 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973793113),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 33<br>' +
+    'Added at 2025/02/19 14:03:13"' +
+    'data-html="true">Executor 33 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973793191),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 65<br>' +
+    'Added at 2025/02/19 14:03:13"' +
+    'data-html="true">Executor 65 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973793305),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 22<br>' +
+    'Added at 2025/02/19 14:03:13"' +
+    'data-html="true">Executor 22 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973793327),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 19<br>' +
+    'Added at 2025/02/19 14:03:13"' +
+    'data-html="true">Executor 19 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973793417),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 70<br>' +
+    'Added at 2025/02/19 14:03:13"' +
+    'data-html="true">Executor 70 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973794259),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 45<br>' +
+    'Added at 2025/02/19 14:03:14"' +
+    'data-html="true">Executor 45 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973795717),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 75<br>' +
+    'Added at 2025/02/19 14:03:15"' +
+    'data-html="true">Executor 75 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973796449),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 74<br>' +
+    'Added at 2025/02/19 14:03:16"' +
+    'data-html="true">Executor 74 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973798951),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 76<br>' +
+    'Added at 2025/02/19 14:03:18"' +
+    'data-html="true">Executor 76 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973799615),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 77<br>' +
+    'Added at 2025/02/19 14:03:19"' +
+    'data-html="true">Executor 77 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973801182),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 78<br>' +
+    'Added at 2025/02/19 14:03:21"' +
+    'data-html="true">Executor 78 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739973803341),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 79<br>' +
+    'Added at 2025/02/19 14:03:23"' +
+    'data-html="true">Executor 79 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974315588),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 80<br>' +
+    'Added at 2025/02/19 14:11:55"' +
+    'data-html="true">Executor 80 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974316282),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 81<br>' +
+    'Added at 2025/02/19 14:11:56"' +
+    'data-html="true">Executor 81 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974317067),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 82<br>' +
+    'Added at 2025/02/19 14:11:57"' +
+    'data-html="true">Executor 82 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974317121),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 83<br>' +
+    'Added at 2025/02/19 14:11:57"' +
+    'data-html="true">Executor 83 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974317389),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 86<br>' +
+    'Added at 2025/02/19 14:11:57"' +
+    'data-html="true">Executor 86 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974317395),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 84<br>' +
+    'Added at 2025/02/19 14:11:57"' +
+    'data-html="true">Executor 84 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974317632),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 85<br>' +
+    'Added at 2025/02/19 14:11:57"' +
+    'data-html="true">Executor 85 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974319302),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 87<br>' +
+    'Added at 2025/02/19 14:11:59"' +
+    'data-html="true">Executor 87 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974320114),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 89<br>' +
+    'Added at 2025/02/19 14:12:00"' +
+    'data-html="true">Executor 89 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974320373),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 90<br>' +
+    'Added at 2025/02/19 14:12:00"' +
+    'data-html="true">Executor 90 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974320487),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 88<br>' +
+    'Added at 2025/02/19 14:12:00"' +
+    'data-html="true">Executor 88 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974321090),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 92<br>' +
+    'Added at 2025/02/19 14:12:01"' +
+    'data-html="true">Executor 92 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974321150),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 91<br>' +
+    'Added at 2025/02/19 14:12:01"' +
+    'data-html="true">Executor 91 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974321171),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 93<br>' +
+    'Added at 2025/02/19 14:12:01"' +
+    'data-html="true">Executor 93 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974321433),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 94<br>' +
+    'Added at 2025/02/19 14:12:01"' +
+    'data-html="true">Executor 94 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974321467),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 95<br>' +
+    'Added at 2025/02/19 14:12:01"' +
+    'data-html="true">Executor 95 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974321727),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 96<br>' +
+    'Added at 2025/02/19 14:12:01"' +
+    'data-html="true">Executor 96 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974321996),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 97<br>' +
+    'Added at 2025/02/19 14:12:01"' +
+    'data-html="true">Executor 97 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974322976),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 98<br>' +
+    'Added at 2025/02/19 14:12:02"' +
+    'data-html="true">Executor 98 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974323055),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 99<br>' +
+    'Added at 2025/02/19 14:12:03"' +
+    'data-html="true">Executor 99 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974323153),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 100<br>' +
+    'Added at 2025/02/19 14:12:03"' +
+    'data-html="true">Executor 100 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974323697),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 101<br>' +
+    'Added at 2025/02/19 14:12:03"' +
+    'data-html="true">Executor 101 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974323941),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 102<br>' +
+    'Added at 2025/02/19 14:12:03"' +
+    'data-html="true">Executor 102 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974323994),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 103<br>' +
+    'Added at 2025/02/19 14:12:03"' +
+    'data-html="true">Executor 103 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974324410),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 104<br>' +
+    'Added at 2025/02/19 14:12:04"' +
+    'data-html="true">Executor 104 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974324791),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 105<br>' +
+    'Added at 2025/02/19 14:12:04"' +
+    'data-html="true">Executor 105 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974325471),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 110<br>' +
+    'Added at 2025/02/19 14:12:05"' +
+    'data-html="true">Executor 110 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974325894),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 107<br>' +
+    'Added at 2025/02/19 14:12:05"' +
+    'data-html="true">Executor 107 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974325868),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 108<br>' +
+    'Added at 2025/02/19 14:12:05"' +
+    'data-html="true">Executor 108 added</div>'
+}
+         ,
+{
+  'className': 'executor removed',
+  'group': 'executors',
+  'start': new Date(1739974446987),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 108<br>' +
+    'Removed at 2025/02/19 14:14:06' +
+    '<br>Reason: Executor decommission: spark scale down"' +
+    'data-html="true">Executor 108 removed</div>'
+}
+           ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974326001),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 109<br>' +
+    'Added at 2025/02/19 14:12:06"' +
+    'data-html="true">Executor 109 added</div>'
+}
+         ,
+{
+  'className': 'executor removed',
+  'group': 'executors',
+  'start': new Date(1739974447062),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 109<br>' +
+    'Removed at 2025/02/19 14:14:07' +
+    '<br>Reason: Executor decommission: spark scale down"' +
+    'data-html="true">Executor 109 removed</div>'
+}
+           ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974326043),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 106<br>' +
+    'Added at 2025/02/19 14:12:06"' +
+    'data-html="true">Executor 106 added</div>'
+}
+         ,
+{
+  'className': 'executor removed',
+  'group': 'executors',
+  'start': new Date(1739974447063),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 106<br>' +
+    'Removed at 2025/02/19 14:14:07' +
+    '<br>Reason: Executor decommission: spark scale down"' +
+    'data-html="true">Executor 106 removed</div>'
+}
+           ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739974326426),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 111<br>' +
+    'Added at 2025/02/19 14:12:06"' +
+    'data-html="true">Executor 111 added</div>'
+}
+         ,
+{
+  'className': 'executor removed',
+  'group': 'executors',
+  'start': new Date(1739974447468),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 111<br>' +
+    'Removed at 2025/02/19 14:14:07' +
+    '<br>Reason: Executor decommission: spark scale down"' +
+    'data-html="true">Executor 111 removed</div>'
+}
+           ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976013773),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 113<br>' +
+    'Added at 2025/02/19 14:40:13"' +
+    'data-html="true">Executor 113 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976013789),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 112<br>' +
+    'Added at 2025/02/19 14:40:13"' +
+    'data-html="true">Executor 112 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976014752),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 114<br>' +
+    'Added at 2025/02/19 14:40:14"' +
+    'data-html="true">Executor 114 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976015147),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 115<br>' +
+    'Added at 2025/02/19 14:40:15"' +
+    'data-html="true">Executor 115 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976015552),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 116<br>' +
+    'Added at 2025/02/19 14:40:15"' +
+    'data-html="true">Executor 116 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976015888),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 117<br>' +
+    'Added at 2025/02/19 14:40:15"' +
+    'data-html="true">Executor 117 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976015927),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 118<br>' +
+    'Added at 2025/02/19 14:40:15"' +
+    'data-html="true">Executor 118 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976016244),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 119<br>' +
+    'Added at 2025/02/19 14:40:16"' +
+    'data-html="true">Executor 119 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976016960),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 120<br>' +
+    'Added at 2025/02/19 14:40:16"' +
+    'data-html="true">Executor 120 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976017557),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 121<br>' +
+    'Added at 2025/02/19 14:40:17"' +
+    'data-html="true">Executor 121 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976017687),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 122<br>' +
+    'Added at 2025/02/19 14:40:17"' +
+    'data-html="true">Executor 122 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976019183),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 123<br>' +
+    'Added at 2025/02/19 14:40:19"' +
+    'data-html="true">Executor 123 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976019374),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 124<br>' +
+    'Added at 2025/02/19 14:40:19"' +
+    'data-html="true">Executor 124 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976019851),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 125<br>' +
+    'Added at 2025/02/19 14:40:19"' +
+    'data-html="true">Executor 125 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976024707),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 126<br>' +
+    'Added at 2025/02/19 14:40:24"' +
+    'data-html="true">Executor 126 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976027672),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 127<br>' +
+    'Added at 2025/02/19 14:40:27"' +
+    'data-html="true">Executor 127 added</div>'
+}
+         ,
+{
+  'className': 'executor added',
+  'group': 'executors',
+  'start': new Date(1739976029377),
+  'content': '<div class="executor-event-content"' +
+    'data-toggle="tooltip" data-placement="top"' +
+    'data-title="Executor 128<br>' +
+    'Added at 2025/02/19 14:40:29"' +
+    'data-html="true">Executor 128 added</div>'
+}
+         ], 1739973780070, 0);
+    </script><span id="completed" class="collapse-aggregated-completedJobs collapse-table" onClick="collapseTable('collapse-aggregated-completedJobs','aggregated-completedJobs')">
+          <h4>
+            <span class="collapse-table-arrow arrow-open"></span>
+            <a>Completed Jobs (32)</a>
+          </h4>
+        </span><div class="aggregated-completedJobs collapsible-table">
+          <div>
+        <div>
+      <div>
+        <form id="form-completedJob-table-top-page" method="get" action="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/?user.name=anonymous&completedJob.sort=Job+Id&completedJob.desc=true#completed" class="form-inline float-right justify-content-end" style="margin-bottom: 0px;">
+          <input type="hidden" name="user.name" value="anonymous"/><input type="hidden" name="completedJob.sort" value="Job Id"/><input type="hidden" name="completedJob.desc" value="true"/>
+          <label>1 Pages. Jump to</label>
+          <input type="text" name="completedJob.page" id="form-completedJob-table-top-page-no" value="1" class="col-1 form-control"/>
+
+          <label>. Show </label>
+          <input type="text" id="form-completedJob-table-top-page-size" name="completedJob.pageSize" value="100" class="col-1 form-control"/>
+          <label>items in a page.</label>
+
+          <button type="submit" class="btn btn-spark">Go</button>
+        </form>
+      </div>
+      <div>
+        <span style="float: left; padding-top: 4px; padding-right: 4px;">Page: </span>
+        <ul class="pagination">
+          
+          
+          <li class="page-item disabled"><a href="#" class="page-link">1</a></li>
+          
+          
+        </ul>
+      </div>
+    </div>
+        <table class="table table-bordered table-sm table-striped table-head-clickable table-cell-width-limited" id="completedJob-table">
+          <thead>
+      <tr><th>
+            <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/?user.name=anonymous&completedJob.sort=Job+Id&completedJob.desc=false&completedJob.pageSize=100#completed">
+              <span data-toggle="tooltip" data-placement="top" title="">
+                Job Id&nbsp;&#x25BE;
+              </span>
+            </a>
+          </th><th>
+              <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/?user.name=anonymous&completedJob.sort=Description&completedJob.pageSize=100#completed">
+                <span data-toggle="tooltip" data-placement="top" title="">
+                  Description
+                </span>
+              </a>
+            </th><th>
+              <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/?user.name=anonymous&completedJob.sort=Submitted&completedJob.pageSize=100#completed">
+                <span data-toggle="tooltip" data-placement="top" title="">
+                  Submitted
+                </span>
+              </a>
+            </th><th>
+              <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/?user.name=anonymous&completedJob.sort=Duration&completedJob.pageSize=100#completed">
+                <span data-toggle="tooltip" data-placement="top" title="Elapsed time since the job was submitted until execution completion of all its stages.">
+                  Duration
+                </span>
+              </a>
+            </th><th>
+              <span data-toggle="tooltip" data-placement="top" title="">
+                Stages: Succeeded/Total
+              </span>
+            </th><th>
+              <span data-toggle="tooltip" data-placement="top" title="">
+                Tasks (for all stages): Succeeded/Total
+              </span>
+            </th></tr>
+    </thead>
+          <tbody>
+            <tr id="job-31">
+      <td>
+        31 
+      </td>
+      <td>
+        <span class="description-input">orc at GCPExecutionEngine.scala:61</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=31" class="name-link">orc at GCPExecutionEngine.scala:61</a>
+      </td>
+      <td>
+        2025/02/19 15:06:17
+      </td>
+      <td>17 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (9 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1000/1000
+        
+        
+        (6043 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-30">
+      <td>
+        30 
+      </td>
+      <td>
+        <span class="description-input">orc at GCPExecutionEngine.scala:61</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=30" class="name-link">orc at GCPExecutionEngine.scala:61</a>
+      </td>
+      <td>
+        2025/02/19 14:54:01
+      </td>
+      <td>12 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (8 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1000/1000
+        
+        
+        (5043 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-29">
+      <td>
+        29 
+      </td>
+      <td>
+        <span class="description-input">Listing leaf files and directories for 771 paths:<br/>gs://daci-secure-activity-bronze-prd/clickstream-silver/clickstream-grs/feed_date=2022-04-10, ...</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=29" class="name-link">orc at GCPExecutionEngine.scala:50</a>
+      </td>
+      <td>
+        2025/02/19 14:53:30
+      </td>
+      <td>8 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        771/771
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-28">
+      <td>
+        28 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=28" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:53:26
+      </td>
+      <td>0.6 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (9 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        (6043 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-27">
+      <td>
+        27 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=27" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:52:46
+      </td>
+      <td>40 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (8 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1000/1000
+        
+        
+        (5043 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-26">
+      <td>
+        26 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=26" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:39:12
+      </td>
+      <td>14 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (8 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1000/1000
+        
+        
+        (5043 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-25">
+      <td>
+        25 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=25" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:39:09
+      </td>
+      <td>3 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (5 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1000/1000
+        
+        
+        (2624 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-24">
+      <td>
+        24 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=24" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:38:57
+      </td>
+      <td>12 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (4 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1000/1000
+        
+        
+        (1624 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-23">
+      <td>
+        23 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=23" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:34:42
+      </td>
+      <td>4.3 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (3 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1000/1000
+        
+        
+        (624 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-22">
+      <td>
+        22 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=22" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:09:56
+      </td>
+      <td>13 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (1 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1000/1000
+        
+        
+        (419 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-21">
+      <td>
+        21 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=21" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:07:03
+      </td>
+      <td>28 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        (2 skipped)
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        166/166
+        
+        
+        (458 skipped)
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-20">
+      <td>
+        20 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=20" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:04:21
+      </td>
+      <td>1.7 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        39/39
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-19">
+      <td>
+        19 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=19" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:04:21
+      </td>
+      <td>2.7 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        419/419
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-18">
+      <td>
+        18 
+      </td>
+      <td>
+        <span class="description-input">collect at DigitalClickStreamParserExecutionEngine.scala:232</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=18" class="name-link">collect at DigitalClickStreamParserExecutionEngine.scala:232</a>
+      </td>
+      <td>
+        2025/02/19 14:04:20
+      </td>
+      <td>5.6 min</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        419/419
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-17">
+      <td>
+        17 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:137</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=17" class="name-link">csv at FTAASFileReader.scala:137</a>
+      </td>
+      <td>
+        2025/02/19 14:04:15
+      </td>
+      <td>1 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-16">
+      <td>
+        16 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:117</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=16" class="name-link">csv at FTAASFileReader.scala:117</a>
+      </td>
+      <td>
+        2025/02/19 14:04:13
+      </td>
+      <td>2 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-15">
+      <td>
+        15 
+      </td>
+      <td>
+        <span class="description-input">Listing leaf files and directories for 419 paths:<br/>gs://daci-secure-activity-lz-prd/clickstream/hourly/success/2022-11-12/compressed/data/01-lowesgrsprod_2022-11-12.tsv.gz, ...</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=15" class="name-link">csv at FTAASFileReader.scala:117</a>
+      </td>
+      <td>
+        2025/02/19 14:04:12
+      </td>
+      <td>0.4 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        419/419
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-14">
+      <td>
+        14 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:137</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=14" class="name-link">csv at FTAASFileReader.scala:137</a>
+      </td>
+      <td>
+        2025/02/19 14:04:10
+      </td>
+      <td>1 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-13">
+      <td>
+        13 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:117</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=13" class="name-link">csv at FTAASFileReader.scala:117</a>
+      </td>
+      <td>
+        2025/02/19 14:04:08
+      </td>
+      <td>1 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-12">
+      <td>
+        12 
+      </td>
+      <td>
+        <span class="description-input">Listing leaf files and directories for 419 paths:<br/>gs://daci-secure-activity-lz-prd/clickstream/hourly/success/2022-11-12/compressed/data/01-lowesgrsprod_2022-11-12.tsv.gz, ...</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=12" class="name-link">csv at FTAASFileReader.scala:117</a>
+      </td>
+      <td>
+        2025/02/19 14:04:04
+      </td>
+      <td>5 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        419/419
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-11">
+      <td>
+        11 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=11" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:59
+      </td>
+      <td>4 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-10">
+      <td>
+        10 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=10" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:56
+      </td>
+      <td>3 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-9">
+      <td>
+        9 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=9" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:50
+      </td>
+      <td>5 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-8">
+      <td>
+        8 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=8" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:45
+      </td>
+      <td>4 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-7">
+      <td>
+        7 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=7" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:41
+      </td>
+      <td>4 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-6">
+      <td>
+        6 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=6" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:37
+      </td>
+      <td>3 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-5">
+      <td>
+        5 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=5" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:33
+      </td>
+      <td>4 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-4">
+      <td>
+        4 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=4" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:29
+      </td>
+      <td>3 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-3">
+      <td>
+        3 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=3" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:25
+      </td>
+      <td>4 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-2">
+      <td>
+        2 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=2" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:20
+      </td>
+      <td>4 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-1">
+      <td>
+        1 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=1" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:16
+      </td>
+      <td>3 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr><tr id="job-0">
+      <td>
+        0 
+      </td>
+      <td>
+        <span class="description-input">csv at FTAASFileReader.scala:42</span> 
+        <a href="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/job/?id=0" class="name-link">csv at FTAASFileReader.scala:42</a>
+      </td>
+      <td>
+        2025/02/19 14:03:12
+      </td>
+      <td>3 s</td>
+      <td class="stage-progress-cell">
+        1/1
+        
+        
+      </td>
+      <td class="progress-cell">
+        <div class="progress">
+      <span style="text-align:center; position:absolute; width:100%;">
+        1/1
+        
+        
+        
+        
+      </span>
+      <div class="progress-bar progress-completed" style="width: 100.0%"></div>
+      <div class="progress-bar progress-started" style="width: 0.0%"></div>
+    </div>
+      </td>
+    </tr>
+          </tbody>
+        </table>
+        <div>
+      <div>
+        <form id="form-completedJob-table-bottom-page" method="get" action="/gateway/default/sparkhistory/history/app-20250219140302-0000/jobs/?user.name=anonymous&completedJob.sort=Job+Id&completedJob.desc=true#completed" class="form-inline float-right justify-content-end" style="margin-bottom: 0px;">
+          <input type="hidden" name="user.name" value="anonymous"/><input type="hidden" name="completedJob.sort" value="Job Id"/><input type="hidden" name="completedJob.desc" value="true"/>
+          <label>1 Pages. Jump to</label>
+          <input type="text" name="completedJob.page" id="form-completedJob-table-bottom-page-no" value="1" class="col-1 form-control"/>
+
+          <label>. Show </label>
+          <input type="text" id="form-completedJob-table-bottom-page-size" name="completedJob.pageSize" value="100" class="col-1 form-control"/>
+          <label>items in a page.</label>
+
+          <button type="submit" class="btn btn-spark">Go</button>
+        </form>
+      </div>
+      <div>
+        <span style="float: left; padding-top: 4px; padding-right: 4px;">Page: </span>
+        <ul class="pagination">
+          
+          
+          <li class="page-item disabled"><a href="#" class="page-link">1</a></li>
+          
+          
+        </ul>
+      </div>
+    </div>
+      </div>
+        </div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>

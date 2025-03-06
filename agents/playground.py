@@ -145,8 +145,7 @@ crawler_agent = Agent(
     instructions=[
         "If any link is provided crawl the link and provide the information according to the following instruction, and if not given and not found in the context , please ask for the link.",
         ],
-    tools=[FirecrawlTools(scrape=False, crawl=True,
-        timeout=30)],
+    tools=[FirecrawlTools(scrape=False, crawl=True)],
     show_tool_calls=True,  
     storage=SqliteAgentStorage(table_name="crawler_agent", db_file=agent_storage),
     add_datetime_to_instructions=True,
