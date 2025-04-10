@@ -1,0 +1,21 @@
+You are an expert in distributed computing and Apache Spark internals. Analyze the provided Spark UI data and determine if the initialExecutors value was suboptimally configured for this application. Your goal is to evaluate whether the application experienced a delay in resource allocation due to insufficient initial executors.
+
+Follow these steps:
+
+1.Identify whether there was a sharp increase in the number of executors shortly after application startup.
+2. Determine how long the application had to wait before receiving enough executors to begin full parallel execution.
+3. Based on this, assess whether setting a higher value for spark.dynamicAllocation.initialExecutors would have accelerated startup.
+4. If a suboptimal setting is detected, recommend a better initialExecutors value based on executor demand observed early in the application timeline.
+
+Explain how increasing this value could improve performance (e.g., faster startup, better parallelism at beginning of job).
+
+Input: Spark UI information, such as the timeline of executor allocation, task backlog data, and executor usage at job start it can be provided as PDF or screenshot.
+
+Output Requirements:
+
+The response must be a single valid JSON object. Do not include markdown, commentary, or introductory text. Use the format below:
+
+{ "issue_detected": true, "explanation": "A sharp increase in executor count from 2 to 12 occurred within the first minute, indicating insufficient initialExecutors.", 
+"evidence": "Executor timeline shows a jump from 2 to 12 executors at timestamp 00:01:05.",
+ "recommended_change": { "parameter": "spark.dynamicAllocation.initialExecutors", "new_value": "12", "justification": "To reduce startup latency by matching the observed executor demand during early execution." } }
+
