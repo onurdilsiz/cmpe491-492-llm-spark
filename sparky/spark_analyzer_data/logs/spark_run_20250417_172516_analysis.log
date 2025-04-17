@@ -1,0 +1,22 @@
+2025-04-17 17:34:41,715 - spark_analyzer - INFO - Starting full analysis for run 20250417_172516
+2025-04-17 17:34:41,715 - spark_analyzer - INFO - All required PDF files verified
+2025-04-17 17:34:41,717 - spark_analyzer - ERROR - Error in full analysis: 1 validation error for ChatOpenAI
+  Value error, Did not find openai_api_key, please add an environment variable `OPENAI_API_KEY` which contains it, or pass `openai_api_key` as a named parameter. [type=value_error, input_value={'model_name': 'gpt-4o', ...ne, 'http_client': None}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.11/v/value_error
+2025-04-17 17:40:06,728 - spark_analyzer - INFO - Starting full analysis for run 20250417_172516
+2025-04-17 17:40:06,728 - spark_analyzer - INFO - All required PDF files verified
+2025-04-17 17:40:07,388 - spark_analyzer - INFO - Starting analysis for jobs
+2025-04-17 17:40:10,198 - spark_analyzer - INFO - Completed analysis for jobs
+2025-04-17 17:40:10,214 - spark_analyzer - INFO - Starting analysis for stages
+2025-04-17 17:40:19,196 - spark_analyzer - INFO - Completed analysis for stages
+2025-04-17 17:40:19,219 - spark_analyzer - INFO - Starting analysis for storage
+2025-04-17 17:40:21,658 - spark_analyzer - INFO - Completed analysis for storage
+2025-04-17 17:40:21,686 - spark_analyzer - INFO - Starting analysis for environment
+2025-04-17 17:40:30,270 - spark_analyzer - INFO - Completed analysis for environment
+2025-04-17 17:40:30,303 - spark_analyzer - INFO - Starting analysis for executors
+2025-04-17 17:40:40,536 - spark_analyzer - INFO - Completed analysis for executors
+2025-04-17 17:40:40,599 - spark_analyzer - INFO - Starting analysis for sql
+2025-04-17 17:41:01,804 - spark_analyzer - INFO - Completed analysis for sql
+2025-04-17 17:41:01,850 - spark_analyzer - INFO - Starting synthesis of analysis results
+2025-04-17 17:41:26,069 - spark_analyzer - INFO - Completed synthesis report
+2025-04-17 17:41:26,073 - spark_analyzer - INFO - Analysis complete in 79.34 seconds
