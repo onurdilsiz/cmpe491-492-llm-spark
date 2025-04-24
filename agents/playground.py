@@ -4,6 +4,7 @@ from agno.playground import Playground, serve_playground_app
 from agno.storage.agent.sqlite import SqliteAgentStorage
 from agno.tools.duckduckgo import DuckDuckGoTools
 from agno.tools.firecrawl import FirecrawlTools
+from agno.team.team import Team
 
 
 
@@ -107,6 +108,7 @@ PROMPT ="""    Analyze the provided Spark code and detect opportunities to impro
 """
 agent_storage: str = "tmp/agents.db"
 
+
 web_agent = Agent(
     name="Web Agent",
     model=OpenAIChat(id="gpt-4o"),
@@ -154,10 +156,56 @@ crawler_agent = Agent(
     markdown=True,
 )
 
+code_quality_agent = Agent(
+    name="Code Quality Agent",
+    model=OpenAIChat(id="gpt-4o"),
+    tools=[DuckDuckGoTools()],
+    instructions=[
+        "If any code is provided, analyze it according to the following instruction, and if not given and not found in the context , please ask for the code.",
+        PROMPT],
+    storage=SqliteAgentStorage(table_name="code_quality_agent", db_file=agent_storage),
+    add_datetime_to_instructions=True,
+    add_history_to_messages=True,
+    num_history_responses=5,
+    markdown=True,
+)
+
+jobs_agent = Agent( 
+    name="Jobs Agent", 
+    role="You analyze the Spark UI Jobs tab and identify performance issues in job execution.",
+      model=OpenAIChat(id="gpt-4o"), 
+      instructions="Analyze the Spark UI Jobs tab and identify performance issues in job execution.", 
+    add_datetime_to_instructions=True,
+    add_history_to_messages=True,
+    num_history_responses=5,
+    markdown=True, )
 
 
 
-app = Playground(agents=[web_agent, code_quality_agent, crawler_agent]).get_app()
+
+
+
+sparky_team = Team(
+    name="Sparky Team",
+    mode="route",
+    model=OpenAIChat("gpt-4o"),
+    members=[code_quality_agent, jobs_agent],
+    show_tool_calls=True,
+    markdown=True,
+    description="You are a multi-agent team coordinator for analyzing Apache Spark performance using Spark UI components.",
+    instructions=[
+        "Identify the purpose of the user's question and direct it to the appropriate sparky agent.",
+        "If any screenshot or pdf  is provided, direct it to the jobs agent.",
+        "If any code is provided, direct it to the code quality agent.",
+        "Remember: You are the final gatekeeper before the analysis that is going to provided, wait for the members to respond and provide the final response.",
+    ],
+    show_members_responses=True,
+    debug_mode=True,
+
+)
+
+
+app = Playground(teams=[sparky_team]).get_app()
 
 @app.get("/")
 async def root():
