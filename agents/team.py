@@ -1,3 +1,20 @@
+from pathlib import Path
+from pypdf import PdfReader                       # pip install pypdf
+
+def extract_pdf_text(path: str | Path,
+                     max_chars: int | None = 12_000) -> str:
+    """
+    Read a (small) PDF and return its plaintext.
+    If `max_chars` is set, the text is truncated to keep the prompt short.
+    """
+    reader = PdfReader(str(path))
+    text = "\n\n".join(page.extract_text() or "" for page in reader.pages)
+
+    if max_chars and len(text) > max_chars:
+        text = text[:max_chars] + "\n\n[... truncated …]"
+    return text
+
+
 from agno.agent import Agent
 from agno.models.openai import OpenAIChat
 from agno.playground import Playground, serve_playground_app
@@ -502,39 +519,6 @@ SQL Analysis:
 
 
 
-web_agent = Agent(
-    name="Web Agent",
-    model=OpenAIChat(id="gpt-4o"),
-    tools=[DuckDuckGoTools()],
-    instructions=["Always include sources"],
-    # Store the agent sessions in a sqlite database
-    storage=SqliteAgentStorage(table_name="web_agent", db_file=agent_storage),
-    # Adds the current date and time to the instructions
-    add_datetime_to_instructions=True,
-    # Adds the history of the conversation to the messages
-    add_history_to_messages=True,
-    # Number of history responses to add to the messages
-    num_history_responses=5,
-    # Adds markdown formatting to the messages
-    markdown=True,
-)
-
-
-
-crawler_agent = Agent(
-    name="Crawler Agent",
-    model=OpenAIChat(id="gpt-4o"),
-    instructions=[
-        "If any link is provided crawl the link and provide the information according to the following instruction, and if not given and not found in the context , please ask for the link.",
-        ],
-    tools=[FirecrawlTools(scrape=False, crawl=True)],
-    show_tool_calls=True,  
-    storage=SqliteAgentStorage(table_name="crawler_agent", db_file=agent_storage),
-    add_datetime_to_instructions=True,
-    add_history_to_messages=True,
-    num_history_responses=5,
-    markdown=True,
-)
 
 code_quality_agent = Agent(
     name="Code Quality Agent",
@@ -631,7 +615,7 @@ executors_agent = Agent(
 )
 sparky_team = Team(
     name="Sparky Team",
-    mode="coordinate",
+    mode="route",
     model=OpenAIChat("gpt-4o"),
     members=[    code_quality_agent,
     jobs_agent,
@@ -675,14 +659,40 @@ sparky_team = Team(
 )
 
 
-app = Playground(teams=[sparky_team]).get_app()
+def guess_tab_from_name(pdf_path: Path) -> str:
+    name = pdf_path.stem.lower()
+    for key in ("jobs", "stages", "storage", "environment",
+                "executors", "sql", "dataframe"):
+        if key in name:
+            return key
+    return "unknown"
 
-@app.get("/")
-async def root():
-    return {"message": "Welcome to Agno Playground!"}
+
+# ---------- 3. one-shot analysis routine ------------------------------
+def analyze_pdf_with_team(pdf_file: str | Path,
+                          stream: bool = True) -> None:
+    pdf_path  = Path(pdf_file)
+    tab_name  = guess_tab_from_name(pdf_path)   # -> “jobs” etc.
+    pdf_text  = extract_pdf_text(pdf_path)
+
+    # Compose a user-style message that the router can parse
+    user_msg = (
+        f"This is the Spark-UI *{tab_name}* tab exported as PDF. "
+        f"Please analyse it and report the main performance issues.\n\n"
+        f"{pdf_text}"
+    )
+    sparky_team.print_response(user_msg, stream=stream)
+
+
+
 
 if __name__ == "__main__":
-    serve_playground_app("playground:app", reload=True)
+    import argparse
 
+    ap = argparse.ArgumentParser(description="One-shot Spark-UI PDF analysis")
+    ap.add_argument("pdf", help="Path to a Spark-UI tab PDF (jobs.pdf, stages.pdf …)")
+    ap.add_argument("--no-stream", action="store_true",
+                    help="Return full string instead of streaming")
+    args = ap.parse_args()
 
-
+    analyze_pdf_with_team(args.pdf, stream=not args.no_stream)
