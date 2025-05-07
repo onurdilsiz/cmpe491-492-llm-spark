@@ -1,0 +1,461 @@
+import os
+import uuid
+import json
+import ast # For safely evaluating the string list from orchestrator if not using JSON
+from typing import TypedDict, List, Dict, Any, Optional, Annotated
+from functools import partial
+from langchain.chat_models import init_chat_model
+import PyPDF2 # Import the library
+import glob   # To find files easily
+# Assuming LangChain and Vertex AI libraries are installed
+# pip install langchain langchain-google-vertexai google-cloud-aiplatform langchain-core langgraph
+from langchain_core.messages import HumanMessage, SystemMessage
+# Replace with your actual LLM initialization if different
+# from langchain_google_vertexai import ChatVertexAI # Example import
+from langchain_core.language_models.chat_models import BaseChatModel # For type hinting
+
+from langgraph.graph import StateGraph, END, START
+
+def load_pdf_texts_from_folder(folder_path: str) -> Dict[str, str]:
+    """
+    Loads text from PDF files in a specified folder.
+
+    Args:
+        folder_path: The path to the folder containing the PDF files.
+
+    Returns:
+        A dictionary where keys are derived from filenames (e.g., 'jobs', 'stages')
+        and values are the extracted text content from the corresponding PDFs.
+    """
+    pdf_texts = {}
+    # Define the mapping from expected filenames to dictionary keys
+    # Adjust these filenames if yours are slightly different
+    filename_to_key = {
+        "environment.pdf": "environment",
+        "executors.pdf": "executors",
+        "jobs.pdf": "jobs",
+        "sql.pdf": "sql",
+        "stages.pdf": "stages",
+        "storage.pdf": "storage",
+        # Add mappings for any other relevant PDFs you might have
+    }
+
+    print(f"Looking for PDF files in folder: {folder_path}")
+
+    # Use glob to find all PDF files in the folder
+    for file_path in glob.glob(os.path.join(folder_path, "*.pdf")):
+        filename = os.path.basename(file_path)
+
+        if filename in filename_to_key:
+            key = filename_to_key[filename]
+            print(f"Processing '{filename}' for key '{key}'...")
+            try:
+                with open(file_path, 'rb') as pdf_file:
+                    reader = PyPDF2.PdfReader(pdf_file)
+                    num_pages = len(reader.pages)
+                    text_content = ""
+                    for page_num in range(num_pages):
+                        page = reader.pages[page_num]
+                        # Attempt to extract text, handle potential issues
+                        try:
+                            page_text = page.extract_text()
+                            if page_text: # Add text only if extraction was successful
+                                text_content += page_text + "\n\n" # Add newline between pages
+                        except Exception as page_ex:
+                             print(f"  Warning: Could not extract text from page {page_num + 1} of {filename}: {page_ex}")
+
+                    if text_content:
+                        pdf_texts[key] = text_content.strip()
+                        print(f"  Successfully extracted text for '{key}'. Length: {len(text_content)}")
+                    else:
+                        print(f"  Warning: No text could be extracted from {filename}.")
+                        pdf_texts[key] = f"Warning: No text could be extracted from {filename}." # Placeholder
+
+            except FileNotFoundError:
+                print(f"  Error: File not found: {file_path}")
+            except PyPDF2.errors.PdfReadError as pdf_err:
+                 print(f"  Error: Could not read PDF file {filename}: {pdf_err}. It might be corrupted or encrypted.")
+                 pdf_texts[key] = f"Error: Could not read PDF file {filename}: {pdf_err}" # Placeholder
+            except Exception as e:
+                print(f"  Error processing file {filename}: {e}")
+                pdf_texts[key] = f"Error processing file {filename}: {e}" # Placeholder
+        else:
+            print(f"Skipping file '{filename}' as it's not in the expected list.")
+
+    if not pdf_texts:
+         print("Warning: No PDF texts were loaded. Check the folder path and filenames.")
+
+    return pdf_texts
+
+llm = init_chat_model("google_vertexai:gemini-2.0-flash-001")
+
+
+
+# --- 1. State Definition (MODIFIED) ---
+
+# Define the merge function for specialist_findings
+def merge_findings(existing_findings: Dict[str, str], new_finding: Dict[str, str]) -> Dict[str, str]:
+    """Merges new findings into the existing findings dictionary."""
+    # Ensure inputs are dictionaries
+    if existing_findings is None:
+        existing_findings = {}
+    if new_finding is None:
+        new_finding = {}
+    # Create a copy to avoid modifying the original state directly in unexpected ways
+    updated_findings = existing_findings.copy()
+    updated_findings.update(new_finding)
+    return updated_findings
+
+# Use BaseState for more explicit state management features if desired, or stick with TypedDict
+class AgentState(TypedDict):
+    session_id: str
+    user_query: str
+    pdf_texts: Dict[str, str]
+    conversation_history: List[Dict[str, str]]
+
+    # Intermediate fields
+    agents_to_call: List[str]
+    # *** MODIFICATION HERE ***
+    # Use Annotated to specify the merge function for concurrent updates
+    specialist_findings: Annotated[Dict[str, str], merge_findings]
+
+    # Final output fields
+    final_analysis: Optional[str]
+    final_response: Optional[str]
+
+# --- 2. Utility Functions (Keep as before) ---
+def format_response(analysis: str) -> str:
+    return f"Based on the provided Spark UI PDF data:\n\n{analysis}"
+
+def format_history_for_prompt(history: List[Dict[str, str]], max_turns: int = 5) -> str:
+    recent_history = history[-max_turns * 2:]
+    formatted = "\n".join([f"{turn['role'].capitalize()}: {turn['content']}" for turn in recent_history])
+    return f"Relevant recent conversation history:\n{formatted}" if formatted else "No previous conversation history."
+
+# --- 3. Agent Node Functions (Keep specialist agent return format) ---
+
+# Orchestrator (keep as before)
+def orchestrator_router(state: AgentState, llm: BaseChatModel) -> Dict[str, Any]:
+    print("--- Running Orchestrator ---")
+    query = state["user_query"]
+    history = state["conversation_history"]
+    formatted_history = format_history_for_prompt(history)
+    available_agents = ['jobs', 'stages', 'executors', 'sql', 'storage', 'environment']
+
+    prompt_messages = [
+        SystemMessage(content=f"""
+You are an expert system orchestrator for Spark performance analysis.
+Your task is to determine which Spark UI tabs (and thus corresponding specialist agents) are most relevant to answering the current user query, considering the conversation history.
+Available specialist agents correspond to these Spark UI tabs: {available_agents}.
+Respond ONLY with a JSON list of agent names (strings) based on the tab keys. For example: ["jobs", "stages"].
+If the query is broad or unclear, include the most common agents: ["jobs", "stages", "executors"].
+If no specific tabs seem relevant, return an empty list [].
+"""),
+        HumanMessage(content=f"""
+Conversation History:
+{formatted_history}
+
+Current User Query: "{query}"
+
+Based on the query and history, which specialist agents are needed? Respond only with the JSON list.
+""")
+    ]
+    try:
+        response = llm.invoke(prompt_messages)
+        content = response.content.strip()
+        if content.startswith("```json"): content = content[7:]
+        if content.endswith("```"): content = content[:-3]
+        content = content.strip()
+        agents_to_call_keys = json.loads(content)
+        if not isinstance(agents_to_call_keys, list) or not all(isinstance(item, str) for item in agents_to_call_keys):
+             raise ValueError("LLM did not return a valid list of strings.")
+        agents_to_call_keys = [agent for agent in agents_to_call_keys if agent in available_agents]
+    except (json.JSONDecodeError, ValueError, Exception) as e:
+        print(f"Orchestrator LLM call or parsing failed: {e}. Falling back to default agents.")
+        agents_to_call_keys = ["jobs", "stages", "executors"]
+
+    print(f"Orchestrator decided to call agents for tabs: {agents_to_call_keys}")
+    agent_node_names = [f"{tab}_agent" for tab in agents_to_call_keys]
+
+    # Initialize findings dict - IMPORTANT: must initialize for the merge function
+    return {"agents_to_call": agent_node_names, "specialist_findings": {}}
+
+
+# Specialist Agent Factory (Ensure it returns dict like {agent_node_name: findings})
+def create_specialist_node(agent_node_name: str, tab_key: str, llm: BaseChatModel):
+    def agent_node(state: AgentState) -> Dict[str, Any]:
+        print(f"--- Running Specialist: {agent_node_name} (Tab: {tab_key}) ---")
+        # ... (rest of the specialist logic remains the same)
+        query = state["user_query"]
+        history = state["conversation_history"]
+        formatted_history = format_history_for_prompt(history)
+        pdf_text = state["pdf_texts"].get(tab_key, f"PDF text not found for the '{tab_key}' tab.")
+        max_text_length = 8000
+        truncated_text = pdf_text[:max_text_length]
+        if len(pdf_text) > max_text_length: truncated_text += "\n... [Text truncated]"
+
+        prompt_messages = [
+             SystemMessage(content=f"""
+You are a Spark performance analysis expert focused *only* on information typically found in the '{tab_key}' tab of the Spark UI.
+Analyze the following text extracted from the '{tab_key}' PDF tab.
+Your goal is to identify key metrics, patterns, anomalies, potential bottlenecks, or relevant information from this text in the specific context of the user's query and the conversation history.
+Focus *only* on what can be inferred from the provided '{tab_key}' text. Do not invent data.
+If the text is irrelevant to the query, state that clearly.
+Provide a concise summary of your findings.
+"""),
+             HumanMessage(content=f"""
+Conversation History:
+{formatted_history}
+
+User Query: "{query}"
+
+'{tab_key}' Tab Text:
+--- START TEXT ---
+{truncated_text}
+--- END TEXT ---
+
+Based *only* on the text above and the query context, what are your findings?
+""")
+         ]
+        try:
+            response = llm.invoke(prompt_messages)
+            findings = response.content
+        except Exception as e:
+            print(f"Error in {agent_node_name} LLM call: {e}")
+            findings = f"Error analyzing '{tab_key}' tab: {e}"
+
+        # *** IMPORTANT: Ensure the return format matches what merge_findings expects ***
+        # It expects a dict as the 'new_finding' argument.
+        return {"specialist_findings": {agent_node_name: findings}}
+        # ^ This is the dictionary that will be passed as `new_finding` to `merge_findings`
+
+    return agent_node
+
+# Synthesizer (Keep as before)
+def synthesizer_agent(state: AgentState, llm: BaseChatModel) -> Dict[str, Any]:
+    print("--- Running Synthesizer ---")
+    query = state["user_query"]
+    history = state["conversation_history"]
+    formatted_history = format_history_for_prompt(history, max_turns=8)
+    findings = state["specialist_findings"] # This will now be the merged dictionary
+
+    if not findings:
+        analysis = "I could not find specific information relevant to your query in the provided PDF sections that were analyzed. Could you please specify which aspects of the Spark job you are interested in?"
+        return {"final_analysis": analysis}
+
+    findings_str = "\n\n".join([f"--- Findings from {agent_name.replace('_agent', '')} Tab ---:\n{result}"
+                                for agent_name, result in findings.items()])
+
+    prompt_messages = [
+         SystemMessage(content="""
+You are a Spark performance optimization expert consolidating analysis from different Spark UI tab specialists.
+Your task is to synthesize the provided findings into a coherent analysis addressing the user's query, considering the conversation history.
+Identify potential root causes by correlating information across different findings.
+Provide clear, actionable optimization suggestions based *only* on the evidence presented in the findings and general Spark best practices.
+If findings are contradictory or insufficient, acknowledge that.
+Structure your response clearly: first the overall analysis, then specific suggestions.
+Ensure your response flows logically from the conversation history.
+"""),
+         HumanMessage(content=f"""
+Conversation History:
+{formatted_history}
+
+Original User Query for this turn: "{query}"
+
+Collected Findings from Specialist Agents:
+{findings_str}
+
+Based on the query, history, and these findings, please provide a synthesized analysis and actionable optimization suggestions.
+""")
+     ]
+    try:
+        response = llm.invoke(prompt_messages)
+        analysis = response.content
+    except Exception as e:
+        print(f"Error in Synthesizer LLM call: {e}")
+        analysis = f"Error synthesizing the analysis: {e}"
+
+    return {"final_analysis": analysis}
+
+# Formatter (Keep as before)
+def response_formatter_node(state: AgentState) -> Dict[str, Any]:
+    print("--- Running Formatter ---")
+    analysis = state["final_analysis"]
+    if not analysis:
+        if not state.get("specialist_findings"):
+             final_response = "I reviewed the relevant PDF sections based on your query, but couldn't find specific details to generate an analysis. You might need to check other tabs or provide more context."
+        else:
+             final_response = "I encountered an issue while synthesizing the findings. Please try rephrasing your query."
+    else:
+        final_response = format_response(analysis)
+    return {"final_response": final_response}
+
+
+# --- 4. Graph Definition and Conditional Routing (Keep as before) ---
+
+workflow = StateGraph(AgentState)
+
+# Add nodes (no change here, partial still works)
+workflow.add_node("orchestrator", partial(orchestrator_router, llm=llm))
+pdf_tab_keys = ["jobs", "stages", "executors", "sql", "storage", "environment"]
+specialist_node_names = {}
+for key in pdf_tab_keys:
+    node_name = f"{key}_agent"
+    specialist_node_names[key] = node_name
+    workflow.add_node(node_name, create_specialist_node(node_name, key, llm))
+
+workflow.add_node("synthesizer", partial(synthesizer_agent, llm=llm))
+workflow.add_node("formatter", response_formatter_node)
+
+# Define Edges (no change here)
+workflow.set_entry_point("orchestrator")
+
+def route_to_specialists(state: AgentState):
+    agent_node_names_to_call = state.get("agents_to_call", [])
+    if not agent_node_names_to_call:
+        print("Routing: Orchestrator -> Synthesizer (no specialists needed)")
+        return "synthesizer"
+    else:
+        print(f"Routing: Orchestrator -> Specialists ({agent_node_names_to_call})")
+        return agent_node_names_to_call
+
+workflow.add_conditional_edges(
+    "orchestrator",
+    route_to_specialists,
+    {
+        "synthesizer": "synthesizer",
+        **{node_name: node_name for node_name in specialist_node_names.values()}
+    }
+)
+
+for node_name in specialist_node_names.values():
+    workflow.add_edge(node_name, "synthesizer")
+
+workflow.add_edge("synthesizer", "formatter")
+workflow.add_edge("formatter", END)
+
+# Compile the graph (no change here)
+print("Compiling LangGraph application...")
+try:
+    app = workflow.compile()
+    print("Graph compiled successfully.")
+except Exception as e:
+    print(f"Error compiling graph: {e}")
+    exit()
+
+
+# --- 5. Simulation of Session Manager and Chat Loop (Keep as before) ---
+session_storage = {}
+
+def run_chat_turn(session_id: str, user_query: str, pdf_texts: Optional[Dict[str, str]] = None):
+    global session_storage
+    if session_id not in session_storage:
+        if pdf_texts is None: return "Error: PDF texts must be provided for the first turn of a session."
+        print(f"Initializing new session: {session_id}")
+        session_storage[session_id] = { "conversation_history": [], "pdf_texts": pdf_texts }
+    elif pdf_texts is not None:
+        print(f"Warning: PDF texts provided for existing session {session_id}. Overwriting.")
+        session_storage[session_id]["pdf_texts"] = pdf_texts
+
+    current_session = session_storage[session_id]
+    current_history = current_session["conversation_history"]
+    current_pdfs = current_session["pdf_texts"]
+
+    # *** IMPORTANT: Initialize specialist_findings in the input state ***
+    # The merge function needs an initial value to merge into.
+    graph_input: AgentState = {
+        "session_id": session_id,
+        "user_query": user_query,
+        "pdf_texts": current_pdfs,
+        "conversation_history": current_history.copy(),
+        "agents_to_call": [],
+        "specialist_findings": {}, # Initialize as empty dict
+        "final_analysis": None,
+        "final_response": None,
+    }
+
+    print(f"\n--- Invoking Graph for Session {session_id} ---")
+    try:
+        final_state = app.invoke(graph_input)
+        agent_response = final_state.get("final_response", "Sorry, I encountered an issue processing your request.")
+        print("--- Graph Invocation Complete ---")
+    except Exception as e:
+        print(f"--- Graph Invocation ERROR: {e} ---")
+        agent_response = f"Sorry, an error occurred during processing: {e}. Please check the logs."
+
+    current_session["conversation_history"].append({"role": "user", "content": user_query})
+    current_session["conversation_history"].append({"role": "assistant", "content": agent_response})
+    return agent_response
+
+      
+# --- Example Usage (Interactive Chat Loop) ---
+
+if __name__ == "__main__":
+    # --- Initialization ---
+    pdf_folder = "/Users/ysp/Documents/GitHub/cmpe491-492-llm-spark/agents/sparky-langgraph/spark_analyzer_data/runs/spark_run_1/" # <--- CHANGE THIS to the actual folder path
+    print(f"Attempting to load PDFs from: {os.path.abspath(pdf_folder)}")
+
+    try:
+        # Load PDF texts from the specified folder
+        actual_pdf_texts = load_pdf_texts_from_folder(pdf_folder)
+    except Exception as load_err:
+        print(f"FATAL ERROR: Could not load PDF files: {load_err}")
+        actual_pdf_texts = {}
+
+    # Check if any PDFs were loaded successfully
+    if not actual_pdf_texts:
+        print("\nERROR: No PDF data was loaded. Cannot start chat session.")
+        print("Please ensure the PDF files exist in the specified folder and are readable.")
+        print("Expected filenames: environment.pdf, executors.pdf, jobs.pdf, sql.pdf, stages.pdf, storage.pdf")
+        exit() # Exit if no PDFs are loaded
+    else:
+        print("\nPDF Loading Summary:")
+        for key, text in actual_pdf_texts.items():
+            print(f"  - Loaded '{key}': {len(text)} characters")
+        print("-" * 30)
+
+    # --- Initialize Session ---
+    my_session_id = str(uuid.uuid4())
+    print(f"Initializing new session: {my_session_id}")
+    # Store initial state in session_storage
+    session_storage[my_session_id] = {
+        "conversation_history": [],
+        "pdf_texts": actual_pdf_texts # Store PDF texts for the session
+    }
+
+    print("\nChat session started.")
+    print("Enter your query about the Spark application based on the loaded PDFs.")
+    print("Type 'quit' or 'exit' to end the session.")
+    print("-" * 30)
+
+    # --- Chat Loop ---
+    while True:
+        try:
+            user_query = input("You: ")
+        except EOFError:
+            # Handle Ctrl+D or similar EOF signals gracefully
+            print("\nExiting...")
+            break
+
+        if user_query.lower().strip() in ["quit", "exit"]:
+            print("Assistant: Goodbye!")
+            break
+
+        if not user_query.strip():
+            # Handle empty input if desired, or just loop again
+            continue
+
+        # Call the chat turn function. It will use the existing session ID
+        # and retrieve history/PDFs from session_storage.
+        # We don't pass pdf_texts here after initialization.
+        assistant_response = run_chat_turn(my_session_id, user_query)
+
+        print(f"Assistant: {assistant_response}")
+        print("-" * 10) # Separator for clarity
+
+    print("\nChat session ended.")
+
+    # Optional: Clean up session data if needed
+    # del session_storage[my_session_id]
+
+    
