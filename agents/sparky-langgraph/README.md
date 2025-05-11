@@ -37,7 +37,11 @@ This tool helps Spark developers and data engineers analyze their Spark applicat
 ## Usage
 
 ### Preparing Spark UI PDFs
+0. Set Up Google AI
 
+   ```
+   gcloud auth application-default login
+   ```
 1. Run your Spark application
 2. Download the following PDFs from Spark UI:
    - environment.pdf
