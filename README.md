@@ -8,19 +8,25 @@
 
 The fastest way to try Sparky is to use the LangGraph implementation:
 
-1. Navigate to the LangGraph implementation:
+1. Set Up Google AI
+
+   ```
+   gcloud auth application-default login
+   ```
+
+2. Navigate to the LangGraph implementation:
 
    ```
    cd agents/sparky-langgraph
    ```
 
-2. Install dependencies:
+3. Install dependencies:
 
    ```
    pip install -r requirements.txt
    ```
 
-3. Prepare your Spark UI PDFs:
+4. Prepare your Spark UI PDFs:
 
    - Download PDFs from your Spark UI (environment, executors, jobs, sql, stages, storage)
    - Place them in a directory structure like:
@@ -36,7 +42,7 @@ The fastest way to try Sparky is to use the LangGraph implementation:
              └── storage.pdf
      ```
 
-4. Run the demo:
+5. Run the demo:
    ```
    python working_demo.py
    ```
