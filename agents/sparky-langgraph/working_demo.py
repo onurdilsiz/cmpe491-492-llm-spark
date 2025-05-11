@@ -185,7 +185,7 @@ Based on the query and history, which specialist agents are needed? Respond only
 def create_specialist_node(agent_node_name: str, tab_key: str, llm: BaseChatModel):
     def agent_node(state: AgentState) -> Dict[str, Any]:
         print(f"--- Running Specialist: {agent_node_name} (Tab: {tab_key}) ---")
-        # ... (rest of the specialist logic remains the same)
+        
         query = state["user_query"]
         history = state["conversation_history"]
         formatted_history = format_history_for_prompt(history)
@@ -194,16 +194,91 @@ def create_specialist_node(agent_node_name: str, tab_key: str, llm: BaseChatMode
         truncated_text = pdf_text[:max_text_length]
         if len(pdf_text) > max_text_length: truncated_text += "\n... [Text truncated]"
 
+        # Specialized prompts for each tab
+        tab_specific_prompts = {
+            "executors": """You are a Spark performance expert focused on executor analysis. Analyze the following text from the 'executors' tab.
+Key areas to examine:
+1. Autoscaling behavior - Check for sharp increases in executor count after start
+2. Memory usage and potential OOM issues:
+   - Look for exit codes 143 or 137 indicating executor kills
+   - Check if executors are using available memory efficiently
+   - Identify memory spills to disk
+3. Resource utilization patterns
+4. Executor lifetime and stability
+
+Provide specific metrics when available. If you spot potential issues, suggest concrete optimization parameters.""",
+
+            "stages": """You are a Spark performance expert focused on stage analysis. Analyze the following text from the 'stages' tab.
+Key areas to examine:
+1. Data skew detection:
+   - Compare min/median/max partition sizes
+   - Flag cases where max size is >10x median
+2. Shuffle partition sizes and counts
+3. Stage duration patterns
+4. Task distribution and parallelism
+5. Identify bottleneck stages
+
+Focus on concrete metrics and flag any significant imbalances or inefficiencies.""",
+
+            "environment": """You are a Spark performance expert focused on Spark configuration analysis. Analyze the following text from the 'environment' tab.
+Key areas to examine:
+1. Auto Broadcast Join Threshold:
+   - Check if it's enabled (should not be -1)
+   - Suggest adjustments based on data sizes
+2. Adaptive Query Execution (AQE) settings
+3. Memory-related configurations:
+   - Executor memory settings
+   - Memory overhead factors
+4. Dynamic allocation settings:
+   - Initial/min/max executors
+   - Allocation ratio
+   - Queue backlog settings
+
+Provide specific configuration recommendations when issues are identified.""",
+
+            "jobs": """You are a Spark performance expert focused on job analysis. Analyze the following text from the 'jobs' tab.
+Key areas to examine:
+1. Identify top 5 longest-running jobs
+2. Analyze job execution patterns
+3. Job dependencies and parallelism
+4. Success/failure patterns
+5. Resource utilization across jobs
+
+Focus on concrete metrics and timing data to support your analysis.""",
+
+            "sql": """You are a Spark performance expert focused on SQL query analysis. Analyze the following text from the 'sql' tab.
+Key areas to examine:
+1. Shuffle partition configurations
+2. Join strategy selection
+3. Query plan optimization
+4. AQE behavior and impacts
+5. Partition sizes and counts
+
+Look for opportunities to optimize query execution through configuration adjustments.""",
+
+            "storage": """You are a Spark performance expert focused on storage analysis. Analyze the following text from the 'storage' tab.
+Key areas to examine:
+1. Cache utilization and efficiency
+2. Storage level choices
+3. Memory vs. disk storage patterns
+4. Partition distribution
+5. Data persistence strategies
+
+Identify potential storage-related bottlenecks and optimization opportunities."""
+        }
+
+        system_prompt = tab_specific_prompts.get(
+            tab_key,
+            f"You are a Spark performance analysis expert focused on the '{tab_key}' tab of the Spark UI."
+        )
+
         prompt_messages = [
-             SystemMessage(content=f"""
-You are a Spark performance analysis expert focused *only* on information typically found in the '{tab_key}' tab of the Spark UI.
-Analyze the following text extracted from the '{tab_key}' PDF tab.
-Your goal is to identify key metrics, patterns, anomalies, potential bottlenecks, or relevant information from this text in the specific context of the user's query and the conversation history.
-Focus *only* on what can be inferred from the provided '{tab_key}' text. Do not invent data.
+            SystemMessage(content=f"""{system_prompt}
+Analyze the provided text in the context of the user's query and conversation history.
+Focus only on what can be inferred from the provided text. Do not invent data.
 If the text is irrelevant to the query, state that clearly.
-Provide a concise summary of your findings.
-"""),
-             HumanMessage(content=f"""
+Provide a concise summary of your findings with specific metrics when available."""),
+            HumanMessage(content=f"""
 Conversation History:
 {formatted_history}
 
@@ -214,9 +289,10 @@ User Query: "{query}"
 {truncated_text}
 --- END TEXT ---
 
-Based *only* on the text above and the query context, what are your findings?
+Based only on the text above and the query context, what are your findings?
 """)
-         ]
+        ]
+
         try:
             response = llm.invoke(prompt_messages)
             findings = response.content
@@ -224,10 +300,7 @@ Based *only* on the text above and the query context, what are your findings?
             print(f"Error in {agent_node_name} LLM call: {e}")
             findings = f"Error analyzing '{tab_key}' tab: {e}"
 
-        # *** IMPORTANT: Ensure the return format matches what merge_findings expects ***
-        # It expects a dict as the 'new_finding' argument.
         return {"specialist_findings": {agent_node_name: findings}}
-        # ^ This is the dictionary that will be passed as `new_finding` to `merge_findings`
 
     return agent_node
 
@@ -392,7 +465,8 @@ def run_chat_turn(session_id: str, user_query: str, pdf_texts: Optional[Dict[str
 
 if __name__ == "__main__":
     # --- Initialization ---
-    pdf_folder = "/Users/ysp/Documents/GitHub/cmpe491-492-llm-spark/agents/sparky-langgraph/spark_analyzer_data/runs/spark_run_1/" # <--- CHANGE THIS to the actual folder path
+    
+    pdf_folder = "spark_analyzer_data/runs/spark_run_1" 
     print(f"Attempting to load PDFs from: {os.path.abspath(pdf_folder)}")
 
     try:
