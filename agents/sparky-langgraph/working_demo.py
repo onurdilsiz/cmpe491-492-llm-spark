@@ -2,6 +2,7 @@ import os
 import uuid
 import json
 import ast # For safely evaluating the string list from orchestrator if not using JSON
+import time
 from typing import TypedDict, List, Dict, Any, Optional, Annotated
 from functools import partial
 from langchain.chat_models import init_chat_model
@@ -87,7 +88,7 @@ def load_pdf_texts_from_folder(folder_path: str) -> Dict[str, str]:
 
     return pdf_texts
 
-llm = init_chat_model("google_vertexai:gemini-2.0-flash-001")
+llm = init_chat_model("openai:gpt-4o")
 
 
 
@@ -106,6 +107,29 @@ def merge_findings(existing_findings: Dict[str, str], new_finding: Dict[str, str
     updated_findings.update(new_finding)
     return updated_findings
 
+# Add metrics merge function
+def merge_metrics(existing_metrics: Dict[str, Any], new_metric: Dict[str, Any]) -> Dict[str, Any]:
+    """Merges new metrics into the existing metrics dictionary."""
+    if not isinstance(existing_metrics, dict):
+        existing_metrics = {"total_tokens": 0, "total_latency": 0.0, "llm_calls": []}
+    
+    if not isinstance(new_metric, dict):
+        new_metric = {"total_tokens": 0, "total_latency": 0.0, "llm_calls": []}
+    
+    if "total_tokens" not in existing_metrics:
+        existing_metrics["total_tokens"] = 0
+    if "total_latency" not in existing_metrics:
+        existing_metrics["total_latency"] = 0.0
+    if "llm_calls" not in existing_metrics:
+        existing_metrics["llm_calls"] = []
+    
+    updated_metrics = existing_metrics.copy()
+    updated_metrics["total_tokens"] += new_metric.get("total_tokens", 0)
+    updated_metrics["total_latency"] += new_metric.get("total_latency", 0.0)
+    updated_metrics["llm_calls"].extend(new_metric.get("llm_calls", []))
+    
+    return updated_metrics
+
 # Use BaseState for more explicit state management features if desired, or stick with TypedDict
 class AgentState(TypedDict):
     session_id: str
@@ -118,6 +142,9 @@ class AgentState(TypedDict):
     # *** MODIFICATION HERE ***
     # Use Annotated to specify the merge function for concurrent updates
     specialist_findings: Annotated[Dict[str, str], merge_findings]
+    
+    # Metrics tracking
+    metrics: Annotated[Dict[str, Any], merge_metrics]
 
     # Final output fields
     final_analysis: Optional[str]
@@ -133,6 +160,78 @@ def format_history_for_prompt(history: List[Dict[str, str]], max_turns: int = 5)
     return f"Relevant recent conversation history:\n{formatted}" if formatted else "No previous conversation history."
 
 # --- 3. Agent Node Functions (Keep specialist agent return format) ---
+
+# Orchestrator (keep as before)
+def track_llm_call(agent_name: str, llm: BaseChatModel, messages: List, description: str = "") -> tuple[str, Dict[str, Any]]:
+    """
+    Wrapper function to track LLM calls with latency and token usage.
+    Returns: (response_content, metrics_dict)
+    """
+    start_time = time.time()
+    
+    try:
+        response = llm.invoke(messages)
+        end_time = time.time()
+        latency = end_time - start_time
+        
+        # Extract token usage from response if available
+        input_tokens = 0
+        output_tokens = 0
+        total_tokens = 0
+        
+        # Try to get token usage from response metadata
+        if hasattr(response, 'response_metadata') and response.response_metadata:
+            usage = response.response_metadata.get('usage', {})
+            if usage:
+                input_tokens = usage.get('prompt_tokens', 0)
+                output_tokens = usage.get('completion_tokens', 0) 
+                total_tokens = usage.get('total_tokens', input_tokens + output_tokens)
+        
+        # If no usage metadata, estimate tokens (rough approximation: 1 token ≈ 4 characters)
+        if total_tokens == 0:
+            input_text = " ".join([msg.content for msg in messages])
+            input_tokens = len(input_text) // 4
+            output_tokens = len(response.content) // 4
+            total_tokens = input_tokens + output_tokens
+        
+        metrics = {
+            "total_tokens": total_tokens,
+            "total_latency": latency,
+            "llm_calls": [{
+                "agent": agent_name,
+                "description": description,
+                "latency": latency,
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+                "total_tokens": total_tokens,
+                "timestamp": time.time()
+            }]
+        }
+        
+        print(f"[METRICS] {agent_name}: {latency:.2f}s, {total_tokens} tokens ({input_tokens} in, {output_tokens} out)")
+        
+        return response.content, metrics
+        
+    except Exception as e:
+        end_time = time.time()
+        latency = end_time - start_time
+        
+        metrics = {
+            "total_tokens": 0,
+            "total_latency": latency,
+            "llm_calls": [{
+                "agent": agent_name,
+                "description": f"{description} (ERROR)",
+                "latency": latency,
+                "input_tokens": 0,
+                "output_tokens": 0,
+                "total_tokens": 0,
+                "error": str(e),
+                "timestamp": time.time()
+            }]
+        }
+        
+        raise e
 
 # Orchestrator (keep as before)
 def orchestrator_router(state: AgentState, llm: BaseChatModel) -> Dict[str, Any]:
@@ -160,9 +259,10 @@ Current User Query: "{query}"
 Based on the query and history, which specialist agents are needed? Respond only with the JSON list.
 """)
     ]
+    
     try:
-        response = llm.invoke(prompt_messages)
-        content = response.content.strip()
+        content, metrics = track_llm_call("orchestrator", llm, prompt_messages, "Selecting relevant agents")
+        
         if content.startswith("```json"): content = content[7:]
         if content.endswith("```"): content = content[:-3]
         content = content.strip()
@@ -173,18 +273,32 @@ Based on the query and history, which specialist agents are needed? Respond only
     except (json.JSONDecodeError, ValueError, Exception) as e:
         print(f"Orchestrator LLM call or parsing failed: {e}. Falling back to default agents.")
         agents_to_call_keys = ["jobs", "stages", "executors"]
+        # Create error metrics
+        metrics = {
+            "total_tokens": 0,
+            "total_latency": 0.0,
+            "llm_calls": [{
+                "agent": "orchestrator",
+                "description": "Selecting relevant agents (FALLBACK)",
+                "latency": 0.0,
+                "input_tokens": 0,
+                "output_tokens": 0,
+                "total_tokens": 0,
+                "error": str(e),
+                "timestamp": time.time()
+            }]
+        }
 
     print(f"Orchestrator decided to call agents for tabs: {agents_to_call_keys}")
-    agent_node_names = [f"{tab}_agent" for tab in agents_to_call_keys]
+    specialist_agent_names = [f"{key}_agent" for key in agents_to_call_keys]
 
-    # Initialize findings dict - IMPORTANT: must initialize for the merge function
-    return {"agents_to_call": agent_node_names, "specialist_findings": {}}
+    return {"agents_to_call": specialist_agent_names, "specialist_findings": {}, "metrics": metrics}
 
 
 # Specialist Agent Factory (Ensure it returns dict like {agent_node_name: findings})
-def create_specialist_node(agent_node_name: str, tab_key: str, llm: BaseChatModel):
+def create_specialist_node(agent_name: str, tab_key: str, llm: BaseChatModel):
     def agent_node(state: AgentState) -> Dict[str, Any]:
-        print(f"--- Running Specialist: {agent_node_name} (Tab: {tab_key}) ---")
+        print(f"--- Running Specialist: {agent_name} (Tab: {tab_key}) ---")
         
         query = state["user_query"]
         history = state["conversation_history"]
@@ -294,13 +408,27 @@ Based only on the text above and the query context, what are your findings?
         ]
 
         try:
-            response = llm.invoke(prompt_messages)
-            findings = response.content
+            content, metrics = track_llm_call(agent_name, llm, prompt_messages, f"Analyzing {tab_key} tab")
+            findings = {agent_name: content}
         except Exception as e:
-            print(f"Error in {agent_node_name} LLM call: {e}")
-            findings = f"Error analyzing '{tab_key}' tab: {e}"
+            print(f"Error in {agent_name} LLM call: {e}")
+            findings = {agent_name: f"Error analyzing '{tab_key}' tab: {e}"}
+            metrics = {
+                "total_tokens": 0,
+                "total_latency": 0.0,
+                "llm_calls": [{
+                    "agent": agent_name,
+                    "description": f"Analyzing {tab_key} tab (ERROR)",
+                    "latency": 0.0,
+                    "input_tokens": 0,
+                    "output_tokens": 0,
+                    "total_tokens": 0,
+                    "error": str(e),
+                    "timestamp": time.time()
+                }]
+            }
 
-        return {"specialist_findings": {agent_node_name: findings}}
+        return {"specialist_findings": findings, "metrics": metrics}
 
     return agent_node
 
@@ -314,7 +442,12 @@ def synthesizer_agent(state: AgentState, llm: BaseChatModel) -> Dict[str, Any]:
 
     if not findings:
         analysis = "I could not find specific information relevant to your query in the provided PDF sections that were analyzed. Could you please specify which aspects of the Spark job you are interested in?"
-        return {"final_analysis": analysis}
+        metrics = {
+            "total_tokens": 0,
+            "total_latency": 0.0,
+            "llm_calls": []
+        }
+        return {"final_analysis": analysis, "metrics": metrics}
 
     findings_str = "\n\n".join([f"--- Findings from {agent_name.replace('_agent', '')} Tab ---:\n{result}"
                                 for agent_name, result in findings.items()])
@@ -342,13 +475,27 @@ Based on the query, history, and these findings, please provide a synthesized an
 """)
      ]
     try:
-        response = llm.invoke(prompt_messages)
-        analysis = response.content
+        content, metrics = track_llm_call("synthesizer", llm, prompt_messages, "Synthesizing findings")
+        analysis = content
     except Exception as e:
         print(f"Error in Synthesizer LLM call: {e}")
         analysis = f"Error synthesizing the analysis: {e}"
+        metrics = {
+            "total_tokens": 0,
+            "total_latency": 0.0,
+            "llm_calls": [{
+                "agent": "synthesizer",
+                "description": "Synthesizing findings (ERROR)",
+                "latency": 0.0,
+                "input_tokens": 0,
+                "output_tokens": 0,
+                "total_tokens": 0,
+                "error": str(e),
+                "timestamp": time.time()
+            }]
+        }
 
-    return {"final_analysis": analysis}
+    return {"final_analysis": analysis, "metrics": metrics}
 
 # Formatter (Keep as before)
 def response_formatter_node(state: AgentState) -> Dict[str, Any]:
@@ -420,10 +567,66 @@ except Exception as e:
 # --- 5. Simulation of Session Manager and Chat Loop (Keep as before) ---
 session_storage = {}
 
+def display_metrics_summary(metrics: Dict[str, Any]):
+    """Display a summary of token usage and latency metrics."""
+    print("\n" + "="*50)
+    print("📊 PERFORMANCE METRICS SUMMARY")
+    print("="*50)
+    
+    total_tokens = metrics.get("total_tokens", 0) if isinstance(metrics, dict) else 0
+    total_latency = metrics.get("total_latency", 0.0) if isinstance(metrics, dict) else 0.0
+    llm_calls = metrics.get("llm_calls", []) if isinstance(metrics, dict) else []
+    overall_time = metrics.get("overall_execution_time", 0.0) if isinstance(metrics, dict) else 0.0
+    
+    print(f"🔢 Total Tokens Used: {total_tokens:,}")
+    print(f"⏱️  Total LLM Latency: {total_latency:.2f} seconds")
+    print(f"🕐 Overall Execution Time: {overall_time:.2f} seconds")
+    print(f"📞 Number of LLM Calls: {len(llm_calls)}")
+    
+    if total_tokens > 0 and llm_calls:
+        avg_tokens_per_call = total_tokens / len(llm_calls)
+        print(f"📈 Average Tokens per Call: {avg_tokens_per_call:.1f}")
+    
+    if total_latency > 0 and llm_calls:
+        avg_latency_per_call = total_latency / len(llm_calls)
+        print(f"⚡ Average Latency per Call: {avg_latency_per_call:.2f}s")
+    
+    if llm_calls:
+        print("\n📋 Detailed Call Breakdown:")
+        print("-" * 50)
+        
+        for i, call in enumerate(llm_calls, 1):
+            agent = call.get("agent", "unknown")
+            description = call.get("description", "")
+            latency = call.get("latency", 0.0)
+            tokens = call.get("total_tokens", 0)
+            input_tokens = call.get("input_tokens", 0)
+            output_tokens = call.get("output_tokens", 0)
+            error = call.get("error")
+            
+            status = "❌ ERROR" if error else "✅ SUCCESS"
+            print(f"{i:2d}. {agent:20} | {status:10} | {latency:6.2f}s | {tokens:5d} tokens ({input_tokens}→{output_tokens})")
+            if description:
+                print(f"    📝 {description}")
+            if error:
+                print(f"    ⚠️  Error: {error}")
+    else:
+        print("\n📋 No LLM calls were tracked.")
+    
+    if "error" in metrics:
+        print(f"\n⚠️  Session Error: {metrics['error']}")
+    
+    print("="*50)
+
 def run_chat_turn(session_id: str, user_query: str, pdf_texts: Optional[Dict[str, str]] = None):
     global session_storage
+    
+    # Track overall execution time
+    overall_start_time = time.time()
+    
     if session_id not in session_storage:
-        if pdf_texts is None: return "Error: PDF texts must be provided for the first turn of a session."
+        if pdf_texts is None: 
+            return "Error: PDF texts must be provided for the first turn of a session."
         print(f"Initializing new session: {session_id}")
         session_storage[session_id] = { "conversation_history": [], "pdf_texts": pdf_texts }
     elif pdf_texts is not None:
@@ -443,6 +646,7 @@ def run_chat_turn(session_id: str, user_query: str, pdf_texts: Optional[Dict[str
         "conversation_history": current_history.copy(),
         "agents_to_call": [],
         "specialist_findings": {}, # Initialize as empty dict
+        "metrics": {"total_tokens": 0, "total_latency": 0.0, "llm_calls": []},
         "final_analysis": None,
         "final_response": None,
     }
@@ -451,10 +655,33 @@ def run_chat_turn(session_id: str, user_query: str, pdf_texts: Optional[Dict[str
     try:
         final_state = app.invoke(graph_input)
         agent_response = final_state.get("final_response", "Sorry, I encountered an issue processing your request.")
+        
+        overall_end_time = time.time()
+        overall_execution_time = overall_end_time - overall_start_time
+        
         print("--- Graph Invocation Complete ---")
+        
+        # Display metrics
+        metrics = final_state.get("metrics", {})
+        metrics["overall_execution_time"] = overall_execution_time
+        display_metrics_summary(metrics)
+        
     except Exception as e:
+        overall_end_time = time.time()
+        overall_execution_time = overall_end_time - overall_start_time
+        
         print(f"--- Graph Invocation ERROR: {e} ---")
         agent_response = f"Sorry, an error occurred during processing: {e}. Please check the logs."
+        
+        # Display error metrics
+        error_metrics = {
+            "total_tokens": 0,
+            "total_latency": 0.0,
+            "llm_calls": [],
+            "overall_execution_time": overall_execution_time,
+            "error": str(e)
+        }
+        display_metrics_summary(error_metrics)
 
     current_session["conversation_history"].append({"role": "user", "content": user_query})
     current_session["conversation_history"].append({"role": "assistant", "content": agent_response})
@@ -466,7 +693,7 @@ def run_chat_turn(session_id: str, user_query: str, pdf_texts: Optional[Dict[str
 if __name__ == "__main__":
     # --- Initialization ---
     
-    pdf_folder = "spark_analyzer_data/runs/spark_run_1" 
+    pdf_folder = "runs/4 - Autoscaling Backlog Demo" 
     print(f"Attempting to load PDFs from: {os.path.abspath(pdf_folder)}")
 
     try:
