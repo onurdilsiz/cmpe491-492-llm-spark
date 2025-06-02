@@ -88,7 +88,7 @@ def load_pdf_texts_from_folder(folder_path: str) -> Dict[str, str]:
 
     return pdf_texts
 
-llm = init_chat_model("openai:gpt-4o")
+llm = init_chat_model("google_vertexai:gemini-2.5-pro-preview-03-25")
 
 
 
@@ -693,7 +693,7 @@ def run_chat_turn(session_id: str, user_query: str, pdf_texts: Optional[Dict[str
 if __name__ == "__main__":
     # --- Initialization ---
     
-    pdf_folder = "runs/4 - Autoscaling Backlog Demo" 
+    pdf_folder = "runs/5 - Memory Spill Demo" 
     print(f"Attempting to load PDFs from: {os.path.abspath(pdf_folder)}")
 
     try:

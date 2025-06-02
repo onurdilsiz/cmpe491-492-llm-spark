@@ -64,7 +64,7 @@ def load_pdf_texts_from_folder(folder_path: str) -> Dict[str, str]:
 
     return pdf_texts
 
-llm = init_chat_model("google_vertexai:gemini-2.0-flash-001")
+llm = init_chat_model("openai:gpt-4o") # google_vertexai:gemini-2.0-flash-001
 
 # Define the merge function for case findings
 def merge_case_findings(existing_findings: Dict[str, str], new_finding: Dict[str, str]) -> Dict[str, str]:
@@ -210,9 +210,9 @@ def case_orchestrator(state: CaseAgentState, llm: BaseChatModel) -> Dict[str, An
     
     available_cases = [
         'skewed_join', 'huge_collect', 'too_many_partitions', 'cache_no_unpersist',
-        'python_udf', 'cartesian_join', 'many_small_files', 'no_compression',
-        'multi_cache', 'rdd_conversion', 'autoscaling_backlog', 'broadcast_threshold',
-        'memory_spill', 'pandas_udf', 'gc_heavy_rdd'
+      'cartesian_join', 'many_small_files', 
+         'rdd_conversion', 'autoscaling_backlog', 'broadcast_threshold',
+        'memory_spill', 'gc_heavy_rdd'
     ]
 
     prompt_messages = [
@@ -227,20 +227,17 @@ Case descriptions:
 - huge_collect: Large collect() operations causing driver memory spikes
 - too_many_partitions: Excessive shuffle partitions (like 10000) causing overhead
 - cache_no_unpersist: Large DataFrames cached but never released
-- python_udf: Python UDFs disabling whole-stage code generation
 - cartesian_join: Cartesian joins creating massive data explosion
 - many_small_files: Writing thousands of tiny files
-- no_compression: Parquet written without compression
 - multi_cache: Multiple large caches hogging executor memory
-- rdd_conversion: Unnecessary DataFrame→RDD→DataFrame conversions
 - autoscaling_backlog: Dynamic allocation starting with too few executors
 - broadcast_threshold: Broadcast joins blocked by threshold limits
 - memory_spill: Execution memory cuts causing shuffle spill to disk
-- pandas_udf: Inefficient Pandas UDFs where built-ins would suffice
 - gc_heavy_rdd: RDD operations creating billions of tiny objects causing heavy GC
 
 Respond ONLY with a JSON list of case names (strings). For example: ["skewed_join", "memory_spill"].
 If the query is general, include the most common cases: ["skewed_join", "memory_spill", "autoscaling_backlog"].
+If the query is about all cases, include all cases: ["skewed_join", "memory_spill", "autoscaling_backlog", "huge_collect", "too_many_partitions", "cartesian_join", "many_small_files","autoscaling_backlog", "broadcast_threshold", "memory_spill",  "gc_heavy_rdd"].
 If no specific cases seem relevant, return an empty list [].
 """),
         HumanMessage(content=f"""
@@ -862,7 +859,7 @@ session_storage = {}
 
 # Main execution
 if __name__ == "__main__":
-    pdf_folder = "spark_analyzer_data/runs/spark_run_1" 
+    pdf_folder = "runs/6 - GC Heavy RDD Demo" 
     print(f"Attempting to load PDFs from: {os.path.abspath(pdf_folder)}")
 
     try:
